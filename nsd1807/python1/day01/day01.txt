@@ -60,10 +60,53 @@ print('Hello World!')
 [root@node3 devops]# git checkout -- new.py
 
 配置GITLAB服务器，实现代码统一管理
-1、创建虚拟机，内存至少4G，配置好yum、ip地址，安装docker
+1、创建虚拟机，内存至少4G，配置好yum、ip地址，安装docker并启动
 2、将gitlab镜像导入到docker中
 [root@node1 images]# docker load < gitlab_zh.tar
+3、将虚拟机的ssh端口改为2222
+[root@node3 devops]# vim /etc/ssh/sshd_config
+Port 2222
+[root@node3 devops]# systemctl restart sshd
+4、使用gitlab镜像启动容器
+[root@node1 ~]# docker run -d -h gitlab --name gitlab
+ -p 443:443 -p 80:80 -p 22:22 --restart always
+ -v /srv/gitlab/config:/etc/gitlab -v /srv/gitlab/logs:/var/log/gitlab
+ -v /srv/gitlab/data:/var/opt/gitlab gitlab_zh:latest
+-h指定容器的主机名，--name指定执行dock ps时看到的容器名
+5、在物理机上通过浏览器访问gitlab
+因为硬件限制，运行起容器后，gitlab在一段时间内无法访问，需要多等几分钟。
+可以在虚拟机上执行docker ps查看状态，当状态是healthy的时候，就可以正常访问了。
+6、gitlab中重要的概念
+群组group：可以为每个团队创建一个group
+项目project：每个团队都可能开发不只一个项目
+成员member：每个团队成员，需要有相应的用户名登陆到git
 
+
+gitlab用户免密登陆
+1、生成密钥对
+# ssh-keygen -t rsa -C "zhangzg@tedu.cn" -b 4096
+2、复制~/.ssh/id_rsa.pub中的公钥
+3、粘贴到gitlab个人用户的ssh密钥中
+
+用户将本地代码上传到gitlab服务器
+1、进入本地git项目目录
+[root@node3 ~]# cd devops/
+2、将远程名称origin改名
+[root@node3 devops]# git remote rename origin old-origin
+如果出现以下错误，可以忽略
+error: 不能重命名配置小节 'remote.origin' 到 'remote.old-origin'
+3、将本地git名称origin添加到远程
+[root@node3 devops]# git remote add origin git@192.168.4.1:devops/core_py.git
+4、推送代码到gitlab服务器
+[root@node3 devops]# git push -u origin --all
+[root@node3 devops]# git push -u origin --tags
+如果出现permission denied，需要执行以下操作：
+[root@node3 devops]# ssh-agent
+将屏幕输出内容执行后，再执行
+[root@node3 devops]# ssh-add
+5、在gitlab上访问项目，可以看到本地代码已推送到服务器
+如果出现@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@远程主机身份改变，
+则把~/.ssh/known_hosts删除再试
 
 
 
