@@ -1,0 +1,10 @@
+pycharm汉化
+1、百度搜索 pycharm2017.3汉化包
+2、在百度网盘中下载resource_cn.jar
+3、把resources_cn.jar拷贝到/root/bin/pycharm2017/lib/中
+4、如果经过第3步，仍然是英文界面，可以将lib目录中的resources_en.jar先剪切到别处
+5、启动pycharm，将报错
+6、关闭pycharm后，把resources_en.jar再拷贝进去
+
+
+
