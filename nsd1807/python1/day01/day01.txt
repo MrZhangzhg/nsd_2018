@@ -108,6 +108,42 @@ error: 不能重命名配置小节 'remote.origin' 到 'remote.old-origin'
 如果出现@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@远程主机身份改变，
 则把~/.ssh/known_hosts删除再试
 
+pycharm配置
+file -> settings -> project -> project interpreter -> 右窗格点击右上角
+的齿轮选择add local -> 在弹出的窗口，选择下面的Existing enviroment，把
+Make available to all projects勾选，再点击右侧的...跳出窗口输入
+/usr/local/bin/python3。然后确定返回。
+
+运行python代码
+1、在pycharm的文件中右击选择“运行”
+2、也可以在终端中：python3 xxxx.py
+
+python中字符串必须有引号，单双引号表示相同的含义。如果不加引号，python会把它当
+成一个名称，如果该名称没有定义将会报错。
+
+
+合法的变量名，有三个要求：
+1、首字符必须是字母或下划线
+2、其他字符可以是字母、数字或下划线
+3、区分大小写
+
+python中变量使用之前必须赋值
+n = 10
+n = n + 1
+赋值语句自右向左运算。首先取出n的值10，再计算n+1的值得到11，最后把11赋值给n
+可以简写成n += 1
+
+5 / 2   值为2.5
+5 // 2   值为2
+5 % 2    求余，也被称作模运算，结果为1
+2 ** 3   2的3次方，乘方、幂运算
+10 < 20 < 30  python支持连续比较
+10 < 20 > 15  相当于10 < 20 and 20 > 15
+
+
+https://www.jianshu.com/  -> 搜索“python百例”
+做“1－5”和“120-打造vim为python IDE”
+
 
 
 
