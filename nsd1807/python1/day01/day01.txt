@@ -42,7 +42,27 @@ print('Hello World!')
 5、将暂存区中的文件提交到版本库
 [root@node3 devops]# git commit -m "project init"
 [root@node3 devops]# git status
+6、继续编写代码
+[root@node3 devops]# echo "a = 10" >> hello.py
+[root@node3 devops]# echo 'print("yes")' > new.py
+7、将现有工作区内容提交到版本库
+[root@node3 devops]# git add .
+[root@node3 devops]# git commit -m "add new file"
+8、查看提交日志
+[root@node3 devops]# git log
+9、查看版本库中的文件
+[root@node3 devops]# git ls-files
+10、删除文件
+[root@node3 devops]# git rm new.py
+11、撤销删除
+[root@node3 devops]# git status
+[root@node3 devops]# git reset HEAD new.py
+[root@node3 devops]# git checkout -- new.py
 
+配置GITLAB服务器，实现代码统一管理
+1、创建虚拟机，内存至少4G，配置好yum、ip地址，安装docker
+2、将gitlab镜像导入到docker中
+[root@node1 images]# docker load < gitlab_zh.tar
 
 
 
