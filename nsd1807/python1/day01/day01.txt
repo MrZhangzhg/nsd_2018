@@ -7,4 +7,52 @@ pycharm汉化
 6、关闭pycharm后，把resources_en.jar再拷贝进去
 
 
+git
+1、它是实现代码管理的工具
+2、安装
+[root@node3 ~]# yum install -y git
+3、配置用户基本信息
+[root@node3 ~]# git config --global user.name zzg
+[root@node3 ~]# git config --global user.email zhangzg@tedu.cn
+# 如果需要编写日志，默认使用的编辑器是vim
+[root@node3 ~]# git config --global core.editor vim
+4、查看
+[root@node3 ~]# git config --list
+[root@node3 ~]# cat ~/.gitconfig
+5、git的三个区域
+工作区：指的就是我们编写代码的目录，工作区中的文件不一定会保存到git中
+暂存区：它是工作区和版本库之间的缓冲地带。工作区中的文件先提交到暂存区，如果确定加入
+git管理，可以提交到版本库；如果后悔了，可以将文件从暂存区中删除
+版本库：在工作区有一个.git目录，它是程序员保存代码、交给git管理的区域
+
+使用git管理代码
+1、创建目录（项目的根目录）
+[root@node3 ~]# git init devops
+[root@node3 ~]# cd devops/
+2、查看git状态
+[root@node3 devops]# git status
+3、在工作区编写程序
+[root@node3 devops]# vim hello.py
+print('Hello World!')
+[root@node3 devops]# git status
+4、将当前目录中所有的文件放到暂存区
+[root@node3 devops]# git add .
+[root@node3 devops]# git status
+[root@node3 devops]# git status -s   # 查看概要信息
+5、将暂存区中的文件提交到版本库
+[root@node3 devops]# git commit -m "project init"
+[root@node3 devops]# git status
+
+
+
+
+
+
+
+
+
+
+
+
+
 
