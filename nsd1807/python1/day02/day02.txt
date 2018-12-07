@@ -1,0 +1,86 @@
+一、python数据类型
+1、数字
+(1)整数，没小数点
+(2)bool布尔：True/False
+(3)浮点数：有小数点
+(4)复数：共轭复数
+对于整数，没有任何前缀python默认识别为10进制数
+以0o开头表示8进制，以0b开头表示2进制，以0x开头表示16进制
+[root@room8pc16 day02]# cp /etc/hosts /tmp/zhuji
+>>> import os
+>>> os.chmod('/tmp/zhuji', 600)
+[root@room8pc16 day02]# ll /tmp/zhuji
+>>> os.chmod('/tmp/zhuji', 0o600)
+2、字符串
+在引号中的一系列字符，单双引号没有区别
+三引号：三个连续的单引号或双引号。它能够保存输入的格式，允许多行输入
+
+>>> py_str = 'python'
+>>> py_str = 'python'
+>>> len(py_str)
+6
+>>> len('python')
+6
+>>> py_str[0]    # 下标从0开始
+'p'
+>>> 'python'[0]
+'p'
+>>> py_str[6]    # 索引超出范围，报错
+>>> py_str[len(py_str) - 1]   # 字符串总长度减1，得到最后一个字符的下标
+>>> py_str[-1]   # 下标为负数，表示从右开始取，最后一个字符下标为-1
+'n'
+>>> py_str[-5]
+'y'
+>>> py_str[-6]
+'p'
+切片：切取一个片段
+>>> py_str[2:4]    # 起始下标包含，结束下标不包含
+>>> py_str[2:6]
+'thon'
+>>> py_str[2:600]  # 下标超出范围，切片不报错
+'thon'
+>>> py_str[2:]     # 结束下标不写，表示取到结尾
+>>> py_str[0:2]
+'py'
+>>> py_str[:2]     # 开始下标不写，表示从开头
+'py'
+>>> py_str[::2]    # 2表示步长值是2
+'pto'
+>>> py_str[1::2]
+'yhn'
+>>> py_str[::-1]   # 步长为-1，表示从右向左取
+'nohtyp'
+
+>>> py_str + ' is cool.'   # ＋号表示简单拼接
+'python is cool.'
+>>> '*' * 50    # ＊号重复50次
+'**************************************************'
+>>> py_str * 3
+'pythonpythonpython'
+>>> py_str
+'python'
+>>> 't' in py_str
+True
+>>> 'th' in py_str
+True
+>>> 'to' in py_str
+False
+>>> 'to' not in py_str
+True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
