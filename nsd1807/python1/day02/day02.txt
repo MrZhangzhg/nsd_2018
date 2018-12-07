@@ -68,8 +68,59 @@ False
 >>> 'to' not in py_str
 True
 
+列表：它是一个容器，可以存放各种数据
+>>> alist = [10, 20, 'niu', 'wang', [1, 2]]
+>>> len(alist)
+5
+>>> alist[0]
+10
+>>> alist[2:4]
+['niu', 'wang']
+>>> 10 in alist
+True
+>>> alist * 2
+>>> alist[-1] = 100   # 列表项可以重新赋值
+>>> alist
+[10, 20, 'niu', 'wang', 100]
+>>> alist.append(200)   # 向列表尾部增加一项
+>>> alist
+[10, 20, 'niu', 'wang', 100, 200]
 
+元组：相当于是静态的列表，它的项目不可变
+>>> atuple = (10, 20, 'niu', 'wang')
+>>> atuple[-1]
+'wang'
+>>> atuple[2:]
+('niu', 'wang')
+>>> atuple[0] = 100   # 报错，元组不能修改
 
+字典：采用key:val对存储的数据类型，key不能重复
+>>> adict = {'name': '大锤', 'age': 18}
+>>> adict['name']   # 通过key取出value
+'大锤'
+>>> adict['age']
+18
+>>> len(adict)
+>>> adict
+{'name': '大锤', 'age': 18}
+>>> 18 in adict     # 18是字典的key吗？
+False
+>>> 'age' in adict
+True
+>>> adict['sex'] = 'female'   # key不在字典中则增加一项
+>>> adict['age'] = 20         # age已是字典的key，修改age的值
+
+数据类型的分类：重要、必须背下来
+1、按存储模型
+标量：只有一种类型，不能存储其他类型。数字、字符串
+容器：能包含各种数据。列表、元组、字典
+2、按更新模型
+可变：列表、字典
+不可变：数字、字符串、元组
+3、按访问模型
+直接：数字
+顺序：字符串、列表、元组
+映射：字典
 
 
 
