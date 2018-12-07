@@ -134,6 +134,12 @@ True
 >>> smaller = a if a < b else b
 
 
+>>> import this    # python之禅
+美胜丑，明胜暗，简胜繁
+
+
+
+
 
 
 
