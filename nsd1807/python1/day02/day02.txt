@@ -123,6 +123,18 @@ True
 映射：字典
 
 
+三元运算符，也叫条件表达式
+>>> a = 100
+>>> b = 80
+>>> if a < b:
+...     smaller = a
+... else:
+...     smaller = b
+以上写法，可简写为
+>>> smaller = a if a < b else b
+
+
+
 
 
 
