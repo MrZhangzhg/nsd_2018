@@ -93,6 +93,13 @@ b'\x7fELF\x02\x01\x01\x00\x00\x00'    # 字符前面的b表示bytes
 ...     print(line, end='')
 
 
+模块：
+模块就是一个.py的文件，把文件名的.py移除掉就是模块名
+
+模块具有一个__name__特殊属性，它的值是__main__或者是模块名
+比如star.py这个模块文件的__name__，值是__main__或者是star
+如果python3 star.py这样运行，__name__的值是__main__
+如果star.py被其他文件import，__name__的值是star
 
 
 
