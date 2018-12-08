@@ -65,6 +65,37 @@ b'\x7fELF\x02\x01\x01\x00\x00\x00'    # 字符前面的b表示bytes
 10
 >>> f.close()
 
+# seek和tell方法不常用，选修
+>>> f = open('/tmp/zhuji', 'r+')   # 以读写方式打开
+>>> f.write('abcde')      # abcde将会在开头把原文件的前5个字符覆盖
+>>> f.flush()
+>>> f.tell()    # 获取文件指针的位置
+>>> f.read(8)   # 从文件指针开始的位置向后读8个字节
+>>> f.seek(3, 0)   # 将文件指针称动到开头偏移个字节
+>>> f.read(2)   # 读文件第4、5个字符
+>>> f.seek(0, 2)   # 移动指针到文件结尾
+>>> f.write('my test.\n')
+>>> f.flush()
+>>> f.read()   # 因为已经到文件结尾，所有读到的是空串
+>>> f.seek(0, 0)    # 移动指针到文件开头
+>>> f.readline()    # 读第一行的内容
+>>> f.close()
+
+文件操作可以使用with语句，with语句结束时，文件自动关闭
+>>> with open('/tmp/zhuji') as f:    # f = open('/tmp/zhuji')
+...     line = f.readline()
+>>> line    # 文件第一行
+>>> f.readline()   # 出错，因为文件已经关闭
+
+逐行处理文本文件，更常用的方法是for循环
+>>> with open('/tmp/zhuji') as f:
+...   for line in f:
+...     print(line, end='')
+
+
+
+
+
 
 
 
