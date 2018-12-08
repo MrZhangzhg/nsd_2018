@@ -1,0 +1,88 @@
+>>> list(range(10))   # 用list函数把range(10)转换成列表
+>>> list(range(6, 11))
+>>> list(range(1, 11, 2))
+>>> list(range(10, 0, -1))
+>>> sum100 = 0
+>>> for i in range(1, 101):
+...   sum100 += i
+...
+>>> print(sum100)
+5050
+
+列表解析：快速生成列表
+>>> [10]
+[10]
+>>> [10 + 5]
+[15]
+>>> [10 + 5 for i in range(1, 11)]
+[15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+>>> [10 + i for i in range(1, 11)]
+[11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+>>> [10 + i for i in range(1, 11) if i % 2 == 1]
+[11, 13, 15, 17, 19]
+>>> ['192.168.1.' + str(i) for i in range(1, 255)]
+
+
+
+
+
+文件操作的基本步骤：打开、读写、关闭
+# cp /etc/hosts /tmp/zhuji
+# 打开文件，没有指定打开方式，默认以r读的方式打开，以r打开，不能写。文件不存在则报错
+>>> f = open('/tmp/zhuji')
+>>> data = f.read()   # read默认将全部内容读入内存
+>>> f.close()    # 关闭文件
+>>> print(data)
+>>> data   # 可以查看到原始数据，也就是\n没有被转换成换行。
+
+>>> f = open('/tmp/zhuji')
+>>> f.read(10)   # 读取10个字节
+>>> f.read(10)   # 继续向后读10个字节
+>>> f.readline()   # 继续向后读一行
+>>> f.readlines()   # 所有的行读出来放到列表中，每一行是列表的一项
+>>> f.close()
+
+>>> f = open('/bin/ls', 'rb')   # 打开文本文件，必须明确指定是b(bytes)
+>>> f.read(10)
+b'\x7fELF\x02\x01\x01\x00\x00\x00'    # 字符前面的b表示bytes
+>>> f.close()
+
+# 以w打开文件，文件不存在则创建，存在则清空
+>>> f = open('/tmp/zhuji', 'w')
+>>> f.write('hello world!\n')
+13    # 表示一共写了13个字节
+>>> f.flush()   # 立即将数据写入硬盘，否则将会暂存在缓冲区
+>>> f.writelines(['2nd line.\n', '3rd line.\n'])
+>>> f.write(100)   # 报错，只能将字符写到文件，不能是其他数据
+>>> f.close()
+
+>>> f = open('/tmp/zhuji')
+>>> f.write('abc')        # 报错，以r打开，不能写
+>>> f.close()
+
+>>> f = open('/tmp/zhuji', 'a')   # 追加的方式打开
+>>> f.write('new line.\n')
+10
+>>> f.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
