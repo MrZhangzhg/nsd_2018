@@ -17,6 +17,72 @@
 >>> shutil.chown('/tmp/passwd', user='bob', group='bob')
 >>> help(shutil.rmtree)
 
+>>> x = y = 10
+>>> id(x)
+9348224    # 显示变量在内存的地址
+>>> id(y)
+9348224
+>>> x = 20
+>>> id(x)
+9348544
+>>> y       # y的值不变
+>>> a = b = [10, 20]
+>>> id(a)
+140225192670152
+>>> id(b)
+140225192670152
+>>> a[0] = 100
+>>> a
+[100, 20]
+>>> b
+[100, 20]
+
+>>> a, b = 10, 20   # 相当于是a=10; b=20
+>>> a
+10
+>>> b
+20
+>>> a, b = b, a     # a和b的值互换
+
+标识符：就是个名字，包括变量、模块、类、函数
+
+关键字
+>>> import keyword
+>>> keyword.kwlist
+>>> keyword.iskeyword('len')
+>>> 'for' in keyword.kwlist
+
+http://yiyibooks.cn/ -> python352文档 -> 库参考
+
+
+编写程序的流程、步骤：
+1、发呆、思考：在脑海里像过电影一样，想想程序是怎么运行的（交互的？非交互的？）
+交互的：考虑屏幕上提示什么，用户回答什么
+2、思考程序有哪些功能。将这些功能创建函数，编写程序框架
+def get_fname():
+
+
+def get_content():
+
+
+def wfile(fname, content):
+
+
+if __name__ == '__main__':
+    fname = get_fname()
+    content = get_content()
+    wfile(fname, content)
+3、完成函数代码
+
+
+
+
+
+
+
+
+
+
 
 
 
