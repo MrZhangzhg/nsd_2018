@@ -102,6 +102,75 @@ if __name__ == '__main__':
 >>> '{0[1]}: {0[0]}'.format([22, 'bob'])
 
 
+>>> win_path = 'C:\temp\new.txt'
+>>> print(win_path)   # \t成为tab，\n成为回车
+>>> win_path = 'C:\\temp\\new.txt'
+>>> print(win_path)
+>>> wpath = r'C:\temp\new.txt'   # r表示真实字符串、原始字符串
+>>> print(wpath)
+>>> wpath   # 查看python是如何存储的
+
+字符串方法
+>>> hi = 'hello world!'
+>>> '  hello world   '.strip()   # 删除两端空白字符，常用
+>>> '  hello world   '.lstrip()
+>>> '  hello world   '.rstrip()
+>>> hi.upper()
+>>> hi.lower()
+>>> hi.startswith('h')       # 以h开头吗？
+>>> hi.startswith('he')
+>>> hi.endswith('abc')       # 以abc结尾吗？
+>>> hi.replace('l', 'm')     # 替换
+>>> hi.center(50)            # 居中
+>>> hi.center(50, '*')
+>>> hi.ljust(50, '*')
+>>> hi.rjust(50, '*')
+>>> '12345'.isdigit()        # 判断是否是数字
+True
+>>> 'hao123'.isdigit()
+False
+>>> 'hao123'.islower()
+True
+>>> 'hao123'.isupper()
+>>> 'hao 123 abc'.split()
+>>> 'hello.tar.gz'.split('.')
+
+
+>>> alist = [10, 20, 30, 'bob', 'alice']
+>>> alist[-1] = 100
+>>> alist.remove('bob')   # 删除第一个bob
+>>> alist.append(25)
+>>> alist.sort()
+>>> alist.reverse()
+>>> alist.pop()   # 默认删除最后一项
+>>> alist.pop(1)   # 弹出下标是1的项
+>>> alist.insert(1, 50)   # 在下标为1的位置插入50
+>>> alist.extend([200, 10, 39, 125])   # 扩展列表
+>>> alist.extend('abc')
+>>> alist.append('abc')   # 注意和extend的区别
+>>> alist.index(50)   # 获取50的下标，没有50这个元素则报错
+
+
+>>> atuple = (10, 20, 30, 20, [1, 2, 3])
+>>> atuple.count(20)   # 统计有多少个20
+>>> atuple.index(20)   # 第一个20的下标
+>>> atuple[-1].append(4)    # 理解即可，很少有应用
+>>> atuple[-1][0] = 100
+
+
+单元素元组必须有逗号，否则不表示元组
+>>> a = (10)
+>>> len(a)      # 报错
+>>> type(a)     # 整数
+>>> a = (10,)
+>>> len(a)
+1
+>>> type(a)
+
+
+
+
+
 
 
 
