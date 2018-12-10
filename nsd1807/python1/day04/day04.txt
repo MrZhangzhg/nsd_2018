@@ -74,6 +74,12 @@ if __name__ == '__main__':
     wfile(fname, content)
 3、完成函数代码
 
+>>> names = ['bob', 'alice', 'tom']
+>>> max(names)
+>>> min(names)
+
+
+
 
 
 

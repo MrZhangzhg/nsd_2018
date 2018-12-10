@@ -26,5 +26,5 @@ def wfile(fname, content):
 if __name__ == '__main__':
     fname = get_fname()
     content = get_content()
-    content = [line + '\n' for line in content]
+    content = [line + '\n' for line in content]  # 为每行加上回车
     wfile(fname, content)
