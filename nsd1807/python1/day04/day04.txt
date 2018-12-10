@@ -1,0 +1,24 @@
+>>> import shutil
+>>> f1 = open('/etc/hosts')
+>>> f2 = open('/tmp/zj.txt', 'w')
+>>> shutil.copyfileobj(f1, f2)    # copy文件对象
+>>> f1.close()
+>>> f2.close()
+>>> shutil.copyfile('/etc/hosts', '/tmp/abcd.txt')   # copy文件名
+>>> shutil.copy('/etc/hosts', '/tmp/aaaa.txt')   # 目标可能是目录
+>>> shutil.copy('/etc/passwd', '/tmp/')
+>>> shutil.copy2('/etc/passwd', '/tmp/')   # 相当于cp -p
+>>> shutil.copytree('/etc/security', '/tmp/anquan')  # cp -r
+>>> shutil.move('/tmp/zj.txt', '/var/tmp/')  # mv
+>>> shutil.rmtree('/tmp/anquan')   # rm -rf
+>>> shutil.rmtree('/var/tmp/zj.txt')   # 不能删除单个文件
+>>> import os
+>>> os.remove('/var/tmp/zj.txt')
+>>> shutil.chown('/tmp/passwd', user='bob', group='bob')
+>>> help(shutil.rmtree)
+
+
+
+
+
+
