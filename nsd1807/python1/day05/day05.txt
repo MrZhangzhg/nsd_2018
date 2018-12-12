@@ -28,6 +28,83 @@ True
 >>> adict.update({'aaa': 100, 'bbb': 200})
 
 
+集合：由不同元素组成的set，元素只能是不可变对象。相当于是无值的字典。
+>>> aset = set('hello')
+>>> aset
+{'h', 'o', 'l', 'e'}
+>>> len(aset)
+4
+>>> for ch in aset:
+...   print(ch)
+>>> bset = set('how')
+>>> aset | bset   # 并集
+>>> aset & bset   # 交集
+>>> aset - bset   # 差补，aset中有，bset中没有的元素
+
+>>> aset.add('new')
+>>> aset.update(['hello', 'world'])
+>>> cset = set('ho')
+>>> cset.issubset(aset)   # cset是aset的子集吗
+>>> aset.issuperset(cset)  # aset是cset的超集吗
+>>> aset.intersection(bset)   # aset & bset
+>>> aset.union(bset)    # aset | bset
+>>> aset.difference(bset)   # aset - bset
+
+[root@room8pc16 day05]# cp /etc/passwd /tmp/
+[root@room8pc16 day05]# cp /etc/passwd /tmp/mima
+修改mima，使之与passwd不完全一样
+>>> with open('/tmp/mima') as f:
+...   aset = set(f)
+>>> with open('/tmp/passwd') as f:
+...   bset = set(f)
+>>> with open('/tmp/result.txt', 'w') as f:
+...   f.writelines(aset - bset)
+
+time模块
+>>> import time
+>>> time.time()   # 返回时间戳，自1970-1-1 0:00:00到执行命令期间的秒数，常用
+>>> time.ctime()   # 当前日期、时间，常用
+>>> time.localtime()   # 返回九元组格式时间
+>>> time.sleep(3)   # 常用
+>>> time.strftime('%Y-%m-%d %H:%M:%S')   # 常用
+
+datetime模块
+>>> from datetime import datetime, timedelta
+>>> t1 = datetime.now()  # 把当前时间转换成时间对象
+>>> t1.year
+>>> t1.month
+>>> t1.day
+>>> t1.hour
+>>> t1.minute
+>>> t1.second
+>>> t1.microsecond
+>>> t2 = datetime(2018, 10, 10)
+# 转换字符串为datetime对象
+>>> t1 = datetime.strptime('Dec 12 2018', '%b %d %Y')
+>>> t = datetime(2018, 12, 10)
+>>> t1 > t
+
+>>> t = datetime.now()
+>>> days = timedelta(days=100)
+>>> t1 = t - days
+>>> t2 = t + days
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
