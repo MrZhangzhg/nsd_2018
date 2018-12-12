@@ -1,0 +1,44 @@
+>>> adict = {'name': 'bob', 'age': 20}
+>>> dict(['ab', 'cd', ('name', 'niu')])
+>>> {}.fromkeys(['niu', 'wang', 'li'], 'male')
+>>> 20 in adict
+False
+>>> 'age' in adict
+True
+>>> for key in adict:
+...   print('%s: %s' % (key, adict[key]))
+>>> '%(name)s is %(age)s years old' % adict
+
+通过key更新字典，如果key不在字典中则增加新值，在字典中则修改
+>>> adict['email'] = 'bob@tedu.cn'
+>>> adict['age'] = 22
+
+>>> adict.keys()
+>>> for key in adict.keys():
+...   print(key)
+>>> for key in adict:
+...   print(key)
+>>> list(adict.values())
+>>> for key, val in adict.items():
+...   print('%s: %s' % (key, val))
+>>> print(adict.get('phone'))  # 获取key为phone的值，重点
+>>> adict.get('phone', '110')  # 获取key为phone的值，没有返回110
+>>> adict.popitem()   # 随机弹出一项
+>>> adict.pop('email')   # 弹出key是email的项
+>>> adict.update({'aaa': 100, 'bbb': 200})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
