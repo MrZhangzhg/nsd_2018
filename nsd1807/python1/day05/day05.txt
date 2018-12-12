@@ -90,6 +90,60 @@ datetime模块
 >>> t2 = t + days
 
 
+>>> import os
+>>> os.getcwd()   # pwd
+>>> os.mkdir('/tmp/demo')  # mkdir /tmp/demo
+>>> os.chdir('/tmp/demo')  # cd /tmp/demo
+>>> os.listdir()   # ls
+>>> os.listdir('/home')  # ls /home
+>>> os.mknod('mytest.txt')   # touch mytest.txt
+>>> os.symlink('/etc/hosts', 'zhuji')   # ln -s /etc/hosts zhuju
+>>> os.chmod('mytest.txt', 0o644)   # chmod 644 mytest.txt
+>>> os.rename('mytest.txt', 'test.doc')  # mv mytest.txt test.doc
+>>> os.listdir()
+>>> os.remove('zhuji')   # rm -f zhuji
+>>> os.rmdir('/tmp/devops')   # 删除空目录
+>>> os.path.split('/etc/sysconfig/network')
+>>> os.path.basename('/etc/sysconfig/network')
+>>> os.path.dirname('/etc/sysconfig/network')
+>>> os.path.join('/etc/sysconfig', 'network')
+>>> os.path.isfile('/etc/hosts')
+>>> os.path.isdir('/etc/hosts')
+>>> os.path.exists('/etc/hosts')   # 是否存在
+>>> os.path.islink('/etc/hosts')   # 是链接吗
+
+pickle存储器
+普通的文件只能把字符类型数据写入到文件中。pickle可以把任意类型的数据存储到文件中，
+将来还能无损地取出。
+>>> f = open('/tmp/mydata', 'w')
+>>> f.write('hello world!\n')
+>>> f.write(100)   # 不允许写入数字
+>>> f.write({'name': 'bob'})   # 不允许写入字典
+>>> f.close()
+################################
+>>> import pickle as p    # 导入模块时，为其取别名
+>>> f = open('/tmp/data', 'wb')
+>>> adict = {'name': 'bob', 'age': 23}
+>>> p.dump(adict, f)   # 将字典存入文件
+>>> f.close()
+-------------------
+>>> import pickle as p
+>>> f = open('/tmp/data', 'rb')
+>>> mydict = p.load(f)
+>>> f.close()
+>>> mydict
+>>> mydict['age']
+
+
+[
+    ['2018-12-12', 0, 100, 9900, 'aaaa'],
+    ['2018-12-13', 10000, 0, 19900, 'bbbbb'],
+]
+
+
+
+
+
 
 
 
