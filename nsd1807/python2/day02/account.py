@@ -47,12 +47,18 @@ def show_menu():
 (3) 退出
 请选择(0/1/2/3): """
     while True:
-        choice = input(prompt).strip()[0]
+        try:
+            choice = input(prompt).strip()[0]
+        except IndexError:
+            continue
+        except (KeyboardInterrupt, EOFError):
+            choice = '3'
+
         if choice not in '0/1/2/3':
             print('无效输入，请重试')
             continue
         if choice == '3':
-            print('Bye-bye')
+            print('\nBye-bye')
             break
         cmds[choice](record)
 

@@ -2,6 +2,20 @@
     ['2018-12-13', 0, 0, 10000, '开始记账'],
 ]
 
+>>> def get_age(name, age):
+...   print('%s is %s years old.' % (name, age))
+
+>>> get_age()   # error
+>>> get_age('bob', 25, 26)   # error
+>>> get_age('bob', 25)   # 正确
+>>> get_age(25, 'bob')   # 语法没有错误，语义不对
+>>> get_age(age=25, name='bob')   # 正确
+>>> get_age(age=25, 'bob')   # 语法错误，key=val形式必须在后
+>>> get_age(25, name='bob')   # 错误，name得到多个值
+>>> get_age('bob', age=25)   # 正确
+
+
+
 
 
 
