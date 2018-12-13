@@ -14,6 +14,88 @@
 >>> get_age(25, name='bob')   # 错误，name得到多个值
 >>> get_age('bob', age=25)   # 正确
 
+匿名函数
+>>> def add(x, y):
+...     return x + y
+...
+>>> add(10, 20)
+30
+>>> myadd = lambda x, y: x + y
+>>> myadd(10, 20)
+30
+
+
+>>> x = 10
+>>> def foo():
+...   print(x)
+>>> foo()
+10
+>>> def bar():
+...   x = 'hello world'   # 函数内的变量是局部变量
+...   print(x)
+>>> bar()
+hello world
+>>> x           # 局部变量不会改变全局变量的值
+10
+>>> def test1():
+...   y = 100
+...   print(y)
+>>> test1()
+100
+>>> y   # 报错，局部变量当函数调用结束后就消失了
+# 如果两个函数中有同名变量，两个同名变量没有关系
+
+>>> def test2():
+...   global x    # 声明这里的x是全局变量x
+...   x = 'zhangsan'
+...   print(x)
+>>> test2()
+zhangsan
+>>> x
+'zhangsan'
+
+
+偏函数：相当于是改造现有函数，将其一部分参数固定下来
+>>> def add(a, b, c, d):
+...   return a + b + c + d
+...
+>>> add(10, 20, 30, 5)
+65
+>>> add(10, 20, 30, 123)
+183
+>>> add(10, 20, 30, 42)
+102
+>>> from functools import partial
+>>> myadd = partial(add, 10, 20, 30)
+>>> myadd(5)
+65
+>>> myadd(123)
+183
+
+
+5的阶乘 5!=5X4X3X2X1
+>>> result = 1
+>>> for i in range(1, 6):
+...   result *= i
+>>> result
+120
+
+5的阶乘:  一个数的阶乘等于它乘以它下一个数的阶乘
+5!=5X4X3X2X1
+5!=5X4!
+5!=5X4X3!
+5!=5X4X3X2!
+5!=5X4X3X2X1!
+
+《图解算法》
+nums = [53, 15, 56, 54, 66, 2, 57, 23, 31, 57]
+middle = 53
+larger = [56, 54, 66, 57, 57]
+smaller = [15, 2, 23, 31,]
+
+smaller + [middle] + larger
+
+
 
 
 

@@ -1,22 +1,12 @@
 import random
 
-def add(x, y):
-    return x + y
-
-def sub(x, y):
-    return x - y
-
 def exam():
-    cmds = {'+': add, '-': sub}
+    cmds = {'+': lambda x, y: x + y, '-': lambda x, y: x - y}
     nums = [random.randint(1, 100) for i in range(2)]
     nums.sort(reverse=True)  # 降序排列
     op = random.choice('+-')
     prompt = '%s%s%s=' % (nums[0], op, nums[1])
     result = cmds[op](*nums)
-    # if op == '+':
-    #     result = nums[0] + nums[1]
-    # else:
-    #     result = nums[0] - nums[1]
     tries = 0
     while tries < 3:
         try:
