@@ -96,6 +96,35 @@ smaller = [15, 2, 23, 31,]
 smaller + [middle] + larger
 
 
+生成器：本质上是函数，但是它能生成多个中间值，而函数只有一个最终值
+生成器节省内存，更加有效率
+>>> ips = ['192.168.1.%s' % i for i in range(1, 255)]
+>>> hosts = ('192.168.1.%s' % i for i in range(1, 255))
+>>> for host in hosts:
+...   print(host)
+
+# 生成器通过yield生成多个中间结果
+>>> def mygen():
+...   yield 100
+...   print('-----------------')
+...   yield 200
+...   print('##########')
+...   yield 300
+>>> a = mygen()
+>>> a.__next__()
+>>> a.__next__()
+>>> x = a.__next__()
+>>> x
+300
+>>> a.__next__()   # 没有数据将会抛出StopIteration异常，生成器对象是一次性的
+>>> b = mygen()
+>>> for item in b:   # for可以遍历生成器，遇到StopIteration自动停止
+...   print(item)
+
+
+
+
+
 
 
 
