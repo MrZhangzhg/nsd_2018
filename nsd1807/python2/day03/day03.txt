@@ -1,0 +1,66 @@
+导入模块时，python会到这些位置搜索：
+1、sys.path定义的路径
+2、环境变量PYTHONPATH定义的路径
+# export PYTHONPATH=/path/to/module
+
+导入模块的方法
+1、在一行导入多个模块
+>>> import time, os, pickle    # 不推荐，推荐每行导入一个模块
+2、导入模块中的一部分功能
+>>> from random import choice, randint  # 常用
+3、导入模块时，起别名
+>>> import pickle as p     # 不太常用
+pycharm可以点code -> optimize import可以优化导入模块（没用到的模块将会被
+移除，导入的模块按字母顺序排序）
+
+在python中，目录可以当成特殊的模块，叫作包。导入mods目录中的hello.py文件可以写作
+# cat mods/hello.py
+hi = 'hello world'
+>>> import mods.hello
+>>> mods.hello.hi
+>>> from mods.hello import hi
+>>> hi
+>>> from mods import hello
+>>> hello.hi
+注意，如果使用python2版本，目录下必须有一个__init__.py的文件，否则不能成为包
+
+
+加密：
+对称加密：加解密使用相同的算法和密钥，DES/3DES/AES
+非对称加密：加解密使用不同的密钥，RSA/DSA
+单向加密：加密只能向一个方向进行，不能通过结果反推回原始数据，MD5/SHA
+
+单向加密用途：
+1、存储加密密码
+2、校验文件的完整性
+http://www.cmd5.com/
+
+hashlib: 可用于计算md5值
+>>> import hashlib
+>>> m = hashlib.md5(b'123456')
+>>> m.hexdigest()
+'e10adc3949ba59abbe56e057f20f883e'
+
+>>> with open('/etc/passwd', 'rb') as fobj:
+...     data = fobj.read()
+...
+>>> m = hashlib.md5(data)
+>>> m.hexdigest()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
