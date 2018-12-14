@@ -48,6 +48,60 @@ hashlib: 可用于计算md5值
 >>> m.hexdigest()
 
 
+tarfile：实现压缩、解压缩，可以调用gzip、bzip2等
+>>> import tarfile
+>>> import os
+>>> tar = tarfile.open('/tmp/security.tar.gz', 'w:gz')
+>>> os.chdir('/etc')
+>>> tar.add('security')
+>>> tar.close()
+
+>>> os.mkdir('/tmp/demo')
+>>> tar = tarfile.open('/tmp/security.tar.gz', 'r:gz')
+>>> tar.extractall(path='/tmp/demo')
+>>> tar.close()
+
+完全备份：
+1、把整个目录打压缩
+2、计算每个文件的md5值
+{ 'access.conf': '234a8c832',
+  'abc.txt': '258202392'
+}
+增量备份：
+1、通过现在文件的md5值，判断哪些文件是新增加的，哪些文件有变化
+{ 'access.conf': '234a8c832',
+  'abc.txt': '7392784923',
+  'xyz.txt': '789234789a3cbd',
+}
+2、把新增的、有变化的压缩
+
+
+os.walk的使用：
+递归列出所有的文件
+>>> list(os.walk('/tmp/demo/security'))
+[(路径, 路径中的目录列表, 路径中的文件列表), (路径, 路径中的目录列表, 路径中的文件列表)]
+>>> for path, folders, files in os.walk('/tmp/demo/security'):
+...     for file in files:
+...         os.path.join(path, file)
+
+游戏人物：
+名字、职业、性别、装备、武器、位置
+跳、走、攻击
+
+OOP：面向对象的编程，实现属性和行为的融合统一
+class ZhanShi:
+    name = xxx
+    gender = xxx
+    def run():
+        move xxx yyyy
+
+athena = ZhanShi(name=athena, gender=female)
+athena.run()
+
+lvbu = ZhanShi(name=lvbj, gender=male)
+
+
+组合：把一个类的对象作为另一个类的组件，叫作组合
 
 
 
