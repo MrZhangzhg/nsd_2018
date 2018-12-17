@@ -51,6 +51,26 @@ compile: 在进行大量匹配的时候，先把模式pattern编译一下，可�
 >>> m.group(1)
 '150889912'
 
+python中所用的字符有：str类型和bytes类型
+>>> a = '你好'
+>>> type(a)
+<class 'str'>
+>>> b = b'Hello'
+>>> type(b)
+<class 'bytes'>
+>>> a.encode()   # 将str转换为bytes
+b'\xe4\xbd\xa0\xe5\xa5\xbd'
+>>> b.decode()   # 将bytes转换为str
+'Hello'
+>>> b'\xe4\xbd\xa0\xe5\xa5\xbd'.decode()
+'你好'
+
+
+
+
+
+
+
 
 
 
