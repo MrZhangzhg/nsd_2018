@@ -9,6 +9,56 @@
 (4) 更新md5文件
 
 
+>>> import re
+>>> re.match('f..', 'food')   # 如果匹配到，返回一个匹配对象
+>>> print(re.match('f..', 'seafood'))   # 没匹配到，返回None
+>>> m = re.match('f..', 'food')
+>>> m.group()
+'foo'
+>>> m = re.search('f..', 'seafood')
+>>> m.group()
+>>> re.findall('f..', 'seafood is food')
+['foo', 'foo']
+finditer不直接返回列表，返回的是所有匹配对象的生成器
+>>> list(re.finditer('f..', 'seafood is food'))
+>>> for m in re.finditer('f..', 'seafood is food'):
+...   m.group()
+
+>>> re.split('\.|-', 'hello-world.tar.gz')
+>>> re.sub('n[a-z]me', 'Niu', 'Hi name, Nice to meet you nbme!')
+'Hi Niu, Nice to meet you Niu!'
+>>> 'Hi name, Nice to meet you name!'.replace('name', 'Niu')
+
+compile: 在进行大量匹配的时候，先把模式pattern编译一下，可以提升效率
+>>> patt = re.compile('f..')
+>>> m = patt.search('seafood')
+>>> m.group()
+
+>>> data = 'His phone number is: 150889912'
+>>> m = re.search('.+', data)
+>>> m.group()
+'His phone number is: 150889912'
+
+>>> m = re.search('.+(\d+)', data)   # 默认+/*都是贪婪匹配
+>>> m.group()   # 总是返回整个模式匹配到的内容
+'His phone number is: 150889912'
+>>> m.group(1)
+'2'
+
+>>> m = re.search('.+?(\d+)', data)  # ?可以取消贪婪匹配
+>>> m.group()
+'His phone number is: 150889912'
+>>> m.group(1)
+'150889912'
+
+
+
+
+
+
+
+
+
 
 
 
