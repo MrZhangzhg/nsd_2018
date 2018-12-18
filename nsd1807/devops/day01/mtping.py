@@ -1,3 +1,4 @@
+import os
 import subprocess
 
 def ping(host):
@@ -12,6 +13,9 @@ def ping(host):
 
 
 if __name__ == '__main__':
-    ips = ('172.40.58.%d' % i for i in range(1, 6))
+    ips = ('172.40.58.%d' % i for i in range(1, 255))
     for ip in ips:
-        ping(ip)
+        retval = os.fork()
+        if not retval:
+            ping(ip)
+            exit()
