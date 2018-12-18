@@ -1,4 +1,5 @@
 import socket
+import os
 from time import strftime
 
 class TcpServer:
@@ -20,8 +21,19 @@ class TcpServer:
     def run(self):
         while True:
             cli_sock, cli_addr = self.s.accept()
-            self.chat(cli_sock)
-            cli_sock.close()
+            retval = os.fork()
+            if not retval:
+                self.s.close()  # 子进程只与客户机通信，用不到服务器套接字
+                self.chat(cli_sock)
+                cli_sock.close()
+                exit()
+            cli_sock.close()    # 父进程只负责接收新客户端，用不到客户机套接字
+
+            while True:
+                result = os.waitpid(-1, 1)  # 优先处理僵尸进程
+                print(result)
+                if result[0] == 0:   # 如果没有僵尸进程，跳出循环
+                    break
 
         s.close()
 
