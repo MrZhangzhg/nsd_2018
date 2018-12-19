@@ -52,8 +52,12 @@ departments: 部门ID 部门名称
 # pip3 install SQLAlchemy-1.2.14.tar.gz
 >>> import sqlalchemy
 
+hr = department(dep_id=1, dep_name='人事部')
 
+[(1, '人事部'), (2, '开发部')]
 
+bob(name='bob', student_id=1, weight=25)
+[(1, 'bob', 25), (2, 'alice', 30)]
 
 
 
