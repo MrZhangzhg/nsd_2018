@@ -1,6 +1,7 @@
 # MariaDB [(none)]> CREATE DATABASE tedu1807 DEFAULT CHARSET utf8;
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Date
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
 
 engine = create_engine(  # 创建到mysql的引擎
@@ -8,6 +9,7 @@ engine = create_engine(  # 创建到mysql的引擎
     encoding='utf8',  # 编码
     # echo=True   # 在终端打印日志，生产环境要设置为False
 )
+Session = sessionmaker(bind=engine)
 Base = declarative_base()
 
 class Departments(Base):
@@ -29,6 +31,17 @@ class Employees(Base):
 
     def __str__(self):
         return "员工: %s" % self.emp_name
+
+class Salary(Base):
+    __tablename__ = 'salary'
+    auto_id = Column(Integer, primary_key=True)
+    date = Column(Date)
+    emp_id = Column(Integer, ForeignKey('employees.emp_id'))
+    basic = Column(Integer)
+    awards = Column(Integer)
+
+    def __str__(self):
+        return '工资：%s:%s=>%s' % (self.date, self.emp_id, (self.basic + self.awards))
 
 if __name__ == '__main__':
     Base.metadata.create_all(engine)
