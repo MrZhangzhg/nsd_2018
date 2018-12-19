@@ -1,0 +1,43 @@
+python没有把所有的模块都安装到系统中。非标准库中的模块需要手工安装
+1、官方站点：http://pypi.python.org，搜索到相关的模块下载
+# tar xzf PyMySQL-xxx.tar.gz
+# cd PyMySQL
+# python3 setup.py install
+2、使用pip安装，类似于yum。单独安装模块，模块也有依赖，就像RPM一样。
+# pip3 install pymysql  在线安装
+# pip3 install PyMySQL-xxx.tar.gz  本地安装
+3、在线安装，可以采用国内开源镜像站点
+# mkdir ~/.pip/
+# vim ~/.pip/pip.conf
+[global]
+index-url = http://pypi.douban.com/simple/
+[install]
+trusted-host=pypi.douban.com
+
+本地安装pymysql
+# cd pymysql_pkgs/
+# pip3 install *
+[root@room8pc16 day02]# python3
+>>> import pymysql
+
+准备数据库
+# yum install -y mariadb-server
+# systemctl start mariadb
+# systemctl enable mariadb
+# mysqladmin password tedu.cn
+# mysql -uroot -ptedu.cn
+MariaDB [(none)]> CREATE DATABASE nsd1807 DEFAULT CHARSET utf8;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
