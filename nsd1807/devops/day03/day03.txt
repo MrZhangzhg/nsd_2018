@@ -99,7 +99,8 @@ paramiko:服务器远程管理、远程拷贝
 >>> result[1].read()
 >>> result[2].read()
 
-
+[192.168.4.3] OUT:
+XXXXXXX
 
 
 
