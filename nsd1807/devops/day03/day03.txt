@@ -37,7 +37,7 @@ b' <!DOCTYPE HTML>\n<!-'
 2、在网页中找到所有的图片网址
 3、下载图片
 
-
+http://xxxx.com/sffdsjklsdf.jpg    xkxks  http://sdfjklsdfjkl.jpg
 
 
 
