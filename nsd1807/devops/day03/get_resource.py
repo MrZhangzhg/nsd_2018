@@ -1,4 +1,5 @@
 import re
+import os
 from urllib.request import urlopen
 
 
@@ -29,6 +30,12 @@ if __name__ == '__main__':
     # 编写图片url的正则表达式
     img_patt = '(http|https)://[-\w./]+(\.jpg|\.jpeg|\.png|\.gif)'
     img_list = find_patt(file163, img_patt, 'gbk')  # 获取所有的图片URL
-    print(img_list)
+    # print(img_list)
+    img_dir = '/tmp/images/'
+    if not os.path.exists(img_dir):
+        os.mkdir(img_dir)
 
-
+    for img_url in img_list:
+        fname = img_url.split('/')[-1]
+        fname = os.path.join(img_dir, fname)
+        download(img_url, fname)
