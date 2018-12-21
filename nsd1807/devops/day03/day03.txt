@@ -1,0 +1,51 @@
+http状态码
+200：OK 成功
+301：永久重定向
+302：临时重定向
+403: Forbidden 禁止访问
+404：Not Found 页面找不到
+500：服务器内部错误
+
+HTTP方法：
+GET：如在网页中输入网址回车、点击一个超链接
+POST：如提交表单(登陆的时候输入的用户名、密码)
+
+模拟get访问
+[root@room8pc16 day03]# telnet www.sogou.com 80
+GET /index.html HTTP/1.1
+Host: www.sogou.com
+回车
+
+>>> from urllib.request import urlopen
+>>> html = urlopen('http://www.qq.com')
+>>> html.read(20)
+b' <!DOCTYPE HTML>\n<!-'
+
+>>> html = urlopen('http://www.qq.com')
+>>> with open('/tmp/qq.html', 'wb') as fobj:
+...   fobj.write(html.read())
+[root@room8pc16 day03]# firefox /tmp/qq.html
+
+>>> img = urlopen('https://upload-images.jianshu.io/upload_images/11438996-667d776561e26b29?imageMogr2/auto-orient/strip%7CimageView2/2/w/640')
+>>> with open('/tmp/myimg.jpg' ,'wb') as fobj:
+...   fobj.write(img.read())
+[root@room8pc16 day03]# eog /tmp/myimg.jpg
+
+
+爬取网站上所有的图片
+1、下载指定网页，如网易首页
+2、在网页中找到所有的图片网址
+3、下载图片
+
+
+
+
+
+
+
+
+
+
+
+
+
