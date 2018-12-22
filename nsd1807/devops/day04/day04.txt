@@ -68,6 +68,20 @@ requests模块：底层采用了urllib3
 >>> r = requests.get('http://127.0.0.1/', headers=headers)
 
 
+配置虚拟机可以上网
+1、在virt-manager中启用NAT网络
+virt-manager -> 编辑 -> 连接详情 -> 虚拟网络 -> 激活default网络
+2、打开虚拟机，点击“灯泡”按钮，将第二块网卡的连接改为“default NAT”
+3、停掉虚拟机的virbr0
+# ifconfig virbr0 down
+# brctl delbr virbr0
+4、在虚拟机中运行nmtui，添加eth1网卡，选择自动获取IP地址
+5、激活网卡：# ifdown eth1; ifup eth1
+
+
+
+
+
 
 
 
