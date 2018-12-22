@@ -92,6 +92,7 @@ https://www.zabbix.com/ -> Documentation -> chinese -> API
 http://192.168.4.2/zabbix/api_jsonrpc.php
 4、获取zabbix版本
 根据手册向API传递相应的data即可
+5、如果访问其他页面需要授权，所以必须获取一个token
 
 
 
