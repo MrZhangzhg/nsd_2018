@@ -57,7 +57,15 @@ requests模块：底层采用了urllib3
 >>> r.encoding = 'utf8'
 >>> r.json()
 
-
+3、传递参数
+>>> params = {'query': '画图'}
+>>> r = requests.get('https://www.sogou.com/web', params=params)
+>>> with open('/tmp/paint.html', 'wb') as fobj:
+...   fobj.write(r.content)
+4、修改头部
+[root@room8pc16 ~]# tail -f /var/log/httpd/access_log
+>>> headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'}
+>>> r = requests.get('http://127.0.0.1/', headers=headers)
 
 
 
