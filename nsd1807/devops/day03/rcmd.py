@@ -17,6 +17,7 @@ def rcmd(host, passwd, cmd, user='root', port=22):
         print('[%s] OUT:\n%s' % (host, out.decode()))
     if err:
         print('[%s] ERROR:\n%s' % (host, err.decode()))
+    ssh.close()
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
