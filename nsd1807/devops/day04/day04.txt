@@ -34,6 +34,28 @@ JSON: 可以在网络中传输各种各样的数据类型，功能类似于pickl
 >>> data = html.read()
 >>> json.loads(data)
 
+requests模块：底层采用了urllib3
+1、安装
+# cd requests_pkgs/
+# pip3 install *
+2、应用
+>>> import requests
+(1)对于普通文件，使用r.text返回str类型的数据
+>>> r = requests.get('http://127.0.0.1/')
+>>> r.text
+>>> r = requests.get('http://www.163.com')
+>>> r.text
+>>> r.encoding   # 查看字符编码
+>>> r.encoding = 'gbk'   # 修改字符编码
+(2)对于非文本，使用r.content返回bytes类型数据
+>>> r = requests.get('https://upload-images.jianshu.io/upload_images/12347101-0548326de2ebc9bc.png')
+>>> with open('/tmp/ding.png', 'wb') as fobj:
+...   fobj.write(r.content)
+(3)对于JSON格式，requests内建了json方法，使用r.json()返回相应数据
+>>> r = requests.get('http://www.weather.com.cn/data/cityinfo/101010100.html')
+>>> r.json()
+>>> r.encoding = 'utf8'
+>>> r.json()
 
 
 
