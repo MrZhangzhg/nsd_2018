@@ -5,4 +5,45 @@
 邮件服务器、用户名、密码、收件人、发件人
 
 
+JSON: 可以在网络中传输各种各样的数据类型，功能类似于pickle模块
+>>> import json
+>>> adict = {'city': '北京', 'weather': '阴'}
+>>> j1 = json.dumps(adict)
+>>> j1
+'{"city": "\\u5317\\u4eac", "weather": "\\u9634"}'
+>>> type(j1)
+<class 'str'>
+
+>>> d1 = json.loads(j1)
+>>> d1
+{'city': '北京', 'weather': '阴'}
+>>> type(d1)
+<class 'dict'>
+
+
+中国天气网：
+实况天气获取:http://www.weather.com.cn/data/sk/城市代码.html
+城市信息获取:http://www.weather.com.cn/data/cityinfo/城市代码.html
+详细指数获取:http://www.weather.com.cn/data/zs/城市代码.html
+城市代码可以在搜狗中搜索  中国天气网城市代码
+
+如北京的实况：http://www.weather.com.cn/data/sk/101010100.html
+>>> from urllib.request import urlopen
+>>> bjsk = 'http://www.weather.com.cn/data/sk/101010100.html'
+>>> html = urlopen(bjsk)
+>>> data = html.read()
+>>> json.loads(data)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
