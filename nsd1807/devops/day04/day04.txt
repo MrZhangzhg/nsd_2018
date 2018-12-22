@@ -79,7 +79,19 @@ virt-manager -> 编辑 -> 连接详情 -> 虚拟网络 -> 激活default网络
 5、激活网卡：# ifdown eth1; ifup eth1
 
 
-
+zabbix api
+1、访问官网的手册
+https://www.zabbix.com/ -> Documentation -> chinese -> API
+2、监控
+(1)创建主机组
+(2)创建模板
+(3)创建主机时，将其指定加入某个主机组
+(4)主机组应用模板
+3、zabbix api的URL
+如果zabbix页面是http://192.168.4.2/zabbix/，那么它的API是
+http://192.168.4.2/zabbix/api_jsonrpc.php
+4、获取zabbix版本
+根据手册向API传递相应的data即可
 
 
 
