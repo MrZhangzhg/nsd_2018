@@ -1,0 +1,39 @@
+CI: 持续集成
+CD: 持续交付、持结部署
+
+解释型语言：python/php/shell
+编译型语言：c/java
+
+java源码生成war包：maven/ant/gradle
+
+
+jenkins
+一、安装
+1、准备一台虚拟机，2G内存
+2、两块网卡，eth0:192.168.4.x/24，eth1: 接入互联网
+3、注意：jenkins是用java语言编写的。
+4、把jenkins拷贝到虚拟机
+# cd jenkins/
+# scp jenkins-2.138.2-1.1.noarch.rpm 192.168.4.3:/root
+# rpm -ihv jenkins-2.138.2-1.1.noarch.rpm
+5、启动服务
+[root@node3 ~]# systemctl start jenkins
+[root@node3 ~]# systemctl enable jenkins
+二、配置
+1、访问虚拟机的8080端口，按向导进行
+2、插件安装时，只安装git和git parameter
+如果安装失败，跳过。稍后安装完成后，改为使用国同镜像站点安装
+https://blog.csdn.net/you227/article/details/81076032
+3、进入jenkins后，修改管理员密码
+
+
+
+
+
+
+
+
+
+
+
+
