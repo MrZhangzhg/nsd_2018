@@ -91,6 +91,20 @@ cd $deploy_dir
 echo ${web_version} > live_version  # 向live_version写入最新版本
 
 
+在各台应用服务器上编写自动部署软件的工具
+1、下载最新版本的软件(判断如果有新版本)
+2、校验软件的完整性
+3、部署，将下载的程序部署到nsd1807(http://x.x.x.x/nsd1807/)
+4、为了方便部署和回滚，将每个版本都存放到指定目录，然后使用软链接发布
+
+把下载的压缩包和版本文件放到/var/www/download/中
+把解压文件放到/var/www/deploy/中
+部署 /var/www/html/nsd1807 -> /var/www/deploy/webapp_xxx
+# mkdir /var/www/html/{download,deploy}
+
+
+
+
 
 
 
