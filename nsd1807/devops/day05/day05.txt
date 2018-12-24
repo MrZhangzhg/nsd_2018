@@ -53,8 +53,42 @@ https://blog.csdn.net/you227/article/details/81076032
 4、记录软件当前版本live_version和上一个版本last_version
 
 
+1、下载代码
+(1) 在jenkins上安装git
+(2) 新建一个“自由风格”的项目，源码使用git，添写git地址，保存即可
+2、指定版本
+(1)修改现有的项目，添加“参数化构建过程”，使用git parameter
+(2)名称指定web_version，这就是一个变量，代表tag标记
+(3)在源码管理下方的Branches to build中指定${web_version}
+(4)保存
+(5)构建，点击“Build with parameters”
 
+3、指定子目录
+(1)源码管理下面选择Additional Behaviours -> checkout to a sub-directory
+-> webapp_${web_version}
+(2)重新构建测试
 
+4、其他步骤
+(1) 为了方便把下载的软件包进行分发，在jenkins上安装httpd
+[root@node3 ~]# yum install -y httpd
+[root@node3 ~]# systemctl start httpd
+[root@node3 ~]# systemctl enable httpd
+(2) 配置httpd工作目录
+/var/www/html/deploy/packages/  -> 存放软件压缩包和md5值
+/var/www/html/deploy/  -> 存放版本文件
+[root@node3 ~]# mkdir -p /var/www/html/deploy/packages
+[root@node3 ~]# chown -R jenkins.jenkins /var/www/html/deploy
+(3) 修改jenkins项目，在“构建”选择“增加构建步骤” -> "执行shell"
+deploy_dir=/var/www/html/deploy
+cp -r webapp_${web_version} $deploy_dir/packages/  # 拷贝文件到httpd文档目录
+cd $deploy_dir/packages/
+rm -rf webapp_${web_version}/.git   # 删除不必要的版本库
+tar czf webapp_${web_version}.tar.gz webapp_${web_version}  # 压缩
+rm -rf webapp_${web_version}   # 删除目录，只保留压缩文件
+md5sum webapp_${web_version}.tar.gz | awk '{print $1}'  > webapp_${web_version}.tar.gz.md5  # 计算压缩文件的md5值
+cd $deploy_dir
+[ -f live_version ] && cat live_version > last_version  # 如果有live_version把它的内容写到last_version中
+echo ${web_version} > live_version  # 向live_version写入最新版本
 
 
 
