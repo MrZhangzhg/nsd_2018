@@ -46,6 +46,12 @@ https://blog.csdn.net/you227/article/details/81076032
 [root@room8pc16 webapp]# git push -u origin --all  # 可以使用root
 [root@room8pc16 webapp]# git push -u origin --tags
 
+三、使用jenkins
+1、配置jenkins从gitlab上下载代码
+2、把下载的代码打包
+3、生成压缩包md5值，保存到文件中，以便将来客户端下载后进行校验
+4、记录软件当前版本live_version和上一个版本last_version
+
 
 
 
