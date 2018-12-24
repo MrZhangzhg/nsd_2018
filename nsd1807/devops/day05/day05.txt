@@ -25,6 +25,31 @@ jenkins
 如果安装失败，跳过。稍后安装完成后，改为使用国同镜像站点安装
 https://blog.csdn.net/you227/article/details/81076032
 3、进入jenkins后，修改管理员密码
+三、准备git（模拟程序员开发了软件的多个版本）
+1、物理主机上初始化软件项目
+[root@room8pc16 tmp]# git init webapp
+[root@room8pc16 tmp]# cd webapp/
+[root@room8pc16 webapp]# echo '<h1>my web site</h1>' > index.html
+[root@room8pc16 webapp]# git add .
+[root@room8pc16 webapp]# git commit -m "web app 1.0"
+[root@room8pc16 webapp]# git tag 1.0   # 把当前状态打个标记，表示1.0版本
+[root@room8pc16 webapp]# echo '<h2>web app 2.0</h2>' >> index.html
+[root@room8pc16 webapp]# git add .
+[root@room8pc16 webapp]# git commit -m "web app 2.0"
+[root@room8pc16 webapp]# git tag 2.0
+[root@room8pc16 webapp]# git tag   # 查看标记
+2、配置gitlab服务器
+为devops组创建一个名为webapp的项目，并且进行授权
+3、上传代码，采用http的方式
+[root@room8pc16 webapp]# git remote rename origin old-origin
+[root@room8pc16 webapp]# git remote add origin http://192.168.4.1/devops/webapp.git
+[root@room8pc16 webapp]# git push -u origin --all  # 可以使用root
+[root@room8pc16 webapp]# git push -u origin --tags
+
+
+
+
+
 
 
 
