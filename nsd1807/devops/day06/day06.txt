@@ -135,6 +135,17 @@ https://docs.ansible.com/ansible/latest/index.html
 100
 
 
+编写ansible模块
+1、创建模块目录
+[root@room8pc16 day06]# mkdir ansi_mods
+2、设置环境变量
+[root@room8pc16 ansi_mods]# export ANSIBLE_LIBRARY=/var/ftp/nsd_2018/nsd1807/devops/day06/ansi_mods
+3、在环境变量目录下创建模块
+4、给模块加上可执行权限
+[root@room8pc16 day06]# chmod +x ansi_mods/remote_copy.py
+5、测试
+[root@room8pc16 day06]# cd myansi/
+[root@room8pc16 myansi]# ansible webservers -m remote_copy -a "yuan=/etc/hosts mubiao=/tmp/zhuji.doc"
 
 
 
