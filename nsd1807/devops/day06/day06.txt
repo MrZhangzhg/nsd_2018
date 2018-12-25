@@ -147,6 +147,22 @@ https://docs.ansible.com/ansible/latest/index.html
 [root@room8pc16 day06]# cd myansi/
 [root@room8pc16 myansi]# ansible webservers -m remote_copy -a "yuan=/etc/hosts mubiao=/tmp/zhuji.doc"
 
+ansible-cmdb
+1、安装
+# cd ansible-cmdb_pkgs/
+# pip3 install *
+2、修改ansible-cmdb
+# vim /usr/local/bin/ansible-cmdb
+PY_BIN=$(which python3)
+3、收集远程服务器的信息
+[root@room8pc16 myansi]# ansible all -m setup --tree /tmp/out
+4、利用ansible-cmdb将服务器信息生成网页
+# ansible-cmdb /tmp/out/ > /tmp/hosts.html
+# firefox /tmp/hosts.html
+
+
+
+
 
 
 
