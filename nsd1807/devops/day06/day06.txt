@@ -111,6 +111,33 @@ autocmd FileType yaml setlocal sw=2 ts=2 et ai
 
 
 
+http://docs.ansible.com/ ->
+https://docs.ansible.com/ansible/latest/index.html
+搜索python api -> 找到python api后，把example中的代码复制到pycharm中
+
+命名元组：基于标准的元组，为每一个下标取名
+>>> from collections import namedtuple
+>>> Point = namedtuple('Point', ['x', 'y', 'z'])
+>>> a = Point(10, 15, 100)
+>>> type(a)
+<class '__main__.Point'>
+>>> a[0]
+10
+>>> a[1]
+15
+>>> a[:2]
+(10, 15)
+>>> a.x
+10
+>>> a.y
+15
+>>> a.z
+100
+
+
+
+
+
 
 
 
