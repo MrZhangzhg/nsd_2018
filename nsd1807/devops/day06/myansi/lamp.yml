@@ -1,0 +1,27 @@
+---
+- name: config webservers
+  hosts: webservers
+  tasks:
+    - name: install web pkgs
+      yum:
+        name: [httpd, php, php-mysql]
+        state: latest
+    - name: config web service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+- name: config dbservers
+  hosts: dbservers
+  tasks:
+    - name: install db pkgs
+      yum:
+        name: mariadb-server
+        state: latest
+    - name: config db service
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+

@@ -80,7 +80,34 @@ autocmd FileType yaml setlocal sw=2 ts=2 et ai
 [root@room8pc16 myansi]# ansible-playbook  yum_config.yml
 11、在webservers上安装httpd/php/php-mysql并启动httpd服务；
 在dbservers上安装mariadb-server并启动mariadb服务
+[root@room8pc16 myansi]# vim lamp.yml
+---
+- name: config webservers
+  hosts: webservers
+  tasks:
+    - name: install web pkgs
+      yum:
+        name: [httpd, php, php-mysql]
+        state: latest
+    - name: config web service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
 
+- name: config dbservers
+  hosts: dbservers
+  tasks:
+    - name: install db pkgs
+      yum:
+        name: mariadb-server
+        state: latest
+    - name: config db service
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+[root@room8pc16 myansi]# ansible-playbook  lamp.yml
 
 
 
