@@ -1,0 +1,66 @@
+ansible
+一、安装
+1、在线安装
+# pip3 install ansible
+2、使用本地包
+# cd ansible_pkg/
+# pip3 install *
+二、准备三台虚拟机，用于测试。配置IP地址和主机名
+[root@room8pc16 ~]# for i in {4..6}
+> do
+> virsh start rh7_node$i
+> done
+# 连接虚拟机控制台，退出时按ctrl+]
+[root@room8pc16 ~]# virsh console rh7_node4
+三、扫描远程服务器的密钥并存储
+[root@room8pc16 ~]# ssh-keyscan 192.168.4.{4..6} node{4..6} node{4..6}.tedu.cn >> /root/.ssh/known_hosts
+四、使用ansible
+1、创建工作目录
+[root@room8pc16 day06]# mkdir myansi
+[root@room8pc16 day06]# cd myansi
+2、创建配置文件
+[root@room8pc16 myansi]# vim ansible.cfg
+[defaults]
+inventory = hosts
+remote_user = root
+3、创建主机清单文件
+[root@room8pc16 myansi]# vim hosts
+[dbservers]
+node4.tedu.cn
+
+[webservers]
+node5.tedu.cn
+node6.tedu.cn
+4、配置名称解析
+[root@room8pc16 myansi]# for i in {1..254}
+> do
+> echo -e "192.168.4.$i\tnode$i.tedu.cn\tnode$i" >> /etc/hosts
+> done
+5、测试ansible
+[root@room8pc16 myansi]# ansible all -m ping -k
+6、ad-hoc临时命令
+# ansible 主机(组) -m 模块 -a 参数
+[root@room8pc16 myansi]# ansible webservers -m shell -a "id root" -k
+7、修改vim编辑器的行为
+[root@room8pc16 ~]# vim ~/.vimrc
+set ai
+set ts=4
+set et
+autocmd FileType yaml setlocal sw=2 ts=2 et ai
+8、ansible模块
+[root@room8pc16 myansi]# ansible-doc -l | wc -l
+[root@room8pc16 myansi]# ansible-doc -l | grep auth
+[root@room8pc16 myansi]# ansible-doc authorized_key
+9、通过playbook和authorized_key模块实现免密登陆
+
+
+
+
+
+
+
+
+
+
+
+
