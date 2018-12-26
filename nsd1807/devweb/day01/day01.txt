@@ -25,6 +25,11 @@ bootstrap：现成的样式
 2、添加a标签，href指定跳转到的id
 
 
+form表单
+action：点击提交按钮，将要跳转的网址
+method：方法，默认是GET
+
+
 
 
 
