@@ -3,8 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>my form</title>
+    <script>
+        function say_hi() {
+            alert("您好！")
+        }
+    </script>
 </head>
 <body>
+<form action="">
+    <textarea name="query" id="" cols="60" rows="10"></textarea>
+</form>
+
+<hr>
+<form action="https://www.sogou.com/web" target="_blank">
+    <select name="query" size="5">
+        <option value="linux">linux</option>
+        <option value="dba">dba</option>
+        <option value="python">python</option>
+    </select>
+    <input type="submit">
+</form>
+
+
+
+<hr>
+
+<form action="" method="post">
+    <input type="file">
+    <input type="submit">
+</form>
+
+<hr>
+<input type="button" value="欢迎" onclick="say_hi()">
+
+<hr>
+<form action="https://www.sogou.com/web" target="_blank">
+    你最喜欢的课程是什么？<br>
+    <label><input type="radio" name="query" value="linux">linux</label>
+    <label><input type="radio" name="query" value="db" disabled>db</label>
+    <input type="radio" id="pyth" name="query" value="python"><label for="pyth">python</label>
+    <input type="submit" value="查询">
+</form>
+
+<hr>
+<form action="">
+    你最喜欢的课程是什么？<br>
+    <input type="radio" name="lesson"><label>linux</label>
+    <label><input type="radio" name="lesson">db</label>
+    <input type="radio" id="python" name="lesson"><label for="python">python</label>
+</form>
+
+<hr>
+<form action="">
+    你喜欢的课程是什么？<br>
+    <input type="checkbox"><label>linux</label>
+    <label><input type="checkbox">db</label>
+    <input type="checkbox" id="py"><label for="py">python</label>
+</form>
+
+<hr>
 <form action="http://cn.bing.com/search" target="_blank">
     <input type="text" name="q">
     <input type="submit" value="必应搜索">
