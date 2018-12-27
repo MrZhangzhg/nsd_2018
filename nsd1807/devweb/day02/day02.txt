@@ -36,9 +36,7 @@ CSS样式特点：
     color: green;
     background: darkorange;
 }
-
-
-
+4、元素可以属于多个类，类之间用空格分隔
 
 
 

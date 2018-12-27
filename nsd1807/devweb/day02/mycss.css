@@ -2,6 +2,16 @@
     font-size: 15pt;
 }
 
+
+.warning{
+    color: purple;
+    background: yellow;
+}
+
+.important{
+    color: red;
+}
+
 .hc{
     color: green;
     background: darkorange;
