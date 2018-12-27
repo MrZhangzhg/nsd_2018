@@ -1,0 +1,30 @@
+/*body{*/
+    /*margin: 0;*/
+/*}*/
+
+ul{
+    width: 200px;
+    background: #f1f1f1;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    /*width: 60px;*/
+    display: block;
+    text-decoration: none;
+    color: black;
+    padding: 8px 16px;
+}
+a:hover{
+    background: #555555;
+    color: white;
+}
+
+
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
