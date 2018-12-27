@@ -1,0 +1,27 @@
+html{
+    font-size: 15pt;
+}
+
+h1{
+    background: gray;
+}
+
+.div1{
+    background: lightblue;
+}
+
+.p1{
+    background: lightgray;
+}
+
+div{
+    font-size: 20pt;
+}
+
+.c1{
+    font-size: 2em;
+    color: #c67b1c;
+}
+.c2{
+    font-size: 2rem;
+}
