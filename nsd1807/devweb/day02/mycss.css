@@ -1,0 +1,18 @@
+*{
+    font-size: 15pt;
+}
+
+.hc{
+    color: green;
+    background: darkorange;
+}
+
+h1{
+    font-size: 25pt;
+    color: brown;
+}
+
+p{
+    font-weight: bold;
+}
+

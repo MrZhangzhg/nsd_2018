@@ -1,0 +1,47 @@
+CSS:层叠样式表、级联样式表
+HTML是页面的内容组成,CSS 是页面的表现
+
+样式表的分类：
+内联样式：在元素中设置，<p style="color: orangered;">
+内部样式：在head元素中统一进行设置
+<head>
+    ... ...
+    <style>
+        p{
+            font-size: 20px;
+        }
+    </style>
+</head>
+外部样式：编写专门的样式表文件，所有的HTML文件都引用样式表文件
+<head>
+    ... ...
+    <link rel="stylesheet" href="mycss.css">
+</head>
+
+样式的设置：选择器和样式声明
+p{    #  p就是选择器
+    font-weight: bold;    # 这一部分是样式声明
+}
+
+CSS样式特点：
+1、可继承：子元素可以继承父元素的样式
+2、层叠：样式可以累加
+3、优先级：如果样式设置有冲突，根据相应的优先级规则生效
+
+选择器：
+1、*表示所有元素
+2、元素选择器器，直接对HTML的元素(标签、标记)进行样式设计
+3、类选择器，就是为某些元素分到一个相同的组中
+.hc{
+    color: green;
+    background: darkorange;
+}
+
+
+
+
+
+
+
+
+
