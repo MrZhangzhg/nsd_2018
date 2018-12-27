@@ -2,29 +2,53 @@
     /*margin: 0;*/
 /*}*/
 
-ul{
-    width: 200px;
-    background: #f1f1f1;
+
+
+div ul{
     list-style-type: none;
     margin: 0;
-    padding: 0;
+    padding: 6px 0;
+}
+div li{
+    display: inline;
+}
+div a:link, div a:visited{
+    font-weight:bold;
+	color:#FFFFFF;
+	background-color:#98bf21;
+	text-align:center;
+	padding:6px;
+	text-decoration:none;
+	/*text-transform:uppercase;*/
+}
+div a:hover{
+    background-color:#7A991A;
 }
 
-a{
-    /*width: 60px;*/
-    display: block;
-    text-decoration: none;
-    color: black;
-    padding: 8px 16px;
-}
-a:hover{
-    background: #555555;
-    color: white;
-}
+
+/*ul{*/
+    /*width: 200px;*/
+    /*background: #f1f1f1;*/
+    /*list-style-type: none;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+/*}*/
+
+/*a{*/
+    /*!*width: 60px;*!*/
+    /*display: block;*/
+    /*text-decoration: none;*/
+    /*color: black;*/
+    /*padding: 8px 16px;*/
+/*}*/
+/*a:hover{*/
+    /*background: #555555;*/
+    /*color: white;*/
+/*}*/
 
 
-.active {
-    background-color: #4CAF50;
-    color: white;
-}
+/*.active {*/
+    /*background-color: #4CAF50;*/
+    /*color: white;*/
+/*}*/
 
