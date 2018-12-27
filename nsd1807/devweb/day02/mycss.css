@@ -2,6 +2,18 @@
     font-size: 15pt;
 }
 
+p.c1 {
+    font-size: 30pt;
+}
+
+h1,h2,h3,h4,h5,h6,p{
+    margin: 0;
+    padding: 0;
+}
+
+#myid1{
+    color: rebeccapurple;
+}
 
 .warning{
     color: purple;
