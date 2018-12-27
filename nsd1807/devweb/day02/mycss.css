@@ -2,6 +2,20 @@
     font-size: 15pt;
 }
 
+a:link{
+    color: red;
+}
+a:hover{
+    font-size: 30pt;
+}
+a:visited{
+    color: gray;
+}
+
+p .c2{
+    font-size: 40pt;
+}
+
 p.c1 {
     font-size: 30pt;
 }
