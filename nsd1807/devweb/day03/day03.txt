@@ -1,0 +1,6 @@
+栅格系统
+1、必须有一个container或container-fluid的class
+2、container中一行的设置名为row
+3、row中可以最多容纳12列
+4、如果不是12列，可以把几列进行合并
+
