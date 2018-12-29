@@ -5,4 +5,5 @@ from . import views    # 使用相对导入的方式，在当前包中导入view
 urlpatterns = [
     # 首页用views.index函数处理，为这个URL起个名字叫index
     url(r'^$', views.index, name='index'),
+    url(r'^\d+/$', views.detail, name='detail'),
 ]

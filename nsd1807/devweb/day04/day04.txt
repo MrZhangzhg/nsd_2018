@@ -154,6 +154,39 @@ def index(request):
 4、访问http://127.0.0.1/polls/
 
 
+创建投票详情页
+1、配置URL
+# polls/urls.py
+urlpatterns = [
+    ... ...
+    url(r'^\d+/$', views.detail, name='detail'),
+]
+2、编写视图函数
+# polls/views.py
+def detail(request):
+    return render(request, 'detail.html')
+3、编写模板文件
+# polls/templates/detail.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票详情页</title>
+</head>
+<body>
+<h1>投票详情</h1>
+<hr>
+这是投票详情页
+</body>
+</html>
+4、访问http://127.0.0.1/polls/数字
+
+
+
+
+
+
+
 
 
 
