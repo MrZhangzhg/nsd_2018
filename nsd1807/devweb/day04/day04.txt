@@ -219,6 +219,37 @@ def result(request, question_id):
 </body>
 </html>
 
+创建模型Model
+1、创建模型
+# polls/models.py
+from django.db import models
+
+class Question(models.Model):
+    question_text = models.CharField(max_length=100)
+    pub_date = models.DateTimeField()
+
+    def __str__(self):
+        return self.question_text
+
+class Choice(models.Model):
+    choice_text = models.CharField(max_length=100)
+    votes = models.IntegerField(default=0)
+    q = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "%s: %s" % (self.choice_text, self.q)
+
+2、生成数据库中的表
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+MariaDB [dj1807]> show tables;
+MariaDB [dj1807]> desc polls_question;
+MariaDB [dj1807]> desc polls_choice;
+
+
+
+
+
 
 
 
