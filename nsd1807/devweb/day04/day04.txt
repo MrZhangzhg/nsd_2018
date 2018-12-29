@@ -71,6 +71,16 @@ pymysql.install_as_MySQLdb()
 7、启动测试服务器运行在所有地址的80端口
 (djenv) [root@room8pc16 mysite]# python manage.py runserver 0:80
 
+8、生成django缺省的数据库表
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+
+9、创建管理员帐号，密码必须8位以上，复杂
+(djenv) [root@room8pc16 mysite]# python manage.py createsuperuser
+
+10、访问后台http://127.0.0.1/admin
+
+
 
 
 
