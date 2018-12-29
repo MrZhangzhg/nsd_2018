@@ -1,0 +1,57 @@
+基于python的框架
+django：功能强大，应用广泛
+tornado：小型框架
+flask：微型框架
+
+虚拟环境：为了保持系统的整洁与易于维护环境，采用虚拟环境，虚拟环境就是一个隔离的python
+它是一个目录，激活后，安装模块都是安装到虚拟环境了。当项目结束后，清理环境只要把这个
+目录删除即可
+
+新建虚拟环境:
+1、调用python的venv模块创建虚拟环境
+[root@room8pc16 day03]# python3 -m venv /opt/djenv/
+2、激活虚拟环境
+[root@room8pc16 day03]# source /opt/djenv/bin/activate
+3、退出虚拟环境
+(djenv) [root@room8pc16 day03]# deactivate
+
+安装django
+(djenv) [root@room8pc16 zzg_pypkgs]# cd dj_pkgs/
+(djenv) [root@room8pc16 dj_pkgs]# pip install *
+(djenv) [root@room8pc16 day04]# python
+>>> import django
+>>> django.__version__
+'1.11.6'
+
+
+创建django项目
+1、创建项目
+(djenv) [root@room8pc16 day04]# django-admin startproject mysite
+(djenv) [root@room8pc16 day04]# cd mysite/
+(djenv) [root@room8pc16 mysite]# tree .
+.
+├── manage.py     #  用于管理项目（创建app，创建数据库、管理员）
+└── mysite
+    ├── __init__.py
+    ├── settings.py   # 项目的配置文件
+    ├── urls.py       # 路由系统URLConfig、程序入口
+    └── wsgi.py       # 用于部署项目到web服务器
+2、启动django自带的web服务器测试
+(djenv) [root@room8pc16 mysite]# python manage.py runserver
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
