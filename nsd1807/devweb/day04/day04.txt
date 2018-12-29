@@ -182,6 +182,44 @@ def detail(request):
 4、访问http://127.0.0.1/polls/数字
 
 
+完善投票详情页
+1、修改URL，把问题编号作为参数传递给函数
+# polls/urls.py
+    url(r'^(?P<question_id>\d+)/$', views.detail, name='detail'),
+2、修改视图函数，函数接受参数，并将参数传递给模板
+# polls/views.py
+def detail(request, question_id):
+    return render(request, 'detail.html', {'question_id': question_id})
+3、修改模板文件
+# polls/templates/detail.html
+<body>
+<h1>投票详情</h1>
+<hr>
+这是第{{ question_id }}号问题的投票详情页
+</body>
+
+
+结果页
+1、URL
+    url(r'^(?P<question_id>\d+)/result/$', views.result, name='result'),
+2、views
+def result(request, question_id):
+    return render(request, 'result.html', {'question_id': question_id})
+3、result.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票结果页</title>
+</head>
+<body>
+<h1>投票结果</h1>
+<hr>
+这是第{{ question_id }}号问题的投票结果。
+</body>
+</html>
+
+
 
 
 
