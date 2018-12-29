@@ -113,9 +113,45 @@ urlpatterns = [
 ]
 
 
+创建投票首页
+1、创建URL，指定使用哪个视图函数进行处理
+# polls/urls.py
+from django.conf.urls import url
+from . import views    # 使用相对导入的方式，在当前包中导入views模块
 
+# 在http://x.x.x.x/polls/后面开始匹配
+urlpatterns = [
+    # 首页用views.index函数处理，为这个URL起个名字叫index
+    url(r'^$', views.index, name='index'),
+]
+2、编写视图函数
+# polls/views.py
+from django.shortcuts import render
 
+def index(request):
+    return render(request, 'index.html')
 
+3、创建模板(HTML网页)
+(1) 创建polls/templates/目录
+(djenv) [root@room8pc16 mysite]# mkdir polls/templates
+(2) 在模板目录中创建网页
+# polls/templates/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票首页</title>
+</head>
+<body>
+<h1>投票首页</h1>
+<hr>
+<ul>
+    <li>投票问题1</li>
+    <li>投票问题2</li>
+</ul>
+</body>
+</html>
+4、访问http://127.0.0.1/polls/
 
 
 
