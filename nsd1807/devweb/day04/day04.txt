@@ -80,9 +80,37 @@ pymysql.install_as_MySQLdb()
 
 10、访问后台http://127.0.0.1/admin
 
+一个项目最好分成N多个应用，可以把不同的应用分派给不同的程序员编写
+编写投票应用APP：
+1、数据
+两张表：
+question -> 记录问题
+choice -> 记录每个问题的选项，以及该选项所得的票数
+2、URL：所有的投票应用，网址都以http://127.0.0.1/polls/开头
+http://127.0.0.1/polls/   -> 投票首页，列出所有的问题
+http://127.0.0.1/polls/1/   -> 1号问题的详情页
+http://127.0.0.1/polls/1/result/  -> 1号问题投票的结果页
+3、创建应用
+(djenv) [root@room8pc16 mysite]# python manage.py startapp polls
+4、将创建的应用注册到项目中，修改mysite/settings.py
+INSTALLED_APPS = [
+    ... ...
+    'polls',
+]
+5、授权。将以http://127.0.0.1/polls/开头的URL都交给polls应用处理
+修改mysite/urls.py
+from django.conf.urls import url, include
+from django.contrib import admin
 
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^polls/', include('polls.urls')),
+]
+6、在polls应用下创建urls.py
+from django.conf.urls import url
 
-
+urlpatterns = [
+]
 
 
 
