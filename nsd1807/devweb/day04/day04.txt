@@ -39,6 +39,38 @@ flask：微型框架
 2、启动django自带的web服务器测试
 (djenv) [root@room8pc16 mysite]# python manage.py runserver
 
+3、配置pycharm使用虚拟环境
+file -> settings -> Project day04 -> Project Interpreter -> 点右上角的齿
+轮 -> add local -> 选择下面的existing，勾选make available ...，
+点击右侧...，在弹出的对话框中输出/opt/djenv/bin/python
+
+4、创建mysql数据库，用于存储django项目的数据
+(djenv) [root@room8pc16 ~]# mysql -uroot -ptedu.cn
+MariaDB [(none)]> create database dj1807 default charset utf8;
+
+5、修改django配置setting.py
+ALLOWED_HOSTS = '*'   # 允许所有的客户端访问
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'dj1807',
+        'USER': 'root',
+        'PASSWORD': 'tedu.cn',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    }
+}
+LANGUAGE_CODE = 'zh-hans'
+TIME_ZONE = 'Asia/Shanghai'
+USE_TZ = False
+
+6、配置django使用pymysql模块mysite/__init__.py
+import pymysql
+pymysql.install_as_MySQLdb()
+
+7、启动测试服务器运行在所有地址的80端口
+(djenv) [root@room8pc16 mysite]# python manage.py runserver 0:80
+
 
 
 
