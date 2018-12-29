@@ -245,12 +245,31 @@ class Choice(models.Model):
 MariaDB [dj1807]> show tables;
 MariaDB [dj1807]> desc polls_question;
 MariaDB [dj1807]> desc polls_choice;
+数据库中的表名，结构是：应用名_类名
+每张表都会自动生成名为id的主建字段。每个类变量成为表中的一个字段。
+外键字段的名字是：类变量_id
+
+3、修改外键名字
+class Choice(models.Model):
+    choice_text = models.CharField(max_length=100)
+    votes = models.IntegerField(default=0)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "%s: %s" % (self.choice_text, self.question)
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+MariaDB [dj1807]> desc polls_choice;
 
 
+将模型注册到后台管理界面
+1、修改polls/admin.py
+from django.contrib import admin
+from .models import Question, Choice
 
-
-
-
+admin.site.register(Question)
+admin.site.register(Choice)
+2、在后台界面查看
 
 
 
