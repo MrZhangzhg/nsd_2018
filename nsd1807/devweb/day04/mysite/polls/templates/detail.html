@@ -7,6 +7,12 @@
 <body>
 <h1>投票详情</h1>
 <hr>
-这是第{{ question_id }}号问题的投票详情页
+<h2>{{ question.question_text }}</h2>
+<ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }}</li>
+    {% endfor %}
+</ul>
+{#这是第{{ question_id }}号问题的投票详情页#}
 </body>
 </html>

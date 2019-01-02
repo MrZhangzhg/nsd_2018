@@ -124,6 +124,23 @@ def index(request):
 </body>
 
 
+完成详情页
+1、修改视图函数，将问题传递到模板文件
+def detail(request, question_id):
+    question = Question.objects.get(id=question_id)
+    return render(request, 'detail.html', {'question': question})
+2、修改模板文件，显示问题及其选项
+<body>
+<h1>投票详情</h1>
+<hr>
+<h2>{{ question.question_text }}</h2>
+<ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }}</li>
+    {% endfor %}
+</ul>
+</body>
+
 
 
 
