@@ -49,6 +49,25 @@ python api
 >>> astr.endswith('工作？')
 >>> Question.objects.get(question_text__endswith='工作？')
 
+8、获得排序的结果
+order_by返回的结果是很多对象构成的查询集
+(1) 通过pub_date进行排序，默认升序
+>>> Question.objects.order_by('pub_date')
+(2) 以降序的方式排列
+>>> Question.objects.order_by('-pub_date')
+(3) 查看对应的sql语句
+>>> r1 = Question.objects.order_by('pub_date')
+>>> print(r1.query)
+(4) 获得最新的一个问题。降序的第一个实例，或升序的最后一个实例。注意查询集不支持负数索引
+>>> Question.objects.order_by('-pub_date')[0]  或
+>>> r1 = Question.objects.order_by('pub_date')
+>>> r1[len(r1) - 1]
+
+
+
+
+
+
 
 
 
