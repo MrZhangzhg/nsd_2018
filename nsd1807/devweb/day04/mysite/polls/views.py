@@ -11,3 +11,7 @@ def detail(request, question_id):
 
 def result(request, question_id):
     return render(request, 'result.html', {'question_id': question_id})
+
+def vote(request, question_id):
+    pass
+
