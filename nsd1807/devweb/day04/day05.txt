@@ -185,6 +185,26 @@ MIDDLEWARE = [
 ]
 到此步完成，已经可以实现投票功能了。
 
+完成投票结果页
+1、完成函数
+def result(request, question_id):
+    question = Question.objects.get(id=question_id)
+    return render(request, 'result.html', {'question': question})
+2、修改polls/templates/result.html
+<body>
+<h1>投票结果</h1>
+<hr>
+<h2>{{ question.question_text }}</h2>
+<table border="1px">
+    {% for choice in question.choice_set.all %}
+        <tr>
+            <td>{{ choice.choice_text }}</td>
+            <td>{{ choice.votes }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+
 
 
 
