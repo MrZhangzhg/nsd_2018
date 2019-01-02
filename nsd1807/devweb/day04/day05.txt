@@ -63,7 +63,50 @@ order_by返回的结果是很多对象构成的查询集
 >>> r1 = Question.objects.order_by('pub_date')
 >>> r1[len(r1) - 1]
 
+9、条件过滤
+>>> Question.objects.filter(pub_date__year=2018)
+>>> r3 = Question.objects.filter(pub_date__year=2018)
+>>> print(r3.query)
+>>> r3 = Question.objects.filter(pub_date__year=2018).filter(pub_date__month=12)
+>>> print(r3.query)
 
+10、修改和删除：首先找到对应的实例，修改就是属性重新赋值，删除是把对象直接删除
+>>> q1 = Question.objects.get(question_text='你心仪的公司哪家？')
+>>> q1.question_text = '你期望哪家公司给你发Offer？'
+>>> q1.save()
+>>> c1 = Choice.objects.get(choice_text='广州')
+>>> c1.delete()
+
+完成首页
+1、修改视图函数，使之真正在数据库中取得所有的问题
+# polls/views.py
+from django.shortcuts import render
+from .models import Question
+
+def index(request):
+    questions = Question.objects.order_by('-pub_date')
+    return render(request, 'index.html', {'questions': questions})
+2、在模板中显示所有的问题
+# polls/templates/index.html
+<body>
+<h1>投票首页</h1>
+<hr>
+{{ questions }}
+</body>
+3、使用模板语言修改index.html
+模块语言中，变量使用{{ var }}格式。其他标签使用{% %}，在{% %}中，变量不需要使
+用双花括号。
+# polls/templates/index.html
+<body>
+<h1>投票首页</h1>
+<hr>
+{% for question in questions %}
+    <p>
+        {{ forloop.counter }}. {{ question.question_text }} {{ question.pub_date }}
+    </p>
+{% endfor %}
+</body>
+注：forloop.counter是循环的计数
 
 
 
