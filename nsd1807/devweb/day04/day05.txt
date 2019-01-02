@@ -163,8 +163,27 @@ def detail(request, question_id):
     <input type="submit" value="投 票">
 </form>
 </body>
-(4) 投票后跳转到投票详情页
+(4) 编写投票函数，投票后跳转到投票详情页
+from django.shortcuts import render, redirect
 
+def vote(request, question_id):
+    question = Question.objects.get(id=question_id)
+    # request.POST可以理解为一个字典，通过get方法获取表单提交的数据
+    choice_id = request.POST.get('choice_id')
+    choice = question.choice_set.get(id=choice_id)
+    choice.votes += 1
+    choice.save()
+    return redirect('result', question_id=question_id)
+注意：此处没有使用render而是redirect。render将会把request请求中的数据再发给
+相应的页面。redirect是独立的，不会发送任何数据。
+(5) 上一步完成后，提交表单时，出现403禁止访问，可以关闭CSRF功能
+# mysite/settings.py
+MIDDLEWARE = [
+    ... ...
+    # 'django.middleware.csrf.CsrfViewMiddleware',
+    ... ...
+]
+到此步完成，已经可以实现投票功能了。
 
 
 
