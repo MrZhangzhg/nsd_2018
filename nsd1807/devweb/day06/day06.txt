@@ -47,6 +47,35 @@ def hello(request):
     return HttpResponse('<h1>Hello World!</h1>')
 
 
+RESTful API
+http://www.runoob.com/w3cnote/restful-architecture.html
+REST全称是Representational State Transfer，中文意思是表述（编者注：通常译为表征）性状态转移。
+REST指的是一组架构约束条件和原则。REST本身并没有创造新的技术、组件或服务，
+而隐藏在RESTful背后的理念就是使用Web的现有特征和能力，更好地使用现有Web标准中的一些准则和约束。
+
+8、创建模型
+# blog/models.py
+from django.db import models
+
+class Blog(models.Model):
+    title = models.CharField(max_length=100)
+    pub_date = models.DateTimeField()
+    text = models.TextField()
+
+    def __str__(self):
+        return self.title
+(djenv) [root@room8pc16 myblog]# python manage.py makemigrations
+(djenv) [root@room8pc16 myblog]# python manage.py migrate
+9、创建管理员用户
+(djenv) [root@room8pc16 myblog]# python manage.py createsuperuser
+10、把模型注册到后台管理界面
+# blog/admin.py
+from django.contrib import admin
+from .models import Blog
+
+admin.site.register(Blog)
+
+
 
 
 
