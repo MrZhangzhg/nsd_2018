@@ -75,7 +75,38 @@ from .models import Blog
 
 admin.site.register(Blog)
 
+11、实现blog
+(1) URL
+    url(r'^$', views.index, name='index'),
+(2) views.py
+def index(request):
+    return render(request, 'index.html')
+(3) blog/templates/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我的博客</title>
+</head>
+<body>
+我的博客
+</body>
+</html>
 
+12、修改视图函数，将文章取出发送到HTML模板
+def index(request):
+    articles = Blog.objects.order_by('-pub_date')
+    return render(request, 'index.html', {'articles': articles})
+13、修改模板文件index.html，显示文章
+<body>
+{% for article in articles %}
+    <h2>{{ article.title }}</h2>
+    <div>{{ article.pub_date }}</div>
+    <div>{{ article.text }}</div>
+{% empty %}
+    <h2>尚无文章发布</h2>
+{% endfor %}
+</body>
 
 
 
