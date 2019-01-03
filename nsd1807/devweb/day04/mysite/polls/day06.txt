@@ -127,6 +127,60 @@
 </body>
 </html>
 
+模板继承：为了使得多个页面保持统一的风格，并且不需要每个页面重复相同的工作，可以使
+用模板继承。模板继承可以先创建一个基础页面，将相同的内容写到基础页面；其他页面继承
+模板，就具有了和模板一样的内容，再把个性化的内容补全即可。
+1、将index.html复制一份，取名为base.html
+2、修改base.html页面，将个性化信息用block替代
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        .banner{
+            height: 100px;
+            background-image: url("{% static 'imgs/banner.png' %}");
+            background-size: 100%;
+        }
+        .footer{
+            height: 200px;
+            line-height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="banner"></div>
+    <div class="main">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="footer text-center h4">
+        <a href="http://linux.tedu.cn">达内云计算学院</a> 400-800-1234
+    </div>
+</div>
+</body>
+</html>
+3、修改index.html，将模板中已存在的内容删除，个性化的内容放到block中
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}投票首页{% endblock %}
+{% block content %}
+<h1>投票首页</h1>
+<hr>
+{% for question in questions %}
+    <p class="h4">
+        {{ forloop.counter }}.
+        <a href="{% url 'detail' question_id=question.id %}">{{ question.question_text }}</a>
+        {{ question.pub_date }}
+    </p>
+{% endfor %}
+{% endblock %}
+
+
 
 
 

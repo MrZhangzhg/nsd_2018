@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        .banner{
+            height: 100px;
+            background-image: url("{% static 'imgs/banner.png' %}");
+            background-size: 100%;
+        }
+        .footer{
+            height: 200px;
+            line-height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="banner"></div>
+    <div class="main">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="footer text-center h4">
+        <a href="http://linux.tedu.cn">达内云计算学院</a> 400-800-1234
+    </div>
+</div>
+</body>
+</html>
