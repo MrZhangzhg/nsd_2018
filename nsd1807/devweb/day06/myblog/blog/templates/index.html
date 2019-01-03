@@ -5,6 +5,12 @@
     <title>我的博客</title>
 </head>
 <body>
+<form action="" method="post">
+    <label>标题：</label><input type="text" name="title"><br>
+    <textarea name="content" cols="80" rows="10"></textarea><br>
+    <input type="submit" value="发 布">
+</form>
+<hr>
 {% for article in articles %}
     <h2>{{ article.title }}</h2>
     <div>{{ article.pub_date }}</div>

@@ -107,7 +107,26 @@ def index(request):
     <h2>尚无文章发布</h2>
 {% endfor %}
 </body>
-
+14、发布文章时，时间不应该由用户手工书写，应该是程序自动添加。修改models.py
+    pub_date = models.DateTimeField(auto_now_add=True)
+(djenv) [root@room8pc16 myblog]# python manage.py makemigrations
+(djenv) [root@room8pc16 myblog]# python manage.py migrate
+15、在index.html中加入表单，实现发布文章的功能
+<body>
+<form action="" method="post">
+    <label>标题：</label><input type="text" name="title"><br>
+    <textarea name="content" cols="80" rows="10"></textarea><br>
+    <input type="submit" value="发 布">
+</form>
+<hr>
+{% for article in articles %}
+    <h2>{{ article.title }}</h2>
+    <div>{{ article.pub_date }}</div>
+    <div>{{ article.text }}</div>
+{% empty %}
+    <h2>尚无文章发布</h2>
+{% endfor %}
+</body>
 
 
 
