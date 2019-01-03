@@ -29,6 +29,113 @@
 </body>
 </html>
 
+3、创建一个图片作为网页的banner。
+(1) 安装matplotlib
+# cd matplotlib_pkgs/
+# pip install *
+(2) 安装wordcloud(词云)
+# cd wordcloud_pkgs/
+]# pip install *
+(3) 生成一张1000X100的图片
+>>> import wordcloud
+>>> w = wordcloud.WordCloud(width=1000, height=100)
+>>> with open('/etc/hosts') as fobj:
+...   w.generate(fobj.read())
+>>> w.to_file('/tmp/banner.png')
+(djenv) [root@room8pc16 ~]# eog /tmp/banner.png
+(4)将banner.png放到polls/static/imgs/目录下
+[root@room8pc16 mysite]# cp /tmp/banner.png polls/static/imgs/
+
+4、把banner图片加到网页的头部
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        .banner{
+            height: 100px;
+            background-image: url("{% static 'imgs/banner.png' %}");
+            background-size: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="banner"></div>
+    <h1>投票首页</h1>
+    <hr>
+    {% for question in questions %}
+        <p>
+            {{ forloop.counter }}.
+    {#        <a href="/polls/{{ question.id }}/">{{ question.question_text }}</a>#}
+            <a href="{% url 'detail' question_id=question.id %}">{{ question.question_text }}</a>
+            {{ question.pub_date }}
+        </p>
+    {% endfor %}
+
+    {#{{ questions }}#}
+</div>
+</body>
+</html>
+
+5、在最下方加入链接信息
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        .banner{
+            height: 100px;
+            background-image: url("{% static 'imgs/banner.png' %}");
+            background-size: 100%;
+        }
+        .footer{
+            height: 200px;
+            line-height: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="banner"></div>
+    <h1>投票首页</h1>
+    <hr>
+    {% for question in questions %}
+        <p class="h4">
+            {{ forloop.counter }}.
+    {#        <a href="/polls/{{ question.id }}/">{{ question.question_text }}</a>#}
+            <a href="{% url 'detail' question_id=question.id %}">{{ question.question_text }}</a>
+            {{ question.pub_date }}
+        </p>
+    {% endfor %}
+
+    {#{{ questions }}#}
+    <div class="footer text-center h4">
+        <a href="http://linux.tedu.cn">达内云计算学院</a> 400-800-1234
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
