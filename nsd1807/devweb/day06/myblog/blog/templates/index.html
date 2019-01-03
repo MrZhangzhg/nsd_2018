@@ -6,6 +6,7 @@
 </head>
 <body>
 <form action="" method="post">
+    {% csrf_token %}
     <label>标题：</label><input type="text" name="title"><br>
     <textarea name="content" cols="80" rows="10"></textarea><br>
     <input type="submit" value="发 布">

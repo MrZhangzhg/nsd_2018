@@ -128,6 +128,26 @@ def index(request):
 {% endfor %}
 </body>
 
+16、当表单提交数据时，会出现403CSRF失败，解决方法是在表单中加入验证。
+<form action="" method="post">
+    {% csrf_token %}
+    <label>标题：</label><input type="text" name="title"><br>
+    <textarea name="content" cols="80" rows="10"></textarea><br>
+    <input type="submit" value="发 布">
+</form>
+
+17、接收网页POST过来的数据
+def index(request):
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        Blog.objects.get_or_create(title=title, text=content)
+
+    articles = Blog.objects.order_by('-pub_date')
+    return render(request, 'index.html', {'articles': articles})
+
+
+
 
 
 
