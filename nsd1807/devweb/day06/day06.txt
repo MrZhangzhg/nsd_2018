@@ -1,0 +1,61 @@
+新建django项目
+1、创建项目
+(djenv) [root@room8pc16 day06]# django-admin startproject myblog
+(djenv) [root@room8pc16 day06]# cd myblog/
+2、新建应用
+(djenv) [root@room8pc16 myblog]# python manage.py startapp blog
+3、修改配置
+# myblog/settings.py
+ALLOWED_HOSTS = '*'
+INSTALLED_APPS = [
+    ... ...
+    'blog',
+]
+LANGUAGE_CODE = 'zh-hans'
+TIME_ZONE = 'Asia/Shanghai'
+USE_TZ = False
+4、启动服务进行测试
+(djenv) [root@room8pc16 myblog]# python manage.py runserver 0:80
+
+5、授权，以/blog/开头的URL授权给应用
+# myblog/urls.py
+from django.conf.urls import url, include
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^blog/', include('blog.urls')),
+]
+6、在应用中创建URLConfig文件
+# blog/urls.py
+from django.conf.urls import url
+
+urlpatterns = [
+]
+7、以/blog/hello/对应hello函数
+# blog/urls.py
+from django.conf.urls import url
+from . import views
+
+urlpatterns = [
+    url(r'^hello/$', views.hello, name='hello'),
+]
+# blog/views.py
+from django.shortcuts import render, HttpResponse
+
+def hello(request):
+    return HttpResponse('<h1>Hello World!</h1>')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
