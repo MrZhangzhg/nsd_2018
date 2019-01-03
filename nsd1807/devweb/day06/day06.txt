@@ -146,6 +146,11 @@ def index(request):
     articles = Blog.objects.order_by('-pub_date')
     return render(request, 'index.html', {'articles': articles})
 
+18、博客正文没有分段，修正该问题，可以在模板文件中使用过滤功能
+将以下行：
+    <div>{{ article.text }}</div>
+修改为：
+    <div>{{ article.text|linebreaks }}</div>
 
 
 
