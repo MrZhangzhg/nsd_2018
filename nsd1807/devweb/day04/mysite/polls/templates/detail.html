@@ -1,32 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>投票详情页</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}投票详情页{% endblock %}
+{% block content %}
 <h1>投票详情</h1>
 <hr>
 <h2>{{ question.question_text }}</h2>
-{#<form action="/polls/{{ question.id }}/vote/">#}
 <form action="{% url 'vote' question_id=question.id %}" method="post">
     {% for choice in question.choice_set.all %}
-        <div>
+        <div class="radio">
             <label>
                 <input type="radio" name="choice_id" value="{{ choice.id }}">
                 {{ choice.choice_text }}
             </label>
         </div>
     {% endfor %}
-    <input type="submit" value="投 票">
+    <input class="btn btn-primary" type="submit" value="投 票">
 </form>
-
-
-{#<ul>#}
-{#    {% for choice in question.choice_set.all %}#}
-{#        <li>{{ choice.choice_text }}</li>#}
-{#    {% endfor %}#}
-{#</ul>#}
-{#这是第{{ question_id }}号问题的投票详情页#}
-</body>
-</html>
+{% endblock %}
