@@ -1,3 +1,7 @@
+引入bootstrap
+1、将bootstrap的static目录，拷贝到polls目录下
+[root@room8pc16 mysite]# cp -r ../../day03/static/ polls/
+2、修改index.html
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -24,3 +28,8 @@
 </div>
 </body>
 </html>
+
+
+
+
+
