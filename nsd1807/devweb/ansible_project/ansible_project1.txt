@@ -1,0 +1,59 @@
+ansible项目
+一、项目目标
+1、通过web界面显示所有服务器信息
+2、通过web界面添加主机/组
+3、通过web界面添加模块及参数
+4、通过web界面在指定的主机/组上执行选定的任务
+二、准备环境
+1、在虚拟环境中安装ansible
+[root@room8pc16 ansible_project]# source /opt/djenv/bin/activate
+(djenv) [root@room8pc16 zzg_pypkgs]# cd ansible_pkg/
+(djenv) [root@room8pc16 ansible_pkg]# pip install *
+(djenv) [root@room8pc16 zzg_pypkgs]# cd ansible-cmdb_pkgs/
+(djenv) [root@room8pc16 ansible-cmdb_pkgs]# pip install *
+(djenv) [root@room8pc16 zzg_pypkgs]# cd sqlalchemy_pkgs/
+(djenv) [root@room8pc16 sqlalchemy_pkgs]# pip install *
+2、准备3台虚拟机作为测试机，我这里采用的是node3-node5(192.168.4.3-4.5)
+配置IP地址、主机名、yum、免密登陆
+三、项目规划
+1、数据库规划
+(1) 主机组: 组名
+(2) 主机：主机名、IP地址、组
+(3) 模块：模块名
+(4) 参数：参数的key-val对，模块
+2、URL
+(1) 主页http://127.0.0.1/ 用于列出所有的任务[主机信息、添加主机/组、添加模块、执行任务]
+(2) http://127.0.0.1/webansi/ 用于显示所有主机的信息
+(3) http://127.0.0.1/webansi/addhosts/  -> 用于添加主机/组
+(4) http://127.0.0.1/webansi/addmodules/  -> 用于添加模块/参数
+(5) http://127.0.0.1/webansi/tasks/  -> 用于执行任务
+
+四、初始化项目
+1、创建项目myansible、创建应用webansi
+(djenv) [root@room8pc16 ansible_project]# django-admin startproject myansible
+(djenv) [root@room8pc16 ansible_project]# cd myansible/
+(djenv) [root@room8pc16 myansible]# python manage.py startapp webansi
+2、修改pycharm配置中的django设置
+3、修改配置settings.py
+ALLOWED_HOSTS = '*'
+INSTALLED_APPS = [
+    ... ...
+    'webansi',
+]
+LANGUAGE_CODE = 'zh-hans'
+TIME_ZONE = 'Asia/Shanghai'
+USE_TZ = False
+
+
+
+
+
+
+
+
+
+
+
+
+
+
