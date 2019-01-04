@@ -234,6 +234,35 @@ def index(request):
     </div>
 {% endblock %}
 
+八、将模型注册到后台
+1、注册
+# webansi/admin.py
+from django.contrib import admin
+from .models import HostGroup, Host, Module, Argument
+
+for item in [HostGroup, Host, Module, Argument]:
+    admin.site.register(item)
+2、创建超级用户
+(djenv) [root@room8pc16 myansible]# python manage.py createsuperuser
+3、在后台管理界面，创建主机组和主机
+
+九、配置ansible
+1、在manage.py所在的目录创建工作目录
+(djenv) [root@room8pc16 myansible]# mkdir ansicfg
+(djenv) [root@room8pc16 myansible]# cd ansicfg
+2、创建配置文件
+(djenv) [root@room8pc16 ansicfg]# vim ansible.cfg
+[defaults]
+inventory = gethosts.py
+remote_user = root
+3、创建gethosts.py，使之可以在数据库中取出主机和组
+(1) 脚本执行后，打印json格式的数据，格式如下：
+{
+    "dbservers": {"hosts": ["192.168.4.3"]},
+    "webservers": {"hosts": ["192.168.4.4", "192.168.4.5"]},
+    "storage": {"hosts": ["192.168.4.1", "192.168.4.2"]},
+    "lvs": {"hosts": ["192.168.4.6"]}
+}
 
 
 
