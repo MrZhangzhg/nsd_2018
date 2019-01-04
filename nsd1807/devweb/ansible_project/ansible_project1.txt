@@ -316,6 +316,28 @@ if __name__ == '__main__':
 (djenv) [root@room8pc16 ansicfg]# ansible all -m ping
 
 
+九、编写主机信息页
+1、实现url
+# webansi/urls.py
+from django.conf.urls import url
+from . import views
+
+urlpatterns = [
+    url(r'^$', views.mainpage, name='mainpage'),
+]
+2、编写函数
+# webansi/views.py
+def mainpage(request):
+    return render(request, 'mainpage.html')
+3、通过ansible-cmdb生成应用首页
+(1) 通过ansible生成所有主机信息
+(djenv) [root@room8pc16 ansicfg]# ansible all -m setup --tree out/
+(2) 生成mainpage.html
+(djenv) [root@room8pc16 ansicfg]# ansible-cmdb out/ > ../webansi/templates/mainpage.html
+如果提示有些模块没有安装上，则重新安装
+(djenv) [root@room8pc16 ansicfg]# pip install /var/ftp/pub/zzg_pypkgs/ansible-cmdb_pkgs/Mako-1.0.7.tar.gz
+4、在index.html中修改主机信息的超链接
+            <a href="{% url 'mainpage' %}">
 
 
 
