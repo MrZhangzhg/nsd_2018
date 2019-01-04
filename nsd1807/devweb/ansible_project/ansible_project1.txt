@@ -339,8 +339,63 @@ def mainpage(request):
 4、在index.html中修改主机信息的超链接
             <a href="{% url 'mainpage' %}">
 
-
-
+十、完成添加主机页面
+1、URL
+# webansi/views.py
+    url(r'^addhosts/$', views.addhosts, name='addhosts'),
+2、创建函数
+# webansi/views.py
+def addhosts(request):
+    groups = HostGroup.objects.all()
+    return render(request, 'addhosts.html', {'groups': groups})
+3、创建模板文件addhosts.html
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}添加主机/组{% endblock %}
+{% block content %}
+    <form action="" method="post" class="form-inline">
+        <div class="form-group">
+            <label>主机名：</label>
+            <input type="text" class="form-control" name="hostname">
+        </div>
+        <div class="form-group">
+            <label>ip地址：</label>
+            <input type="text" class="form-control" name="ip">
+        </div>
+        <div class="form-group">
+            <label>主机组：</label>
+            <input type="text" class="form-control" name="group">
+        </div>
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="提 交">
+        </div>
+    </form>
+    <hr>
+    <table class="table table-bordered table-striped table-hover h4">
+        <tr class="info text-center">
+            <td>主机组</td>
+            <td>主机</td>
+        </tr>
+        {% for group in groups %}
+            <tr>
+                <td>{{ group.groupname }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        {% for host in group.host_set.all %}
+                            <li>{{ host.hostname }}: {{ host.ipaddr }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+4、在index.html中修改添加主机的超链接
+            <a href="{% url 'addhosts' %}">
+5、为了表单和上面的banner有点距离，在base.html中为main设置样式
+.main{
+    margin-top: 20px;
+}
 
 
 
