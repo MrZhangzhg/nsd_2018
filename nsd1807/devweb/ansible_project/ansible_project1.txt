@@ -83,6 +83,41 @@ class Argument(models.Model):
 sqlite> .tables    # 列出所有的表
 sqlite> .schema webansi_hostgroup   # 查看表结构
 
+六、授权，将以http://127.0.0.1/webansi/开头的URL交给webansi应用处理
+1、修改myansible/urls.py
+from django.conf.urls import url, include
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^webansi/', include('webansi.urls')),
+]
+2、创建webansi/urls.py
+from django.conf.urls import url
+
+urlpatterns = [
+]
+
+七、制作首页http://127.0.0.1/
+1、当访问首页时，使用应用中的视图函数进行响应
+# myansible/urls.py
+from django.conf.urls import url, include
+from django.contrib import admin
+from webansi import views
+
+urlpatterns = [
+    url(r'^$', views.index, name='index'),
+    url(r'^admin/', admin.site.urls),
+    url(r'^webansi/', include('webansi.urls')),
+]
+2、编写视图函数
+# webansi/views.py
+from django.shortcuts import render, HttpResponse
+
+def index(request):
+    return HttpResponse('<h1>Success</h1>')
+3、启动django项目
+(djenv) [root@room8pc16 myansible]# python manage.py runserver 0:80
 
 
 
