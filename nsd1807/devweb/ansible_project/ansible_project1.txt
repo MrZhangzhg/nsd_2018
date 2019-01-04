@@ -206,7 +206,32 @@ def index(request):
 {% load static %}
 {% block title %}首页{% endblock %}
 {% block content %}
-这是内容
+    <div class="row text-center h4">
+        <div class="col-md-3">
+            <a href="#">
+                <img width="150px" src="{% static 'imgs/linux.jpg' %}"><br>
+                主机信息
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a href="#">
+                <img width="150px" src="{% static 'imgs/linux.jpg' %}"><br>
+                添加主机
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a href="#">
+                <img width="150px" src="{% static 'imgs/linux.jpg' %}"><br>
+                添加模块
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a href="#">
+                <img width="150px" src="{% static 'imgs/linux.jpg' %}"><br>
+                执行任务
+            </a>
+        </div>
+    </div>
 {% endblock %}
 
 
