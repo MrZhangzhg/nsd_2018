@@ -118,6 +118,51 @@ def index(request):
     return HttpResponse('<h1>Success</h1>')
 3、启动django项目
 (djenv) [root@room8pc16 myansible]# python manage.py runserver 0:80
+4、修改函数，返回模板文件
+from django.shortcuts import render
+
+def index(request):
+    return render(request, 'index.html')
+5、编写模板文件
+(1) 创建模板目录
+(djenv) [root@room8pc16 myansible]# mkdir webansi/templates
+(2) 拷贝boostrap的static目录到webansi目录下
+(3) 编写index.html的基础信息
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        .banner{
+            background-image: url({% static 'imgs/banner.png' %});
+            height: 100px;
+            background-size: 100%;
+        }
+        .footer{
+            height: 100px;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="banner"></div>
+    <div class="main">
+        aa bb cc dd
+    </div>
+    <div class="footer text-center h4">
+        <a href="http://linux.tedu.cn">达内云计算学院</a> 客服电话：400-111-8989 邮箱：admin@tedu.cn
+    </div>
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>
 
 
 
