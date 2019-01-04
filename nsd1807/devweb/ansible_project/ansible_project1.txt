@@ -163,6 +163,51 @@ def index(request):
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 </html>
+6、引入模板继承
+(1) 把index.html复制一份，起名为base.html
+(2) 去除base.html中个性化的部分，结果如下：
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        .banner{
+            background-image: url({% static 'imgs/banner.png' %});
+            height: 100px;
+            background-size: 100%;
+        }
+        .footer{
+            height: 100px;
+            line-height: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="banner"></div>
+    <div class="main">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="footer text-center h4">
+        <a href="http://linux.tedu.cn">达内云计算学院</a> 客服电话：400-111-8989 邮箱：admin@tedu.cn
+    </div>
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>
+(3) index.html继承模板
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}首页{% endblock %}
+{% block content %}
+这是内容
+{% endblock %}
 
 
 
