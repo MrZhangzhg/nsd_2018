@@ -3,6 +3,7 @@
 {% block title %}添加主机/组{% endblock %}
 {% block content %}
     <form action="" method="post" class="form-inline">
+        {% csrf_token %}
         <div class="form-group">
             <label>主机名：</label>
             <input type="text" class="form-control" name="hostname">
