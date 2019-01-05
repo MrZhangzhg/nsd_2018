@@ -416,7 +416,7 @@ def addhosts(request):
 十一、完成添加模块页面
 1、URL
 # webansi/urls.py
-    url(r'^addmodules', views.addmodules, name='addmodules'),
+    url(r'^addmodules/$', views.addmodules, name='addmodules'),
 2、创建函数
 from .models import HostGroup, Module
 
@@ -472,6 +472,32 @@ def addmodules(request):
 {% endblock %}
 4、在index.html中修改添加模块的超链接
             <a href="{% url 'addmodules' %}">
+
+十二、完成任务页
+1、配置URL
+# webansi/urls.py
+    url(r'^tasks/$', views.tasks, name='tasks'),
+2、在index.html中修改添加模块的超链接
+            <a href="{% url 'tasks' %}">
+3、创建函数
+from .models import HostGroup, Module, Host
+
+def tasks(request):
+    hosts = Host.objects.all()
+    groups = HostGroup.objects.all()
+    modules = Module.objects.all()
+    return render(request, 'tasks.html', {'hosts': hosts, 'groups': groups, 'modules': modules})
+4、创建模板文件tasks.html
+
+
+
+
+
+
+
+
+
+
 
 
 
