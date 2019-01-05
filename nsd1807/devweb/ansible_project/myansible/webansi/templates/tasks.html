@@ -32,11 +32,23 @@
         </tr>
         {% for module in modules %}
             <tr>
-                <td>{{ module.module_name }}</td>
+                <td>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="module" value="{{ module.module_name }}">{{ module.module_name }}
+                        </label>
+                    </div>
+                </td>
                 <td>
                     <ul class="list-unstyled">
                         {% for arg in module.argument_set.all %}
-                            <li>{{ arg.argument_text }}</li>
+                            <li>
+                                <div class="radio">
+                                    <label>
+                                        <input name="argument" value="{{ arg.argument_text }}" type="radio">{{ arg.argument_text }}
+                                    </label>
+                                </div>
+                            </li>
                         {% endfor %}
                     </ul>
                 </td>
