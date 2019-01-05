@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import HostGroup
+from .models import HostGroup, Module
 
 def index(request):
     return render(request, 'index.html')
@@ -20,3 +20,15 @@ def addhosts(request):
 
     groups = HostGroup.objects.all()
     return render(request, 'addhosts.html', {'groups': groups})
+
+def addmodules(request):
+    if request.method == 'POST':
+        module = request.POST.get('module')
+        argument = request.POST.get('argument')
+        if module:
+            mod = Module.objects.get_or_create(module_name=module)[0]
+            if argument:
+                mod.argument_set.get_or_create(argument_text=argument)
+
+    modules = Module.objects.all()
+    return render(request, 'addmodules.html', {'modules': modules})
