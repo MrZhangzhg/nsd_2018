@@ -48,7 +48,33 @@ node1 -> 192.168.4.1 安装docker，导入gitlab镜像
 [root@node1 docker_pkgs]# systemctl enable docker
 3、导入镜像
 [root@node1 docker]# docker load < images/gitlab_zh.tar
-
+4、因为容器也需要用到22端口，所以把虚拟机的端口改为2022
+[root@node1 docker]# vim /etc/ssh/sshd_config
+Port 2022
+[root@node1 docker]# systemctl restart sshd
+5、启动gitlab容器
+[root@node1 ~]# docker run -d -h gitlab --name gitlab -p 443:443
+-p 80:80 -p 22:22 --restart always -v /srv/gitlab/config:/etc/gitlab
+-v /srv/gitlab/logs:/var/log/gitlab
+-v /srv/gitlab/data:/var/opt/gitlab gitlab_zh:latest
+6、访问http://192.168.4.1/。gitlab启动需要一段时间，开始的时候显示无法访问，
+过一段时间访问，出现内部错误，多等一会就可以了。
+# docker ps  看到状态是(healthy)时，就可以正常访问了
+7、第一次访问需要设置密码，密码必须8位以上，要复杂一些。用户名为root
+8、gitlab服务器上的重要组成部分：
+（1）群组group：对应一个个团队
+（2）项目project：每个group都会编写多个软件项目，每个软件项目创建一个project
+（3）成员member：对应一个个的用户
+新建用户的时候不能设置密码。但是创建完成后，编辑用户可以为其设置密码。
+9、设置新建的用户是项目的主程序员
+10、上传软件项目到gitlab
+[root@node2 ~]# cd devops/
+[root@node2 devops]# git remote rename origin old-origin
+  出现以下错误，忽略即可
+error: 不能重命名配置小节 'remote.origin' 到 'remote.old-origin'
+[root@node2 devops]# git remote add origin http://192.168.4.1/devops/core_py.git
+[root@node2 devops]# git push -u origin --all
+[root@node2 devops]# git push -u origin --tags
 
 
 
