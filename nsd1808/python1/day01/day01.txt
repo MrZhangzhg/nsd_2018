@@ -76,6 +76,23 @@ error: 不能重命名配置小节 'remote.origin' 到 'remote.old-origin'
 [root@node2 devops]# git push -u origin --all
 [root@node2 devops]# git push -u origin --tags
 
+11、使用ssh免密的方式上传
+(1) 本地生成密钥对
+[root@node2 devops]# ssh-keygen -t rsa -C "zzg@tedu.cn" -b 4096
+(2) 拷贝~/.ssh/id_rsa.pub，粘贴到gitlab用户的ssh密钥中
+(3) 将第10步中的http方式改为ssh
+[root@node2 devops]# git remote remove origin
+[root@node2 devops]# git remote add origin git@192.168.4.1:devops/core_py.git
+(4) 编写代码，上传
+[root@node2 devops]# echo "demo project" > README.md
+[root@node2 devops]# git add .
+[root@node2 devops]# git commit -m "add readme"
+[root@node2 devops]# git push
+12、如果在上传的时候，出现Permission Denied。解决办法：
+[root@node2 devops]# ssh-agent
+把ssh-agent输出的环境变量直接运行一下，然后执行下面命令
+[root@node2 devops]# ssh-add
+
 
 
 
