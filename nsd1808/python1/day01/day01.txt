@@ -30,6 +30,25 @@ print('Hello World!')
 [root@node2 devops]# git add .
 [root@node2 devops]# git commit -m "project init"
 [root@node2 devops]# git log
+7、查看版本库中的文件
+[root@node2 devops]# git ls-files
+8、误删除后，重新检出文件
+[root@node2 devops]# git rm hi.py
+[root@node2 devops]# git status
+[root@node2 devops]# git reset HEAD hi.py
+[root@node2 devops]# git checkout  --  hi.py
+
+
+gitlab服务器
+1、生成一台虚拟机，内存4G以上
+node1 -> 192.168.4.1 安装docker，导入gitlab镜像
+2、启动docker
+[root@node1 docker_pkgs]# yum install -y *rpm
+[root@node1 docker_pkgs]# systemctl start docker
+[root@node1 docker_pkgs]# systemctl enable docker
+3、导入镜像
+[root@node1 docker]# docker load < images/gitlab_zh.tar
+
 
 
 
