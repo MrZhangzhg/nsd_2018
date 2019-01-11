@@ -1,0 +1,47 @@
+git
+[root@node2 ~]# yum install -y git
+[root@node2 ~]# git config --list
+[root@node2 ~]# git config --global user.name "zzg"
+[root@node2 ~]# git config --global user.email "zzg@tedu.cn"
+[root@node2 ~]# git config --global core.editor vim
+[root@node2 ~]# git config --list
+[root@node2 ~]# cat ~/.gitconfig
+
+git工作的三个重要区域：
+工作区：写代码的那个目录
+暂存区：工作区和版本库之间的一个过渡区域
+版本库：真正存储各个版本的位置，是工作目录的隐藏目录.git
+
+git应用
+1、初始化使用git管理的项目
+[root@node2 ~]# git init devops
+[root@node2 ~]# ls -a devops/
+2、在项目中编写代码
+[root@node2 ~]# cd devops/
+[root@node2 devops]# vim hi.py
+print('Hello World!')
+3、提交代码到暂存区
+[root@node2 devops]# git add .
+4、查看暂存区
+[root@node2 devops]# git status
+5、撤出暂存区
+[root@node2 devops]# git rm --cached hi.py
+6、提交文件到版本库
+[root@node2 devops]# git add .
+[root@node2 devops]# git commit -m "project init"
+[root@node2 devops]# git log
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
