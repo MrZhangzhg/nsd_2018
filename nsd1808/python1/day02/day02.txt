@@ -1,0 +1,134 @@
+数据类型
+1、数字
+（1）简单理解为整数和小数即可
+（2）布尔可以理解为是特殊的整数，使用True和False表示，值为1和0
+（3）python表示整数的时候，如果没有前缀表示10进制数，2进制0b开头，8进制数0o开头
+    16进制0x开头
+[root@room8pc16 day01]# cp /etc/hosts /tmp/
+[root@room8pc16 day01]# ll /tmp/hosts
+>>> import os
+>>> os.chmod('/tmp/hosts', 400)
+[root@room8pc16 day01]# ll /tmp/hosts
+-rw--w----. 1 root root 9806 1月  12 09:40 /tmp/hosts
+>>> os.chmod('/tmp/hosts', 0o400)
+[root@room8pc16 day01]# ll /tmp/hosts
+-r--------. 1 root root 9806 1月  12 09:40 /tmp/hosts
+>>> 11
+11
+>>> 0b11
+3
+>>> 0o11
+9
+>>> 0x11
+17
+2、字符串
+(1) 在python中，单双引号没有任何区别
+(2) 字符串中如果有未确定的数据，可以使用占位符
+>>> '%s is a digit' % 100
+'100 is a digit'
+>>> '%s is %s years old' % ('bob', 20)
+'bob is 20 years old'
+(3) 三引号，三个连续单引号或双引号，它可以保留输入格式
+>>> words = 'hello\nnihao'
+>>> print(words)
+hello
+nihao
+>>> dicts = '''hello
+... nihao
+... welcome'''
+>>> print(dicts)
+hello
+nihao
+welcome
+>>> dicts
+(4) 字符串常用方法
+>>> py_str = 'python'
+>>> len(py_str)
+>>> 't' in py_str   # True
+>>> 'th' in py_str   # True
+>>> 'to' in py_str   # False
+>>> 'to' not in py_str   # True
+>>> py_str[0]
+>>> 'python'[0]
+>>> py_str[5]
+>>> py_str[6]    # IndexError
+>>> py_str[-1]
+>>> py_str[-2]
+>>> py_str[2:4]   # 起始下标包含，结束下标不包含
+>>> py_str[2:]    # 结束不写，表示到结尾
+>>> py_str[:2]
+>>> py_str[:]
+>>> py_str[::2]   # 2表示步长值
+>>> py_str[1::2]
+>>> py_str[::-1]    # 步长值为负，表示自右向左取
+(5) 拼接和重复
+>>> py_str + ' ' + 'good'
+>>> '*' * 30
+>>> '#*#' * 20
+
+3、列表：把各种数据集中存储到一个容器中
+>>> alist = [10, 20, 'bob', 'alice', [1, 2]]
+>>> len(alist)
+>>> len(alist)
+5
+>>> alist[-1]
+[1, 2]
+>>> alist[4]
+[1, 2]
+>>> 10 in alist
+True
+>>> 1 in alist
+False
+>>> [1, 2] in alist
+True
+>>> alist * 3
+[10, 20, 'bob', 'alice', [1, 2], 10, 20, 'bob', 'alice', [1, 2], 10, 20, 'bob', 'alice', [1, 2]]
+>>> alist[-1] = 100
+>>> alist
+[10, 20, 'bob', 'alice', 100]
+>>> alist.append(200)
+>>> alist
+[10, 20, 'bob', 'alice', 100, 200]
+
+4、元组，相当于是不可变的列表
+>>> atuple = (10, 20, 'bob', 'alice', 100, 200)
+>>> atuple[2:4]
+('bob', 'alice')
+>>> atuple[-1]
+200
+>>> atuple[-1] = 300   # 报错，因为不可变
+
+5、字典，{key: val}，key不能重复，val可以相同，无序
+>>> adict = {'name': 'bob', 'age': 20}
+>>> len(adict)   # 2
+>>> 20 in adict    # False
+>>> 'age' in adict    # True
+>>> adict['name']   # 'bob'
+
+数据类型分类： 重要，背下来
+按存储模型分类：
+    标量类型:数值、字符串
+    容器类型:列表、元组、字典
+按更新模型分类:
+    可变类型:列表、字典
+    不可变类型:数字、字符串、元组
+按访问模型分类
+    直接访问:数字
+    顺序访问:字符串、列表、元组
+    映射访问:字典
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
