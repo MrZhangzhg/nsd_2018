@@ -1,0 +1,94 @@
+《python基础教程第三版》
+《笨方法学python》
+《python从入门到实践》
+
+
+《python核心编程第二版》基于python2
+－－－－－－－－－－－－－－－－－－－－－－－－－
+数据类型
+按存储模型分为：标量和容器
+按更新模型分为：可变和不可变
+按访问模型分为：直接、顺序和映射
+
+range函数：可以生成一系列的数字
+>>> range(10)   # 只有一个参数，是结束数字，结束数字不包含
+range(0, 10)
+>>> list(range(10))
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> for i in range(10):
+...   print(i)
+>>> list(range(6, 11))
+[6, 7, 8, 9, 10]
+>>> list(range(1, 11, 2))
+[1, 3, 5, 7, 9]
+>>> list(range(2, 11, 2))
+[2, 4, 6, 8, 10]
+>>> list(range(10, 0, -1))
+[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
+列表解析：列表推导式
+用于快速、便捷地生成列表
+>>> [10]
+[10]
+>>> [10 + 5]
+[15]
+>>> [10 + 5 for i in range(10)]   # 由循环决定计算几次10+5
+[15, 15, 15, 15, 15, 15, 15, 15, 15, 15]
+>>> [10 + i for i in range(10)]
+[10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+>>> [10 + i for i in range(10) if i % 2 == 0]   # 满足if条件才把10+i的值保留
+[10, 12, 14, 16, 18]
+如何用列表解析，生成192.168.1.0/24网段中的IP地址？
+>>> ['192.168.1.' + str(i) for i in range(1, 255)]
+>>> ['192.168.1.%s' % i for i in range(1, 255)]
+
+文件操作的三个步骤：打开文件、读写、关闭
+[root@room8pc16 day02]# cp /etc/passwd /tmp/
+>>> fobj = open('/tmp/passwd')   # 默认以r方式打开
+>>> data = fobj.read()   # 默认读取全部数据
+>>> print(data)
+>>> data = fobj.read()    # 文件读完以后，再读取就没有数据可以读入了
+>>> print(data)
+>>> data
+''
+>>> fobj.close()
+>>> fobj = open('/tmp/passwd')
+>>> fobj.read(4)    # 建议读4096字节
+'root'
+>>> fobj.read(4)
+':x:0'
+>>> fobj.close()
+
+>>> fobj = open('/tmp/passwd')
+>>> fobj.readline()   # 读一行
+>>> fobj.readlines()   # 将所有行读到列表中
+>>> fobj.close()
+
+>>> fobj = open('/tmp/passwd')
+>>> fobj = open('/tmp/passwd')
+>>> for line in fobj:
+...     print(line, end='')   # 每一行结束已经有换行了，print不要再额外打印换行
+>>> fobj.close()
+
+如果读取的是二进制文件(命令程序、图片、视频、声音)，需要加上b表示bytes
+>>> fobj = open('/bin/ls', 'rb')
+>>> fobj.read(2)
+b'\x7fE'    # b表示bytes,  \x表示后面的数字是16进制数
+>>> fobj.close()
+>>> fobj = open('/tmp/passwd', 'rb')
+>>> fobj.read(4)
+b'root'
+>>> fobj.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
