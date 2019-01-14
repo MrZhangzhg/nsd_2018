@@ -112,6 +112,23 @@ b'2nd'
 b'line.\n'
 
 
+模块：一个以.py作为扩展名的python程序文件就是一个模块。
+模块名：把python程序文件的.py去除，前面部分就是模块名
+# vim star.py
+hi = 'Hello World'
+
+def pstar(n=30):
+    print('*' * n)
+
+pstar()   # 调用函数时，没有指定参数，就使用函数默认的参数值
+pstar(50)
+[root@room8pc16 day03]# python3
+>>> import star   # 导入模块时，模块中的代码将会执行一遍
+******************************
+**************************************************
+>>> import star    # 不管导入同一个模块多少次，只以第一次为准
+>>> star.pstar()
+>>> star.hi
 
 
 
