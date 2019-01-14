@@ -81,6 +81,37 @@ b'root'
 >>> fobj.close()
 
 
+写文件：注意如果以w方式打开文件，如果文件不存在则创建，如果已存在则清空
+>>> fobj = open('/tmp/passwd', 'w')
+# 数据没有立即写入磁盘，而是写到缓冲区，积累到一定量时才会同步至磁盘
+>>> fobj.write('Hello World!\n')
+>>> fobj.flush()   # 立即将数据同步到磁盘
+>>> fobj.writelines(['2nd line.\n', '3rd line.\n'])
+>>> fobj.close()
+
+with: with语句打开文件后，with语句结束，文件自动关闭
+>>> with open('/tmp/passwd') as fobj:
+...   fobj.readline()
+>>> fobj.readline()   # 报错，因为文件已经关闭
+
+文件内移动指针：非重点
+# seek的两个参数，第二个数字是相对位置，0表示开头，1表示当前位置，2表示结尾
+# seek的两个参数，第一个数字是偏移量
+>>> fobj = open('/tmp/passwd', 'rb')
+>>> fobj.seek(6, 0)   # 从开头向右移6字节
+6
+>>> fobj.read(5)
+b'World'
+>>> fobj.seek(2, 1)   # 从当前位置向右移2字节
+13
+>>> fobj.read(3)
+b'2nd'
+>>> fobj.seek(-6, 2)   # 从结尾向左移6字节
+27
+>>> fobj.read()
+b'line.\n'
+
+
 
 
 
