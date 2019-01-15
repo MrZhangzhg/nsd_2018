@@ -1,5 +1,5 @@
 import sys
-import randpass2
+import randpass2    # 自己写的模块文件
 import subprocess
 
 def adduser(username, password, userfile):

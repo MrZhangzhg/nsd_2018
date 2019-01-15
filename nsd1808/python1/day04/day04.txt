@@ -84,6 +84,52 @@ python调用系统命令
 3、用户名通过位置参数传递
 
 
+原始字符串、真实字符串
+>>> wpath = 'c:\temp'
+>>> print(wpath)
+c:	emp
+>>> wpath = 'c:\\temp'
+>>> print(wpath)
+c:\temp
+>>> win_path = r'c:\temp'
+>>> print(win_path)
+c:\temp
+>>> win_path
+'c:\\temp'
+
+字符串方法
+>>> py_str = 'Hao123'
+>>> py_str.center(20)   # 居中
+>>> py_str.center(40, '*')
+>>> py_str.ljust(40, '#')  # 左对齐
+>>> py_str.rjust(40, '#')  # 右对齐
+>>> 'Hao123'.rjust(40, '#')
+>>> '\thello world!   '.strip()   # 去除两端空白，常用
+>>> '\thello world!   '.lstrip()
+>>> '\thello world!   '.rstrip()
+>>> py_str.upper()   # 转大写
+>>> py_str.lower()   # 转小写
+>>> py_str.isidentifier()   # 可以用作标识符吗？
+>>> 'hao123'.islower()    # 只要字母全是小写返回True
+>>> 'hao123'.isdigit()    # 只要有一个字符不是数字就返回False
+>>> py_str.startswith('H')    # 以H开头吗？
+>>> py_str.startswith('Hao')
+>>> py_str.endswith('!')    # 以!为结尾吗？
+>>> 'hello world'.split()    # 以空格作为分隔符分割
+>>> 'hello.tar.gz'.split('.')
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
