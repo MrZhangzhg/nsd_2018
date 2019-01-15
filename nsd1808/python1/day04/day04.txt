@@ -54,6 +54,37 @@ False
 >>> min(alist)
 
 
+格式化字符串
+>>> '%s is %s years old' % ('bob', 20)     # 常用
+>>> '%s is %d years old' % ('bob', 20)     # 常用
+>>> '97 is %c' % 97     # a的ASCII码是97
+>>> '10 is %o' % 10    # 转8进制
+>>> '10 is %#o' % 10
+>>> '10 is %x' % 10     # 转16进制
+>>> '10 is %#x' % 10
+>>> '10000000 is %e' % 10000000    # 科学计数法
+>>> '5/2 is %d' % (5 / 2)
+>>> '5/2 is %f' % (5 / 2)
+>>> '%10s%8s' % ('name', 'age')    # 第一个%s占10个宽度，第二个占8个宽度，常用
+>>> '%10s%8s' % ('bob', 20)
+>>> '%-10s%-8s' % ('name', 'age')    # 左对齐，常用
+
+字符串格式化也可以使用字符串的format方法
+>>> '{} is {} years old'.format('bob', 20)
+>>> '{1} is {0} years old'.format(20, 'bob')
+>>> '{0[1]} is {0[0]} years old'.format([20, 'bob'])
+
+python调用系统命令
+>>> import subprocess
+>>> subprocess.call('ls /home', shell=True)
+
+创建用户的脚本
+1、创建用户、加密码，调用系统命令即可
+2、密码采用前面自己写的randpass2.py
+3、用户名通过位置参数传递
+
+
+
 
 
 
