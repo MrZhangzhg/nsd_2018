@@ -1,0 +1,58 @@
+学历不等于能力
+学过不等于掌握
+经历不等于经验
+
+shutil模块
+>>> import shutil
+>>> f1 = open('/etc/hosts')
+>>> f2 = open('/tmp/zj', 'w')
+>>> shutil.copyfileobj(f1, f2)
+>>> f1.close()
+>>> f2.close()
+
+>>> shutil.copyfile('/etc/hosts', '/tmp/zhuji')  # 拷贝文件
+>>> shutil.copy('/etc/hosts', '/tmp/zj.txt')
+>>> shutil.copy('/etc/hosts', '/tmp/')
+>>> help(shutil)
+>>> shutil.copytree('/etc/security', '/tmp/anquan')  # 拷贝目录
+>>> shutil.move('/tmp/zhuji', '/var/tmp/')  # 移动
+>>> shutil.rmtree('/tmp/anquan')   # 删除目录
+
+https://yiyibooks.cn/  -> python 352 -> 库参考 -> ctrl + f
+
+
+关键字：
+>>> import keyword
+>>> keyword.kwlist
+>>> 'pass' in keyword.kwlist
+>>> keyword.iskeyword('pass')
+
+内建：
+>>> keyword.iskeyword('len')
+False
+>>> len('abcd')    # len是内建函数
+4
+
+关键字不能重新赋值，内建名称可以重新赋值
+
+判断合法标识符：
+1、程序的运行方式(交互式？简单运行后就结束？)。
+2、脑补，交互式运行，屏幕上的问题，用户的回答都是什么
+3、思考程序有哪些功能，把这些功能定义成函数
+4、编写主程序代码，按顺序调用函数
+5、完善每个函数
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
