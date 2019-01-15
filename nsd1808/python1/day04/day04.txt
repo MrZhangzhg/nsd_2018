@@ -43,7 +43,15 @@ False
 5、完善每个函数
 
 
-
+序列对象内建函数
+>>> list('hello')
+>>> tuple('hello')
+>>> str(100)
+>>> str([10, 20, 30])
+>>> import random
+>>> alist = [random.randint(1, 100) for i in range(10)]
+>>> max(alist)
+>>> min(alist)
 
 
 
