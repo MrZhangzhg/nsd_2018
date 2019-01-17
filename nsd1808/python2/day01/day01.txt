@@ -90,6 +90,108 @@ Bye-bye
 # pip install 模块
 [root@room8pc16 day01]# pip3 install tqdm
 
+集合：由不同的不可变元素构成，它像是没有值的字典
+>>> aset = set('abc')
+>>> bset = set('bcd')
+>>> len(aset)
+>>> for ch in aset:  print(ch)
+>>> aset & bset   # 交集，两个集合都有的元素
+>>> aset | bset   # 并集，两个集合中的全部元素
+>>> aset - bset   # 差补，只在aset中存在的元素
+
+>>> cset = set('hello')
+>>> cset.add('new')
+>>> cset.update('new')
+>>> cset.update(['abc', 'hello'])
+>>> dset = set('hello')
+>>> dset.issubset(cset)  # dset是cset的子集吗？
+>>> cset.issuperset(dset)   # cset是dset的超集吗？
+>>> aset.intersection(bset)   # aset & bset
+>>> aset.difference(bset)   # aset - bset
+>>> aset.union(bset)    # aset | bset
+
+表示时间的方式：
+时间戳：1970-1-1 0:00:00 到某一时间点间的秒数
+UTC：世界协调时间
+九元组：年、月、日、时、分、秒、一年中的第几周、一年中的第几天、是否是夏季节约时间
+>>> import time
+>>> time.time()   # 当前时间的时间戳
+>>> time.ctime()   # 当前时间的UTC时间
+>>> time.localtime()  # 当前时间的九元组
+>>> time.sleep(1)
+>>> t = time.localtime()
+>>> t.tm_year
+>>> t.tm_yday
+>>> time.strftime('%Y-%m-%d')
+>>> time.strftime('%Y-%m-%d %H:%M:%S')
+>>> time.strftime('%a')
+>>> time.strftime('%A')
+
+>>> import datetime
+>>> datetime.datetime.now()
+>>> from datetime import datetime
+>>> datetime.now()   # 返回的对象有年、月、日、时、分、秒、毫秒这些属性
+>>> t = datetime.now()
+>>> t.year    # 属性：年
+
+计算时间的差额，如60天之前、之后是哪一天
+>>> from datetime import datetime, timedelta
+>>> t = datetime.today()
+>>> days = timedelta(days=60)
+>>> t - days
+>>> t + days
+>>> t1 = t + days
+>>> t1.month
+>>> t1.day
+
+异常处理
+当程序在运行过程中，如果发生错误，程序将崩溃、终止执行，程序抛出异常。
+
+
+pickle模块
+文件的常规write方法只能把字符串写入文件，不能把其他数据类型写入文件
+pickle允许把任意的数据类型写入文件，将来还可以无损的取出
+>>> import pickle
+>>> fobj = open('/tmp/mydata', 'wb')
+>>> shopping_list = ["egg", "apple", "banana"]
+>>> pickle.dump(shopping_list, fobj)
+>>> fobj.close()
+
+>>> import pickle
+>>> with open('/tmp/mydata', 'rb') as fobj:
+...     mylist = pickle.load(fobj)
+>>> type(mylist)
+
+
+os模块
+>>> import os
+>>> os.getcwd()   # pwd
+>>> os.listdir()   # ls
+>>> os.mkdir('/tmp/demo')
+>>> os.listdir('/tmp/demo')
+>>> os.chdir('/tmp/demo')   # cd /tmp/demo
+>>> os.symlink('/etc/hosts', '/tmp/demo/zhuji')  # ln -s /etc/hosts /tmp/demo/zhuji
+>>> os.mknod('hi.txt')   # touch hi.txt
+>>> os.chmod('hi.txt', 0o600)
+>>> os.path.isfile('/etc')  # 是文件吗？
+>>> os.path.isdir('/etc')   # 是目录吗？
+>>> os.path.islink('/etc')   # 是软链接吗？
+>>> os.path.exists('/etc')   # 存在吗？
+>>> os.path.abspath('hi.txt')   # 得到当前目录下文件的绝对路径
+>>> os.path.basename('/tmp/demo/hi.txt')   # hi.txt
+>>> os.path.dirname('/tmp/demo/hi.txt')    # '/tmp/demo'
+>>> os.path.split('/tmp/demo/hi.txt')   # ('/tmp/demo', 'hi.txt')
+>>> os.path.join('/tmp/demo', 'hi.txt')    # '/tmp/demo/hi.txt'
+>>> os.path.getsize('/etc/passwd')   # 文件大小
+
+
+
+
+
+
+
+
+
 
 
 
