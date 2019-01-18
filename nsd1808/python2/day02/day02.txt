@@ -28,6 +28,22 @@ Bye-bye
 ('2018-1-18', 0, 100, 9900, 'eat')]
 
 
+参数：
+>>> def set_age(name, age):
+...     print('%s is %s years old' % (name, age))
+>>> set_age('bob', 23)
+>>> set_age()   # error，参数个数不够
+>>> set_age('bob', 23, 100)   # error，参数个数太多
+>>> set_age(23, 'bob')   # 语法没错误，但是语义不对
+23 is bob years old
+>>> set_age(age=23, name='bob')
+>>> set_age(age=23, 'bob')   # 语法错误，kev=val样式必须在后
+>>> set_age('bob', age=23)   # 正确
+>>> set_age(23, name='bob')   # 错误，name得到了多个值
+
+
+
+
 
 
 
