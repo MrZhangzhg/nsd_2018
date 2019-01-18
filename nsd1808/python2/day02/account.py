@@ -3,13 +3,38 @@ import time
 import pickle
 
 def save(fname):
-    print('save')
+    amount = int(input('amount: '))   # 金额：
+    comment = input('comment: ')      # 备注
+    date = time.strftime('%Y-%m-%d')   # 当前日期
+    with open(fname, 'rb') as fobj:
+        all_records = pickle.load(fobj)   # 从文件中load出来看数据是列表
+    # 列表的最后一项是最新存入的数据，它是一个元组，元组倒数第二项是余额
+    balance = all_records[-1][-2] + amount
+    record = (date, 0, amount, balance, comment)
+    all_records.append(record)
+    with open(fname, 'wb') as fobj:
+        pickle.dump(all_records, fobj)
 
 def cost(fname):
-    pass
+    amount = int(input('amount: '))
+    comment = input('comment: ')
+    date = time.strftime('%Y-%m-%d')
+    with open(fname, 'rb') as fobj:
+        all_records = pickle.load(fobj)
+    balance = all_records[-1][-2] - amount
+    record = (date, amount, 0, balance, comment)
+    all_records.append(record)
+    with open(fname, 'wb') as fobj:
+        pickle.dump(all_records, fobj)
 
 def query(fname):
-    pass
+    with open(fname, 'rb') as fobj:
+        all_records = pickle.load(fobj)
+    # 先打印出表头
+    print('%-12s%-8s%-8s%-10s%-20s' % ('date', 'cost', 'save', 'balance', 'comment'))
+    # 在表头下面，打印出每一行记录
+    for record in all_records:
+        print('%-12s%-8s%-8s%-10s%-20s' % record)
 
 def show_menu():
     cmds = {'0': save, '1': cost, '2': query}
