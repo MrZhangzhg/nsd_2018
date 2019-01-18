@@ -42,8 +42,23 @@ Bye-bye
 >>> set_age(23, name='bob')   # 错误，name得到了多个值
 
 
-
-
+数学游戏：
+1、运行
+10 + 5 = 15
+Very Good!
+Continue(y/n)? y
+10 - 5 = 1
+Wrong Answer
+10 - 5 = 2
+Wrong Answer
+10 - 5 = 3
+Wrong Answer
+10 - 5 = 5
+Continue(y/n)? n
+Bye-bye
+2、函数应该简单一些，只出一道题。如果希望有多道题，可以调用函数多次
+3、函数内部，需要得到两个数字、加法还是减法、算式的正确答案
+4、提示用户做答，判断用户是否答对
 
 
 
