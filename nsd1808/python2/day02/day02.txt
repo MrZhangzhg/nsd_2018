@@ -1,0 +1,39 @@
+记账程序
+1、交互式程序
+(0) save
+(1) cost
+(2) query
+(3) quit
+Please input your choice(0/1/2/3): 0/1
+amount: 100
+comment: eat
+(0) save
+(1) cost
+(2) query
+(3) quit
+Please input your choice(0/1/2/3): 2
+date        cost    save    balance     comment
+2019-1-18   100     0       9900        eat
+(0) save
+(1) cost
+(2) query
+(3) quit
+Please input your choice(0/1/2/3): 3
+Bye-bye
+2、思考有哪些功能，把功能定义成函数，编写程序主体框架
+3、在主程序代码部分，按顺序分别调用函数
+
+[('2018-1-18', 0, 0, 10000, 'init'), ('2018-1-18', 0, 100, 9900, 'eat')]
+
+
+
+
+
+
+
+
+
+
+
+
+
