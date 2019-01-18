@@ -99,9 +99,53 @@ abc
 100
 
 
+偏函数：
+改造现有函数，将其中的一部分参数固定下来，生成一个新的函数。
+
+递归函数：函数内部包含了对自己的调用
+5!=5x4x3x2x1
+5!=5x4!
+5!=5x4x3!
+5!=5x4x3x2!
+5!=5x4x3x2x1!
+5!=5x4x3x2x1
 
 
+生成器：本质上就是一个函数，但是函数只能返回一个址，生成器可以返回很多中间值
+>>> def mygen():
+...     yield 10
+...     a = 100 + 200
+...     yield a
+...     yield 'hello'
+>>> a = mygen()
+>>> a.__next__()
+>>> a.__next__()
+>>> a.__next__()
+>>> a.__next__()
+>>> a = mygen()
+>>> for i in a:
+...     print(i)
 
+68-生成器实例：每次取出文件的10行内容
+def blocks(fobj):
+    block = []
+    counter = 0
+    for line in fobj:
+        block.append(line)
+        counter += 1
+        if counter == 10:
+            yield block  # 返回中间结果，下次取值，从这里继续向下执行
+            block = []
+            counter = 0
+    if block:  # 文件最后不够10行的部分
+        yield block
+
+if __name__ == '__main__':
+    fobj = open('/tmp/passwd')  # cp /etc/passwd /tmp
+    for lines in blocks(fobj):
+        print(lines)
+        print()
+    fobj.close()
 
 
 
