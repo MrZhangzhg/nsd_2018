@@ -57,7 +57,57 @@ star = '*' * 30
 >>> m.hexdigest()
 
 
+tarfile模块
+>>> import os
+>>> import tarfile
+>>> tar = tarfile.open('/tmp/security.tar.gz', 'w:gz')
+>>> tar.add('/etc/hosts')
+>>> os.chdir('/etc')
+>>> tar.add('security')
+>>> tar.close()
+[root@room8pc16 day03]# file /tmp/security*
 
+>>> os.mkdir('/tmp/demo')
+>>> os.chdir('/tmp/demo')
+>>> tar = tarfile.open('/tmp/security.tar.gz', 'r:gz')
+>>> tar.extractall()
+>>> tar.close()
+
+
+备份程序：
+1、判断文件是否需要增量备份
+周一：{'a.txt': 'e10adc3949ba59abbe56e057f20f883e', 'b.txt': 'f5eb3afbd308d60de12fe0d77f28a7e2'}
+周二：{'a.txt': 'e10adc3949ba59abbe56e057f20f883e', 'b.txt': '1b8f16e6e10c1a822dfc36cc4256344d', 'c.txt': '86c5889285bf23bae75f61a29eff8494'}
+2、完全备份：把目录打包、计算每个文件的md5值
+3、增量备份：判断有哪些新增文件和改动的文件，打包这些文件；更新文件的md5值
+4、递归列出目录中的所有文件
+>>> a = os.walk('/tmp/demo/security')
+>>> a.__next__()
+>>> for path, folders, files in os.walk('/tmp/demo/security'):
+...     for file in files:
+...         os.path.join(path, file)
+
+
+OOP：面向对象编程
+类方法：在OOP中，一般只有创建了实例，才能通过实例执行方法。如果没有实例就需要执行
+方法，可以使用类方法
+class Date:
+    def __init__(self, year, month, day):
+        self.year = year
+        self.month = month
+        self.day = day
+
+    @classmethod
+    def create_date(cls, date_str):
+        year, month, day = map(int, date_str.split('-'))
+        return cls(year, month, day)
+
+if __name__ == '__main__':
+    d1 = Date(2019, 1, 20)
+    print(d1.month)
+    d2 = Date.create_date('2019-1-21')
+    print(d2.year)
+静态方法：可以理解为把一个函数硬生生塞到类中，但是它与类没有什么关系
 
 
 
