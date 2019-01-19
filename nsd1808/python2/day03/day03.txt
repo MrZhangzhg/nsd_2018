@@ -1,0 +1,79 @@
+python导入模块，在以下路径搜索
+1、sys.path定义的路径
+如果希望将自己写的程序放到sys.path中，可以使用site-packages这个目录
+2、PYTHONPATH环境变量定义的路径
+# export PYTHONPATH=/var/ftp/nsd_2018/nsd1808/python2/day03
+
+
+导入模块的方法
+>>> import os, time, pickle     # 可读性不好，不推荐
+>>> from random import randint, choice    # 常用
+>>> import pickle as p     # 导入模块后，将其设置别名
+
+pycharm规范化代码的方法：
+1、code -> reformat code
+2、code -> optimize imports   优化模块导入
+
+包：将目录当成一个特殊模块
+[root@room8pc16 day03]# mkdir mydemo
+[root@room8pc16 day03]# vim mydemo/foo.py
+hi = 'hello world'
+>>> import mydemo.foo
+>>> mydemo.foo.hi
+>>> exit()
+[root@room8pc16 day03]# vim mydemo/__init__.py
+star = '*' * 30
+>>> import mydemo
+>>> mydemo.star
+>>> mydemo.foo   # 报错，因为没有导入
+>>> from mydemo import foo
+>>> foo.hi
+'hello world'
+
+加密：
+对称加密：加解密算法和密钥一样，常用算法DES/3DES/AES
+非对称加密：公钥加密、私钥解密。常用算法RSA/DSA
+单向加密：加密只能向一个方向进行。相同的源数据总是产生相同的乱码，但是不能通过乱码
+反推出原始数据。常用算法MD5/SHA
+
+单向加密的作用：
+1、存储加密的密码   /etc/shadow
+2、校验文件，检查文件的完整性
+>>> import hashlib
+>>> m = hashlib.md5(b'123456')   # 得到123456的md5对象
+>>> m.hexdigest()    # 获取123456它的md5值(以16进制显示)
+'e10adc3949ba59abbe56e057f20f883e'
+
+>>> m = hashlib.md5()    # 分批次计算一部分，得到最终结果
+>>> m.update(b'12')
+>>> m.update(b'34')
+>>> m.update(b'56')
+>>> m.hexdigest()
+'e10adc3949ba59abbe56e057f20f883e'
+
+>>> with open('/etc/passwd', 'rb') as fobj:  # 校验文件内容
+...     data = fobj.read()
+>>> m = hashlib.md5(data)
+>>> m.hexdigest()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
