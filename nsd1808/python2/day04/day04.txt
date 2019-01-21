@@ -37,6 +37,21 @@ None
 >>> for m in re.finditer('f..', 'seafood is food'):
 ...     m.group()
 
+在匹配量大的时候，可以先把模式进行编译以提升效率
+>>> patt = re.compile('f..')
+>>> m = patt.search('seafood')
+>>> m.group()
+'foo'
+>>> patt.findall('seafood is food')
+['foo', 'foo']
+
+以-和.作用分隔符进行切割
+>>> re.split('-|\.', 'hello-world.tar.gz')
+['hello', 'world', 'tar', 'gz']
+
+替换
+>>> re.sub('X', 'Mr.Smith', 'Hi X. Nice to meet you, X')
+'Hi Mr.Smith. Nice to meet you, Mr.Smith'
 
 
 
