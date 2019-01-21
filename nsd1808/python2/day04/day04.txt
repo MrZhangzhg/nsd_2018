@@ -12,3 +12,39 @@
 (4) 更新md5文件
 
 
+
+192.168.1.1     000C2912890A
+192.168.1.2     525400A8B9D0
+
+:%s/\(..\)\(..\)\(..\)\(..\)\(..\)\(..\)$/\1:\2:\3:\4:\5:\6/
+
+re模块
+>>> import re
+>>> re.match('f..', 'food')  # 匹配到，返回匹配对象
+<_sre.SRE_Match object; span=(0, 3), match='foo'>
+>>> print(re.match('f..', 'seafood'))   # 没匹配到返回None
+None
+>>> m = re.match('f..', 'food')
+>>> m.group()   # 通过匹配对象的group方法，返回匹配到的字符串
+'foo'
+>>> m = re.search('f..', 'seafood')
+>>> m.group()
+'foo'
+
+>>> re.findall('f..', 'seafood is food')
+['foo', 'foo']
+>>> list(re.finditer('f..', 'seafood is food'))
+>>> for m in re.finditer('f..', 'seafood is food'):
+...     m.group()
+
+
+
+
+
+
+
+
+
+
+
+
