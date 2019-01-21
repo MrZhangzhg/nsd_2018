@@ -53,6 +53,16 @@ None
 >>> re.sub('X', 'Mr.Smith', 'Hi X. Nice to meet you, X')
 'Hi Mr.Smith. Nice to meet you, Mr.Smith'
 
+排序
+>>> from collections import Counter
+>>> c = Counter()
+>>> c.update(['192.168.20.3'])
+>>> c.update(['192.168.20.3'])
+>>> c.update(['192.168.20.3'])
+>>> c.most_common(3)   # 值最多的前3名
+
+
+
 
 
 
