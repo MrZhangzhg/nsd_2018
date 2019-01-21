@@ -83,7 +83,7 @@ b'\xe4\xbd\xa0\xe5\xa5\xbd'
 '你好'
 
 
-
+把tcpserv2.py改成oop的形式呈现，将客户端发来的数据，加上时间再发回去
 
 
 
