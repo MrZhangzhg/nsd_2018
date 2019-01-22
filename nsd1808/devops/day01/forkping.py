@@ -3,7 +3,7 @@ import os
 
 def ping(host):
     rc = subprocess.call('ping -c2 %s &> /dev/null' % host, shell=True)
-    if rc == 0:
+    if rc == 0:   # rc就是ping命令的退出码，即$?
         print('%s:up' % host)
     else:
         print('%s:down' % host)
