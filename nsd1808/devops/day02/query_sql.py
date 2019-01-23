@@ -61,11 +61,32 @@ session = Session()
 # for name, email in query9:
 #     print('%s: %s' % (name, email))
 #####################################
-from sqlalchemy import and_, or_
-query10 = session.query(Employees.emp_name, Employees.email, Employees.dep_id)\
-    .filter(or_(Employees.dep_id==2, Employees.email.like('%@qq.com')))
-print(query10)
-for name, email, dep_id in query10:
-    print('%s: %s %s' % (name, email, dep_id))
+# from sqlalchemy import and_, or_
+# query10 = session.query(Employees.emp_name, Employees.email, Employees.dep_id)\
+#     .filter(or_(Employees.dep_id==2, Employees.email.like('%@qq.com')))
+# print(query10)
+# for name, email, dep_id in query10:
+#     print('%s: %s %s' % (name, email, dep_id))
+#####################################
+# query11 = session.query(Employees.emp_name, Employees.email)
+# print(query11.all())
+# print(query11.first())
+#####################################
+# query12 = session.query(Employees.emp_name, Employees.email)\
+#     .filter(Employees.emp_id==100)
+# print(query12.one())
+# print(query12.scalar())
+#####################################
+# query13 = session.query(Employees).filter(Employees.dep_id==2)
+# print(query13.count())
+#####################################
+# query14 = session.query(Employees.emp_name, Departments.dep_name)\
+#     .join(Departments, Employees.dep_id==Departments.dep_id)
+# print(query14.all())
+#####################################
+query15 = session.query(Departments.dep_name, Employees.emp_name)\
+    .join(Employees, Employees.dep_id==Departments.dep_id)
+print(query15.all())
+
 
 
