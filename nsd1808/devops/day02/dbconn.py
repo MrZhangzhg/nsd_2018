@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative	import declarative_base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, ForeignKey
 
 # 连接指定 用户名:密码@服务器/数据库?参数
 engine = create_engine(
@@ -18,6 +18,16 @@ class Departments(Base):
 
     def __str__(self):
         return "<部门: %s>" % self.dep_name
+
+class Employees(Base):
+    __tablename__ = 'employees'
+    emp_id = Column(Integer, primary_key=True)
+    emp_name = Column(String(20))
+    email = Column(String(50))
+    dep_id = Column(Integer, ForeignKey('departments.dep_id'))
+
+    def __str__(self):
+        return "<姓名: %s>" % self.emp_name
 
 if __name__ == '__main__':
     Base.metadata.create_all(engine)
