@@ -10,7 +10,7 @@ conn = pymysql.connect(
 )
 cursor = conn.cursor()
 
-insert1 = 'INSERT INTO departments VALUES(%s, %s)'
+# insert1 = 'INSERT INTO departments VALUES(%s, %s)'
 # cursor.execute(insert1, (1, 'HR'))
 # deps = [(2, '运维'), (3, '开发'), (4, '测试')]
 # cursor.executemany(insert1, deps)

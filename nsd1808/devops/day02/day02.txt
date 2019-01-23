@@ -31,6 +31,22 @@ pymysql:
 
 
 
+sqlalchemy
+1、安装
+# cd sqlalchemy_pkgs/
+# pip3 install SQLAlchemy-1.2.14.tar.gz
+2、ORM
+O：Object  对象   class
+R：Relationship   关系(数据库)
+M：Map  映射
+在sqlalchemy中，不需要再写sql语句。sqlalchemy把数据库字段的各种数据类型编写成了
+class，数据库的每个字段也编写成了Column类。把数据库中的表编写成class。
+表中的一行记录对应成class的一个实例。
+
+3、创建数据库
+MariaDB [nsd1808]> CREATE DATABASE tedu1808 DEFAULT CHARSET utf8;
+
+
 
 
 
