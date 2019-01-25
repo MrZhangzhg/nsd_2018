@@ -1,5 +1,6 @@
 import paramiko
 import sys
+import os
 import getpass
 import threading
 
@@ -17,6 +18,12 @@ def rcmd(host, user='root', passwd=None, cmd=None):
     ssh.close()
 
 if __name__ == '__main__':
+    if len(sys.argv) != 3:
+        print('Usage: %s ipfile "command"' % sys.argv[0])
+        exit(1)
+    if not os.path.isfile(sys.argv[1]):
+        print('No such file:', sys.argv[1])
+        exit(2)
     ipfile = sys.argv[1]
     command = sys.argv[2]
     password = getpass.getpass()
