@@ -102,7 +102,27 @@ wget模块
 
 
 
+paramiko：实现SSH
+1、安装
+# cd paramiko_pkgs/
+# pip3 install *
+2、创建虚拟机，用于测试
+配置IP和主机名
 
+3、使用
+>>> import paramiko
+>>> ssh = paramiko.SSHClient()
+>>> ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())  # 回答yes
+>>> ssh.connect('192.168.4.3', username='root', password='123456')
+>>> ssh.exec_command('mkdir /tmp/demo')
+>>> ssh.close()
+
+>>> ssh.connect('192.168.4.3', username='root', password='123456')
+>>> result = ssh.exec_command('id root; id zhangsan')
+>>> len(result)
+执行命令的结果有三项，分别是输入、输出和错误的类文件对象
+>>> result[1].read()
+>>> result[2].read()
 
 
 
