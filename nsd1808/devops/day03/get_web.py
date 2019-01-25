@@ -27,12 +27,12 @@ if __name__ == '__main__':
     url_patt = '(http|https)://[-\w./]+\.(png|jpg|jpeg|gif)'
     download(net_url, fname)
     url_list = get_url(fname, url_patt, encoding='gbk')
-    folder = '/tmp/wangyi/'
+    folder = '/tmp/wangyi/'   # 保存图片的本地目录
     if not os.path.exists(folder):
         os.mkdir(folder)
     for url in url_list:
-        fname = url.split('/')[-1]
-        fname = os.path.join(folder, fname)
+        fname = url.split('/')[-1]    # 取出网址中的文件名
+        fname = os.path.join(folder, fname)   # 拼接本地文件绝对路径
         try:
             download(url, fname)
         except urllib.error.HTTPError:
