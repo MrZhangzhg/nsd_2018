@@ -1,4 +1,6 @@
 import paramiko
+import sys
+import getpass
 
 def rcmd(host, user='root', passwd=None, cmd=None):
     ssh = paramiko.SSHClient()
@@ -14,4 +16,10 @@ def rcmd(host, user='root', passwd=None, cmd=None):
     ssh.close()
 
 if __name__ == '__main__':
-    rcmd('192.168.4.3', passwd='123456', cmd='id root; id zhangsan')
+    ipfile = sys.argv[1]
+    command = sys.argv[2]
+    password = getpass.getpass()
+    with open(ipfile) as fobj:
+        for line in fobj:
+            ip = line.strip()
+            rcmd(ip, passwd=password, cmd=command)
