@@ -39,6 +39,77 @@ with open('/tmp/163.html', 'wb') as fobj:
 >>> f.close()
 
 
+模拟客户端：服务器日志记录中看到的客户端是指定的浏览器
+# vim /var/log/httpd/access_log
+>>> from urllib import request
+>>> header = {'User-agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'}
+>>> r = request.Request('http://127.0.0.1/', headers=header)
+>>> html = request.urlopen(r)
+>>> html.read()
+
+编码：URL中只允许一部字符，其他字符需要编码，比如“亚洲”在URL中的编码是%E4%BA%9A%E6%B4%B2
+https://www.sogou.com/web?query=%E4%BA%9A%E6%B4%B2
+
+>>> url = 'https://www.sogou.com/web?query=%s'
+>>> param = request.quote('中国')
+>>> print(param)
+>>> html = request.urlopen(url % param)
+>>> with open('/tmp/china.html', 'wb') as fobj:
+...     fobj.write(html.read())
+
+
+异常处理
+http://127.0.0.1/abc/   -> 不存在
+http://127.0.0.1/ban/   -> 无权限
+
+wget模块
+[root@room8pc16 day01]# pip3 install wget
+>>> wget.download('https://inews.gtimg.com/newsapp_bt/0/7436169646/641')
+>>> wget.download('https://inews.gtimg.com/newsapp_bt/0/7436169646/641', '/tmp/666.jpeg')
+>>> wget.download('https://inews.gtimg.com/newsapp_bt/0/7436169646/641', '/tmp')
+
+
+管理虚拟机
+# yum install -y libvirt-devel
+# pip3 install python-libvirt
+>>> import libvirt
+>>> kvm = libvirt.open('qemu:///system')
+>>> for vm in kvm.listAllDomains():
+...     print(vm.name())
+>>> vm1 = kvm.listAllDomains()[2]
+>>> vm1.name()
+
+查看本机属性
+# pip3 install psutil
+>>> import psutil
+>>> psutil.sensors_temperatures()   # CPU温度
+>>> psutil.sensors_fans()   # 风扇转速
+>>> psutil.sensors_battery()   # 电池
+>>> import pprint
+>>> pprint.pprint(psutil.sensors_temperatures()['coretemp'])
+>>> psutil.cpu_percent(1)  # 1秒间隔，取出CPU使用率
+>>> psutil.net_if_addrs()
+>>> psutil.net_if_addrs()['enp2s0']   # 名为enp2s0网卡的信息
+>>> psutil.disk_partitions()   # 分区
+>>> root = psutil.disk_partitions()[0]
+>>> root.mountpoint
+>>> root.device
+>>> psutil.virtual_memory()   #　内存
+>>> psutil.net_io_counters()   # 网络数据包收发
+>>> psutil.boot_time()    # 服务器开机时间
+>>> import time
+>>> time.ctime(psutil.boot_time())
+
+
+
+
+
+
+
+
+
+
+
 
 
 
