@@ -1,0 +1,48 @@
+http:超文本传输协议
+客户端发起请求request，服务器响应response。一个请求只能有一个响应。
+请求的方法：
+get：打开浏览器，输入网址；在页面中点击超链接；表单默认的行为也是get。
+post：表单常用的方法，用于上传数据给服务器。比如登陆
+
+状态码：
+200：OK
+3xx：重定向
+4xx：客户端错误
+5xx：服务器内部错误
+
+使用telnet访问web服务
+[root@room8pc16 day01]# telnet 127.0.0.1 80
+GET / HTTP/1.1
+HOST: localhost
+回车
+
+# telnet www.163.com 80
+GET / HTTP/1.1
+HOST: www.163.com
+
+
+下载网易首页
+from urllib import request
+
+html = request.urlopen('http://www.163.com/')
+with open('/tmp/163.html', 'wb') as fobj:
+    while True:
+        data = html.read(1024)
+        if not data:
+            break
+        fobj.write(data)
+下载的页面，如果使用vim打开，中文是乱码。如果用python默认的方式打开，文件读取异常
+原因是默认使用了utf8，但是网易使用的是“简体中文”
+简体中文可以用的字符编码是gb2312、gbk、gb18030，建议使用gbk
+>>> f = open('/tmp/163.html', encoding='gbk')
+>>> f.read()
+>>> f.close()
+
+
+
+
+
+
+
+
+
