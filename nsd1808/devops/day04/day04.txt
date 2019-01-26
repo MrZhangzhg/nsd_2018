@@ -84,9 +84,15 @@ https://www.zabbix.com/documentation/4.0/zh/manual
 3、示例zabbix api的URL：http://192.168.4.2/zabbix/api_jsonrpc.php
 
 
-
-
-
+配置虚拟机上网
+1、virt-manager中  编辑=>连接详情=>虚拟网络=>default,勾选自动启动，点左下角的启动
+2、关闭虚拟机
+3、虚拟机控制台，点击灯泡图标，将第2块网卡连接到default网络
+4、开启虚拟机
+5、将虚拟机的virbr0网卡干掉
+[root@node2 ~]# ifconfig virbr0 down
+[root@node2 ~]# brctl delbr virbr0
+6、虚拟机eth1采用DHCP自动获取地址，即可上网
 
 
 
