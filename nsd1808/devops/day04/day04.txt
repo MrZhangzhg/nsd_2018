@@ -32,6 +32,26 @@ http://www.weather.com.cn/data/sk/101010100.html
 天气图标地址：http://m.weather.com.cn/img/n1.gif
 
 
+requests
+1、安装
+# pip3 install requests
+2、应用
+>>> import requests
+>>> r = requests.get('http://www.sogou.com')
+>>> r.text    # 如果是文本内容使用text属性
+
+>>> r = requests.get('https://img30.360buyimg.com/n7/jfs/t1/10650/22/3705/309831/5c0745d2Ea9247815/d54de4e076dabb3d.jpg')
+>>> with open('/tmp/m.jpg', 'wb') as f:
+...     f.write(r.content)    # 如果是2进制文件采用content属性
+
+>>> r = requests.get('http://www.weather.com.cn/data/sk/101010100.html')
+>>> r.json()  # 如果是json格式就采用json方法
+>>> r.encoding    # 字符编码
+>>> r.encoding='utf8'   # 修改字符编码
+>>> r.json()
+
+
+
 
 
 
