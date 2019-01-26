@@ -50,7 +50,13 @@ requests
 >>> r.encoding='utf8'   # 修改字符编码
 >>> r.json()
 
-
+3、传参
+获取https://www.sogou.com/web?query=人民币汇率  的内容
+>>> url = 'https://www.sogou.com/web'
+>>> param = {'query': '人民币汇率'}
+>>> r = requests.get(url, params=param)
+>>> with open('/tmp/sogou.html', 'w') as fobj:
+...     fobj.write(r.text)
 
 
 
