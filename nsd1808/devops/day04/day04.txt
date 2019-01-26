@@ -1,0 +1,43 @@
+json：可以在网络中传输各种数据类型的对象
+>>> import json
+>>> alist = [100, 200, 300]
+>>> json.dumps(alist)    # 将列表转换成json格式数据
+'[100, 200, 300]'
+>>> jdata = json.dumps(alist)
+>>> type(jdata)
+<class 'str'>
+>>> jdata
+'[100, 200, 300]'
+>>> json.loads(jdata)   # 将json字符转换为python数据类型
+[100, 200, 300]
+
+
+获取天气情况
+实况天气获取:http://www.weather.com.cn/data/sk/城市代码.html
+城市信息获取:http://www.weather.com.cn/data/cityinfo/城市代码.html
+详细指数获取:http://www.weather.com.cn/data/zs/城市代码.html
+百度搜索“中国天气网 城市代码”
+北京：
+http://www.weather.com.cn/data/sk/101010100.html
+>>> from urllib import request
+>>> import json
+>>> html = request.urlopen('http://www.weather.com.cn/data/sk/101010100.html')
+>>> data = html.read()
+>>> json.loads(data)
+>>> bj_weather = json.loads(data)
+>>> import pprint
+>>> pprint.pprint(bj_weather)
+>>> bj_weather['weatherinfo']['temp']
+
+天气图标地址：http://m.weather.com.cn/img/n1.gif
+
+
+
+
+
+
+
+
+
+
+
