@@ -47,7 +47,7 @@ requests
 >>> r = requests.get('http://www.weather.com.cn/data/sk/101010100.html')
 >>> r.json()  # 如果是json格式就采用json方法
 >>> r.encoding    # 字符编码
->>> r.encoding='utf8'   # 修改字符编码
+>>> r.encoding = 'utf8'   # 修改字符编码
 >>> r.json()
 
 3、传参
@@ -58,8 +58,19 @@ requests
 >>> with open('/tmp/sogou.html', 'w') as fobj:
 ...     fobj.write(r.text)
 
+4、修改请求头
+>>> header = {'User-agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'}
+>>> r = requests.get('http://127.0.0.1/', headers=header)
 
+5、其他
+>>> r.status_code   # 返回的状态码
+>>> r = requests.get('http://127.0.0.1/abc')   # url不存在，没有异常
+>>> r.status_code
+404
+>>> r.raise_for_status()     # 触发异常
 
+6、post方法
+搜索钉钉机器人 开放平台  =>
 
 
 
