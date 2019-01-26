@@ -72,6 +72,26 @@ requests
 6、post方法
 搜索钉钉机器人 开放平台  =>
 
+[电子书下载]
+http://down.51cto.com/
+
+
+
+zabbix:
+1、示例zabbix网址是http://192.168.4.2/zabbix/
+2、官方文档页：
+https://www.zabbix.com/documentation/4.0/zh/manual
+3、示例zabbix api的URL：http://192.168.4.2/zabbix/api_jsonrpc.php
+
+
+
+
+
+
+
+
+
+
 
 
 
