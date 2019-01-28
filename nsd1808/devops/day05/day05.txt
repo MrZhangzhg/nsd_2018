@@ -1,0 +1,20 @@
+CI/CD：持续集成、持续交付(部署)
+
+配置JENKINS环境
+1、启动gitlab服务器      192.168.4.1
+2、配置jenkins          eth0:192.168.4.3   eth1连接default
+[root@node3 ~]# ifconfig virbr0 down
+[root@node3 ~]# brctl delbr virbr0
+3、安装
+将jenkins/目录下的RPM包拷贝到192.168.4.3上安装
+[root@node3 ~]# rpm -ihv jenkins-2.138.2-1.1.noarch.rpm
+[root@node3 ~]# systemctl start jenkins
+4、
+通过浏览器访问http://192.168.4.3:8080/
+安装插件时，选择自定义，不安装任何插件
+
+
+
+
+
+
