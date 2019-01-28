@@ -44,6 +44,16 @@ https://blog.csdn.net/you227/article/details/81076032
 <h2>new line</h2>
 
 
+上传代码到gitlab
+1、gitlab服务器配置参见PPT
+2、上传代码到gitlab，采用http的方式
+cd /tmp/myweb
+git remote rename origin old-origin
+以下错误忽略 error: 不能重命名配置小节 'remote.origin' 到 'remote.old-origin'
+git remote add origin http://192.168.4.1/devops/myweb_1808.git
+git push -u origin --all
+git push -u origin --tags
+
 
 
 
