@@ -19,6 +19,32 @@ https://blog.csdn.net/you227/article/details/81076032
 在“可选插件”中找到“git parameter”，直接安装
 
 
+模拟开发部开发软件
+[root@room8pc16 jenkins]# git init /tmp/myweb
+[root@room8pc16 jenkins]# cd /tmp/myweb
+[root@room8pc16 myweb]# echo '<h1>my web site</h1>' > index.html
+[root@room8pc16 myweb]# git add .
+[root@room8pc16 myweb]# git commit -m "myweb site init"
+[root@room8pc16 myweb]# git tag 1.0   # 把当前状态标记为1.0版本
+[root@room8pc16 myweb]# echo '<h2>new line</h2>' >> index.html
+[root@room8pc16 myweb]# git add .
+[root@room8pc16 myweb]# git commit -m "mysite version 2.0"
+[root@room8pc16 myweb]# git tag 2.0    # 把当前状态标记为2.0版本
+[root@room8pc16 myweb]# git tag        # 查看所有的版本
+
+[root@room8pc16 myweb]# cat index.html
+<h1>my web site</h1>
+<h2>new line</h2>
+[root@room8pc16 myweb]# git checkout 1.0
+[root@room8pc16 myweb]# cat index.html
+<h1>my web site</h1>
+[root@room8pc16 myweb]# git checkout master
+[root@room8pc16 myweb]# cat index.html
+<h1>my web site</h1>
+<h2>new line</h2>
+
+
+
 
 
 
