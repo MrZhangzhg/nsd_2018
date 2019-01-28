@@ -89,6 +89,21 @@ rm -rf mysite_$webver
 echo $webver > $deploy_dir/live_version
 
 
+应用服务器自动下载并部署最新版本
+/var/www/download/  -> 用于保存下载的压缩包和版本文件
+/var/www/deploy/    -> 解压软件到该目录
+/var/www/html/nsd1808  -> 是最新版本的软链接
+
+1、判断是否有最新版本
+2、如果有新版本则下载
+3、判断下载的软件包是否是完整的
+4、如果软件包完整，则解压缩并部署
+
+
+
+
+
+
 
 
 
