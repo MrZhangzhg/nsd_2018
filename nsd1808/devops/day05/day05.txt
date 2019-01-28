@@ -85,7 +85,8 @@ rm -rf mysite_$webver/.git    # 删除版本库文件
 tar czf mysite_${webver}.tar.gz mysite_$webver
 md5sum mysite_${webver}.tar.gz | awk '{print $1}' > mysite_${webver}.tar.gz.md5
 rm -rf mysite_$webver
-
+[ -f $deploy_dir/live_version ] && cat $deploy_dir/live_version > $deploy_dir/last_version
+echo $webver > $deploy_dir/live_version
 
 
 
