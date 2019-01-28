@@ -9,9 +9,21 @@ CI/CD：持续集成、持续交付(部署)
 将jenkins/目录下的RPM包拷贝到192.168.4.3上安装
 [root@node3 ~]# rpm -ihv jenkins-2.138.2-1.1.noarch.rpm
 [root@node3 ~]# systemctl start jenkins
-4、
+4、配置
 通过浏览器访问http://192.168.4.3:8080/
 安装插件时，选择自定义，不安装任何插件
+
+5、通过镜像站点安装插件
+https://blog.csdn.net/you227/article/details/81076032
+把插件地址改为清华大学的镜像站点地址
+在“可选插件”中找到“git parameter”，直接安装
+
+
+
+
+
+
+
 
 
 
