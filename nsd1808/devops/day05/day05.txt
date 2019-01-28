@@ -55,6 +55,39 @@ git push -u origin --all
 git push -u origin --tags
 
 
+通过jenkins下载gitlab上指定版本的源码
+[root@node3 ~]# ls /var/lib/jenkins/
+下载的代码，将地存储到该目录的workspace中
+在jenkins中构建一个自由风格的项目，参数化构建git parameter => webver
+URL => http://192.168.4.1/devops/myweb_1808.git
+源码管理 => git => Branches to Build : $webver
+
+增加Additional Behaviours =>
+    Checkout to a sub-directory => mysite_$webver
+
+在jenkins上安装httpd，将gitlab上下载的代码放到httpd的文档目录，以便于
+其他应用服务器进行下载
+[root@node3 ~]# yum install -y httpd
+[root@node3 ~]# systemctl start httpd
+[root@node3 ~]# systemctl enable httpd
+
+配置jenkins，将下载的代码拷贝到/var/www/html/下，并且打包
+/var/www/html/deploy/packages/  -> 存放软件压缩包和md5值
+/var/www/html/deploy/  -> 存放版本文件
+[root@node3 ~]# mkdir -p /var/www/html/deploy/packages
+[root@node3 ~]# chown -R jenkins.jenkins /var/www/html/deploy
+
+增加构建步骤 => 执行shell
+deploy_dir=/var/www/html/deploy
+cp -r mysite_$webver $deploy_dir/packages
+cd $deploy_dir/packages
+rm -rf mysite_$webver/.git    # 删除版本库文件
+tar czf mysite_${webver}.tar.gz mysite_$webver
+md5sum mysite_${webver}.tar.gz | awk '{print $1}' > mysite_${webver}.tar.gz.md5
+rm -rf mysite_$webver
+
+
+
 
 
 
