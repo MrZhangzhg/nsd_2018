@@ -1,0 +1,59 @@
+ansible
+1、安装
+# cd ansible_pkg/
+# pip3 install pycparser-2.19.tar.gz PyYAML-3.13.tar.gz ansible-2.7.2.tar.gz *
+# yum install -y sshpass
+2、准备三台虚拟机，用于测试
+node4.tedu.cn   192.168.4.4
+node5.tedu.cn   192.168.4.5
+node6.tedu.cn   192.168.4.6
+3、基础配置
+[root@room8pc16 day06]# mkdir myansible
+[root@room8pc16 day06]# cd myansible
+[root@room8pc16 myansible]# vim ansible.cfg
+[defaults]
+inventory = hosts
+remote_user = root
+[root@room8pc16 myansible]# vim hosts
+[dbservers]
+192.168.4.4
+
+[webservers]
+192.168.4.5
+192.168.4.6
+4、扫描主机密钥并保存
+[root@room8pc16 ~]# ssh-keyscan 192.168.4.{4..6} >> /root/.ssh/known_hosts
+5、测试到所有服务器的管理操作
+[root@room8pc16 myansible]# ansible all -m ping -k
+6、在线centos RPM包
+http://vault.centos.org/
+http://rpmfind.net
+7、执行adhoc临时命令
+# ansible webservers -m yum -a "name=vsftpd state=latest" -k
+8、配置vim，如果是yaml文件按tab键缩进2个空格
+# vim ~/.vimrc
+autocmd FileType yaml setlocal sw=2 ts=2 et ai
+
+9、使用playbook分发密钥
+[root@room8pc16 day06]# ansible-doc authorized_key
+[root@room8pc16 myansible]# vim auth_keys.yml
+---
+- name: config public key
+  hosts: all
+  tasks:
+    - name: upload root pubkey
+      authorized_key:
+        user: root
+        state: present
+        key: "{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"
+# ansible-playbook --syntax-check auth_keys.yml
+# ansible-playbook auth_keys.yml -k
+
+
+
+
+
+
+
+
+
