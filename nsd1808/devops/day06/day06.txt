@@ -147,6 +147,27 @@ if __name__ == '__main__':
 # ansible 192.168.4.4 -m mkrepo -a "yuan=http://192.168.4.254/server.repo mudi=/etc/yum.repos.d/"
 
 
+ansible cmdb
+1、安装
+# cd ansible-cmdb_pkgs/
+# pip3 install ansible-cmdb-1.30.tar.gz
+2、收集远程主机的信息
+[root@room8pc16 myansible]# ansible all -m setup --tree /tmp/out
+[root@room8pc16 myansible]# ls /tmp/out/
+3、ansible-cmdb默认使用py2，改成py3
+[root@room8pc16 myansible]# vim /usr/local/bin/ansible-cmdb
+PY_BIN=$(which python3)
+
+4、利用ansible-cmdb分析收集的信息
+[root@room8pc16 myansible]# ansible-cmdb /tmp/out/ > /tmp/info.html
+[root@room8pc16 myansible]# firefox /tmp/info.html
+
+
+
+
+
+
+
 
 
 
