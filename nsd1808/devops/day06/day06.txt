@@ -48,6 +48,25 @@ autocmd FileType yaml setlocal sw=2 ts=2 et ai
         key: "{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"
 # ansible-playbook --syntax-check auth_keys.yml
 # ansible-playbook auth_keys.yml -k
+10、使用playbook上传yum配置文件
+[root@room8pc16 myansible]# mkdir files
+[root@room8pc16 myansible]# vim files/server.repo
+[root@room8pc16 myansible]# vim yum_repo.yml
+---
+- name: upload yum repo file
+  hosts: all
+  tasks:
+    - name: upload centos7 repo
+      copy:
+        src: files/server.repo
+        dest: /etc/yum.repos.d/server.repo
+[root@room8pc16 myansible]# ansible-playbook yum_repo.yml
+[root@room8pc16 myansible]# ansible all -m yum -a "list=php"
+
+
+
+
+
 
 
 
