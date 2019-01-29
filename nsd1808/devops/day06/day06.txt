@@ -91,9 +91,23 @@ autocmd FileType yaml setlocal sw=2 ts=2 et ai
         state: started
         enabled: yes
 
+1、访问https://docs.ansible.com/
+在搜索框中输入python api进行搜索，点击进入python api的页面后，复制example代码
 
 
-
+>>> from collections import namedtuple
+>>> Point = namedtuple('Point', ['x', 'y', 'z'])
+>>> p1 = Point(10, 15, 30)
+>>> p1[0]
+10
+>>> p1[-1]
+30
+>>> p1[:2]
+(10, 15)
+>>> len(p1)
+>>> p1.x
+>>> p1.y
+>>> p1.z
 
 
 
