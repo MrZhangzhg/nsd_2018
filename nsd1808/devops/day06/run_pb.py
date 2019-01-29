@@ -66,5 +66,3 @@ if __name__ == '__main__':
         inventory_path=['myansible/hosts'],
         playbook_path=['myansible/lamp.yml']
     )
-
-

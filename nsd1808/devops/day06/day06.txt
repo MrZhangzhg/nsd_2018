@@ -110,7 +110,31 @@ autocmd FileType yaml setlocal sw=2 ts=2 et ai
 >>> p1.z
 
 
+自定义ansible模块
+1、创建模块目录
+[root@room8pc16 myansible]# mkdir library
+# export ANSIBLE_LIBRARY=/var/ftp/nsd_2018/nsd1808/devops/day06/myansible/library
+2、创建模块
+[root@room8pc16 myansible]# vim library/mycopy.py
+#!/usr/bin/env python3
 
+import shutil
+from ansible.module_utils.basic import AnsibleModule
+
+def main():
+    module = AnsibleModule(
+        argument_spec=dict(
+            yuan=dict(required=True, type='str'),   # 必选项
+            mudi=dict(required=True, type='str')
+        )
+    )
+    shutil.copy(module.params['yuan'], module.params['mudi'])
+    module.exit_json(changed=True)
+
+if __name__ == '__main__':
+    main()
+3、执行adhoc临时命令
+# ansible webservers -m mycopy -a "yuan=/etc/hosts mudi=/tmp/"
 
 
 
