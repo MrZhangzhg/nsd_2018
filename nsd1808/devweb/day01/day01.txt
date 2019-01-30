@@ -1,0 +1,15 @@
+HTML:
+CSS:
+BOOTSTRAP:
+
+服务器端的程序语言：python/php/java/asp
+客户端的程序语言：javascript(js)
+
+块级元素：即使文字很少，也必须占一行
+1、标题元素 h1 - h6
+2、段落元素 p
+3、div元素
+除了块级元素的都是行内元素：如果文字少，即使写到多行，在网页中也占一行
+
+http://www.runoob.com/  菜鸟教程
+
