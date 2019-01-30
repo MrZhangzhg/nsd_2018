@@ -1,6 +1,56 @@
+* {
+    font-size: 18pt;         /*字号*/
+    font-family: serif;      /*字体*/
+}
+
+a:link {    /*访问前的样式*/
+    color: darkblue;
+}
+a:hover {    /*鼠标悬停的样式*/
+    font-size: 1.5em;
+}
+a:visited {    /*访问后的样式*/
+    color: lightgray;
+}
+
+
+#id1 {
+    font-style: italic;
+}
+
+p .c2 {
+    color: green;
+}
+
+.warning {
+    color: red;
+    background: darkorange;
+}
+
+.important {
+    color: purple;
+    font-weight: bold;
+}
+
+
+.c1 {
+    background: lightseagreen;
+}
+
+.city{
+    color: orange;
+    font-weight: bold;
+}
+
 body{
     color: #555555;
 }
 hr{
     color: red;
 }
+/*p{
+    font-weight: bold;   !*加粗*!
+    font-size: 22px;     !*字号*!
+    color: purple;
+}
+*/
