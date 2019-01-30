@@ -13,3 +13,34 @@ BOOTSTRAP:
 
 http://www.runoob.com/  菜鸟教程
 
+
+https://www.sogou.com/web?query=python
+https://www.sogou.com/web 搜索网址
+query=python 是一个key-value键值对，表示搜索内容
+
+http://cn.bing.com/search?q=linux
+
+
+CSS: 层叠样式表，级联样式表
+内联样式：类似于标签的属性
+内部样式：定义在head元素中的样式
+外部样式：将样式单独写到一个文件中
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

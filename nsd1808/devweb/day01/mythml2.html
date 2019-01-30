@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>myhtml2</title>
+    <script>
+        function hello() {
+            alert('tedu欢迎你')
+        }
+    </script>
+</head>
+<body>
+<form action="">
+    <textarea name="msg" id="msg" cols="50" rows="10"></textarea>
+</form>
+
+<hr>
+<form action="">
+    <select name="course" size="5">
+        <option value="linux">linux</option>
+        <option value="service">service</option>
+        <option value="python">python</option>
+    </select>
+    <select name="course" id="course">
+        <option value="linux">linux</option>
+        <option value="service">service</option>
+        <option value="python">python</option>
+    </select>
+</form>
+
+
+<hr>
+<input type="button" onclick="hello()" value="welcome">
+
+<hr>
+
+
+
+<form action="">
+    <label><input type="radio" name="lesson">linux系统管理</label>
+    <label><input type="radio" name="lesson">服务管理</label>
+    <input type="radio" id="network" name="lesson"><label for="network">网络技术</label>
+</form>
+
+<hr>
+<form action="">
+    <input type="checkbox"><label>linux系统管理</label>
+    <label><input type="checkbox">服务管理</label>
+    <input type="checkbox" id="net"><label for="net">网络技术</label>
+</form>
+
+<hr>
+<form action="">
+    <label>用户：</label><input type="text" placeholder="用户名">
+    <label>密码：</label><input type="password" placeholder="密码">
+    <input type="text" maxlength="5" readonly>
+    <input type="reset">
+</form>
+
+
+<hr>
+<form action="https://www.sogou.com/web" target="_blank">
+    <input type="text" name="query">
+    <input type="submit" value="搜狗搜索">
+</form>
+<hr>
+<form action="http://cn.bing.com/search" target="_blank">
+    <input type="text" name="q">
+    <input type="submit" value="必应搜索">
+</form>
+<hr>
+<form action="http://www.baidu.com/s" target="_blank">
+    <input type="text" name="wd">
+    <input type="submit" value="百度搜索">
+</form>
+
+</body>
+</html>
