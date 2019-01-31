@@ -1,0 +1,12 @@
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
+.banner, .footer {
+    height: 100px;
+    background: #CCCCCC;
+}
+.main {
+    height: 300px;
+    background: darkgreen;
+}

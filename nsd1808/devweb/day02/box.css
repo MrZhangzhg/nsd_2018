@@ -6,7 +6,10 @@ body {
     border: 2px black solid;  /*宽度 颜色 样式*/
     width: 500px;
     height: 300px;
-    margin: 20px;
+    /*margin: 20px;*/
+    /*margin: 20px 40px 30px 50px;*/  /*上右下左*/
+    /*margin-left: 20px;*/
+    margin: 20px 40px;   /*上下20，左右40*/
     padding: 20px;
     font-size: 30px;
 }
