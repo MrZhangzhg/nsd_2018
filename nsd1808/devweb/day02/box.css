@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+}
+
+.box{
+    border: 2px black solid;  /*宽度 颜色 样式*/
+    width: 500px;
+    height: 300px;
+    margin: 20px;
+    padding: 20px;
+    font-size: 30px;
+}

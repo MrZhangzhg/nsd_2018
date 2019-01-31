@@ -4,14 +4,18 @@ html{
 
 .d1 {
     font-size: 15pt;
+    background: sienna;
+    color: #FFF;
 }
 .d2 {
     font-size: 15px;
+    color: #AAAAAA;
 }
 .d3, .d4 {
     font-size: 20px;
 }
 .c1 {
+    color: #192cbf;
     font-size: 2em;   /*c1在d3中，字号是d3字号的2倍*/
 }
 .c2 {
