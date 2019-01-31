@@ -12,6 +12,8 @@
     /*background: #CCCCCC;*/
 }
 .left {
+    font-size: 30px;
+    font-variant: small-caps;
     float: left;
     width: 300px;
     height: 300px;
@@ -22,6 +24,10 @@
     width: 400px;
     height: 300px;
     background: bisque;
+    font-family: fantasy;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
 }
 .right {
     float: right;
