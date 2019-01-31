@@ -12,12 +12,27 @@ div也可以有个border边框，这个div与其他元素的间隔叫margin外�
 一个组件宽度=左右外边距＋左右边框＋左右内边距＋对象宽度
 
 
-CCS+DIV
-1、一列居中
 
 
 
+bootstrap: 相当于是“美图”、"faceU"。
+它是twitter公司发布的一款开源前端框架。它把很多功能提前制作好了，并且放到了
+一个个的class中，我们只要把控件设置相应的class就可以得到预先设置的效果。
 
+
+准备bootstrap
+# cp -r /var/ftp/nsd_2018/software/static/ .
+static/css/bootstrap.min.css   # 删除了空格，生产环境用
+static/css/bootstrap.css       # 可以学习的时候使用
+
+
+使用bootstrap
+1、新建一个html文件
+2、访问http://bootcss.com，在页面上右击选择查看源码
+把head中以下内容复制，粘贴到第1步的html文件head中，以实现自适应移动设备
+<meta name="viewport" content="width=device-width, initial-scale=1">
+3、在head中引入bootstrap
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
 
 
 
