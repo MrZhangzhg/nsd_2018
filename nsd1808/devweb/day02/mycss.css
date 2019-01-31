@@ -1,0 +1,20 @@
+html{
+    font-size: 40px;
+}
+
+.d1 {
+    font-size: 15pt;
+}
+.d2 {
+    font-size: 15px;
+}
+.d3, .d4 {
+    font-size: 20px;
+}
+.c1 {
+    font-size: 2em;   /*c1在d3中，字号是d3字号的2倍*/
+}
+.c2 {
+    font-size: 2rem;  /*c2在d4中，字号是html字号的2倍*/
+}
+
