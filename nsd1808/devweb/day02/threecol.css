@@ -1,0 +1,28 @@
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
+.banner, .footer {
+    height: 100px;
+    background: #CCCCCC;
+}
+.left {
+    float: left;
+    width: 300px;
+    height: 300px;
+    background: peachpuff;
+}
+.center {
+    margin-left: 300px;
+    width: 400px;
+    height: 300px;
+    background: bisque;
+}
+.right {
+    float: right;
+    width: 300px;
+    height: 300px;
+    background: darkgoldenrod;
+}
+
+
