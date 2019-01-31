@@ -3,8 +3,13 @@
     margin: 0 auto;
 }
 .banner, .footer {
+    background-image: url("imgs/star.png");
+    /*background-repeat: no-repeat;*/
+    /*background-repeat: repeat-x;*/
+    /*background-repeat: repeat-y;*/
+    border: 2px dotted black;
     height: 100px;
-    background: #CCCCCC;
+    /*background: #CCCCCC;*/
 }
 .left {
     float: left;
