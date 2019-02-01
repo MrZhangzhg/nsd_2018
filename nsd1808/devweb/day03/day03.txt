@@ -1,0 +1,36 @@
+词云
+1、安装
+# cd matplotlib_pkgs/
+# pip3 install *
+# cd wordcloud_pkgs/
+# pip3 install *
+2、使用
+>>> import wordcloud
+>>> w = wordcloud.WordCloud(width=100, height=50)  # 图像大小
+>>> w.generate('7sc72f')   # 使用字符串生成图片
+>>> w.to_file('/tmp/ww.png')
+[root@room8pc16 day04]# eog /tmp/ww.png
+>>> w = wordcloud.WordCloud(width=1000, height=100)
+>>> with open('/etc/hosts') as fobj:
+...     w.generate(fobj.read())
+>>> w.to_file('/tmp/hosts.png')
+[root@room8pc16 day04]# eog /tmp/hosts.png
+>>> w = wordcloud.WordCloud(width=1000, height=300, font_path='/var/ftp/nsd_2018/nsd1808/devweb/day03/static/fonts/CabinSketch-Bold.ttf')
+>>> with open('/etc/hosts') as fobj:
+...     w.generate(fobj.read())
+>>> w.to_file('/tmp/sss.png')
+[root@room8pc16 day04]# eog /tmp/sss.png
+3、其他技巧
+[root@room8pc16 day04]# pip3 install scipy
+>>> from scipy.misc import imread
+>>> bg_img = imread('/var/ftp/nsd_2018/nsd1808/devweb/day03/static/imgs/heart.jpeg')
+>>> w = wordcloud.WordCloud(font_path='/var/ftp/nsd_2018/nsd1808/devweb/day03/static/fonts/CabinSketch-Bold.ttf', mask=bg_img)
+>>> with open('/etc/hosts') as fobj:
+...     w.generate(fobj.read())
+>>> w.to_file('/tmp/heart.png')
+[root@room8pc16 day04]# eog /tmp/heart.png
+
+
+
+
+
