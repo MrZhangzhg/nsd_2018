@@ -175,6 +175,26 @@ def index(request):
 </html>
 
 
+模型Model：对应数据库
+ORM：对象关系映射
+1、计划构建两张表，一张表用于存储问题，另一张表用于存储选项
+问题表：问题
+选项表：选项，选项对应的问题编号
+2、创建问题模型
+# polls/models.py
+from django.db import models
+
+class Question(models.Model):
+    question = models.CharField(max_length=200, null=False, unique=True)
+    pub_date = models.DateField()
+
+    def __str__(self):
+        return '<问题：%s>' % self.question
+3、生成数据表
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+4、在数据库中查看表名和表的字段，分析它们的命名特点
+
 
 
 
