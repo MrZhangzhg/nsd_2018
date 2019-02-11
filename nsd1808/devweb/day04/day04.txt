@@ -100,6 +100,46 @@ File->Settings->Languages & Frameworks ->Django-> django project root
 填写外层mysite的目录->settings填写mysite/settings.py
 
 
+应用：Application
+一个项目可以包含一到多个应用，这些应用是彼此独立的功能组件。一旦编写完成后，可
+以安装到任意的项目中。比如django自带的用户认证就是一个应用。
+1、创建名为polls的应用
+(djenv) [root@room8pc16 mysite]# python manage.py startapp polls
+2、将应用集成到项目中
+# mysite/settings.py
+INSTALLED_APPS = [
+    ... ...
+    'polls',
+]
+3、规划URL
+http://x.x.x.x/polls/    -> 投票首页，用于显示所有的投票项目
+http://x.x.x.x/polls/1/  -> 显示投票详情
+http://x.x.x.x/polls/1/result  -> 显示投票结果
+http://x.x.x.x/blog/
+http://x.x.x.x/blog/post/
+http://x.x.x.x/blog/10001/
+http://x.x.x.x/blog/del/
+http://x.x.x.x/blog/modify
+http://x.x.x.x/news/
+http://x.x.x.x/news/post/
+http://x.x.x.x/news/search/
+4、授权，将polls应用的网址，都交给polls应用处理
+# mysite/urls.py
+from django.conf.urls import url, include
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^polls/', include('polls.urls')),
+]
+# vim polls/urls.py
+from django.conf.urls import url
+urlpatterns = [
+]
+
+
+
+
 
 
 
