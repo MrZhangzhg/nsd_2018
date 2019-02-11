@@ -84,6 +84,24 @@ pymysql.install_as_MySQLdb()
 (djenv) [root@room8pc16 mysite]# python manage.py runserver 0:80
 访问http://127.0.0.1
 
+7、访问后台管理页面http://127.0.0.1/admin
+8、生成数据库的表
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+9、创建超级用户
+(djenv) [root@room8pc16 mysite]# python manage.py createsuperuser
+
+10、配置pycharm使用新的解释器
+File->Settings->Project:Day04->Project Interpreter->点右上角的齿轮
+-> Add local -> 弹出的窗口选下面的Existing environment点击右侧三个点，并
+且勾选make available to all projects-> 弹出的窗口写入
+/opt/djenv/bin/python
+File->Settings->Languages & Frameworks ->Django-> django project root
+填写外层mysite的目录->settings填写mysite/settings.py
+
+
+
+
 
 
 
