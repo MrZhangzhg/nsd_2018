@@ -194,7 +194,32 @@ class Question(models.Model):
 (djenv) [root@room8pc16 mysite]# python manage.py makemigrations
 (djenv) [root@room8pc16 mysite]# python manage.py migrate
 4、在数据库中查看表名和表的字段，分析它们的命名特点
+表名：应用名_类名
+字段名：类变量。如果没有设置主键，默认创建名为id的主键
 
+5、创建选项模型
+# polls/models.py
+class Choice(models.Model):
+    choice_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
+    q = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "<%s=>%s>" % (Question, self.choice_text)
+6、生成数据表
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+7、分析数据表字段
+模型中有一个外键名字为q，那么选项表中将自动出现一个名为q_id的字段作为外键
+
+8、修改选项表的外键名称，将q改为question
+# polls/models.py
+... ...
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+... ...
+9、修改数据表，数据库表中的外键字段将变成question_id
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
 
 
 
