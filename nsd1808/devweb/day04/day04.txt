@@ -1,0 +1,42 @@
+常见的web框架：django/tornado/flask
+django：功能强大，组件齐全
+tornado：小型web框架
+flask：微型
+
+路由系统URLConfig负责把URL与视图函数关联
+
+python的虚拟环境：隔离的资源目录
+1、新建虚拟环境
+[root@room8pc16 ftp]# python3 -m venv /opt/djenv/
+2、激活虚拟环境
+[root@room8pc16 ftp]# source /opt/djenv/bin/activate
+(djenv) [root@room8pc16 ftp]# which python
+/opt/djenv/bin/python
+(djenv) [root@room8pc16 ftp]# python --version
+3、在虚拟环境下安装django
+(djenv) [root@room8pc16 zzg_pypkgs]# cd dj_pkgs/
+(djenv) [root@room8pc16 dj_pkgs]# pip install *
+4、查看django
+(djenv) [root@room8pc16 dj_pkgs]# python
+>>> import django
+>>> django.__version__
+'1.11.6'
+5、安装其他软件
+(djenv) [root@room8pc16 zzg_pypkgs]# cd ansible_pkg/
+(djenv) [root@room8pc16 ansible_pkg]# pip install *
+(djenv) [root@room8pc16 zzg_pypkgs]# cd ansible-cmdb_pkgs/
+(djenv) [root@room8pc16 ansible-cmdb_pkgs]# pip install *
+(djenv) [root@room8pc16 zzg_pypkgs]# cd pymysql_pkgs/
+(djenv) [root@room8pc16 pymysql_pkgs]# pip install *
+(djenv) [root@room8pc16 zzg_pypkgs]# cd sqlalchemy_pkgs/
+(djenv) [root@room8pc16 sqlalchemy_pkgs]# pip install *
+
+
+
+
+
+
+
+
+
+
