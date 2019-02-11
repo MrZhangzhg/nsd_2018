@@ -137,7 +137,21 @@ from django.conf.urls import url
 urlpatterns = [
 ]
 
+5、为投票首页创建路由映射
+from django.conf.urls import url
+from . import views     # 相对导入，在当前包中导入views模块
 
+urlpatterns = [
+    # url('正则表达式匹配的URL', 视图函数, 给首页[http://x.x.x.x/polls/]URL起个名字)
+    url(r'^$', views.index, name='index'),
+]
+6、为投票首页编写视图函数
+# polls/views.py
+from django.shortcuts import render, HttpResponse
+
+def index(request):
+    return HttpResponse('<h1>投票首页</h1>')
+7、访问http://x.x.x.x/polls/测试
 
 
 
