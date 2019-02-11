@@ -150,11 +150,29 @@ urlpatterns = [
 from django.shortcuts import render, HttpResponse
 
 def index(request):
+    # 形参request名称随便定义，但是必须提供，用户的请求将作为实参传入
     return HttpResponse('<h1>投票首页</h1>')
 7、访问http://x.x.x.x/polls/测试
 
+8、修改index视图函数，使用模板
+(1) 在polls应用目录下创建一个名为templates的模板目录
+(djenv) [root@room8pc16 mysite]# mkdir polls/templates
+(2) 修改视图函数
+from django.shortcuts import render, HttpResponse
 
-
+def index(request):
+    return render(request, 'index.html')
+(3) 在polls/templates下创建index.html模板文件
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票首页</title>
+</head>
+<body>
+<h1>这是投票首页</h1>
+</body>
+</html>
 
 
 
