@@ -33,6 +33,62 @@ python的虚拟环境：隔离的资源目录
 
 
 
+配置django
+1、创建名为mysite的项目
+(djenv) [root@room8pc16 day04]# django-admin startproject mysite
+(djenv) [root@room8pc16 day04]# cd mysite/
+(djenv) [root@room8pc16 mysite]# tree .
+.
+├── manage.py        # 用于项目管理
+└── mysite           # 项目配置目录
+    ├── __init__.py  # py2必须的文件，将目录变成包
+    ├── settings.py  # 项目配置文件
+    ├── urls.py      # 路由系统文件，程序入口
+    └── wsgi.py      # 用于发布项目
+2、启动测试服务器，查看页面
+(djenv) [root@room8pc16 mysite]# python manage.py runserver
+访问http://127.0.0.1:8000/查看效果
+
+3、配置django
+# mysite/settings.py
+ALLOWED_HOSTS = '*'    # ACL访问控制
+MIDDLEWARE = [
+    ... ...
+    # 'django.middleware.csrf.CsrfViewMiddleware',
+    ... ...
+]
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'dj1808',
+        'USER': 'root',
+        'PASSWORD': 'tedu.cn',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    }
+}
+LANGUAGE_CODE = 'zh-hans'   # 中文
+TIME_ZONE = 'Asia/Shanghai'
+USE_TZ = False
+4、创建mysql数据库
+[root@room8pc16 ~]# mysql -uroot -ptedu.cn
+MariaDB [(none)]> CREATE DATABASE dj1808 DEFAULT CHARSET utf8;
+5、启动测试服务器如果出现以下异常
+MySQLdb module: No module named 'MySQLdb'
+是因为django连接mysql数据库时，使用的模块是MySQLdb，这个模块不支持py3。py3
+中使用手是pymysql模块，所以要做以下改动
+# vim mysite/__init__.py
+import pymysql
+pymysql.install_as_MySQLdb()
+6、启动测试服务器，让它运行在所有地址的80端口
+(djenv) [root@room8pc16 mysite]# python manage.py runserver 0:80
+访问http://127.0.0.1
+
+
+
+
+
+
 
 
 
