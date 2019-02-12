@@ -145,7 +145,7 @@ def detail(request, question_id):
 
 编写投票结果页
 1、编写url映射
-    url(r'^(?P<question_id>\d+)/result/$', views.result, name='detail'),
+    url(r'^(?P<question_id>\d+)/result/$', views.result, name='result'),
 2、编写视图函数
 # polls/views.py
 def result(request, question_id):
@@ -178,6 +178,8 @@ def result(request, question_id):
     </div>
 {% endfor %}
 </body>
+说明：forloop是模板语言中的对象
+2、在首页上添加a标签，使之可以跳转到投票详情
 
 
 
