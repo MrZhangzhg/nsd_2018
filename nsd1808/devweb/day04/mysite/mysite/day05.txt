@@ -1,0 +1,27 @@
+修改model.py中Question类的变量：question => question_text
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+
+
+django api
+1、使用python shell
+(djenv) [root@room8pc16 mysite]# python manage.py shell
+>>> from polls.models import Question, Choice
+2、模型管理器
+每一个模型默认都有一个名为objects的管理器，可以通过它，实现增删改查
+>>> Question.objects.all()
+3、创建问题
+(1) 采用创建类的实例的方式
+>>> from django.utils import timezone
+>>> q1 = Question(question_text='你心仪的公司是哪家？', pub_date=timezone.now())
+>>> q1.save()
+(2) 通过管理器创建
+>>> q2 = Question.objects.create(question_text='散伙饭去哪吃？', pub_date=timezone.now())
+
+
+
+
+
+
+
+
