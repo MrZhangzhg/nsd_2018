@@ -1,0 +1,70 @@
+修改model.py中Question类的变量：question => question_text
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+
+
+django api
+1、使用python shell
+(djenv) [root@room8pc16 mysite]# python manage.py shell
+>>> from polls.models import Question, Choice
+2、模型管理器
+每一个模型默认都有一个名为objects的管理器，可以通过它，实现增删改查
+>>> Question.objects.all()
+3、创建问题
+(1) 采用创建类的实例的方式
+>>> from django.utils import timezone
+>>> q1 = Question(question_text='你心仪的公司是哪家？', pub_date=timezone.now())
+>>> q1.save()
+(2) 通过管理器创建
+>>> q2 = Question.objects.create(question_text='散伙饭去哪吃？', pub_date=timezone.now())
+
+4、创建选项
+(1) 采用创建类的实例的方式
+>>> c1 = Choice(choice_text='达内', question=q1)
+>>> c1.save()
+(2) 通过管理器创建
+>>> c2 = Choice.objects.create(choice_text='华为', question=q1)
+(3) 通过问题直接创建选项
+因为Question和Choice有主外键关系，这是一个一对多的关系，也就是一个问题可以
+有很多个选项。这样每个问题的实例，都有一个反向管理器叫choice_set，通过它可
+以直接创建选项
+>>> c3 = q1.choice_set.create(choice_text='阿里巴巴')
+
+5、修改数据
+>>> q1.question_text
+>>> q1.question_text = '你期望哪家公司给你发Offer？'
+>>> q1.save()
+
+6、删除数据
+>>> q2.delete()
+
+7、查询
+查询的结果，有的是一个具体的实例，有的是0到多个实例的集合
+(1) get可以得到具体的一个实例，如果不是一个实例，将报错
+>>> q1 = Question.objects.get(id=1)
+>>> Question.objects.get(id__exact=1)
+id=1是id__exact=1的简写
+>>> q1.id
+>>> q1.question_text
+>>> q1.pub_date
+>>> Question.objects.get(id__gt=1)   # 多于1项，报错
+>>> Question.objects.get(id__gt=100)    # 少于1项，报错
+(2) 在django过滤条件中，数据的属性使用双下划线来表示，而不是句点
+>>> s1 = '过年，你胖了吗？'
+>>> s1.startswith('过年')
+>>> Question.objects.get(question_text__startswith=('过年'))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
