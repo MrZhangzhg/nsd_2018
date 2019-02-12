@@ -180,6 +180,22 @@ def result(request, question_id):
 </body>
 说明：forloop是模板语言中的对象
 2、在首页上添加a标签，使之可以跳转到投票详情
+<body>
+<h1>这是投票首页</h1>
+{% for question in questions %}
+    <div>
+        {{ forloop.counter }}.
+{#        <a href="/polls/{{ question.id }}/" target="_blank">#}
+        <a href="{% url 'detail' question_id=question.id %}" target="_blank">
+            {{ question.question_text }}
+        </a>
+        {{ question.pub_date }}
+    </div>
+{% endfor %}
+</body>
+
+修改详情页
+1、在详情页中列出问题和它相关的选项
 
 
 
