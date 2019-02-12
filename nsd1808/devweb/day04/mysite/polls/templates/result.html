@@ -6,7 +6,16 @@
 </head>
 <body>
 <h1>投票结果</h1>
-{{ question }}
-{{ question.choice_set.all }}
+<table border="1px">
+    <tr>
+        <td colspan="2">{{ question.question_text }}</td>
+    </tr>
+    {% for choice in question.choice_set.all %}
+        <tr>
+            <td>{{ choice.choice_text }}</td>
+            <td>{{ choice.votes }}</td>
+        </tr>
+    {% endfor %}
+</table>
 </body>
 </html>

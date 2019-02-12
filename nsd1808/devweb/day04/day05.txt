@@ -207,7 +207,21 @@ def result(request, question_id):
 </body>
 
 修改结果页
-1、在投标结果页中显示每个问题选项所得到的票数
+1、在投票结果页中显示每个问题选项所得到的票数
+<body>
+<h1>投票结果</h1>
+<table border="1px">
+    <tr>
+        <td colspan="2">{{ question.question_text }}</td>
+    </tr>
+    {% for choice in question.choice_set.all %}
+        <tr>
+            <td>{{ choice.choice_text }}</td>
+            <td>{{ choice.votes }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
 
 
 
