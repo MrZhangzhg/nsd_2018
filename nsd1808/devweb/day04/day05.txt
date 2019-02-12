@@ -243,6 +243,13 @@ def result(request, question_id):
 </form>
 </body>
 
+2、为投票功能增加URL，表单数据提交给这个URL
+# polls/urls.py
+    url(r'^(?P<question_id>\d+)/vote/$', views.vote, name='vote'),
+3、为detail.html的action增加网址
+{#<form action="/polls/{{ question.id }}/vote/" method="post">#}
+<form action="{% url 'vote' question_id=question.id %}" method="post">
+
 
 
 
