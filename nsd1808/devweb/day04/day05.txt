@@ -244,13 +244,28 @@ def result(request, question_id):
 </body>
 
 2、为投票功能增加URL，表单数据提交给这个URL
+http://x.x.x.x/polls/1/vote/  给1号问题投票
 # polls/urls.py
     url(r'^(?P<question_id>\d+)/vote/$', views.vote, name='vote'),
 3、为detail.html的action增加网址
 {#<form action="/polls/{{ question.id }}/vote/" method="post">#}
 <form action="{% url 'vote' question_id=question.id %}" method="post">
 
+4、编写视图函数vote
+# polls/views.py
+from django.shortcuts import render, redirect, HttpResponse
 
+def vote(request, question_id):
+    choice_id = request.POST.get('choice_id')
+    question = Question.objects.get(id=question_id)
+    choice = question.choice_set.get(id=choice_id)
+    choice.votes += 1
+    choice.save()
+    return redirect('result', question_id=question_id)
+说明：request是客户端发来的请求，因为客户端在表单上通过post方法提交数据，
+所以request.POST中包含了选票，它是一个像字典一样的数据类型，也有get方法
+redirect表示重定向，相当于是打开一个窗口，写入新的网址进行访问。这里没有
+使用render，是因为render会交换客户机的请求request内容也传递过去。
 
 
 
