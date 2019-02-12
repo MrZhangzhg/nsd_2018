@@ -196,6 +196,18 @@ def result(request, question_id):
 
 修改详情页
 1、在详情页中列出问题和它相关的选项
+<body>
+<h1>投票详情</h1>
+{{ question.question_text }}
+<ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }}</li>
+    {% endfor %}
+</ul>
+</body>
+
+修改结果页
+1、在投标结果页中显示每个问题选项所得到的票数
 
 
 
