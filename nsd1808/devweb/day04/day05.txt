@@ -167,6 +167,17 @@ def result(request, question_id):
 </html>
 
 
+修改首页模板
+模板语法：(1)变量放到双花括号中；(2)语句块放在{% %}；(3)在花括号外的是普通字符
+1、修改首页模板，列出每个问题的题干和发布时间
+<body>
+<h1>这是投票首页</h1>
+{% for question in questions %}
+    <div>
+        {{ forloop.counter }}. {{ question.question_text }} {{ question.pub_date }}
+    </div>
+{% endfor %}
+</body>
 
 
 

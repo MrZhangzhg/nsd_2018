@@ -6,6 +6,10 @@
 </head>
 <body>
 <h1>这是投票首页</h1>
-{{ questions }}
+{% for question in questions %}
+    <div>
+        {{ forloop.counter }}. {{ question.question_text }} {{ question.pub_date }}
+    </div>
+{% endfor %}
 </body>
 </html>
