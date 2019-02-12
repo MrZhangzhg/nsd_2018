@@ -108,10 +108,37 @@ def index(request):
 </html>
 
 
+规划URL
+http://x.x.x.x/polls/    -> 投票首页，用于显示所有的投票项目
+http://x.x.x.x/polls/1/  -> 显示投票详情
+http://x.x.x.x/polls/1/result  -> 显示投票结果
 
 
-
-
-
-
+编写投票详情页
+1、编写url映射
+# polls/urls.py
+    # url(r'^1/$', views.detail, name='detail'),
+    # url(r'^\d+/$', views.detail, name='detail'),
+    # url(r'^(\d+)/$', views.detail, name='detail'),
+    url(r'^(?P<question_id>\d+)/$', views.detail, name='detail'),
+说明：\d+匹配至少一个数字，把它保存到名为question_id的变量中，传递给
+后面的veiws.detail函数
+2、编写视图函数
+# polls/views.py
+def detail(request, question_id):
+    question = Question.objects.get(id=question_id)
+    return render(request, 'detail.html', {'question': question})
+3、编写模板
+# polls/templates/detail.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票详情</title>
+</head>
+<body>
+<h1>投票详情</h1>
+{{ question }}
+</body>
+</html>
 
