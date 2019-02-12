@@ -142,3 +142,40 @@ def detail(request, question_id):
 </body>
 </html>
 
+
+编写投票结果页
+1、编写url映射
+    url(r'^(?P<question_id>\d+)/result/$', views.result, name='detail'),
+2、编写视图函数
+# polls/views.py
+def result(request, question_id):
+    question = Question.objects.get(id=question_id)
+    return render(request, 'result.html', {'question': question})
+3、编写模板
+# polls/templates/result.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票结果</title>
+</head>
+<body>
+<h1>投票结果</h1>
+{{ question }}
+{{ question.choice_set.all }}
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

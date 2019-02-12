@@ -10,3 +10,7 @@ def index(request):
 def detail(request, question_id):
     question = Question.objects.get(id=question_id)
     return render(request, 'detail.html', {'question': question})
+
+def result(request, question_id):
+    question = Question.objects.get(id=question_id)
+    return render(request, 'result.html', {'question': question})
