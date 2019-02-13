@@ -266,6 +266,26 @@
 {% endblock %}
 
 
+django2 by example  : http://www.conyli.cc/
+django by example  :  http://down.51cto.com/
+
+
+自定义后台显示
+1、后台问题页面，显示问题内容和时间
+# polls/admin.py
+from django.contrib import admin
+from .models import Question, Choice
+
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('question_text', 'pub_date')
+
+admin.site.register(Question, QuestionAdmin)
+admin.site.register(Choice)
+
+
+
+
+
 
 
 
