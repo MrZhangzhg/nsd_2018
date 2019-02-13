@@ -3,19 +3,21 @@
 {% block title %}投票详情{% endblock %}
 {% block content %}
     <h1>投票详情</h1>
-    {{ question.question_text }}
+    <div class="h3">{{ question.question_text }}</div>
     <hr>
     {% if question.choice_set.all %}
         <form action="{% url 'vote' question_id=question.id %}" method="post">
             {% for choice in question.choice_set.all %}
-                <div>
+                <div class="radio h4">
                     <label>
                         <input type="radio" name="choice_id" value="{{ choice.id }}">
                         {{ choice.choice_text }}
                     </label>
                 </div>
             {% endfor %}
-            <div><input type="submit" value="投 票"></div>
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="投 票">
+            </div>
         </form>
     {% else %}
         <h2>没有开始</h2>
