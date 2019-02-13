@@ -357,6 +357,26 @@ urlpatterns = [
 具体文章: http://x.x.x.x/blog/1/
 
 三、创建模型
+1、编写blog/models.py
+from django.db import models
+
+class Article(models.Model):
+    title = models.CharField(max_length=100, null=False)
+    pub_date = models.DateTimeField(auto_now_add=True)  # 自动使用发布文章时的时间
+    content = models.TextField()
+
+    def __str__(self):
+        return self.title
+2、生成数据表
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+
+3、把博客注册到后台管理界面
+# blog/admin.py
+from django.contrib import admin
+from .models import Article
+
+admin.site.register(Article)
 
 
 四、编写视图函数
