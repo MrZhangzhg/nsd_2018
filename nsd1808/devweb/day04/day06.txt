@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>投票详情</title>
-</head>
+修改投票详情，如果某一个问题没有选项，就显示“没有开始”
+# polls/templates/detail.html
 <body>
 <h1>投票详情</h1>
 {{ question.question_text }}
 <hr>
-{#<form action="/polls/{{ question.id }}/vote/" method="post">#}
 {% if question.choice_set.all %}
     <form action="{% url 'vote' question_id=question.id %}" method="post">
         {% for choice in question.choice_set.all %}
@@ -24,11 +19,7 @@
 {% else %}
     <h2>没有开始</h2>
 {% endif %}
-
-{% comment %}<ul>
-    {% for choice in question.choice_set.all %}
-        <li>{{ choice.choice_text }}</li>
-    {% endfor %}
-</ul>{% endcomment %}
 </body>
-</html>
+
+
+
