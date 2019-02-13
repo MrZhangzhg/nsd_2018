@@ -1,8 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>投票首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
 </head>
 <body>
 <h1>这是投票首页</h1>
@@ -16,5 +19,8 @@
         {{ question.pub_date }}
     </div>
 {% endfor %}
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 </html>
