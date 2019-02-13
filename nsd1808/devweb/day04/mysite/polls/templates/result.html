@@ -1,21 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>投票结果</title>
-</head>
-<body>
-<h1>投票结果</h1>
-<table border="1px">
-    <tr>
-        <td colspan="2">{{ question.question_text }}</td>
-    </tr>
-    {% for choice in question.choice_set.all %}
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}投票结果{% endblock %}
+{% block content %}
+    <h1>投票结果</h1>
+    <table border="1px">
         <tr>
-            <td>{{ choice.choice_text }}</td>
-            <td>{{ choice.votes }}</td>
+            <td colspan="2">{{ question.question_text }}</td>
         </tr>
-    {% endfor %}
-</table>
-</body>
-</html>
+        {% for choice in question.choice_set.all %}
+            <tr>
+                <td>{{ choice.choice_text }}</td>
+                <td>{{ choice.votes }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
