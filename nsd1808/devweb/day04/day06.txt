@@ -326,3 +326,37 @@ admin.site.register(Question, QuestionAdmin)
 admin.site.register(Choice, ChoiceAdmin)
 
 
+
+
+编写博客(新闻、留言)应用
+一、创建应用
+
+
+二、规划url
+博客首页
+具体文章
+
+三、创建模型
+
+
+四、编写视图函数
+
+
+五、创建模板
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
