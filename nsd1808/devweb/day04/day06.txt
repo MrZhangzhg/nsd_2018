@@ -397,6 +397,15 @@ def index(request):
     articles = Article.objects.order_by('-pub_date')
     return render(request, 'blog_index.html', {'articles': articles})
 
+2、编写具体文章的视图
+# blog/urls.py
+    url(r'^(?P<article_id>\d+)/$', views.show_article, name='show_article'),
+
+# blog/views.py
+def show_article(request, article_id):
+    article = Article.objects.get(id=article_id)
+    return render(request, 'show_article.html', {'article': article})
+
 
 五、创建模板
 1、首页模板
@@ -419,17 +428,33 @@ def index(request):
 </body>
 </html>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+2、博客文章模板
+# blog/templates/show_article.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>博客文章</title>
+</head>
+<body>
+<h2>{{ article.title }}</h2>
+<h5>{{ article.pub_date }}</h5>
+<div>
+    {{ article.content | linebreaksbr }}
+</div>
+</body>
+</html>
+3、修改博客首页，增加超链接
+<body>
+{% for article in articles %}
+    <h2>
+        <a href="{% url 'show_article' article_id=article.id %}" target="_blank">
+            {{ article.title }}
+        </a>
+    </h2>
+    <h5>{{ article.pub_date }}</h5>
+    <div>
+        {{ article.content | truncatewords:20 }}
+    </div>
+{% endfor %}
+</body>

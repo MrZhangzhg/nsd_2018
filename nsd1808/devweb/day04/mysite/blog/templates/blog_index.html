@@ -6,7 +6,11 @@
 </head>
 <body>
 {% for article in articles %}
-    <h2>{{ article.title }}</h2>
+    <h2>
+        <a href="{% url 'show_article' article_id=article.id %}" target="_blank">
+            {{ article.title }}
+        </a>
+    </h2>
     <h5>{{ article.pub_date }}</h5>
     <div>
         {{ article.content | truncatewords:20 }}
