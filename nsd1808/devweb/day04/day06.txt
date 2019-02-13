@@ -282,10 +282,47 @@ class QuestionAdmin(admin.ModelAdmin):
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Choice)
 
+2、给问题加上时间轴
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('question_text', 'pub_date')
+    date_hierarchy = 'pub_date'
 
+3、为问题添加过滤条件
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('question_text', 'pub_date')
+    date_hierarchy = 'pub_date'
+    list_filter = ('pub_date',)
 
+4、增加查找功能
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('question_text', 'pub_date')
+    date_hierarchy = 'pub_date'
+    list_filter = ('pub_date',)
+    search_fields = ('question_text',)
 
+5、增加排序功能
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('question_text', 'pub_date')
+    date_hierarchy = 'pub_date'
+    list_filter = ('pub_date',)
+    search_fields = ('question_text',)
+    ordering = ('-pub_date',)
 
+6、为选项增加通过外键查找问题的功能
+from django.contrib import admin
+from .models import Question, Choice
 
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('question_text', 'pub_date')
+    date_hierarchy = 'pub_date'
+    list_filter = ('pub_date',)
+    search_fields = ('question_text',)
+    ordering = ('-pub_date',)
+
+class ChoiceAdmin(admin.ModelAdmin):
+    raw_id_fields = ('question',)
+
+admin.site.register(Question, QuestionAdmin)
+admin.site.register(Choice, ChoiceAdmin)
 
 
