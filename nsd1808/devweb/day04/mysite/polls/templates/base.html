@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>投票首页</title>
+    <title>{% block title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
@@ -37,19 +37,7 @@
         </div>
 
     <div class="main">
-        <h1>这是投票首页</h1>
-        <div class="h4">
-            {% for question in questions %}
-                <div>
-                    {{ forloop.counter }}.
-            {#        <a href="/polls/{{ question.id }}/" target="_blank">#}
-                    <a href="{% url 'detail' question_id=question.id %}" target="_blank">
-                        {{ question.question_text }}
-                    </a>
-                    {{ question.pub_date }}
-                </div>
-            {% endfor %}
-        </div>
+        {% block content %}{% endblock %}
     </div>
     <div class="footer h4 text-center">
         <a href="#">达内云计算</a> NSD1808
