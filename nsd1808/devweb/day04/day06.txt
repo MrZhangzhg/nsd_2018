@@ -154,6 +154,24 @@
 </body>
 </html>
 
+3、在index.html中使用模板继承，把共性的信息删除，个性信息放到block中
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}投票首页{% endblock %}
+{% block content %}
+    <h1>这是投票首页</h1>
+    <div class="h4">
+        {% for question in questions %}
+            <div>
+                {{ forloop.counter }}.
+                <a href="{% url 'detail' question_id=question.id %}" target="_blank">
+                    {{ question.question_text }}
+                </a>
+                {{ question.pub_date }}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
 
 
 
