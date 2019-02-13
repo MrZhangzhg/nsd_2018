@@ -330,11 +330,31 @@ admin.site.register(Choice, ChoiceAdmin)
 
 编写博客(新闻、留言)应用
 一、创建应用
+1、生成应用
+(djenv) [root@room8pc16 mysite]# python manage.py startapp blog
+2、集成应用到项目
+# mysite/settings.py
+INSTALLED_APPS = [
+    ... ...
+    'blog',
+]
+3、授权，以http://x.x.x.x/blog/开头的URL，交给应用处理
+# mysite/urls.py
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^polls/', include('polls.urls')),
+    url(r'^blog/', include('blog.urls')),
+]
 
+# vim blog/urls.py
+from django.conf.urls import url
+
+urlpatterns = [
+]
 
 二、规划url
-博客首页
-具体文章
+博客首页: http://x.x.x.x/blog/
+具体文章: http://x.x.x.x/blog/1/
 
 三、创建模型
 
