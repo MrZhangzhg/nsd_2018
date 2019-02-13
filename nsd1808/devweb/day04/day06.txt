@@ -380,6 +380,24 @@ admin.site.register(Article)
 
 
 四、编写视图函数
+1、博客首页视图
+# blog/urls.py
+from django.conf.urls import url
+from . import views
+
+urlpatterns = [
+    url(r'^$', views.index, name='blog_index'),
+]
+
+# blog/views.py
+from django.shortcuts import render
+from .models import Article
+
+def index(request):
+    articles = Article.objects.order_by('-pub_date')
+    return render(request, 'blog_index.html', {'articles': articles})
+
+
 
 
 五、创建模板
