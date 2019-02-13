@@ -398,11 +398,26 @@ def index(request):
     return render(request, 'blog_index.html', {'articles': articles})
 
 
-
-
 五、创建模板
-
-
+1、首页模板
+(djenv) [root@room8pc16 mysite]# mkdir blog/templates
+# blog/templates/blog_index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>博客首页</title>
+</head>
+<body>
+{% for article in articles %}
+    <h2>{{ article.title }}</h2>
+    <h5>{{ article.pub_date }}</h5>
+    <div>
+        {{ article.content | truncatewords:20 }}
+    </div>
+{% endfor %}
+</body>
+</html>
 
 
 
