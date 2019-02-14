@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 <body>
-<div class="container">
+<div class="container h4">
     <div id="linux-carousel" class="carousel slide">
         <ol class="carousel-indicators">
             <li class="active" data-target="#linux-carousel" data-slide-to="0"></li>
@@ -35,8 +35,37 @@
             <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
     </div>
-    <div class="main">首页</div>
-    <div class="footer"></div>
+    <div class="main" style="padding-top: 20px">
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <a href="#">
+                    <img src="{% static 'imgs/linux.jpg' %}" width="150px"><br>
+                    主机信息
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="#">
+                    <img src="{% static 'imgs/linux.jpg' %}" width="150px"><br>
+                    添加主机
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="#">
+                    <img src="{% static 'imgs/linux.jpg' %}" width="150px"><br>
+                    添加模块
+                </a>
+            </div>
+            <div class="col-md-3 text-center">
+                <a href="#">
+                    <img src="{% static 'imgs/linux.jpg' %}" width="150px"><br>
+                    执行任务
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="footer text-center" style="padding-top: 50px">
+        <a href="#">达内云计算学院</a> 客服电话：400-111-8989 邮箱：admin@tedu.cn
+    </div>
 </div>
 
 <script src="{% static 'js/jquery.min.js' %}"></script>
