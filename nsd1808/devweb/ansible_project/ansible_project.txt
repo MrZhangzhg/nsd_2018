@@ -400,6 +400,33 @@ def index(request):
 {% endblock %}
 
 
+五、制作主机信息页面
+1、编写URL
+# webansi/urls.py
+from django.conf.urls import url
+from . import views
+
+urlpatterns = [
+    url(r'^$', views.mainpage, name='mainpage'),
+]
+
+2、编写视图函数
+# webansi/views.py
+def mainpage(request):
+    return render(request, 'mainpage.html')
+
+3、制作模板文件
+(1) 生成主机信息
+(djenv) [root@room8pc16 myansible]# cd ansicfg/
+(djenv) [root@room8pc16 ansicfg]# ansible all -m setup --tree out
+(2)利用ansible-cmdb生成网页文件
+(djenv) [root@room8pc16 ansicfg]# ansible-cmdb out/ > ../webansi/templates/mainpage.html
+(3) 修改index.html"主机信息"的超链接
+            <a href="{% url 'mainpage' %}" target="_blank">
+
+
+
+
 
 
 
