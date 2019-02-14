@@ -93,6 +93,18 @@ class Argument(models.Model):
 sqlite> .tables    # 列出所有的表
 sqlite> .schema webansi_host    # 表结构
 
+4、注册模型到后台
+# webansi/admin.py
+from django.contrib import admin
+from .models import HostGroup, Host, Module, Argument
+
+for item in [HostGroup, Host, Module, Argument]:
+    admin.site.register(item)
+
+5、创建管理员
+(djenv) [root@room8pc16 myansible]# python manage.py createsuperuser
+(djenv) [root@room8pc16 myansible]# python manage.py runserver 0:80
+访问http://127.0.0.1/admin/
 
 
 
