@@ -130,6 +130,8 @@ b. dhosts.py运行后，输出的样式必是json格式，要示如下：
 即：{'组1': {'hosts': [IP地址, IP地址]}, '组2': {'hosts': [IP地址, IP地址]}}
 c. 编写dhosts.py
 # vim ansicfg/dhosts.py
+#! /opt/djenv/bin/python
+
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, ForeignKey
@@ -181,7 +183,11 @@ if __name__ == '__main__':
             result[group]['hosts'] = []
         result[group]['hosts'].append(ip)
     print(json.dumps(result))
-
+(4) 设置权限
+(djenv) [root@room8pc16 myansible]# cd ansicfg/
+(djenv) [root@room8pc16 ansicfg]# chmod +x dhosts.py
+(djenv) [root@room8pc16 ansicfg]# ansible dbservers -m pg
+(djenv) [root@room8pc16 ansicfg]# ansible webservers -m ping
 
 
 
