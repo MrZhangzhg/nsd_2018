@@ -1,0 +1,80 @@
+ansible项目
+一、功能设计
+1、显示所有服务器的信息
+2、添加主机/主机组
+3、添加模块及参数
+4、执行任务
+二、创建项目
+1、创建项目
+(djenv) [root@room8pc16 ansible_project]# django-admin startproject myansible
+2、创建应用
+(djenv) [root@room8pc16 ansible_project]# cd myansible/
+(djenv) [root@room8pc16 myansible]# python manage.py startapp webansi
+3、修改配置
+# myansible/settings.py
+ALLOWED_HOSTS = '*'
+INSTALLED_APPS = [
+    ... ...
+    'webansi',
+]
+LANGUAGE_CODE = 'zh-hans'
+TIME_ZONE = 'Asia/Shanghai'
+USE_TZ = False
+4、配置pycharm
+5、URL规划
+http://x.x.x.x/                     =>显示各个功能链接
+http://x.x.x.x/webansi/             =>显示服务器信息
+http://x.x.x.x/webansi/addhosts/    =>添加/显示主机
+http://x.x.x.x/webansi/addmodules/  =>添加/显示模块
+http://x.x.x.x/webansi/tasks/       =>执行任务
+6、授权
+# myansible/urls.py
+from django.conf.urls import url, include
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^webansi/', include('webansi.urls')),
+]
+
+# vim webansi/urls.py
+from django.conf.urls import url
+
+urlpatterns = [
+]
+
+三、编写应用
+1、URL规划
+http://x.x.x.x/                     =>显示各个功能链接
+http://x.x.x.x/webansi/             =>显示服务器信息
+http://x.x.x.x/webansi/addhosts/    =>添加/显示主机
+http://x.x.x.x/webansi/addmodules/  =>添加/显示模块
+http://x.x.x.x/webansi/tasks/       =>执行任务
+2、创建模型
+(1) 主机相关的模型
+主机组、主机名、ip地址
+# webansi/models.py
+from django.db import models
+
+class HostGroup(models.Model):
+    group_name = models.CharField(max_length=50, unique=True, null=False)
+
+    def __str__(self):
+        return self.group_name
+
+class Host(models.Model):
+    hostname = models.CharField(max_length=50, unique=True)
+    ipaddr = models.CharField(max_length=15)
+    group = models.ForeignKey(HostGroup)
+
+    def __str__(self):
+        return "%s => %s" % (self.hostname, self.group)
+(2) 模块相关模型
+# webansi/models.py
+
+
+
+
+
+
+
