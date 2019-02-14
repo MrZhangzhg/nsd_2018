@@ -186,8 +186,49 @@ if __name__ == '__main__':
 (4) 设置权限
 (djenv) [root@room8pc16 myansible]# cd ansicfg/
 (djenv) [root@room8pc16 ansicfg]# chmod +x dhosts.py
-(djenv) [root@room8pc16 ansicfg]# ansible dbservers -m pg
+(djenv) [root@room8pc16 ansicfg]# ansible dbservers -m ping
 (djenv) [root@room8pc16 ansicfg]# ansible webservers -m ping
+
+
+四、创建首页
+1、注意：这个主页是http://x.x.x.x/，不能写在应用中，因为应用的URL都是
+以http://x.x.x.x/webansi/开头
+# myansible/urls.py
+from django.conf.urls import url, include
+from django.contrib import admin
+from webansi import views
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^webansi/', include('webansi.urls')),
+    url(r'^$', views.index, name='index'),
+]
+
+2、创建视图函数
+# webansi/views.py
+from django.shortcuts import render
+
+def index(request):
+    return render(request, 'index.html')
+
+3、创建模板
+(djenv) [root@room8pc16 myansible]# mkdir webansi/templates
+# webansi/templates/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+首页
+</body>
+</html>
+访问http://x.x.x.x/进行测试
+
+4、引入bootstrap
+(djenv) [root@room8pc16 myansible]# cp -r ../../day04/mysite/polls/static/ webansi/
+
 
 
 
