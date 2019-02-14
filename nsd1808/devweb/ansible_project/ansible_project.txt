@@ -228,6 +228,13 @@ def index(request):
 
 4、引入bootstrap
 (djenv) [root@room8pc16 myansible]# cp -r ../../day04/mysite/polls/static/ webansi/
+# webansi/templates/index.html
+
+
+
+
+
+
 
 
 
