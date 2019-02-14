@@ -112,8 +112,24 @@ node5.tedu.cn   192.168.4.5/24
 node6.tedu.cn   192.168.4.6/24
 配置好YUM/IP/免密登陆
 
-
-
+7、创建ansible工作目录
+(1) 工作目录
+(djenv) [root@room8pc16 myansible]# mkdir ansicfg
+(2) 配置文件
+(djenv) [root@room8pc16 myansible]# vim ansicfg/ansible.cfg
+[defaults]
+inventory = dhosts.py
+remote_user = root
+说明：主机存在数据库中，所以主机清单是一个python脚本，运行它，可以在数据库中
+取出相应的主机和组
+(3) dhosts.py
+a. 为了能够看到效果，需要在后台添加几台主机和组
+b. dhosts.py运行后，输出的样式必是json格式，要示如下：
+{'dbservers': {'hosts': ['192.168.4.3']},
+ 'lvs': {'hosts': ['192.168.4.2', '192.168.4.6']}}
+即：{'组1': {'hosts': [IP地址, IP地址]}, '组2': {'hosts': [IP地址, IP地址]}}
+c. 编写dhosts.py
+# vim ansicfg/dhosts.py
 
 
 
