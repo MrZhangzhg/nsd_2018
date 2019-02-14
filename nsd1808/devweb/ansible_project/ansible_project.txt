@@ -106,6 +106,13 @@ for item in [HostGroup, Host, Module, Argument]:
 (djenv) [root@room8pc16 myansible]# python manage.py runserver 0:80
 访问http://127.0.0.1/admin/
 
+6、新建3台虚拟机
+node4.tedu.cn   192.168.4.4/24
+node5.tedu.cn   192.168.4.5/24
+node6.tedu.cn   192.168.4.6/24
+配置好YUM/IP/免密登陆
+
+
 
 
 
