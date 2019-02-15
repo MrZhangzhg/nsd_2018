@@ -4,6 +4,7 @@
 {% block content %}
     <div>
         <form action="" method="post" class="form-inline">
+            {% csrf_token %}
             <div class="form-group">
                 <label>主机名：</label>
                 <input type="text" class="form-control" name="host">
