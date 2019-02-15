@@ -8,6 +8,7 @@
             <li><a href="#hostgroup" data-toggle="tab">主机组</a></li>
         </ul>
         <form action="" method="post" style="padding-top: 10px">
+            {% csrf_token %}
             <div class="tab-content">
                 <div class="tab-pane active fade in form-group" id="host">
                     <select name="ip" class="form-control">
@@ -25,6 +26,31 @@
                         {% endfor %}
                     </select>
                 </div>
+            </div>
+            <table class="table table-bordered table-hover">
+                <tr class="info">
+                    <td>模块</td>
+                    <td>参数</td>
+                </tr>
+                {% for module in modules %}
+                    <tr>
+                        <td>
+                            <div class="radio">
+                                <label><input type="radio" name="module">{{ module.module_name }}</label>
+                            </div>
+                        </td>
+                        <td>
+                            {% for arg in module.argument_set.all %}
+                                <div class="radio">
+                                    <label><input type="radio" name="arg">{{ arg.argument_text }}</label>
+                                </div>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <div class="form-group text-center">
+                <input class="btn btn-primary" type="submit" value="执 行">
             </div>
         </form>
     </div>
