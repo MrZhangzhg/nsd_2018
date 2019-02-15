@@ -188,6 +188,24 @@ def delarg(request, arg_id):
 {% endfor %}
 
 
+执行任务
+1、URL
+    url(r'^tasks/$', views.tasks, name='tasks'),
+
+2、函数
+def tasks(request):
+    return render(request, 'tasks.html')
+
+3、模板
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}执行任务{% endblock %}
+{% block content %}
+    执行任务
+{% endblock %}
+
+4、修改index.html的超链接
+            <a href="{% url 'tasks' %}" target="_blank">
 
 
 

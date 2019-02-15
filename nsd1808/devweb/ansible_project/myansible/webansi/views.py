@@ -38,3 +38,5 @@ def delarg(request, arg_id):
     argument.delete()
     return redirect('addmodules')
 
+def tasks(request):
+    return render(request, 'tasks.html')
