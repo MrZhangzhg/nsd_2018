@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import HostGroup, Module, Argument
+from .models import HostGroup, Host, Module, Argument
 
 def index(request):
     return render(request, 'index.html')
@@ -39,4 +39,8 @@ def delarg(request, arg_id):
     return redirect('addmodules')
 
 def tasks(request):
-    return render(request, 'tasks.html')
+    groups = HostGroup.objects.all()
+    hosts = Host.objects.all()
+    modules = Module.objects.all()
+    info = {'groups': groups, 'hosts': hosts, 'modules': modules}
+    return render(request, 'tasks.html', info)

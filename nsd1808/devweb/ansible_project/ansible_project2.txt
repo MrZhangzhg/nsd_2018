@@ -207,7 +207,15 @@ def tasks(request):
 4、修改index.html的超链接
             <a href="{% url 'tasks' %}" target="_blank">
 
-
+5、修改模板增加表单
+(1) 修改视图函数，把主机、模块信息传给前台
+def tasks(request):
+    groups = HostGroup.objects.all()
+    hosts = Host.objects.all()
+    modules = Module.objects.all()
+    info = {'groups': groups, 'hosts': hosts, 'modules': modules}
+    return render(request, 'tasks.html', info)
+(2) 修改模板
 
 
 
