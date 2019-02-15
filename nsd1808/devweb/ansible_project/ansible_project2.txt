@@ -94,6 +94,67 @@ def addhosts(request):
             <form> ....
             {% csrf_token %}
 
+编写添加模块功能
+1、URL
+    url(r'^addmodules/$', views.addmodules, name='addmodules'),
+2、创建视图函数
+from .models import HostGroup, Module
+def addmodules(request):
+    modules = Module.objects.all()
+    return render(request, 'addmodules.html', {'modules': modules})
+3、模板
+# webansi/templates/addmodules.html
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}添加模块/参数{% endblock %}
+{% block content %}
+    <div>
+        <form action="" method="post" class="form-inline">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>模块：</label>
+                <input type="text" class="form-control" name="module">
+            </div>
+            <div class="form-group">
+                <label>参数：</label>
+                <input type="text" class="form-control" name="arg">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="提 交">
+            </div>
+        </form>
+    </div>
+    <hr>
+    <div>
+        <table class="table table-bordered table-hover">
+            <tr class="info">
+                <td>模块</td>
+                <td>参数</td>
+            </tr>
+            {% for module in modules %}
+                <tr>
+                    <td>{{ module.module_name }}</td>
+                    <td>
+                        <ul class="list-unstyled">
+                            {% for argument in module.argument_set.all %}
+                                <li>{{ argument.argument_text }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+4、修改首页的超链接
+            <a href="{% url 'addmodules' %}" target="_blank">
+
+
+
+
+
+
+
 
 
 
