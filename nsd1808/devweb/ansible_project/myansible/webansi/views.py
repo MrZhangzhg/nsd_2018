@@ -22,5 +22,13 @@ def addhosts(request):
     return render(request, 'addhosts.html', {'groups': groups})
 
 def addmodules(request):
+    if request.method == 'POST':
+        module = request.POST.get('module').strip()
+        arg = request.POST.get('arg').strip()
+        if module:
+            mod = Module.objects.get_or_create(module_name=module)[0]
+            if arg:
+                mod.argument_set.get_or_create(argument_text=arg)
+
     modules = Module.objects.all()
     return render(request, 'addmodules.html', {'modules': modules})

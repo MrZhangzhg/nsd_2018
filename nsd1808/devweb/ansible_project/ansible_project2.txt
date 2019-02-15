@@ -148,6 +148,7 @@ def addmodules(request):
 {% endblock %}
 4、修改首页的超链接
             <a href="{% url 'addmodules' %}" target="_blank">
+5、完善视图函数，实现添加模块功能
 
 
 
