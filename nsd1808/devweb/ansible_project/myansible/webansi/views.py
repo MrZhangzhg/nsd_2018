@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import HostGroup, Host, Module, Argument
+from .exec_ansible2 import ad_hoc
 
 def index(request):
     return render(request, 'index.html')
@@ -39,6 +40,17 @@ def delarg(request, arg_id):
     return redirect('addmodules')
 
 def tasks(request):
+    if request.method == 'POST':
+        ip = request.POST.get('ip')
+        group = request.POST.get('group')
+        module = request.POST.get('module')
+        argument = request.POST.get('arg')
+        if ip:
+            target = ip
+        else:
+            target = group
+        ad_hoc(inventory_path=['ansicfg/dhosts.py'], hosts=target, module=module, args=argument)
+
     groups = HostGroup.objects.all()
     hosts = Host.objects.all()
     modules = Module.objects.all()

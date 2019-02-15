@@ -36,13 +36,13 @@
                     <tr>
                         <td>
                             <div class="radio">
-                                <label><input type="radio" name="module">{{ module.module_name }}</label>
+                                <label><input type="radio" name="module" value="{{ module.module_name }}">{{ module.module_name }}</label>
                             </div>
                         </td>
                         <td>
                             {% for arg in module.argument_set.all %}
                                 <div class="radio">
-                                    <label><input type="radio" name="arg">{{ arg.argument_text }}</label>
+                                    <label><input type="radio" name="arg" value="{{ arg.argument_text }}">{{ arg.argument_text }}</label>
                                 </div>
                             {% endfor %}
                         </td>

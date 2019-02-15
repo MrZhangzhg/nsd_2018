@@ -266,13 +266,13 @@ def tasks(request):
                     <tr>
                         <td>
                             <div class="radio">
-                                <label><input type="radio" name="module">{{ module.module_name }}</label>
+                                <label><input type="radio" name="module" value="{{ module.module_name }}>{{ module.module_name }}</label>
                             </div>
                         </td>
                         <td>
                             {% for arg in module.argument_set.all %}
                                 <div class="radio">
-                                    <label><input type="radio" name="arg">{{ arg.argument_text }}</label>
+                                    <label><input type="radio" name="arg"  value="{{ arg.argument_text }}>{{ arg.argument_text }}</label>
                                 </div>
                             {% endfor %}
                         </td>
@@ -285,6 +285,31 @@ def tasks(request):
         </form>
     </div>
 {% endblock %}
+
+6、完成函数，在指定的主机/组上执行任务
+把devops第6天的exec_ansible2.py拷贝到webansi目录下
+# webansi/views.py
+from .exec_ansible2 import ad_hoc
+def tasks(request):
+    if request.method == 'POST':
+        ip = request.POST.get('ip')
+        group = request.POST.get('group')
+        module = request.POST.get('module')
+        argument = request.POST.get('arg')
+        if ip:
+            target = ip
+        else:
+            target = group
+        ad_hoc(inventory_path=['ansicfg/dhosts.py'], hosts=target, module=module, args=argument)
+
+    groups = HostGroup.objects.all()
+    hosts = Host.objects.all()
+    modules = Module.objects.all()
+    info = {'groups': groups, 'hosts': hosts, 'modules': modules}
+    return render(request, 'tasks.html', info)
+
+7、测试，在执行任务处测试
+在执行任务页面，点击相关的主机和模块，进行测试
 
 
 
