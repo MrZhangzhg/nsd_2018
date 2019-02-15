@@ -19,6 +19,35 @@ def addhosts(request):
 {% endblock %}
 (4) 修改主页的超链接
             <a href="{% url 'addhosts' %}" target="_blank">
+(5) 进一步修改模板文件
+{% block content %}
+    <div>
+        <table>
+            <tr>
+                <td>主机组</td>
+                <td>主机</td>
+            </tr>
+            {% for group in groups %}
+                <tr>
+                    <td>{{ group.group_name }}</td>
+                    <td>
+                        <ul>
+                            {% for host in group.host_set.all %}
+                                <li>{{ host.hostname }}=>{{ host.ipaddr }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+{% endblock %}
+
+
+
+
+
 
 
 
