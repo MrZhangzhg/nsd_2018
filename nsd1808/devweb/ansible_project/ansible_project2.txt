@@ -149,7 +149,43 @@ def addmodules(request):
 4、修改首页的超链接
             <a href="{% url 'addmodules' %}" target="_blank">
 5、完善视图函数，实现添加模块功能
+def addmodules(request):
+    if request.method == 'POST':
+        module = request.POST.get('module').strip()
+        arg = request.POST.get('arg').strip()
+        if module:
+            mod = Module.objects.get_or_create(module_name=module)[0]
+            if arg:
+                mod.argument_set.get_or_create(argument_text=arg)
 
+    modules = Module.objects.all()
+    return render(request, 'addmodules.html', {'modules': modules})
+
+
+为模块参数添加删除功能
+1、URL
+    url(r'^del/(?P<arg_id>\d+)/$', views.delarg, name='delarg'),
+2、创建视图函数
+def delarg(request, arg_id):
+    argument = Argument.objects.get(id=arg_id)
+    argument.delete()
+    return redirect('addmodules')
+3、修改addmodules.html，增加删除按钮
+{% for module in modules %}
+    <tr>
+        <td>{{ module.module_name }}</td>
+        <td>
+            <ul class="list-unstyled">
+                {% for argument in module.argument_set.all %}
+                    <li>
+                        <div class="col-md-9">{{ argument.argument_text }}</div>
+                        <div class="col-md-3"><a href="{% url 'delarg' arg_id=argument.id %}">删除</a></div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </td>
+    </tr>
+{% endfor %}
 
 
 

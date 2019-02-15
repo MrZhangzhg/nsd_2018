@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import HostGroup, Module
+from django.shortcuts import render, redirect
+from .models import HostGroup, Module, Argument
 
 def index(request):
     return render(request, 'index.html')
@@ -32,3 +32,9 @@ def addmodules(request):
 
     modules = Module.objects.all()
     return render(request, 'addmodules.html', {'modules': modules})
+
+def delarg(request, arg_id):
+    argument = Argument.objects.get(id=arg_id)
+    argument.delete()
+    return redirect('addmodules')
+
