@@ -39,13 +39,41 @@ def addhosts(request):
                     </td>
                 </tr>
             {% endfor %}
-
         </table>
     </div>
 {% endblock %}
 
-
-
+(6) 为表格加样式
+<table class="table table-bordered table-hover">
+            <tr class="info">
+                <td>主机组</td>
+                <td>主机</td>
+            </tr>
+            ... ...
+                        <ul class="list-unstyled">
+(7) 在模板中添加表单功能
+在表格DIV的上方，加入以下内容
+<div>
+    <form action="" method="post" class="form-inline">
+        <div class="form-group">
+            <label>主机名：</label>
+            <input type="text" class="form-control" name="host">
+        </div>
+        <div class="form-group">
+            <label>ip地址：</label>
+            <input type="text" class="form-control" name="ip">
+        </div>
+        <div class="form-group">
+            <label>主机组：</label>
+            <input type="text" class="form-control" name="group">
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="提 交">
+        </div>
+    </form>
+</div>
+<hr>
+说明：action没有写网址，是个空串，表示提交数据的时候，提交给自己
 
 
 
