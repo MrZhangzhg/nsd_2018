@@ -1,0 +1,27 @@
+编写“添加主机”页面
+1、 URL
+    url(r'^addhosts/$', views.addhosts, name='addhosts'),
+
+2、视图函数和模板
+(1) 添加主机页面有两个功能，一个是显示所有的主机和组的信息，另一个是创建
+(2) 先实现显示功能
+from .models import HostGroup
+def addhosts(request):
+    groups = HostGroup.objects.all()
+    return render(request, 'addhosts.html', {'groups': groups})
+(3)模板文件
+# webansi/templates/addhosts.html
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}添加主机/组{% endblock %}
+{% block content %}
+    {{ groups }}
+{% endblock %}
+(4) 修改主页的超链接
+            <a href="{% url 'addhosts' %}" target="_blank">
+
+
+
+
+
+
