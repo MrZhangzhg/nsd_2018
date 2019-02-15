@@ -314,6 +314,20 @@ def tasks(request):
 
 
 
+技能描述：
+熟悉shell和python语言
+熟练使用python编写常用的运维工具
+
+项目：
+1、备份
+2、jenkins
+3、django+ansible
+4、达内教学环境自动化管理
+
+
+
+
+
 
 
 
