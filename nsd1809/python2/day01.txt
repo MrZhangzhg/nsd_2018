@@ -10,6 +10,27 @@ for ch in a:
         break
 
 
+列表：容器、有序、可变
+>>> alist = [10, 100, 50, 30, 28]
+>>> len(alist)
+
+>>> for i in alist:
+...     print(i)
+
+>>> for ind in range(len(alist)):
+...     print('%s: %s' % (ind, alist[ind]))
+
+>>> for item in enumerate(alist):
+...     print('%s: %s' % (item[0], item[1]))
+
+>>> for ind, val in enumerate(alist):
+...     print('%s: %s' % (ind, val))
+
+
+
+
+
+
 
 
 
