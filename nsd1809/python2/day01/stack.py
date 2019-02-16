@@ -20,6 +20,7 @@ def view_it():
     print('\033[32;1m%s\033[0m' % stack)
 
 def show_menu():
+    cmds = {'0': push_it, '1': pop_it, '2': view_it}  # 将函数存入字典
     prompt = """(0) push it
 (1) pop it
 (2) view it
@@ -32,12 +33,15 @@ Please input your choice(0/1/2/3): """
             continue
         if choice == '3':
             break
-        if choice == '0':
-            push_it()
-        elif choice == '1':
-            pop_it()
-        else:
-            view_it()
+
+        cmds[choice]()   # choice=0 => cmds[0]() =>pushit()
+
+        # if choice == '0':
+        #     push_it()
+        # elif choice == '1':
+        #     pop_it()
+        # else:
+        #     view_it()
 
 
 if __name__ == '__main__':

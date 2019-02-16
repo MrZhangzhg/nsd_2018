@@ -61,6 +61,52 @@ for ch in a:
 
 
 
+字典：容器、可变、映射
+1、创建字典的方法
+>>> adict = {'name': 'bob', 'age': 22}
+>>> bdict = dict(['ab', ['qq', '12353235'], ('phone', '15098762737')])
+>>> cdict = {}.fromkeys(('zs', 'ls', 'ww'), 7)
+2、访问字典
+>>> len(adict)
+>>> 'bob' in adict   # False
+>>> 'name' in adict     # True
+>>> for key in adict:
+...     print('%s: %s' % (key, adict[key]))
+>>> '%(name)s is %(age)s years old' % adict
+3、更新字典
+字典的key不能重复
+给一个key赋值的时候，key不存在，则向字典中加入数据；如果已存在，则修改
+>>> adict['name'] = 'tom'
+>>> adict['email'] = 'tom@tedu.cn'
+4、字典的方法
+>>> for key in adict.keys():
+...     print(key)
+>>> for val in adict.values():
+...     print(val)
+>>> for key, val in adict.items():
+...     print(key, val)
+>>> print(adict.get('email'))   # 重点
+>>> print(adict.get('qq'))   # qq不是字典的key，默认返回None
+>>> print(adict.get('qq', 'not found'))   # 指定key不存在时的返回值
+>>> print(adict.get('email', 'not found'))
+
+>>> adict.pop('email')
+>>> adict.popitem()   # 随机弹出一项
+>>> bdict = adict     # 两个字典指向同一地址空间
+>>> bdict['phone'] = '12345678'   # 修改任一字典，两个字典都会受到影响
+>>> cdict = adict.copy()  # cdict只包含了adict的内容，但是不指向同一地址空间
+>>> id(adict)   # 查看字典在内存中的地址
+>>> id(bdict)   # adict和bdict一样
+>>> id(cdict)   # cdict有自己的全新的地址
+
+>>> adict.update({'age': 23, 'email': 'bob@tedu.cn'})
+
+
+
+
+
+
+
 
 
 
