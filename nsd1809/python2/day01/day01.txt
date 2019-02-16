@@ -113,6 +113,43 @@ for ch in a:
 2、为了实现覆盖效果，可以用\r回车不换行
 
 
+集合：由不同的、不可变元素构成一个集合，它是无序的
+字典的键也是不同的，也必须是不可变的，所以集合就像是一个无值的字典
+>>> aset = set('abc')
+>>> bset = set('cde')
+>>> len(aset)
+>>> for ch in aset:
+...     print(ch)
+>>> aset | bset     # 并集
+>>> aset & bset     # 交集
+>>> aset - bset     # 差补，只出现在aset中，不能出现在bset中
+>>> aset.add('new')   # 添加new到集合中
+>>> aset.update('new')  # 把new的每个字母当成一项，加入集合
+>>> aset.update(['hello', 'world'])   # 把列表中的每一项加入集合
+>>> bset.issubset(aset)   # 如果bset中的每一项都在aset中，那么bset就是aset的子集，aset是bset的超集
+>>> aset.issuperset(bset)   # aset是bset的超集吗？
+>>> aset.union(bset)    # aset | bset
+>>> aset.intersection(bset)     # aset & bset
+>>> aset.difference(bset)   # aset - bset
+
+
+通过集合去重
+>>> import random
+# 能过列表解析，生成具有20个随机数字的列表
+>>> alist = [random.randint(1, 20) for i in range(20)]
+>>> aset = set(alist)   # 将列表转换成集合
+>>> blist = list(aset)  # 将集合转换成列表
+
+
+
+
+
+
+
+
+
+
+
 
 
 
