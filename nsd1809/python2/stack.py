@@ -2,14 +2,22 @@
 列表模拟栈结构
 栈：是一个后进先出的结构
 """
+
+stack = []
+
 def push_it():
-    print('push')
+    data = input('data to push: ').strip()
+    if data:    # 如果字符串非空
+        stack.append(data)
 
 def pop_it():
-    print('pop')
+    if stack:   # 如果列表非空
+        print('from stack, popped \033[31;1m%s\033[0m' % stack.pop())
+    else:
+        print('\033[31;1mEmpty stack\033[0m')
 
 def view_it():
-    print('view')
+    print('\033[32;1m%s\033[0m' % stack)
 
 def show_menu():
     prompt = """(0) push it
