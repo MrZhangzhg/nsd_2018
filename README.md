@@ -1,6 +1,10 @@
-课上笔记第一次下载：
+课上笔记如果本地没有任何资料，第一次下载：
 # git clone https://github.com/MrZhangzhg/nsd_2018.git
-后续同步：
+后续第一次同步：
+# cd nsd_2018
+# git pull https://github.com/MrZhangzhg/nsd_2018.git
+后续同步笔记：
+# cd nsd_2018
 # git pull
 
 第五阶段所用到的python软件包链接: 
