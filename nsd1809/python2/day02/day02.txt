@@ -31,6 +31,27 @@ time模块常用方法
 
 https://yiyibooks.cn/  => python352 => 库参考 => ctrl+f搜索
 
+datetime模块
+>>> from datetime import datetime
+>>> t = datetime.now()   # 年月日时分秒毫秒
+>>> t.year
+>>> t.month
+>>> t.day
+>>> t.hour
+>>> t.minute
+>>> t.second
+>>> t.microsecond
+>>> t1 = datetime(2018, 10, 1)
+>>> t > t1
+
+>>> from datetime import timedelta
+>>> days = timedelta(days=50, hours=5, minutes=30)   # 设定50天
+>>> t = datetime.now()   # 当前时间
+>>> t - days    # 50天以前的时间
+>>> t + days    # 50天之后的时间
+
+
+
 
 
 
