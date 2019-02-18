@@ -51,6 +51,22 @@ datetime模块
 >>> t + days    # 50天之后的时间
 
 
+异常处理
+程序遇到错误后，停止执行，抛出异常
+
+主动触发异常
+1、使用raise触发异常
+def set_age(name, age):
+    if not 0 < age < 120:
+        raise ValueError('年龄超过范围')
+    print('%s is %s years old' % (name, age))
+2、断言异常
+出现异常的时候，一定触发AssertionError
+
+
+
+
+
 
 
 
