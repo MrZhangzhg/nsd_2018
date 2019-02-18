@@ -106,6 +106,42 @@ pickle是个存储器，可以把任意类型的数据写到文件中，还能�
 'egg'
 
 
+关键字参数：  key:val   key=val
+>>> def get_age(name, age):
+...     print('%s is %s years old.' % (name, age))
+>>> get_age('bob', 20)  # 正确
+>>> get_age()       # error, 参数个数不够
+>>> get_age('bob', 20, 200)     # error, 参数太多
+>>> get_age(20, 'bob')      # 没错误，但是语义不对
+>>> get_age(age=20, name='bob')     # 正确
+>>> get_age(age=20, 'bob')   # error, key=val的形式必须在后面
+>>> get_age(20, name='bob')     # error，name得到了多个值
+>>> get_age('bob', age=20)      # 正确
+
+
+参数个数不固定的函数
+>>> def func1(*args):       # *表示args是个元组
+...     print(args)
+>>> func1()
+>>> func1(10)
+>>> func1(10, 20, 30, 'bob', 'alice')
+
+>>> def func2(**kwargs):        # **表示kwargs是个字典
+...     print(kwargs)
+>>> func2()
+>>> func2(name='bob', age=20)
+
+
+函数调用传参时，如果使用了*号，表示把这个参数的值拆开
+>>> def add(x, y):
+...     print(x + y)
+>>> nums = [20, 15]
+>>> add(*nums)  # nums列表将会拆分成两个独立的数字20和15传给x和y
+
+
+
+
+
 
 
 
