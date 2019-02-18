@@ -65,6 +65,60 @@ def set_age(name, age):
 
 
 
+os模块
+>>> import os
+>>> os.getcwd()     # pwd
+>>> os.mkdir('/tmp/mydemo')     # mkdir /tmp/mydemo
+>>> os.listdir('/tmp/mydemo')   # ls /tmp/mydemo
+>>> os.chdir('/tmp/mydemo')     # cd /tmp/mydemo
+>>> os.mknod('abc.txt')     # touch abc.txt
+>>> os.listdir()        # ls
+>>> os.chmod('abc.txt', 0o644)  # chmod 644 abc.txt
+>>> os.symlink('/etc/hosts', 'zj')      # ln -s /etc/hosts zj
+>>> os.remove('abc.txt')    # rm abc.txt
+>>> os.unlink('zj')     # unlink zj
+>>> os.path.isfile('/etc/hosts')    # 是否存在，并且是文件
+>>> os.path.isdir('/etc/hosts')     # 是否是目录
+>>> os.path.islink('/etc/grub2.cfg')    # 是否是软链接
+>>> os.path.exists('/etc')      # 是否存在
+>>> os.path.split('/etc/sysconfig/network-scripts/ifcfg-eth0')
+>>> os.path.join('/etc/sysconfig/network-scripts', 'ifcfg-eth0')
+>>> os.path.basename('/etc/sysconfig/network-scripts/ifcfg-eth0')
+>>> os.path.dirname('/etc/sysconfig/network-scripts/ifcfg-eth0')
+
+
+pickle模块
+常规的文件写操作，只能把字符串写到文件中。如果希望可以把任意类型的数据写入到
+文件，取出时不变，就要用到pickle了。
+pickle是个存储器，可以把任意类型的数据写到文件中，还能再无损地取出来。
+>>> import pickle
+>>> shoplist = ['egg', 'banana', 'apple', 'brush']
+>>> f = open('/tmp/shop.data', 'wb')
+>>> pickle.dump(shoplist, f)
+
+>>> f = open('/tmp/shop.data', 'rb')
+>>> alist = pickle.load(f)
+>>> type(alist)
+<class 'list'>
+>>> alist
+['egg', 'banana', 'apple', 'brush']
+>>> alist[0]
+'egg'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
