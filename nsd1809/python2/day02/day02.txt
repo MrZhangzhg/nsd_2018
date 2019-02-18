@@ -1,0 +1,43 @@
+数据类型：
+存储：
+(1) 标量：数字、字符串
+(2) 容器：列表、元组、字典
+更新：
+(1) 可变：列表、字典
+(2) 不可变：字符串、元组、数字
+访问：
+(1) 直接：数字
+(2) 顺序：字符串、列表、元组
+(3) 映射：字典
+
+
+时间的表示方式：重要
+1、时间戳：某一时刻距离1970年1月1号0点的秒数   time.time()
+2、UTC：世界协调时间。把全球分为24个时区，以格林威治为参考点   time.ctime()
+3、9元组：time.localtime()
+>>> t = time.localtime()
+>>> t.tm_year
+>>> t.tm_wday
+
+time模块常用方法
+>>> time.time()     # 返回当前时间的时间戳
+>>> time.ctime()    # 返回当前时间的UTC形式
+>>> time.localtime()        # 返回当前时间的9元组
+>>> time.sleep(3)       # 睡眠3秒
+>>> time.strftime('%Y-%m-%d')       # 返回 2019-02-18
+>>> time.strftime('%H:%M:%S')
+>>> time.strftime('%a')
+>>> time.strftime('%A')
+
+https://yiyibooks.cn/  => python352 => 库参考 => ctrl+f搜索
+
+
+
+
+
+
+
+
+
+
+
