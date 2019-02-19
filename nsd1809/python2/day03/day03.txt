@@ -39,6 +39,26 @@ yield语句，返回很多中间结果。
 1、模块导入的时候将会搜索两个路径
 (1) sys.path定义的路径
 (2) PYTHONPATH环境变量定义的路径
+2、导入模块
+>>> import string as s
+>>> s.ascii_letters
+'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+>>> s.digits
+'0123456789'
+3、模块文件不管导入多少回，只以第一次为准（只加载一次）
+
+包
+1、包对应目录，可以当成特殊的模块
+[root@room8pc16 day03]# mkdir mydemo  # python把mydemo当成包
+[root@room8pc16 day03]# echo 'hi = "Hello World"' > mydemo/hello.py
+>>> import mydemo.hello
+>>> mydemo.hello.hi
+2、如果是py2，需要在目录里创建__init__.py文件才能成为包
+3、写到__init__.py中的内容就成为了包的内容
+[root@room8pc16 day03]# echo 'name = "bob"' > mydemo/__init__.py
+>>> import mydemo
+>>> mydemo.name
+'bob'
 
 
 
