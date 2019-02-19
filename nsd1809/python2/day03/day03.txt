@@ -75,7 +75,31 @@ hashlib模块
 >>> m = hashlib.md5(data)
 >>> m.hexdigest()
 
+tarfile模块
+1、压缩
+>>> import tarfile
+>>> tar = tarfile.open('/tmp/mydemo/anquan.tar.gz', 'w:gz')
+>>> tar.add('/etc/hosts')
+>>> import os
+>>> os.chdir('/etc')
+>>> tar.add('security')
+>>> tar.close()
+2、解压
+>>> os.chdir('/tmp/mydemo')
+>>> tar = tarfile.open('/tmp/mydemo/anquan.tar.gz', 'r:gz')
+>>> tar.extractall()
+>>> tar.close()
 
+
+备份
+周一：abc.txt  access.conf  hosts
+{'abc.txt': 'md5', 'access.conf': 'md5', 'hosts': 'md5'}
+周二：abc.txt(修改)  access.conf  hosts  passwd
+{'abc.txt': 'md5', 'access.conf': 'md5', 'hosts': 'md5', 'passwd': 'md5'}
+完全：压缩目录、计算每个文件的md5值
+增量：计算每个文件的md5值，与前一天的md5值比较，新文件和改动文件压缩
+获取某一目录中的所有文件（包括子目录中的文件）
+>>> list(os.walk('/etc/security'))
 
 
 
