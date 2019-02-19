@@ -54,12 +54,26 @@ yield语句，返回很多中间结果。
 >>> import mydemo.hello
 >>> mydemo.hello.hi
 2、如果是py2，需要在目录里创建__init__.py文件才能成为包
-3、写到__init__.py中的内容就成为了包的内容
+3、写到__init__.py中的内容就成为了包的内容(py2/py3一样)
 [root@room8pc16 day03]# echo 'name = "bob"' > mydemo/__init__.py
 >>> import mydemo
 >>> mydemo.name
 'bob'
 
+
+hashlib模块
+1、md5：是一种单向加密的算法。
+单向加密就是相同的数据总是能生成相同长度的乱码。源数据相同，乱码也一定是相同的。
+不能通过乱码反推回原始数据。可以用来存储密码，也可以用来校验文件的完整性。
+2、应用
+>>> import hashlib
+>>> m = hashlib.md5(b'123456')
+>>> m.hexdigest()
+
+>>> with open('/etc/passwd', 'rb') as fobj:
+...     data = fobj.read()
+>>> m = hashlib.md5(data)
+>>> m.hexdigest()
 
 
 
