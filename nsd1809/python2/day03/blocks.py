@@ -11,7 +11,6 @@ def blocks(fobj):
     if content:
         yield content   # 如果最后不足10行，也要把它返回
 
-
 if __name__ == '__main__':
     fname = '/etc/passwd'
     with open(fname) as fobj:
