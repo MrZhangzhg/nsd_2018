@@ -21,17 +21,30 @@ def save(fname):
     date = strftime('%Y-%m-%d')
     with open(fname, 'rb') as fobj:
         record_list = pickle.load(fobj)     # 取出存储的列表
-    balance = record_list[-1][-2] + amount  #
+    balance = record_list[-1][-2] + amount  # 计算最新余额
     record_list.append([date, amount, 0, balance, comment])
     with open(fname, 'wb') as fobj:   # 把数据列表覆盖回文件
         pickle.dump(record_list, fobj)
 
 def cost(fname):
-    print('cost')
+    amount = int(input('金额: '))
+    comment = input('备注: ')
+    date = strftime('%Y-%m-%d')
+    with open(fname, 'rb') as fobj:
+        record_list = pickle.load(fobj)  # 取出存储的列表
+    balance = record_list[-1][-2] - amount
+    record_list.append([date, 0, amount, balance, comment])
+    with open(fname, 'wb') as fobj:  # 把数据列表覆盖回文件
+        pickle.dump(record_list, fobj)
 
 def query(fname):
-    print('query')
+    with open(fname, 'rb') as fobj:
+        record_list = pickle.load(fobj)
 
+    print('%-14s%-10s%-10s%-12s%-20s' % ('date', 'save', 'cost', 'balance', 'comment'))
+    for record in record_list:  # 从大列表中取出小列表
+        # tuple用于将数据转成列表
+        print('%-14s%-10s%-10s%-12s%-20s' % tuple(record))
 
 def show_menu():
     cmds = {'0': save, '1': cost, '2': query}
