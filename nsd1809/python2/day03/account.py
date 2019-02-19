@@ -2,8 +2,13 @@ import os
 import pickle
 from time import strftime
 
-
 def init_data(fname):
+    """数据的形式[时间, 收入, 开销, 余额, 备注]
+    [
+        ['2019-2-19', 0, 0, 10000, 'init'],
+        ['2019-2-19', 15000, 0, 25000, 'salary'],
+    ]
+    """
     data = [
         [strftime('%Y-%m-%d'), 0, 0, 10000, 'init']
     ]
@@ -11,7 +16,15 @@ def init_data(fname):
         pickle.dump(data, fobj)
 
 def save(fname):
-    print('save')
+    amount = int(input('金额: '))
+    comment = input('备注: ')
+    date = strftime('%Y-%m-%d')
+    with open(fname, 'rb') as fobj:
+        record_list = pickle.load(fobj)     # 取出存储的列表
+    balance = record_list[-1][-2] + amount  #
+    record_list.append([date, amount, 0, balance, comment])
+    with open(fname, 'wb') as fobj:   # 把数据列表覆盖回文件
+        pickle.dump(record_list, fobj)
 
 def cost(fname):
     print('cost')
