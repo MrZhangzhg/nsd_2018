@@ -5,6 +5,7 @@
 >>> add(10, 20, 30, 40, 5)
 >>> add(10, 20, 30, 40, 8)
 可以改造add函数，将前4个参数固定，生成的新函数取名为myadd
+>>> from functools import parial
 >>> myadd = partial(add, 10, 20, 30, 40)
 >>> myadd(5)
 >>> myadd(8)
