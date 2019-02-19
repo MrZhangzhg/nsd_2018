@@ -1,14 +1,30 @@
-def save():
+import os
+import pickle
+from time import strftime
 
 
-def cost():
+def init_data(fname):
+    data = [
+        [strftime('%Y-%m-%d'), 0, 0, 10000, 'init']
+    ]
+    with open(fname, 'wb') as fobj:
+        pickle.dump(data, fobj)
 
+def save(fname):
+    print('save')
 
-def query():
+def cost(fname):
+    print('cost')
+
+def query(fname):
+    print('query')
 
 
 def show_menu():
     cmds = {'0': save, '1': cost, '2': query}
+    fname = 'record.data'
+    if not os.path.exists(fname):   # 如果文件不存在，则初始化
+        init_data(fname)
     prompt = """(0) 收入
 (1) 开销
 (2) 查询
@@ -22,7 +38,7 @@ def show_menu():
         if choice == '3':
             print('\nBye-bye')
             break
-        cmds[choice]()
+        cmds[choice](fname)
 
 
 if __name__ == '__main__':
