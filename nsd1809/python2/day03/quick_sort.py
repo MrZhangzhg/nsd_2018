@@ -6,7 +6,7 @@ def qsort(seq):
     拼接起来。小列表、大列表仍然要用同样的方法继承排序
     """
     if len(seq) < 2:
-        return seq
+        return seq   # 如果列表只有一项或是空的，不需要排序，直接返回
 
     middle = seq[0]
     smaller = []

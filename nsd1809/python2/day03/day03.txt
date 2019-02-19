@@ -21,6 +21,23 @@
 1!=1
 
 
+生成器：本质上是一个函数。常规的函数只能返回一个最终结果，但是生成器可以通过
+yield语句，返回很多中间结果。
+>>> def mygen():
+...     yield 'hello world'
+...     a = 10 + 20
+...     yield a
+...     yield [1, 2, 3]
+>>> a = mygen()
+>>> a.__next__()
+>>> b = mygen()
+>>> for item in b:
+...     print(item)
+
+
+
+
+
 
 
 
