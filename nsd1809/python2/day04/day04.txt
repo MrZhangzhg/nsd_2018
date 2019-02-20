@@ -54,6 +54,34 @@ OOP编程时，有一些以__开头、结尾的方法，被称作magic魔法方�
 :%s/\(..\)\(..\)\(..\)\(..\)\(..\)\(..\)$/\1:\2:\3:\4:\5:\6/
 
 
+re模块
+>>> import re
+>>> re.match('f..', 'food')  # 如果匹配到模式，返回匹配对象
+>>> print(re.match('f..', 'seafood'))   # 没匹配到返回None
+>>> m = re.match('f..', 'food')
+>>> m.group()   # 通过group方法获取匹配结果
+>>> m = re.search('f..', 'seafood')
+>>> m.group()
+
+>>> re.findall('f..', 'seafood is food')
+>>> re.finditer( 'f..', 'seafood is food')
+>>> list(re.finditer( 'f..', 'seafood is food'))
+finditer将匹配到的所有匹配对象组成一个匹配列表
+>>> for m in re.finditer('f..', 'seafood is food'):
+...     m.group()
+
+>>> re.split('\.|-', 'hello-world.tar.gz')  # 以点和-作为分隔符切分
+>>> re.sub('x', 'zs', 'Hi x. nice to meet you, x.')  # 把x替换为zs
+
+如果匹配的数量非常大，可以把模式先编译，以提升效率
+>>> patt = re.compile('f..')
+>>> m = patt.search('seafood')
+>>> m.group()
+>>> patt.findall('seafood is food')
+
+
+
+
 
 
 
