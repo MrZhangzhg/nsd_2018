@@ -2,5 +2,38 @@
 1、文件名：文件名_完全/增量_日期.tar.gz
 security_full_20190220.tar.gz
 security_incr_20190221.tar.gz
+2、获取每个文件
+>>> info = list(os.walk('/tmp/mydemo/security'))
+>>> import pprint
+>>> pprint.pprint(info)
+>>> pprint.pprint(info)
+[('/tmp/mydemo/security',
+  ['console.apps', 'console.perms.d', 'limits.d', 'namespace.d'],
+  ['access.conf',
+   'chroot.conf',
+   'console.handlers',
+   'console.perms',
+   'group.conf',
+   'limits.conf',
+   'namespace.conf',
+   'namespace.init',
+   'opasswd',
+   'pam_env.conf',
+   'sepermit.conf',
+   'time.conf',
+   'pwquality.conf']),
+ ('/tmp/mydemo/security/console.apps',
+  [],
+  ['config-util', 'xserver', 'liveinst', 'setup']),
+ ('/tmp/mydemo/security/console.perms.d', [], []),
+ ('/tmp/mydemo/security/limits.d', [], ['20-nproc.conf']),
+ ('/tmp/mydemo/security/namespace.d', [], [])]
+经过分析，os.walk返回的值由元组构成，每个元素有三项，第一项是路径字符串，第二
+项是目录列表，第三项是文件列表
+>>> src
+'/tmp/mydemo/security/'
+>>> for path, folder, files in os.walk(src):
+...     for file in files:
+...         os.path.join(path, file)
 
 
