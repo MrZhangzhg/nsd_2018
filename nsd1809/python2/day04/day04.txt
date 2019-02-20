@@ -1,0 +1,6 @@
+备份：
+1、文件名：文件名_完全/增量_日期.tar.gz
+security_full_20190220.tar.gz
+security_incr_20190221.tar.gz
+
+
