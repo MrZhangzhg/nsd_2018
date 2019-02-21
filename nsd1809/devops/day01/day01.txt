@@ -1,0 +1,11 @@
+多进程、多线程主要用于提升效率
+
+
+脚本执行方式：
+1、# bash script.sh    => fork执行，使用bash作为解释器
+2、# ./script.sh   => fork执行，使用脚本中指定的解释器
+3、# source script.sh  => 在当前进程中执行，不会fork出子进程
+
+
+
+
