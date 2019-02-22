@@ -33,6 +33,11 @@ class TcpTimeServ:
                 exit()  # 退出
             cli_sock.close()  # 父进程关闭客户机套接字
 
+            while True:
+                result = os.waitpid(-1, 1)  # 一个waitpid只能处理一个子进程
+                if result[0] == 0:  # result是个元组
+                    break
+
         self.serv.close()
 
 if __name__ == '__main__':
