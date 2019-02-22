@@ -35,13 +35,16 @@ cursor.execute(query_dep1)
 # result3 = cursor.fetchall()  # 取全部
 # print(result3)
 
-cursor.scroll(2, mode='absolute')
-result4 = cursor.fetchone()
-print(result4)
-print('*' * 30)
-cursor.scroll(1)  # 默认以相对位置的方式移动
-result5 = cursor.fetchone()
-print(result5)
+# cursor.scroll(2, mode='absolute')
+# result4 = cursor.fetchone()
+# print(result4)
+# print('*' * 30)
+# cursor.scroll(1)  # 默认以相对位置的方式移动
+# result5 = cursor.fetchone()
+# print(result5)
+
+update_dep1 = 'UPDATE departments SET dep_name=%s WHERE dep_name=%s'
+cursor.execute(update_dep1, ('运维开发部', '运维部'))
 
 conn.commit()
 cursor.close()
