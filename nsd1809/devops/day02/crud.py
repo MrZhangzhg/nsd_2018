@@ -43,8 +43,11 @@ cursor.execute(query_dep1)
 # result5 = cursor.fetchone()
 # print(result5)
 
-update_dep1 = 'UPDATE departments SET dep_name=%s WHERE dep_name=%s'
-cursor.execute(update_dep1, ('运维开发部', '运维部'))
+# update_dep1 = 'UPDATE departments SET dep_name=%s WHERE dep_name=%s'
+# cursor.execute(update_dep1, ('运维开发部', '运维部'))
+
+delete_dep1 = 'DELETE FROM departments WHERE dep_id=%s'
+cursor.execute(delete_dep1, (6,))
 
 conn.commit()
 cursor.close()
