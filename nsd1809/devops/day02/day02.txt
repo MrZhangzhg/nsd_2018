@@ -61,5 +61,8 @@ auto_id 员工ID 工资日期	基本工资	奖金
 MariaDB [(none)]> CREATE DATABASE nsd1809 DEFAULT CHARSET utf8;
 
 
+MariaDB [(none)]> USE nsd1809;
+MariaDB [nsd1809]> SHOW TABLES;
+MariaDB [nsd1809]> DESC departments;
 
 
