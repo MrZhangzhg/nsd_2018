@@ -65,4 +65,10 @@ MariaDB [(none)]> USE nsd1809;
 MariaDB [nsd1809]> SHOW TABLES;
 MariaDB [nsd1809]> DESC departments;
 
+4、CRUD
+C: Create创建
+R: Retrieve查询
+U: Update更新
+D: Delete删除
+
 
