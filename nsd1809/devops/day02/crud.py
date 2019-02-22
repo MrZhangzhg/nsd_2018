@@ -26,14 +26,22 @@ insert_emp1 = 'INSERT INTO employees VALUES(%s, %s, %s, %s, %s, %s)'
 
 query_dep1 = 'SELECT * FROM departments ORDER BY dep_id'
 cursor.execute(query_dep1)
-result1 = cursor.fetchone()  # 取1行
-print(result1)
+# result1 = cursor.fetchone()  # 取1行
+# print(result1)
+# print('*' * 30)
+# result2 = cursor.fetchmany(2)  # 取多行
+# print(result2)
+# print('*' * 30)
+# result3 = cursor.fetchall()  # 取全部
+# print(result3)
+
+cursor.scroll(2, mode='absolute')
+result4 = cursor.fetchone()
+print(result4)
 print('*' * 30)
-result2 = cursor.fetchmany(2)  # 取多行
-print(result2)
-print('*' * 30)
-result3 = cursor.fetchall()  # 取全部
-print(result3)
+cursor.scroll(1)  # 默认以相对位置的方式移动
+result5 = cursor.fetchone()
+print(result5)
 
 conn.commit()
 cursor.close()
