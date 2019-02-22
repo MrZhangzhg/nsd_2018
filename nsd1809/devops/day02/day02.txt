@@ -56,6 +56,9 @@ pymysql:
 工资表：
 auto_id 员工ID 工资日期	基本工资	奖金
 
+3、应用
+[root@room8pc16 day02]# mysql -uroot -ptedu.cn
+MariaDB [(none)]> CREATE DATABASE nsd1809 DEFAULT CHARSET utf8;
 
 
 
