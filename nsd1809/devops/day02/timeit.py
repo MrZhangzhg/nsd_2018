@@ -18,7 +18,7 @@ if __name__ == '__main__':
     #     if not ret_val:
     #         add()
     #         exit()
-    
+
     # for i in range(5):
     #     os.waitpid(-1, 0)  # 一个waitpid只能挂起处理一个子进程
     tlist = []
