@@ -1,0 +1,28 @@
+ORM:对象关系映射
+O：对象 -> class类
+R：对象 -> 关系型数据库
+M：映射 -> 将数据库表映射成一个class，表中的每个字段映射为一个类属性
+
+
+sqlalchemy应用
+1、安装
+# cd sqlalchemy_pkgs/
+# pip3 install SQLAlchemy-1.2.14.tar.gz
+
+2、新建数据库
+MariaDB [nsd1809]> CREATE DATABASE tedu1809 DEFAULT CHARSET utf8;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
