@@ -95,10 +95,21 @@ xz = Departments(dep_name='行政部')
 # for name, email in query3:
 #     print('%s: %s' % (name, email))
 #######################################
-query4 = session.query(Departments.dep_name.label('部门'))
-print(query4)
-for dep in query4:
-    print(dep.部门)
+# query4 = session.query(Departments.dep_name.label('部门'))
+# print(query4)
+# for dep in query4:
+#     print(dep.部门)
+#######################################
+query5 = session.query(Departments).order_by(Departments.dep_id)
+dep = query5[0]   # 不再是SQL语句，因为取切片、下标是取值
+print(dep)
+print('%s: %s' % (dep.dep_id, dep.dep_name))
+qset = query5[1:3]
+print(qset)
+for dep in qset:
+    print('%s: %s' % (dep.dep_id, dep.dep_name))
+
+
 
 #######################################
 
