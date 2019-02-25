@@ -109,11 +109,18 @@ xz = Departments(dep_name='行政部')
 # for dep in qset:
 #     print('%s: %s' % (dep.dep_id, dep.dep_name))
 #######################################
-query6 = session.query(Employees).filter(Employees.dep_id==2)
-print(query6)
-for emp in query6:
-    print('%s: %s' % (emp.emp_name, emp.dep_id))
+# query6 = session.query(Employees).filter(Employees.dep_id==2)
+# print(query6)
+# for emp in query6:
+#     print('%s: %s' % (emp.emp_name, emp.dep_id))
 #######################################
+query7 = session.query(Employees).filter(Employees.dep_id==3)\
+    .filter(Employees.email.like('%@qq.com'))
+print(query7.all())
+for emp in query7:
+    print('%s: %s' % (emp.emp_name, emp.email))
+#######################################
+
 
 
 
