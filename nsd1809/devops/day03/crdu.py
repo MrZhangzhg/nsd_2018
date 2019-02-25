@@ -89,12 +89,16 @@ xz = Departments(dep_name='行政部')
 # for dep in query2:
 #     print('%s: %s' % (dep.dep_id, dep.dep_name))
 #######################################
-query3 = session.query(Employees.emp_name, Employees.email)
-print(query3)
-print(query3.all())  # 结果是由元组构成的列表
-for name, email in query3:
-    print('%s: %s' % (name, email))
-
+# query3 = session.query(Employees.emp_name, Employees.email)
+# print(query3)
+# print(query3.all())  # 结果是由元组构成的列表
+# for name, email in query3:
+#     print('%s: %s' % (name, email))
+#######################################
+query4 = session.query(Departments.dep_name.label('部门'))
+print(query4)
+for dep in query4:
+    print(dep.部门)
 
 #######################################
 
