@@ -120,11 +120,20 @@ xz = Departments(dep_name='行政部')
 # for emp in query7:
 #     print('%s: %s' % (emp.emp_name, emp.email))
 #######################################
-query8 = session.query(Departments).filter(Departments.dep_id!=1)
-print(query8)
-for dep in query8:
-    print('%s: %s' % (dep.dep_id, dep.dep_name))
+# query8 = session.query(Departments).filter(Departments.dep_id!=1)
+# print(query8)
+# for dep in query8:
+#     print('%s: %s' % (dep.dep_id, dep.dep_name))
 #######################################
+# query9 = session.query(Departments).filter(Departments.dep_id.in_([1, 3]))
+# print(query9)
+# for dep in query9:
+#     print('%s: %s' % (dep.dep_id, dep.dep_name))
+#######################################
+query10 = session.query(Departments).filter(~Departments.dep_id.in_([1, 3]))
+print(query10)
+for dep in query10:
+    print('%s: %s' % (dep.dep_id, dep.dep_name))
 
 
 
