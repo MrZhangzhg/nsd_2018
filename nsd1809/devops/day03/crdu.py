@@ -100,14 +100,20 @@ xz = Departments(dep_name='行政部')
 # for dep in query4:
 #     print(dep.部门)
 #######################################
-query5 = session.query(Departments).order_by(Departments.dep_id)
-dep = query5[0]   # 不再是SQL语句，因为取切片、下标是取值
-print(dep)
-print('%s: %s' % (dep.dep_id, dep.dep_name))
-qset = query5[1:3]
-print(qset)
-for dep in qset:
-    print('%s: %s' % (dep.dep_id, dep.dep_name))
+# query5 = session.query(Departments).order_by(Departments.dep_id)
+# dep = query5[0]   # 不再是SQL语句，因为取切片、下标是取值
+# print(dep)
+# print('%s: %s' % (dep.dep_id, dep.dep_name))
+# qset = query5[1:3]
+# print(qset)
+# for dep in qset:
+#     print('%s: %s' % (dep.dep_id, dep.dep_name))
+#######################################
+query6 = session.query(Employees).filter(Employees.dep_id==2)
+print(query6)
+for emp in query6:
+    print('%s: %s' % (emp.emp_name, emp.dep_id))
+#######################################
 
 
 
