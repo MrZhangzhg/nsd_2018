@@ -26,9 +26,17 @@ class Employees(Base):
     birth_date = Column(Date)
     email = Column(String(50))
     dep_id = Column(Integer, ForeignKey('departments.dep_id'))
-    
+
     def __str__(self):
         return "员工: %s" % self.emp_name
+
+class Salary(Base):
+    __tablename__ = 'salary'
+    auto_id = Column(Integer, primary_key=True)
+    emp_id = Column(Integer, ForeignKey('employees.emp_id'))
+    date = Column(Date)
+    basic = Column(Integer)
+    awards = Column(Integer)
 
 if __name__ == '__main__':
     Base.metadata.create_all(engine)
