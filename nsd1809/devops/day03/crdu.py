@@ -76,14 +76,18 @@ xz = Departments(dep_name='行政部')
 # )
 # session.add_all([gyh, zjy, jp, ljj, ghn, wyf, cl, xkn, ytt])
 #######################################
-query1 = session.query(Departments)
-print(query1)  # query1只是一个SQL查询语句
-print(query1.all())  # 返回的是Departments所有实例组成的列表
-for dep in query1:   # 取出查询结果中的每一个实例
-    print(dep)
-for dep in query1:
-    print('%s: %s' % (dep.dep_id, dep.dep_name))  # 打印实例的属性
-
+# query1 = session.query(Departments)
+# print(query1)  # query1只是一个SQL查询语句
+# print(query1.all())  # 返回的是Departments所有实例组成的列表
+# for dep in query1:   # 取出查询结果中的每一个实例
+#     print(dep)
+# for dep in query1:
+#     print('%s: %s' % (dep.dep_id, dep.dep_name))  # 打印实例的属性
+#######################################
+query2 = session.query(Departments).order_by(Departments.dep_id)
+print(query2)
+for dep in query2:
+    print('%s: %s' % (dep.dep_id, dep.dep_name))
 
 #######################################
 
