@@ -142,12 +142,23 @@ xz = Departments(dep_name='行政部')
 # for dep in query11:
 #     print('%s: %s' % (dep.dep_id, dep.dep_name))
 #######################################
-from sqlalchemy import or_
-query12 = session.query(Departments)\
-    .filter(or_(Departments.dep_id<3, Departments.dep_id>5))
-print(query12)
-for dep in query12:
-    print('%s: %s' % (dep.dep_id, dep.dep_name))
+# from sqlalchemy import or_
+# query12 = session.query(Departments)\
+#     .filter(or_(Departments.dep_id<3, Departments.dep_id>5))
+# print(query12)
+# for dep in query12:
+#     print('%s: %s' % (dep.dep_id, dep.dep_name))
+#######################################
+# query13 = session.query(Departments)
+# print(query13.all())  # 返回实例列表，常用
+# print(query13.first())  # 返回all实例列表中的第一项
+#######################################
+# query14 = session.query(Departments).filter(Departments.dep_id==1)
+# print(query14.one())  # 返回一个具体的实例，多于1或少于1都会报错，常用
+#######################################
+query15 = session.query(Departments.dep_name, Departments.dep_id)\
+    .filter(Departments.dep_id==1)
+print(query15.scalar())  # 返回one结果中的第一项
 
 
 #######################################
