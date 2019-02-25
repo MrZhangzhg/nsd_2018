@@ -156,9 +156,20 @@ xz = Departments(dep_name='行政部')
 # query14 = session.query(Departments).filter(Departments.dep_id==1)
 # print(query14.one())  # 返回一个具体的实例，多于1或少于1都会报错，常用
 #######################################
-query15 = session.query(Departments.dep_name, Departments.dep_id)\
-    .filter(Departments.dep_id==1)
-print(query15.scalar())  # 返回one结果中的第一项
+# query15 = session.query(Departments.dep_name, Departments.dep_id)\
+#     .filter(Departments.dep_id==1)
+# print(query15.scalar())  # 返回one结果中的第一项
+#######################################
+# query16 = session.query(Departments).count()
+# print(query16)
+#######################################
+query17 = session.query(Employees.emp_name, Departments.dep_name)\
+    .join(Departments)
+print(query17)
+for emp_name, dep_name in query17:
+    print('%s: %s' % (emp_name, dep_name))
+#######################################
+
 
 
 #######################################
