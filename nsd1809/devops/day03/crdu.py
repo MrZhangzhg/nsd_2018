@@ -84,10 +84,17 @@ xz = Departments(dep_name='行政部')
 # for dep in query1:
 #     print('%s: %s' % (dep.dep_id, dep.dep_name))  # 打印实例的属性
 #######################################
-query2 = session.query(Departments).order_by(Departments.dep_id)
-print(query2)
-for dep in query2:
-    print('%s: %s' % (dep.dep_id, dep.dep_name))
+# query2 = session.query(Departments).order_by(Departments.dep_id)
+# print(query2)
+# for dep in query2:
+#     print('%s: %s' % (dep.dep_id, dep.dep_name))
+#######################################
+query3 = session.query(Employees.emp_name, Employees.email)
+print(query3)
+print(query3.all())  # 结果是由元组构成的列表
+for name, email in query3:
+    print('%s: %s' % (name, email))
+
 
 #######################################
 
