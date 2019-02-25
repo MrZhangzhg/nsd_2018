@@ -130,11 +130,24 @@ xz = Departments(dep_name='行政部')
 # for dep in query9:
 #     print('%s: %s' % (dep.dep_id, dep.dep_name))
 #######################################
-query10 = session.query(Departments).filter(~Departments.dep_id.in_([1, 3]))
-print(query10)
-for dep in query10:
+# query10 = session.query(Departments).filter(~Departments.dep_id.in_([1, 3]))
+# print(query10)
+# for dep in query10:
+#     print('%s: %s' % (dep.dep_id, dep.dep_name))
+#######################################
+# from sqlalchemy import and_
+# query11 = session.query(Departments)\
+#     .filter(and_(Departments.dep_id>1, Departments.dep_id<4))
+# print(query11)
+# for dep in query11:
+#     print('%s: %s' % (dep.dep_id, dep.dep_name))
+#######################################
+from sqlalchemy import or_
+query12 = session.query(Departments)\
+    .filter(or_(Departments.dep_id<3, Departments.dep_id>5))
+print(query12)
+for dep in query12:
     print('%s: %s' % (dep.dep_id, dep.dep_name))
-
 
 
 #######################################
