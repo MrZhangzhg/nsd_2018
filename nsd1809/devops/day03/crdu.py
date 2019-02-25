@@ -163,13 +163,20 @@ xz = Departments(dep_name='行政部')
 # query16 = session.query(Departments).count()
 # print(query16)
 #######################################
-query17 = session.query(Employees.emp_name, Departments.dep_name)\
-    .join(Departments)
-print(query17)
-for emp_name, dep_name in query17:
-    print('%s: %s' % (emp_name, dep_name))
+# query17 = session.query(Employees.emp_name, Departments.dep_name)\
+#     .join(Departments)
+# print(query17)
+# for emp_name, dep_name in query17:
+#     print('%s: %s' % (emp_name, dep_name))
 #######################################
-
+# query18 = session.query(Departments).filter(Departments.dep_name=='人事部')
+# hr = query18.one()
+# print(hr)
+# hr.dep_name = '人力资源部'
+#######################################
+query19 = session.query(Departments).filter(Departments.dep_name=='行政部')
+xz = query19.one()
+session.delete(xz)
 
 
 #######################################

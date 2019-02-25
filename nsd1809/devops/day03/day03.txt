@@ -12,7 +12,7 @@ sqlalchemy应用
 2、新建数据库
 MariaDB [nsd1809]> CREATE DATABASE tedu1809 DEFAULT CHARSET utf8;
 
-
+笛卡尔积
 
 
 
