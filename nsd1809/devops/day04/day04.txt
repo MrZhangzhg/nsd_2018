@@ -42,6 +42,19 @@ paramiko: ssh客户端
 >>> ssh.connect('192.168.4.4', username='root', password='123456')
 >>> ssh.exec_command('mkdir /tmp/mydemo')  # 执行命令
 >>> ssh.close()  # 关闭连接
+3、执行命令的返回值
+>>> ssh = paramiko.SSHClient()
+>>> ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+>>> ssh.connect('192.168.4.4', username='root', password='123456')
+>>> result = ssh.exec_command('id root; id tom')
+>>> len(result)  => 3
+执行命令返回的值共有3项，分别是输入、输出和错误的类文件对象
+>>> result[1].read()
+b'uid=0(root) gid=0(root) \xe7\xbb\x84=0(root)\n'
+>>> result[2].read()
+b'id: tom: no such user\n'
+>>> ssh.close()
+
 
 
 
