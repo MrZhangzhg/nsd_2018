@@ -31,6 +31,28 @@ http://127.0.0.1/ban   -> 没权限
 >>> import urllib.error
 
 
+paramiko: ssh客户端
+1、安装
+[root@room8pc16 zzg_pypkgs]# cd paramiko_pkgs/
+[root@room8pc16 paramiko_pkgs]# pip3 install *
+2、应用
+>>> import paramiko
+>>> ssh = paramiko.SSHClient()  # 创建SSHClient的实例
+>>> ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())  # 回答yes
+>>> ssh.connect('192.168.4.4', username='root', password='123456')
+>>> ssh.exec_command('mkdir /tmp/mydemo')  # 执行命令
+>>> ssh.close()  # 关闭连接
+
+
+
+
+
+
+
+
+
+
+
 
 
 
