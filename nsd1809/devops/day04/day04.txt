@@ -38,6 +38,12 @@ qq主页，下载后通过file命令查看，它是gzip文件，不是html文件
 >>> f.close()
 >>> data.decode('gbk')  # 默认是utf8
 ##########################################
+[root@room8pc16 day04]# pip3 install wget
+>>> import wget
+>>> wget.download(url='https://upload-images.jianshu.io/upload_images/12347101-0548326de2ebc9bc.png', '/tmp/')
+##########################################
+
+
 
 
 
@@ -68,6 +74,10 @@ b'id: tom: no such user\n'
 
 
 
+邮件编程：
+一、邮件内容
+
+二、发邮件
 
 
 
