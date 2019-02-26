@@ -8,5 +8,32 @@
 3、打开Request对象，观察日志
 >>> html = request.urlopen(r)
 
+数据编码：
+在URL中，只支持一部分字符集，其他字符需要进行编码。
+1、如，在搜狗中搜索“达内”，URL可以看到汉字，但是复制到下面，这就是这样的显示：
+https://www.sogou.com/web?query=%E8%BE%BE%E5%86%85
+2、通过urllib进行数据编码
+>>> url = 'https://www.sogo.com/web?query='
+>>> word = request.quote('达内')
+>>> url + word
+'https://www.sogo.com/web?query=%E8%BE%BE%E5%86%85'
+
+异常处理
+1、环境准备
+http://127.0.0.1/abc   => 不存在
+http://127.0.0.1/ban   -> 没权限
+2、通过urllib进行访问，观察异常
+>>> url1 = 'http://127.0.0.1/abc/'
+>>> url2 = 'http://127.0.0.1/ban/'
+>>> request.urlopen(url1)
+>>> request.urlopen(url2)
+3、异常处理
+>>> import urllib.error
+
+
+
+
+
+
 
 
