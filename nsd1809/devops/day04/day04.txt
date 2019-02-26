@@ -68,6 +68,12 @@ b'id: tom: no such user\n'
 
 
 
+qq主页，下载后通过file命令查看，它是gzip文件，不是html文件。
+>>> import gzip
+>>> f = gzip.open('/tmp/qq.html', 'rb')
+>>> data = f.read()
+>>> f.close()
+>>> data.decode('gbk')  # 默认是utf8
 
 
 
