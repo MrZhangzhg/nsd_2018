@@ -81,14 +81,37 @@ b'id: tom: no such user\n'
 
 
 
+JSON: 可以在网络上发送任意的数据类型。JSON独立于语言，收发双方采用的语言可以
+是不一样的任意语言
+>>> import json
+>>> adict = {'name': 'bob', 'age': 20}
+>>> data = json.dumps(adict)  # 转换成json字符串
+>>> new_dict = json.loads(data)  # 将json字符串转成python数据类型
+>>> type(new_dict)
+<class 'dict'>
+>>> new_dict['age']
+20
 
 
+中国天气网API
+实况天气获取:http://www.weather.com.cn/data/sk/城市代码.html
+城市信息获取:http://www.weather.com.cn/data/cityinfo/城市代码.html
+详细指数获取:http://www.weather.com.cn/data/zs/城市代码.html
+网上搜索“中国天气网城市代码”  101010100
 
+>>> from urllib import request
+>>> import json
+>>> url = 'http://www.weather.com.cn/data/sk/101010100.html'
+>>> r = request.urlopen(url)
+>>> data = r.read()
+>>> bj = json.loads(data)
+>>> import pprint
+>>> pprint.pprint(bj)
+>>> pprint.pprint(bj['weatherinfo'])
+>>> pprint.pprint(bj['weatherinfo']['temp'])
 
-
-
-
-
+图标地址：
+http://www.weather.com.cn/m/i/weatherpic/29x20/d2.gif
 
 
 

@@ -10,6 +10,7 @@ def send_email(text, sender, receivers, subject, host, user, passwd):
     message['Subject'] = Header(subject, 'utf8')
 
     smtp = smtplib.SMTP(host)
+    # smtp.starttls()  # 如果服务器是需要加密通信的，则打开此注释
     smtp.login(user, passwd)
     smtp.sendmail(sender, receivers, message.as_bytes())
 
