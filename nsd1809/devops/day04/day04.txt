@@ -1,0 +1,12 @@
+模拟通过浏览器访问WEB服务器
+1、配置头部信息
+>>> from urllib import request
+>>> header = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'}
+2、创建Request对象
+>>> url = 'http://127.0.0.1/'
+>>> r = request.Request(url, headers=header)
+3、打开Request对象，观察日志
+>>> html = request.urlopen(r)
+
+
+
