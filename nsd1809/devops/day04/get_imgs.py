@@ -33,6 +33,9 @@ if __name__ == '__main__':
     ##############################
     img_patt = '(http|https)://[-/.\w]+\.(png|jpg|jpeg|gif)'
     img_list = get_urls(fname_163, img_patt, encoding='gbk')
-    print(img_list)
+    # print(img_list)
     ##############################
-
+    for url in img_list:
+        fname = url.split('/')[-1]  # url以/为分隔符，最后一项是文件名
+        fname = os.path.join(path, fname)  # 拼接本地绝对路径
+        download(url, fname)
