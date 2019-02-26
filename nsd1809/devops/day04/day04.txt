@@ -30,6 +30,17 @@ http://127.0.0.1/ban   -> 没权限
 3、异常处理
 >>> import urllib.error
 
+##########################################
+qq主页，下载后通过file命令查看，它是gzip文件，不是html文件。
+>>> import gzip
+>>> f = gzip.open('/tmp/qq.html', 'rb')
+>>> data = f.read()
+>>> f.close()
+>>> data.decode('gbk')  # 默认是utf8
+##########################################
+
+
+
 
 paramiko: ssh客户端
 1、安装
@@ -68,12 +79,7 @@ b'id: tom: no such user\n'
 
 
 
-qq主页，下载后通过file命令查看，它是gzip文件，不是html文件。
->>> import gzip
->>> f = gzip.open('/tmp/qq.html', 'rb')
->>> data = f.read()
->>> f.close()
->>> data.decode('gbk')  # 默认是utf8
+
 
 
 
