@@ -31,6 +31,20 @@ url = 'http://www.weather.com.cn/data/sk/101010100.html'
 >>> r = requests.get('http://127.0.0.1/abc')
 >>> r.status_code   # 404
 
+7、使用参数（查快递）
+参考：http://yshblog.com/blog/33
+>>> url = 'http://www.kuaidi100.com/query'
+>>> params = {'type': 'yunda', 'postid': '3834440052379'}
+>>> r = requests.get(url, params=params)
+>>> r.json()
+>>> r.json()['data'][0]['context']
+
+
+钉钉机器人：
+1、下载、并注册
+2、创建群
+3、在群中添加群聊机器人
+
 
 
 
