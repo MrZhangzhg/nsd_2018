@@ -23,6 +23,13 @@ url = 'http://www.weather.com.cn/data/sk/101010100.html'
 >>> r = requests.get(url)
 >>> with open('/tmp/m.jpg', 'wb') as fobj:
 ...     fobj.write(r.content)
+5、修改头部信息
+>>> headers = {'User-Agent': "Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0"}
+>>> r = requests.get('http://127.0.0.1', headers=headers)
+6、状态码
+>>> r.status_code
+>>> r = requests.get('http://127.0.0.1/abc')
+>>> r.status_code   # 404
 
 
 
