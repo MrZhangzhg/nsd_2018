@@ -18,7 +18,11 @@ url = 'http://www.weather.com.cn/data/sk/101010100.html'
 >>> r.json()
 >>> bj = r.json()
 >>> bj['weatherinfo']['SD']
-
+4、获取网络资源（非文本数据）
+>>> url = 'https://upload-images.jianshu.io/upload_images/1857973-202b35156b596a68'>>>
+>>> r = requests.get(url)
+>>> with open('/tmp/m.jpg', 'wb') as fobj:
+...     fobj.write(r.content)
 
 
 
