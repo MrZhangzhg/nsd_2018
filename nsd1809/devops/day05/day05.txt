@@ -11,6 +11,18 @@ Requests内部采用来urillib3
 >>> r.encoding   # ISO-8859-1
 >>> r.encoding = 'utf8'
 >>> r.text
+3、获取网络资源（JSON格式数据）
+url = 'http://www.weather.com.cn/data/sk/101010100.html'
+>>> r = requests.get(url)
+>>> r.encoding = 'utf8'
+>>> r.json()
+>>> bj = r.json()
+>>> bj['weatherinfo']['SD']
+
+
+
+
+
 
 
 
