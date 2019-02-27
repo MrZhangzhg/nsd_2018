@@ -47,6 +47,8 @@ url = 'http://www.weather.com.cn/data/sk/101010100.html'
 4、搜索“钉钉开放平台”，找到官方手册
 
 
+zabbix api:
+http://192.168.4.2/zabbix/api_jsonrpc.php
 
 
 
