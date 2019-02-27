@@ -67,12 +67,31 @@ default网络是kvm的默认网络，采用nat模式，连到此网络的虚拟�
 
 2、准备一台虚拟机，安装jenkins。jenkins需要外网下载插件
 node4:
-eth0: 192.168.4.4/24
+eth0: private1  192.168.4.4/24
 eth1: 连接到default网络，用于互联网联接
 (1) # nmtui  -> 添加新网络eth1，IP地址采用自动获取的方式
 (2) # ifconfig virbr0 down
 (3) # brctl delbr virbr0
 (4) # systemctl restart NetworkManager
+3、配置yum
+
+4、安装jenkins
+(1)拷贝jenkins到虚拟机并安装
+[root@node4 ~]# rpm -ihv jenkins-2.138.2-1.1.noarch.rpm
+(2) 启动
+[root@node4 ~]# systemctl start jenkins
+[root@node4 ~]# systemctl enable jenkins
+5、配置
+访问http://192.168.4.4:8080
+安装插件时，选择自定义后不安装任何插件。因为现在是到国外远程服务器安装，速度太慢
+
+6、通过国内镜像站点安装插件
+https://blog.csdn.net/you227/article/details/81076032
+
+7、安装插件
+可选插件 -> Git Parameter -> 直接安装 -> 安装完成后重启Jenkins(空闲时)
+
+
 
 
 
