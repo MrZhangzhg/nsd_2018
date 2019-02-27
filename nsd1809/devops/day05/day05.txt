@@ -1,0 +1,17 @@
+requests模块：实现web客户端
+Requests内部采用来urillib3
+1、安装
+# cd requests_pkgs/
+[root@room8pc16 requests_pkgs]# pip3 install *
+2、获取网络资源（文本）
+>>> import requests
+>>> r = requests.get('http://www.baidu.com')
+>>> r.text
+如果出现乱码，可以修改字符编码
+>>> r.encoding   # ISO-8859-1
+>>> r.encoding = 'utf8'
+>>> r.text
+
+
+
+
