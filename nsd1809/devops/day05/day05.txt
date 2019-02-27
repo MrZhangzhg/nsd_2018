@@ -51,6 +51,28 @@ zabbix api:
 http://192.168.4.2/zabbix/api_jsonrpc.php
 
 
+开发->发布流程
+1、程序员将写好的代码从本地推送到gitlab服务器
+2、发布服务器(jenkins)到gitlab上拉取代码
+3、jenkins服务器处理代码(比如，将java程序包通maven等程序打包成war包)
+4、应用服务器从jenkins上下载软件包(如war包)
+5、部署到应用服务器(如tomcat把war包放到文档目录后，重启服务即可自动解压war包)
+
+CI/CD(持续集成/持续交付)
+
+jenkins应用
+1、虚拟机网络
+# virt-manager -> 编辑 -> 连接详情 -> 虚拟网络 -> 激活default
+default网络是kvm的默认网络，采用nat模式，连到此网络的虚拟机可以直接上网
+
+2、准备一台虚拟机，安装jenkins。jenkins需要外网下载插件
+node4:
+eth0: 192.168.4.4/24
+eth1: 连接到default网络，用于互联网联接
+(1) # nmtui  -> 添加新网络eth1，IP地址采用自动获取的方式
+(2) # ifconfig virbr0 down
+(3) # brctl delbr virbr0
+(4) # systemctl restart NetworkManager
 
 
 
