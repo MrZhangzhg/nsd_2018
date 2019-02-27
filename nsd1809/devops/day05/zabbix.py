@@ -57,9 +57,56 @@ headers = {'Content-Type': 'application/json-rpc'}
 # }
 # 10001
 ###################################
-
-
-
+# data = {
+#     "jsonrpc": "2.0",
+#     "method": "hostgroup.get",
+#     "params": {
+#         "output": "extend",
+#         "filter": {
+#             "name": [
+#                 "Linux servers"
+#             ]
+#         }
+#     },
+#     "auth": "66bd7e91aa832a7f113acf81f5307bb5",
+#     "id": 1
+# }
+# 'groupid': '2'
+###################################
+data = {
+    "jsonrpc": "2.0",
+    "method": "host.create",
+    "params": {
+        "host": "WebServer1",
+        "interfaces": [   # 使用agent监控
+            {
+                "type": 1,
+                "main": 1,
+                "useip": 1,
+                "ip": "192.168.4.2",
+                "dns": "",
+                "port": "10050"
+            }
+        ],
+        "groups": [
+            {
+                "groupid": "2"   # Linux servers组
+            }
+        ],
+        "templates": [
+            {
+                "templateid": "10001"  # Template OS Linux模板
+            }
+        ],
+        "inventory_mode": 0,   # 主机资产记录信息
+        "inventory": {
+            "macaddress_a": "01234",
+            "macaddress_b": "56768"
+        }
+    },
+    "auth": "66bd7e91aa832a7f113acf81f5307bb5",
+    "id": 1
+}
 
 
 
