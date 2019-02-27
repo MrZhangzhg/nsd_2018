@@ -1,5 +1,6 @@
 import requests
 import json
+import pprint
 
 url = 'http://192.168.4.2/zabbix/api_jsonrpc.php'
 headers = {'Content-Type': 'application/json-rpc'}
@@ -25,20 +26,45 @@ headers = {'Content-Type': 'application/json-rpc'}
 # }
 ###################################
 #
-data = {
-    "jsonrpc": "2.0",
-    "method": "host.get",
-    "params": {
-        "filter": {
-            "host": [
-                "Zabbix server",
-                "Linux server"
-            ]
-        }
-    },
-    "auth": "66bd7e91aa832a7f113acf81f5307bb5",
-    "id": 1
-}
+# data = {
+#     "jsonrpc": "2.0",
+#     "method": "host.get",
+#     "params": {
+#         # "filter": {
+#         #     "host": [
+#         #         "Zabbix server",
+#         #         "Linux server"
+#         #     ]
+#         # }
+#     },
+#     "auth": "66bd7e91aa832a7f113acf81f5307bb5",
+#     "id": 1
+# }
 ###################################
+# data = {
+#     "jsonrpc": "2.0",
+#     "method": "template.get",
+#     "params": {
+#         "output": "extend",
+#         "filter": {
+#             "host": [
+#                 "Template OS Linux",
+#             ]
+#         }
+#     },
+#     "auth": "66bd7e91aa832a7f113acf81f5307bb5",
+#     "id": 1
+# }
+# 10001
+###################################
+
+
+
+
+
+
+
+###################################
+
 r = requests.post(url, headers=headers, data=json.dumps(data))
-print(r.json())
+pprint.pprint(r.json())
