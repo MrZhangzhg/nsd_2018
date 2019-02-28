@@ -68,6 +68,18 @@ checkout to a subdirectory : Local subdirectory for repo: myweb-$webver
 [root@node4 ~]# mkdir -pv /var/www/deploy/packages
 [root@node4 ~]# chown -R jenkins /var/www/deploy/
 
+9、修改jenkins工程
+将下载的软件放到/var/www/deploy/packages目录下，并压缩
+构建 => 增加构建步骤 => 执行shell
+appdir=/var/www/deploy
+cp -r myweb-$webver $appdir/packages/
+cd $appdir/packages/
+rm -rf myweb-$webver/.git
+tar czf myweb-$webver.tar.gz myweb-$webver
+md5sum myweb-$webver.tar.gz | awk '{print $1}' > myweb-$webver.tar.gz.md5
+rm -rf myweb-$webver
+
+10、重新构建
 
 
 
