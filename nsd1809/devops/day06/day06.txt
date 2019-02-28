@@ -35,6 +35,29 @@ error: 不能重命名配置小节 'remote.origin' 到 'remote.old-origin'
 [root@room8pc16 nsd1809]# git push -u origin --all
 [root@room8pc16 nsd1809]# git push -u origin --tag
 
+三、jenkins拉取gitlab服务器上的代码
+1、创建一个freestyle自由风格的项目
+2、参数化构建过程 => git parameter =>
+ name: webver, default value: origin/master(origin仓库/master分支)
+=> 源码管理 git, Repository URL: http://192.168.4.1/devops/nsd1809.git
+如果jenkins服务器上没有git，需要yum install -y git =>
+Branch Specifier (blank for 'any'): $webver =>
+3、执行工程
+点击 Build with Parameters => 选择1.0 => 开始构建
+4、查看下载到的本地目录
+[root@node4 ~]# ls /var/lib/jenkins/workspace/
+myweb
+[root@node4 ~]# ls /var/lib/jenkins/workspace/myweb/
+index.html
+[root@node4 ~]# cat /var/lib/jenkins/workspace/myweb/index.html
+<h1>Hello World!</h1>
+
+
+
+
+
+
+
 
 
 
