@@ -1,0 +1,26 @@
+CI/CD:
+一、程序员编写项目代码
+1、本地编写代码
+[root@room8pc16 day05]# mkdir /tmp/nsd1809
+[root@room8pc16 day05]# cd /tmp/nsd1809
+[root@room8pc16 nsd1809]# echo '<h1>Hello World!</h1>' > index.html
+2、加入git管理
+[root@room8pc16 nsd1809]# git init .   # 初始化
+[root@room8pc16 nsd1809]# git add .    # 将当前目录所有文件存入暂存区
+[root@room8pc16 nsd1809]# git commit -m "myproject 1.0"  # 存入版本库
+3、打标签
+[root@room8pc16 nsd1809]# git tag 1.0   # 将当前状态标记为1.0版本
+[root@room8pc16 nsd1809]# git tag    # 查看
+4、继续开发，编写代码
+[root@room8pc16 nsd1809]# echo '<h2>新版本加入一行</h2>' >> index.html
+5、提交到版本库，并打标签
+[root@room8pc16 nsd1809]# git add .
+[root@room8pc16 nsd1809]# git commit -m "myproject 2.0"
+[root@room8pc16 nsd1809]# git tag 2.0
+
+
+
+
+
+
+
