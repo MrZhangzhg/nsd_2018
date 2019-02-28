@@ -1,5 +1,6 @@
 import os
 import requests
+import wget
 
 
 def has_new_version(local_ver, ver_url):
@@ -20,3 +21,12 @@ if __name__ == '__main__':
     if not has_new_version(local_ver, ver_url):
         print('没有发现新版本')
         exit()
+    # 如果有新版本，下载最新版本的软件和它的md5值文件
+    r = requests.get(ver_url)
+    ver_num = r.text.strip()
+    app_url = 'http://192.168.4.4/deploy/packages/myweb-%s.tar.gz' % ver_num
+    app_md5_url = app_url + '.md5'
+    download_dir = '/var/www/download'
+    wget.download(app_url, download_dir)
+    wget.download(app_md5_url, download_dir)
+
