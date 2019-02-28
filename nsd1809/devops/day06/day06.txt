@@ -122,19 +122,19 @@ git分支应用：
 [root@room8pc16 mygit]# git checkout master
 [root@room8pc16 mygit]# git merge b1 -m "c6"  # 将分支b1合并到master
 [root@room8pc16 mygit]# git branch -d b1  # 如果b1没有用了，可以删除
-
-
-
-
-
-
 #######################################
 
+四、在应用服务器上编写自动部署代码
+1、检查是否有新版本
+2、下载软件
+3、校验文件，检查下载的软件包是否损坏
+4、部署软件
 
 
-
-
-
+应用服务器目录规划：
+/var/www/download/: 存软件包和md5值
+/var/www/deploy/：存live_version和解压的软件包
+/var/www/html/nsd1809: deploy中最新版本目录的软链接
 
 
 
