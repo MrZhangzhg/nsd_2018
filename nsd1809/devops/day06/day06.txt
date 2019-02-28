@@ -26,6 +26,15 @@ CI/CD:
 
 创建一个名为devops的组，在该项目下创建名为nsd1809的项目。
 创建一个用户，配置该用户是nsd1809项目的主程序员。
+2、推送本地代码到服务器
+[root@room8pc16 nsd1809]# cd /tmp/nsd1809/
+[root@room8pc16 nsd1809]# git remote rename origin old-origin
+如果出现以下错误，忽略即可
+error: 不能重命名配置小节 'remote.origin' 到 'remote.old-origin'
+[root@room8pc16 nsd1809]# git remote add origin http://192.168.4.1/devops/nsd1809.git
+[root@room8pc16 nsd1809]# git push -u origin --all
+[root@room8pc16 nsd1809]# git push -u origin --tag
+
 
 
 
