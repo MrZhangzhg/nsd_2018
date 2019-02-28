@@ -51,12 +51,14 @@ myweb
 index.html
 [root@node4 ~]# cat /var/lib/jenkins/workspace/myweb/index.html
 <h1>Hello World!</h1>
+
 5、调整项目，下载的软件放到子目录中
 点开jenkins的工程 => 左侧的“配置” => 	Additional Behaviours:
 checkout to a subdirectory : Local subdirectory for repo: myweb-$webver
 6、重新构建项目
 [root@node4 ~]# rm -rf /var/lib/jenkins/workspace/myweb/
 再次构建项目Build with Parameters
+[root@node4 ~]# ls /var/lib/jenkins/workspace/myweb/
 
 
 
