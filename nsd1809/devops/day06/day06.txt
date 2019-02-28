@@ -18,6 +18,15 @@ CI/CD:
 [root@room8pc16 nsd1809]# git commit -m "myproject 2.0"
 [root@room8pc16 nsd1809]# git tag 2.0
 
+二、推送代码到gitlab服务器
+1、配置gitlab
+群组Group：为每一个团队创建一个组
+项目Project：每个团队都可能创建多个软件项目
+成员Member：每个组都有多个成员，一个项目不一定需要所有成员参与
+
+创建一个名为devops的组，在该项目下创建名为nsd1809的项目。
+创建一个用户，配置该用户是nsd1809项目的主程序员。
+
 
 
 
