@@ -60,6 +60,14 @@ checkout to a subdirectory : Local subdirectory for repo: myweb-$webver
 再次构建项目Build with Parameters
 [root@node4 ~]# ls /var/lib/jenkins/workspace/myweb/
 
+7、为了方便应用服务器到jenkins上下载软件包，在jenkins上安装apache
+[root@node4 ~]# yum install -y httpd
+[root@node4 ~]# systemctl start httpd
+[root@node4 ~]# systemctl enable httpd
+8、创建保存软件包的目录
+[root@node4 ~]# mkdir -pv /var/www/deploy/packages
+[root@node4 ~]# chown -R jenkins /var/www/deploy/
+
 
 
 
