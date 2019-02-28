@@ -95,6 +95,41 @@ echo $webver > live_version
 12、重新构建
 
 
+####################################
+git分支应用：
+[root@room8pc16 zzg_pypkgs]# git init /tmp/mygit
+[root@room8pc16 zzg_pypkgs]# cd /tmp/mygit
+[root@room8pc16 mygit]# cp /etc/hosts .
+[root@room8pc16 mygit]# git add .
+[root@room8pc16 mygit]# git commit -m "c1"
+[root@room8pc16 mygit]# cp /etc/issue .
+[root@room8pc16 mygit]# git add .
+[root@room8pc16 mygit]# git commit -m "c2"
+[root@room8pc16 mygit]# cp /etc/passwd .
+[root@room8pc16 mygit]# git add .
+[root@room8pc16 mygit]# git commit -m "c3"
+[root@room8pc16 mygit]# git branch   # 查看分支
+[root@room8pc16 mygit]# git branch b1   # 创建新分支b1
+[root@room8pc16 mygit]# git branch
+[root@room8pc16 mygit]# cp /etc/selinux/config .
+[root@room8pc16 mygit]# git add .
+[root@room8pc16 mygit]# git commit -m "c4"
+[root@room8pc16 mygit]# git checkout b1   # 切换到b1分支
+[root@room8pc16 mygit]# ls   # 工作区中没有config
+[root@room8pc16 mygit]# cp /root/anaconda-ks.cfg .
+[root@room8pc16 mygit]# git add .
+[root@room8pc16 mygit]# git commit -m "c5"
+[root@room8pc16 mygit]# git checkout master
+[root@room8pc16 mygit]# git merge b1 -m "c6"  # 将分支b1合并到master
+[root@room8pc16 mygit]# git branch -d b1  # 如果b1没有用了，可以删除
+
+
+
+
+
+
+#######################################
+
 
 
 
