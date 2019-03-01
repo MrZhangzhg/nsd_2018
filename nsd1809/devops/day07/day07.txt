@@ -41,6 +41,21 @@ ansible执行任务：
 1、修改vim
 [root@room8pc16 mykvm]# vim ~/.vimrc
 autocmd FileType yaml setlocal sw=2 ts=2 et ai
+2、创建playbook，实现免密登陆
+[root@room8pc16 ~]# ansible-doc authorized_key
+[root@room8pc16 mykvm]# vim auth.yml
+---
+- name: configure authentication
+  hosts: all
+  tasks:
+    - name: upload public key
+      authorized_key:
+        user: root
+        state: present
+        key: "{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"
+3、语法检查
+[root@room8pc16 mykvm]# ansible-playbook --syntax-check auth.yml
+[root@room8pc16 mykvm]# ansible-playbook auth.yml -k
 
 
 
