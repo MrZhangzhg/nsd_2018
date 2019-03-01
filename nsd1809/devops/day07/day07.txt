@@ -33,6 +33,14 @@ node6.tedu.cn
 [root@room8pc16 mykvm]# ansible all -m ping -k
 
 
+ansible执行任务：
+一、adhoc临时命令
+[root@room8pc16 mykvm]# ansible webservers -m shell -a "id root" -k
+
+二、playbook
+1、修改vim
+[root@room8pc16 mykvm]# vim ~/.vimrc
+autocmd FileType yaml setlocal sw=2 ts=2 et ai
 
 
 
