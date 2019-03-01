@@ -73,6 +73,39 @@ autocmd FileType yaml setlocal sw=2 ts=2 et ai
 [root@room8pc16 mykvm]# ansible-playbook --syntax-check yum.yml
 [root@room8pc16 mykvm]# ansible-playbook yum.yml
 
+5、实现LAMP
+[root@room8pc16 mykvm]# vim lamp.yml
+---
+- name: configure db servers
+  hosts: dbservers
+  tasks:
+    - name: install db pkgs
+      yum:
+        name: mariadb-server
+        state: latest
+    - name: start db service
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+
+- name: configure web servers
+  hosts: webservers
+  tasks:
+    - name: install web pkgs
+      yum:
+        name: [httpd, php, php-mysql]
+        state: present
+    - name: start web service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+[root@room8pc16 mykvm]# ansible-playbook --syntax-check lamp.yml
+[root@room8pc16 mykvm]# ansible-playbook lamp.yml
+
+
+
 
 
 
