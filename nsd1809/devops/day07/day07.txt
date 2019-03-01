@@ -57,6 +57,24 @@ autocmd FileType yaml setlocal sw=2 ts=2 et ai
 [root@room8pc16 mykvm]# ansible-playbook --syntax-check auth.yml
 [root@room8pc16 mykvm]# ansible-playbook auth.yml -k
 
+4、配置yum
+(1) [root@room8pc16 mykvm]# mkdir files
+[root@room8pc16 mykvm]# vim files/server.repo
+(2)[root@room8pc16 mykvm]# vim yum.yml
+---
+- name: upload yum config file
+  hosts: all
+  tasks:
+    - name: upload file
+      copy:
+        src: files/server.repo
+        dest: /etc/yum.repos.d/server.repo
+(3) 执行
+[root@room8pc16 mykvm]# ansible-playbook --syntax-check yum.yml
+[root@room8pc16 mykvm]# ansible-playbook yum.yml
+
+
+
 
 
 
