@@ -144,7 +144,27 @@ https://docs.ansible.com/  => ansible documentation
 [root@room8pc16 mykvm]# ansible dbservers -m fuzhi -a "yuan=/etc/hosts mubiao=/tmp/zhuji.txt"
 
 
+安装python软件包
+[root@node4 ~]# unzip wget-3.2.zip
+[root@node4 ~]# cd wget-3.2/
+[root@node4 wget-3.2]# python setup.py install
 
+
+ansible-cmdb:分析ansible收集来的主机信息，生成网页形式
+1、安装
+# cd ansible-cmdb_pkgs/
+# pip3 install *
+2、修改程序
+[root@room8pc16 ansible-cmdb_pkgs]# which ansible-cmdb
+# vim /usr/local/bin/ansible-cmdb
+将PY_BIN=$(which python)
+改成
+PY_BIN=$(which python3)
+3、生成主机信息到/tmp/out目录
+# ansible all -m setup --tree /tmp/out
+4、通过ansible-cmdb分析主机信息，生成网页
+# ansible-cmdb /tmp/out/ > /tmp/hosts.html
+# firefox /tmp/hosts.html
 
 
 
