@@ -110,7 +110,27 @@ ansible手册
 https://docs.ansible.com/  => ansible documentation
 搜索python api
 
-
+命名的元组
+基于元组做进一步的扩展，为元组的下标起名
+>>> from collections import namedtuple
+>>> Point = namedtuple('Point', ['x', 'y', 'z'])
+>>> p1 = Point(10, 20, 30)
+>>> p1[0]
+10
+>>> p1[1:]
+(20, 30)
+>>> for p in p1:
+...     print(p)
+...
+10
+20
+30
+>>> p1.x
+10
+>>> p1.y
+20
+>>> p1.z
+30
 
 
 
