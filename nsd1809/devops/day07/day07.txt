@@ -106,7 +106,9 @@ autocmd FileType yaml setlocal sw=2 ts=2 et ai
 
 
 
-
+ansible手册
+https://docs.ansible.com/  => ansible documentation
+搜索python api
 
 
 
