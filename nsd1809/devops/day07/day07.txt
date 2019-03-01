@@ -1,0 +1,45 @@
+ansible
+1、安装
+[root@room8pc16 zzg_pypkgs]# cd ansible_pkg/
+[root@room8pc16 ansible_pkg]# pip3 install *
+如果安装过程中有报错，提示某些tar包没有安装上，可以pip3 install xxx.tar.gz
+单独安装，然后再执行pip3 install *
+[root@room8pc16 day07]# python3
+>>> import ansible
+2、创建工作目录
+[root@room8pc16 day07]# mkdir mykvm
+[root@room8pc16 day07]# cd mykvm
+3、创建配置文件
+[root@room8pc16 mykvm]# vim ansible.cfg
+[defaults]
+inventory = hosts
+remote_user = root
+4、创建主机清单文件
+[root@room8pc16 mykvm]# vim hosts
+[dbservers]
+node4.tedu.cn
+
+[webservers]
+node5.tedu.cn
+node6.tedu.cn
+5、配置名称解析
+[root@room8pc16 mykvm]# for i in {1..254}
+> do
+> echo -e "192.168.4.$i\tnode$i.tedu.cn\tnode$i" >> /etc/hosts
+> done
+6、收集主机密钥
+[root@room8pc16 mykvm]# ssh-keyscan node{4..6}.tedu.cn >> /root/.ssh/known_hosts
+7、测试
+[root@room8pc16 mykvm]# ansible all -m ping -k
+
+
+
+
+
+
+
+
+
+
+
+
