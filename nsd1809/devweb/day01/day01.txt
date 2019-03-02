@@ -31,7 +31,13 @@ id选择器：id是某一元素在整个页面中的唯一标识
 伪类选择器：一般用于超链接，设置访问前、鼠标悬停、访问后的样式
 一个元素可以有多个类：一个元素可以属于多个组
 
+p.blue {
+    color: blue;  /*p标记，它的class是blue才生效  <p class="blue">*/
+}
 
+p .blue {
+    color: blue;   /*在p元素中，属于blue类的内容 <p>xx<span class="blue">yy</span></p>*/
+}
 
 
 

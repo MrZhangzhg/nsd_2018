@@ -1,9 +1,19 @@
+.green {
+    color: green;
+}
+
+p .blue {
+    color: blue;   /*在p元素中，属于blue类的内容 <p>xx<span class="blue">yy</span></p>*/
+}
+
+/*p.blue {
+    color: blue;    !*p标记，它的class是blue才生效 <p class=blue>*!
+}*/
+
 .orange {
     color: orange;
 }
 
-.green {
-    color: green;
-}
+
 
 
