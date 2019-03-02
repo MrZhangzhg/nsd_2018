@@ -5,11 +5,35 @@
     <title>my html2</title>
 </head>
 <body>
+<form action="">
+    <input type="radio" name="query"> <label>linux</label> <br>
+    <label><input type="radio" name="query"> windows</label> <br>
+    <input type="radio" name="query" id="py"> <label for="py">python</label> <br>
+</form>
+
+
+<hr>
+<form action="">
+    <label>用户名：</label> <input type="text" placeholder="用户名">
+    <label>密码：</label> <input type="password" placeholder="密码">
+</form>
+
+<hr>
 <!--action=""是指提交数据给哪个网址。input的name=query，是提交数据时的变量
 input文本框中的内容，是变量的值-->
 <form action="https://www.sogou.com/web" target="_blank">
     <input type="text" name="query">
     <input type="submit" value="搜狗搜索">
+</form>
+<hr>
+<form action="http://cn.bing.com/search" target="_blank">
+    <input type="text" name="q">
+    <input type="submit" value="必应搜索">
+</form>
+<hr>
+<form action="https://www.baidu.com/s" target="_blank">
+    <input type="text" name="wd">
+    <input type="submit" value="百度搜索">
 </form>
 </body>
 </html>
