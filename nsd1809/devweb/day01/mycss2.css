@@ -2,6 +2,24 @@
     font-size: 20px;
 }
 
+a:link {    /*超链接访问前的样式*/
+    text-decoration: none;
+}
+a:hover {   /*鼠标悬停时的样式*/
+    font-size: 30px;
+}
+a:visited {
+    color: gray;   /*访问后的样式*/
+}
+
+h2, h3 {
+    text-align: center;
+}
+
+#p1 {
+    color: darkred;
+}
+
 .cloud {
     font-weight: bold;
     color: purple;
