@@ -1,0 +1,19 @@
+web编程：
+前端：网页制作、DIV＋CSS、javascript
+后端：python/php/java/asp
+
+html语法+css(层叠样式表)
+bootstrap: twitter公司开源的前端框架
+
+HTML标记(标签、元素)：
+双标记：<html>...</html>
+单标记：<br>
+
+注释：ctrl + / 和  ctrl+shift+/
+
+块级元素：无论多少内容，必须独占一行
+标题元素 => h1 ... h6
+段落元素 => p
+div元素
+
+
