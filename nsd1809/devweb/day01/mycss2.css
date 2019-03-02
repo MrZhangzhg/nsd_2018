@@ -2,8 +2,16 @@
     font-size: 20px;
 }
 
+.important {
+    font-weight: bold;
+}
+.warning {
+    color: orangered;
+}
+
+
 a:link {    /*超链接访问前的样式*/
-    text-decoration: none;
+    text-decoration: none;   /*去除下划线*/
 }
 a:hover {   /*鼠标悬停时的样式*/
     font-size: 30px;
