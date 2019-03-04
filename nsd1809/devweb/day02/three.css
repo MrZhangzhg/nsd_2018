@@ -3,10 +3,12 @@
     margin: 0 auto;
 }
 .banner, .footer {
+    font-weight: bold;
     height: 100px;
     background: lightgreen;
 }
 .left {
+    font-style: italic;
     float: left;
     width: 300px;
     height: 300px;
@@ -16,9 +18,13 @@
     margin-left: 300px;
     width: 400px;
     height: 300px;
-    background: lightgray;
+    /*background: lightgray;*/
+    background-image: url("http://img57.nipic.com/20140804/18084856_163521307811_1.jpg");
+    /*background-repeat: repeat-x;*/
+    background-repeat: repeat-y;
 }
 .right {
+    font-variant: all-small-caps;
     float: right;
     width: 300px;
     height: 300px;
