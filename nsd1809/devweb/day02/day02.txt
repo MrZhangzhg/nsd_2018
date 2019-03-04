@@ -8,3 +8,46 @@
 盒子模型
 
 
+bootstrap:    http://www.bootcss.com/
+twitter公司的开源前端框架，可以简单理解为它就是一个大样式表
+将前一个班的样式表文件复制过来
+# cp -r ../../../nsd1808/devweb/day03/static/ .
+# tree static/
+static/
+├── css    # 样式表文件目录
+│   ├── bootstrap.css
+│   ├── bootstrap.css.map
+│   ├── bootstrap.min.css
+│   ├── bootstrap.min.css.map
+│   ├── bootstrap-theme.css
+│   ├── bootstrap-theme.css.map
+│   ├── bootstrap-theme.min.css
+│   └── bootstrap-theme.min.css.map
+├── fonts   # 字体文件目录
+│   ├── CabinSketch-Bold.ttf
+│   ├── glyphicons-halflings-regular.eot
+│   ├── glyphicons-halflings-regular.svg
+│   ├── glyphicons-halflings-regular.ttf
+│   ├── glyphicons-halflings-regular.woff
+│   └── glyphicons-halflings-regular.woff2
+├── imgs    # 图片目录
+│   ├── banner.jpg
+│   ├── first.jpg
+│   ├── heart.jpeg
+│   ├── html_css.jpeg
+│   ├── linux.jpg
+│   ├── second.jpg
+│   └── third.jpg
+└── js      # javascript目录
+    ├── bootstrap.js
+    ├── bootstrap.min.js
+    ├── jquery.min.js
+    └── npm.js
+
+
+
+
+
+
+
+
