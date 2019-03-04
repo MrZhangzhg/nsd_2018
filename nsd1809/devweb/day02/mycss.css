@@ -1,0 +1,16 @@
+html {
+    font-size: 15pt;
+}
+.c2 {
+    font-size: 15px;
+}
+
+.c3 {
+    font-size: 20pt;
+}
+#i1 {
+    font-size: 2em;
+}
+#i2 {
+    font-size: 2rem;
+}
