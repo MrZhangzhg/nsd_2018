@@ -1,0 +1,8 @@
+.container {
+    border: 1px solid black;
+    width: 1000px;
+    margin: 0 auto;   /*边距按上右下左顺序，也可以是上下 左右*/
+    /*margin: 0 auto 0 auto;*/
+}
+
+

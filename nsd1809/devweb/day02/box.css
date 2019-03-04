@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.box {
+    width: 200px;
+    border: 5px solid black;  /*边框厚度 样式(实线/虚线) 颜色*/
+    padding: 10px;
+    margin: 20px;
+}
