@@ -1,12 +1,18 @@
 html {
     font-size: 15pt;
 }
+.c1 {
+    background: green;
+}
 .c2 {
     font-size: 15px;
+    background: rgb(200, 200, 200);
 }
 
 .c3 {
     font-size: 20pt;
+    /*background: #55AA88;*/   /*background: #5A8;*/
+    background: #aa8e19;
 }
 #i1 {
     font-size: 2em;
