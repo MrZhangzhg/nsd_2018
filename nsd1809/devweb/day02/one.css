@@ -5,4 +5,13 @@
     /*margin: 0 auto 0 auto;*/
 }
 
+.banner, .footer {
+    height: 50px;
+    background: darkgoldenrod;
+}
+.main {
+    height: 300px;
+    background: mediumpurple;
+}
+
 
