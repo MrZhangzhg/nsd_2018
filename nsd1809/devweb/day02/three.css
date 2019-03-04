@@ -3,11 +3,14 @@
     margin: 0 auto;
 }
 .banner, .footer {
+    text-align: center;
+    line-height: 100px;
     font-weight: bold;
     height: 100px;
     background: lightgreen;
 }
 .left {
+    text-align: center;
     font-style: italic;
     float: left;
     width: 300px;
@@ -24,6 +27,7 @@
     background-repeat: repeat-y;
 }
 .right {
+    text-decoration: underline;
     font-variant: all-small-caps;
     float: right;
     width: 300px;
