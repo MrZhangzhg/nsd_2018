@@ -51,15 +51,15 @@ django内建了一个web服务器系统，可以展示django项目。
 访问http://127.0.0.1:8000/
 4、配置django
 # mysite/settings.py
-ALLOWED_HOSTS = '*'
+ALLOWED_HOSTS = '*'   # 允许所有的客户端访问
 MIDDLEWARE = [
     ... ...
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',  # 关闭安全选项
     ... ...
 ]
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.mysql',   # 采用mysql数据库
         'NAME': 'dj1809',
         'USER': 'root',
         'PASSWORD': 'tedu.cn',
@@ -67,8 +67,8 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-LANGUAGE_CODE = 'zh-hans'
-TIME_ZONE = 'Asia/Shanghai'
+LANGUAGE_CODE = 'zh-hans'     # 改为中文语言
+TIME_ZONE = 'Asia/Shanghai'   # 时区
 USE_TZ = False
 5、配置数据库
 (djenv) [root@room8pc16 dj_pkgs]# mysql -uroot -ptedu.cn
@@ -76,11 +76,14 @@ MariaDB [(none)]> CREATE DATABASE dj1809 DEFAULT CHARSET utf8;
 6、安装pymysql模块
 (djenv) [root@room8pc16 zzg_pypkgs]# cd pymysql_pkgs/
 (djenv) [root@room8pc16 pymysql_pkgs]# pip install *
+(python2连接mysql的模块是MySQLdb，但是python3没有，取而代之的是pymysql，
+但是django仍然寻找MySQLdb模块，需要写入以下代码，使pymysql像MySQLdb一样工作)
 # vim mysite/__init__.py
 import pymysql
 
 pymysql.install_as_MySQLdb()
-7、启动测试服务器，运行在80端口
+7、启动测试服务器，运行在0.0.0.0的80端口
+(djenv) [root@room8pc16 mysite]# python manage.py runserver 0:80
 
 
 
