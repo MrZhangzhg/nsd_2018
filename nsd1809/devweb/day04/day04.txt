@@ -167,7 +167,32 @@ index.html返回给用户
 (4) 访问http://127.0.0.1/polls/将会看到index.html内容
 
 
-
+7、创建投票详情页
+(1) url
+# polls/urls.py
+    # url(r'^\d+/$', views.detail, name='detail'),
+    url(r'^(?P<question_id>\d+)/$', views.detail, name='detail'),
+说明：\d+匹配数字，然后把这个数字保存到question_id变量中，传递给detail函数
+(2) 视图函数
+# polls/views.py
+def detail(request, question_id):
+    return render(request, 'detail.html', {'question_id': question_id})
+说明：字典{'question_id': question_id}的key将作为变量传给detail.html
+模板，它的值是question_id的值。如http://127.0.0.1/1/，将会把1赋值给
+question_id，前端模板拿到的值就是{'question_id': 1}
+(3) 模板
+# polls/templates/detail.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票详情</title>
+</head>
+<body>
+<h1>{{ question_id }}号问题投票详情</h1>
+</body>
+</html>
+(4) 访问http://127.0.0.1/polls/数字/
 
 
 
