@@ -90,6 +90,28 @@ pymysql.install_as_MySQLdb()
 (djenv) [root@room8pc16 mysite]# python manage.py migrate
 9、创建超级用户
 (djenv) [root@room8pc16 mysite]# python manage.py createsuperuser
+10、后台管理界面：http://127.0.0.1/admin
+
+建站流程：
+1、UI设计师设计页面风格（配色、文字）
+2、WEB前端设计师将UI设计师的图片变成WEB页面
+3、后台程序员编写网站后台程序
+4、做好的网站交给运维部门，放到web服务器上，对外提供服务
+
+
+创建应用：
+1、一个项目（如博客网站）可以由多个应用（发布文章、留言、投票）构成
+2、创建投票应用
+(djenv) [root@room8pc16 mysite]# python manage.py startapp polls
+3、将应用绑定到项目中
+# mysite/settings.py
+INSTALLED_APPS = [
+    ... ...
+    'polls',
+]
+
+
+
 
 
 
