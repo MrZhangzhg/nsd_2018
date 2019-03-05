@@ -132,8 +132,39 @@ from django.conf.urls import url
 urlpatterns = [
 ]
 
+6、创建投票首页
+(1) url: 应用匹配URL的时候，从http://127.0.0.1/polls/后面开始匹配
+# polls/urls.py
+from django.conf.urls import url
+from . import views
 
+urlpatterns = [
+    url(r'^$', views.index, name='index'),
+]
+说明：from . import views是相对导入，表示在当前目录中导入views模块
+^$匹配空字符串，这个路径用views模块中的index函数去处理。name='index'是
+给http://127.0.0.1/polls/起个名，叫index
+(2) 编写视图函数
+from django.shortcuts import render
 
+def index(request):
+    return render(request, 'index.html')
+说明：函数index需要有一个参数，用户发来的请求会传递给这个参数。函数将会把
+index.html返回给用户
+(3) 创建模板文件index.html
+(djenv) [root@room8pc16 mysite]# mkdir polls/templates
+# polls/templates/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票首页</title>
+</head>
+<body>
+<h1>投票首页</h1>
+</body>
+</html>
+(4) 访问http://127.0.0.1/polls/将会看到index.html内容
 
 
 
