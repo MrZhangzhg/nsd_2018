@@ -194,7 +194,7 @@ question_id，前端模板拿到的值就是{'question_id': 1}
 </html>
 (4) 访问http://127.0.0.1/polls/数字/
 
-
-
+https://yiyibooks.cn/
+https://yiyibooks.cn/xx/Django_1.11.6/intro/tutorial01.html
 
 
