@@ -36,8 +36,14 @@ mysite/
     └── wsgi.py       # 部署django项目时需要的文件
 
 1 directory, 5 files
-
-
+2、pycharm配置
+(1) 将解释器改为虚拟环境的解释器
+File -> Settings -> Project -> Project Interpreter ->点击右侧的齿轮图
+标 -> Add Local -> Existing Environment(把Make available to all
+projects 勾选) -> 点击三个图标 -> /opt/djenv/bin/python
+(2) 设置django的根路径
+File -> Settings -> Languages & Frameworks -> Django -> 启用支持，在
+根目录部分填入外层mysite，再选择settings.py的位置(mysite/settings)
 
 
 
