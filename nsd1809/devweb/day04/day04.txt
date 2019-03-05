@@ -85,7 +85,11 @@ pymysql.install_as_MySQLdb()
 7、启动测试服务器，运行在0.0.0.0的80端口
 (djenv) [root@room8pc16 mysite]# python manage.py runserver 0:80
 
-
+8、生成django默认的数据库表
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+9、创建超级用户
+(djenv) [root@room8pc16 mysite]# python manage.py createsuperuser
 
 
 
