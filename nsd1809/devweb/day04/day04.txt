@@ -1,0 +1,25 @@
+django: 是一个web框架，用于编写网站程序
+MTV模式：
+M: Model模型 对应数据库
+T: Template模板 对应html页面
+V: View视图 对应相关的函数
+
+URLConf: 路由系统 => 将URL和相应的函数关联
+
+python虚拟环境：创建一个文件夹，将python环境限制到这个文件夹中，安装模块等
+都是安装到了这个文件夹。
+1、创建虚拟环境
+[root@room8pc16 day04]# python3 -m venv /opt/djenv
+2、激活虚拟环境
+[root@room8pc16 day04]# source /opt/djenv/bin/activate
+3、现在的虚拟环境，运行python，默认就是python3
+4、在虚拟环境中，安装django
+(djenv) [root@room8pc16 zzg_pypkgs]# cd dj_pkgs/
+(djenv) [root@room8pc16 dj_pkgs]# pip install *
+(djenv) [root@room8pc16 dj_pkgs]# python
+>>> import django
+>>> django.__version__
+'1.11.6'
+
+
+
