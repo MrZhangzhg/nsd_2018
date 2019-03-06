@@ -20,4 +20,27 @@ def result(request, question_id):
 </html>
 
 
+编写模型
+1、投票应用需要的表
+(1) 问题表：id/问题/发布时间
+(2) 选项表：id/选项/问题id
+2、编写模型
+# polls/models.py
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
