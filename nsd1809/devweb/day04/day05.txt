@@ -89,6 +89,10 @@ admin.site.register(Choice)
 >>> q1.id
 >>> q1.question_text
 >>> q1.pub_date
+(2) 通过类的管理器
+django为每个class都创建了一个名为objects的管理器，可以通过这个管理器进行
+增删改查
+>>> q2 = Question.objects.create(question_text='散伙饭去哪吃？', pub_date=timezone.now())
 
 
 
