@@ -125,8 +125,20 @@ django为每个class都创建了一个名为objects的管理器，可以通过�
 >>> for q in Question.objects.order_by('-pub_date'):  # 降序排列
 ...     print(q.question_text, q.pub_date)
 
-
-
+3、取出某一个问题的实例
+>>> q1 = Question.objects.get(id=1)
+>>> q1.question_text
+>>> q1.pub_date
+注意：get必须返回1个实例，如果返回值多了或少了，都会发生错误
+4、通过过滤方法获取问题实例组成的集合，该集合中可以有任意数目的实例(0到多)
+>>> qset1 = Question.objects.filter(id=1)  # 集合中只有一个问题实例
+>>> len(qset1)
+>>> qset2 = Question.objects.filter(id__gt=1)
+>>> len(qset2)
+>>> qset3 = Question.objects.filter(id__lt=1)
+>>> len(qset3)
+>>> for q in qset2:
+...     print(q.question_text, q.pub_date)
 
 
 
