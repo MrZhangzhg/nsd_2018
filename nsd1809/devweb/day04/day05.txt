@@ -76,6 +76,21 @@ admin.site.register(Choice)
 说明：.models表示当前目录中的models模块
 
 
+操作数据库
+1、运行python shell(初始化django环境)
+(djenv) [root@room8pc16 mysite]# python manage.py shell
+2、导入问题
+>>> from polls.models import Question
+3、增加数据
+(1) 创建实例的方式
+>>> from django.utils import timezone   # 为了设置时间，导入时间工具
+>>> q1 = Question(question_text='你心仪的公司是哪家？', pub_date=timezone.now())
+>>> q1.save()
+>>> q1.id
+>>> q1.question_text
+>>> q1.pub_date
+
+
 
 
 
