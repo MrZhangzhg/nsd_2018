@@ -5,6 +5,16 @@
     <title>投票详情</title>
 </head>
 <body>
-<h1>{{ question_id }}号问题投票详情</h1>
+<h1>{{ question.id }}号问题投票详情</h1>
+<h2>{{ question.question_text }}</h2>
+{% if question.choice_set.all %}   {% comment %}如果选项集不是空的{% endcomment %}
+    <ol>
+        {% for choice in question.choice_set.all %}
+            <li>{{ choice.choice_text }}</li>
+        {% endfor %}
+    </ol>
+{% else %}
+    <h3>尚无选项</h3>
+{% endif %}
 </body>
 </html>

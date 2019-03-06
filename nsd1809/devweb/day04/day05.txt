@@ -209,6 +209,46 @@ def index(request):
 
 
 
+修改投票详情首页
+1、修改视图函数
+def detail(request, question_id):
+    question = Question.objects.get(id=question_id)
+    return render(request, 'detail.html', {'question': question})
+2、修改模板
+(1) 通过问题获取选项
+>>> q1 = Question.objects.get(id=1)
+>>> q1.choice_set.all()   # 通过问题反向获取所有选项实例构成的集合
+(2) 修改模板
+# detail.html
+<body>
+<h1>{{ question.id }}号问题投票详情</h1>
+<h2>{{ question.question_text }}</h2>
+<ol>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }}</li>
+    {% endfor %}
+</ol>
+</body>
+(3) 在模板中使用判断，如果有选项列出选项，没有选项显示尚无选项
+<body>
+<h1>{{ question.id }}号问题投票详情</h1>
+<h2>{{ question.question_text }}</h2>
+{% if question.choice_set.all %}   {% comment %}如果选项集不是空的{% endcomment %}
+    <ol>
+        {% for choice in question.choice_set.all %}
+            <li>{{ choice.choice_text }}</li>
+        {% endfor %}
+    </ol>
+{% else %}
+    <h3>尚无选项</h3>
+{% endif %}
+</body>
+
+
+
+
+
+
 
 
 
