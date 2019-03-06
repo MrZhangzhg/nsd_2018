@@ -53,7 +53,19 @@ MariaDB [dj1809]> show tables;
 MariaDB [dj1809]> desc polls_question;
 表中的字段：类变量。对于外键来说，需要给类变量加上_id。如选项表中的外键q，在
 数据库表中的名称是q_id。另外，没有声明主键，将会自动创建一个名为id的主键。
+5、修改表结构
+将选项表的票数加上默认值，并且将表中的q_id改为question_id
+class Choice(models.Model):
+    choice_text = models.CharField(max_length=100)
+    votes = models.IntegerField(default=0)
+    question = models.ForeignKey(Question)
 
+    def __str__(self):
+        return "%s=>%s: %s" % (self.q, self.choice_text, self.votes)
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+在数据库中查看polls_choice的表结构。
+MariaDB [dj1809]> desc polls_question;
 
 
 

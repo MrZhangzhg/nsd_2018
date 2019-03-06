@@ -9,8 +9,8 @@ class Question(models.Model):
 
 class Choice(models.Model):
     choice_text = models.CharField(max_length=100)
-    votes = models.IntegerField()
-    q = models.ForeignKey(Question)
+    votes = models.IntegerField(default=0)
+    question = models.ForeignKey(Question)
 
     def __str__(self):
         return "%s=>%s: %s" % (self.q, self.choice_text, self.votes)
