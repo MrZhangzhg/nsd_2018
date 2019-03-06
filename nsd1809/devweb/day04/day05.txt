@@ -183,7 +183,29 @@ def index(request):
 </body>
 3、在模板中使用循环
 # polls/templates/index.html
-
+<body>
+<h1>投票首页</h1>
+<ol>
+    {% for question in questions %}
+        <li>{{ question.question_text }} {{ question.pub_date }}</li>
+    {% endfor %}
+</ol>
+</body>
+4、为投票内容加入超链接
+<body>
+<h1>投票首页</h1>
+<ol>
+    {% for question in questions %}
+        <li>
+{#            <a href="/polls/{{ question.id }}/" target="_blank">#}
+            <a href="{% url 'detail' question_id=question.id %}" target="_blank">
+                {{ question.question_text }}
+            </a>
+            {{ question.pub_date }}
+        </li>
+    {% endfor %}
+</ol>
+</body>
 
 
 
