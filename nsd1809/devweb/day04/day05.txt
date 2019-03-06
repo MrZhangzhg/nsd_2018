@@ -81,7 +81,7 @@ admin.site.register(Choice)
 (djenv) [root@room8pc16 mysite]# python manage.py shell
 2、导入问题
 >>> from polls.models import Question
-3、增加数据
+3、为Question增加数据
 (1) 创建实例的方式
 >>> from django.utils import timezone   # 为了设置时间，导入时间工具
 >>> q1 = Question(question_text='你心仪的公司是哪家？', pub_date=timezone.now())
@@ -93,6 +93,18 @@ admin.site.register(Choice)
 django为每个class都创建了一个名为objects的管理器，可以通过这个管理器进行
 增删改查
 >>> q2 = Question.objects.create(question_text='散伙饭去哪吃？', pub_date=timezone.now())
+
+4、为Choice增加数据
+(1) 创建实例
+>>> from polls.models import Choice
+>>> c1 = Choice(choice_text='达内', question=q1)
+>>> c1.save()
+(2) 通过管理器
+>>> c2 = Choice.objects.create(choice_text='阿里巴巴', question=q1)
+(3) 通过问题反向创建选项
+通过主外键约束，django自动为主键实例创建了一个名为“外键表_set”的管理器，通过
+这个管理器，可以直接创建外键表的实例
+>>> q1.choice_set.create(choice_text='小米')
 
 
 
