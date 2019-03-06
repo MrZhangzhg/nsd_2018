@@ -113,6 +113,19 @@ django为每个class都创建了一个名为objects的管理器，可以通过�
 >>> q1.delete()   # 默认也会将相关的选项一起删掉
 
 
+查询
+1、查询所有的内容
+>>> Question.objects.all()   # 返回所有问题实例组成的集合
+>>> for q in Question.objects.all():   # 取出集合中的每个实例
+...    print(q.question_text, q.pub_date)
+2、排序
+>>> Question.objects.order_by('pub_date')  # 返回所有问题实例组成的集合
+>>> for q in Question.objects.order_by('pub_date'):
+...     print(q.question_text, q.pub_date)
+>>> for q in Question.objects.order_by('-pub_date'):  # 降序排列
+...     print(q.question_text, q.pub_date)
+
+
 
 
 
