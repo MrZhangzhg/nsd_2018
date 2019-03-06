@@ -26,6 +26,33 @@ def result(request, question_id):
 (2) 选项表：id/选项/问题id
 2、编写模型
 # polls/models.py
+from django.db import models
+
+class Question(models.Model):
+    question_text = models.CharField(max_length=200, unique=True, null=False)
+    pub_date = models.DateTimeField()
+
+    def __str__(self):
+        return self.question_text
+
+class Choice(models.Model):
+    choice_text = models.CharField(max_length=100)
+    votes = models.IntegerField()
+    q = models.ForeignKey(Question)
+
+    def __str__(self):
+        return "%s=>%s: %s" % (self.q, self.choice_text, self.votes)
+3、生成数据库的表
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+4、分析表结构
+[root@room8pc16 mysite]# mysql -uroot -ptedu.cn
+MariaDB [(none)]> use dj1809;
+MariaDB [dj1809]> show tables;
+表名构成： polls_question/polls_choice => 应用名_类名
+MariaDB [dj1809]> desc polls_question;
+表中的字段：类变量。对于外键来说，需要给类变量加上_id。如选项表中的外键q，在
+数据库表中的名称是q_id
 
 
 
