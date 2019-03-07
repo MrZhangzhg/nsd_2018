@@ -8,7 +8,7 @@
 {% for blog in blogs %}
     <h4>{{ blog.title }}</h4>
     <p>{{ blog.pub_date }}</p>
-    <p>{{ blog.text }}</p>
+    <p>{{ blog.text | truncatewords:20 }}</p>
 {% endfor %}
 </body>
 </html>

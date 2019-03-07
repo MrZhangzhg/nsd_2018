@@ -345,6 +345,9 @@ def index(request):
     <p>{{ blog.text }}</p>
 {% endfor %}
 </body>
+(4) 修改前端模板，文章内容只显示一部分
+修改博客正文这一行为如下格式：只显示20个单词
+    <p>{{ blog.text | truncatewords:20 }}</p>
 
 
 
