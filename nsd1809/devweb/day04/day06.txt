@@ -233,6 +233,54 @@ def result(request, question_id):
     {% endfor %}
 </ol>
 {% endblock %}
+7、采用与index.html同样的方式修改detail.html和result.html
+# detail.html
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}投票详情{% endblock %}
+{% block content %}
+<h1 class="text-center text-warning" style="margin-bottom: 30px">{{ question.id }}号问题投票详情</h1>
+<h3>{{ question.question_text }}</h3>
+{% if question.choice_set.all %}
+    <form action="{% url 'vote' question_id=question.id %}" method="post">
+        {% for choice in question.choice_set.all %}
+            <div class="radio form-group">
+                <label>
+                    <input type="radio" name="choice_id" value="{{ choice.id }}">
+                    {{ choice.choice_text }}
+                </label>
+            </div>
+        {% endfor %}
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="投 票">
+        </div>
+    </form>
+{% else %}
+    <h3>尚无选项</h3>
+{% endif %}
+{% endblock %}
+
+
+# result.html
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}投票结果页{% endblock %}
+{% block content %}
+<h1 class="text-center text-warning" style="margin-bottom: 30px">{{ question.id }}号问题的投票结果</h1>
+<table class="table table-striped table-hover">
+    <tr class="info">
+        <td colspan="2">{{ question.question_text }}</td>
+    </tr>
+    {% for choice in question.choice_set.all %}
+        <tr>
+            <td>{{ choice.choice_text }}</td>
+            <td>{{ choice.votes }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+
+
 
 
 

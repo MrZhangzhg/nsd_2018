@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>投票结果页</title>
-</head>
-<body>
-<h1>{{ question.id }}号问题的投票结果</h1>
-<table border="1px">
-    <tr>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}投票结果页{% endblock %}
+{% block content %}
+<h1 class="text-center text-warning" style="margin-bottom: 30px">{{ question.id }}号问题的投票结果</h1>
+<table class="table table-striped table-hover">
+    <tr class="info">
         <td colspan="2">{{ question.question_text }}</td>
     </tr>
     {% for choice in question.choice_set.all %}
@@ -17,5 +14,4 @@
         </tr>
     {% endfor %}
 </table>
-</body>
-</html>
+{% endblock %}

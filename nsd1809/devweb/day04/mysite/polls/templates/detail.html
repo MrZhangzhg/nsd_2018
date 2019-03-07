@@ -1,32 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>投票详情</title>
-</head>
-<body>
-<h1>{{ question.id }}号问题投票详情</h1>
-<h2>{{ question.question_text }}</h2>
-{% if question.choice_set.all %}   {% comment %}如果选项集不是空的{% endcomment %}
-{#    <form action="/polls/{{ question.id }}/vote/" method="post">#}
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}投票详情{% endblock %}
+{% block content %}
+<h1 class="text-center text-warning" style="margin-bottom: 30px">{{ question.id }}号问题投票详情</h1>
+<h3>{{ question.question_text }}</h3>
+{% if question.choice_set.all %}
     <form action="{% url 'vote' question_id=question.id %}" method="post">
         {% for choice in question.choice_set.all %}
-            <div>
+            <div class="radio form-group">
                 <label>
                     <input type="radio" name="choice_id" value="{{ choice.id }}">
                     {{ choice.choice_text }}
                 </label>
             </div>
         {% endfor %}
-        <input type="submit" value="投 票">
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="投 票">
+        </div>
     </form>
-    {% comment %}<ol>
-        {% for choice in question.choice_set.all %}
-            <li>{{ choice.choice_text }}</li>
-        {% endfor %}
-    </ol>{% endcomment %}
 {% else %}
     <h3>尚无选项</h3>
 {% endif %}
-</body>
-</html>
+{% endblock %}
