@@ -21,3 +21,40 @@
 </body>
 
 
+加入投票功能
+1、在detail.html的表单部分，当点击投票的时候，就会把用户的选择交给一个URL，
+这个URL设置为http://x.x.x.x/polls/问题ID/vote/
+# urls.py
+    url(r'(?P<question_id>\d+)/vote/$', views.vote, name='vote'),
+
+2、为投标网址编写视图函数
+# views.py
+from django.shortcuts import render, redirect
+
+def vote(request, question_id):
+    choice_id = request.POST.get('choice_id')
+    question = Question.objects.get(id=question_id)
+    choice = question.choice_set.get(id=choice_id)
+    choice.votes += 1
+    choice.save()
+
+    return redirect('result', question_id=question_id)
+说明：如果使用render返回result.html，那么将会把用户请求request相关的信息(
+POST过来的数据)也再发给result.html，redirect重定向相当于是浏览器打开了一个
+新窗口，访问一个新链接，不会再传递表单提交过来的数据。
+3、在detail.html中加入action的目标地址
+{#    <form action="/polls/{{ question.id }}/vote/" method="post">#}
+    <form action="{% url 'vote' question_id=question.id %}" method="post">
+
+
+
+
+
+
+
+
+
+
+
+
+
