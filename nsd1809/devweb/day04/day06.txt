@@ -336,8 +336,8 @@ from .models import Blog
 def index(request):
     blogs = Blog.objects.order_by('-pub_date')
     return render(request, 'blog_index.html', {'blogs': blogs})
-(3) # mkdir blogs/templats/
-# blogs/templates/blog_index.html
+(3) # mkdir blog/templates/
+# blog/templates/blog_index.html
 
 
 

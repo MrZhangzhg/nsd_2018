@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>博客首页</title>
+</head>
+<body>
+{% for blog in blogs %}
+    <h4>{{ blog.title }}</h4>
+    <p>{{ blog.pub_date }}</p>
+    <p>{{ blog.text }}</p>
+{% endfor %}
+
+</body>
+</html>
