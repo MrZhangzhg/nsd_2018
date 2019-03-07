@@ -88,8 +88,133 @@ def result(request, question_id):
 1、分成上中下三个部分
 上面采用轮播图，中间是问题信息，底部是友情链接等
 # index.html
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+</head>
+<body>
+<div class="container h4">
+    <div id="linux-carousel" class="carousel slide">
+        <ol class="carousel-indicators">
+            <li class="active" data-target="#linux-carousel" data-slide-to="0"></li>
+            <li data-target="#linux-carousel" data-slide-to="1"></li>
+            <li data-target="#linux-carousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <a href="http://www.sogou.com" target="_blank">
+                    <img src="{% static 'imgs/first.jpg' %}">
+                </a>
+            </div>
+            <div class="item">
+                <img src="{% static 'imgs/second.jpg' %}">
+            </div>
+            <div class="item">
+                <img src="{% static 'imgs/third.jpg' %}">
+            </div>
+        </div>
+        <a href="#linux-carousel" data-slide="prev" class="carousel-control left">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a href="#linux-carousel" data-slide="next" class="carousel-control right">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+    <div class="main">
+        <h1 class="text-center text-warning" style="margin-bottom: 30px">投票首页</h1>
+        <ol>
+            {% for question in questions %}
+                <li>
+                    <a href="{% url 'detail' question_id=question.id %}" target="_blank">
+                        {{ question.question_text }}
+                    </a>
+                    {{ question.pub_date }}
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
+    <div class="footer text-center" style="margin-top: 50px">
+        <a href="#">达内云计算学院</a> NSD1809
+    </div>
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script type="text/javascript">
+    $('#linux-carousel').carousel({
+        interval : 3000
+    });
+</script>
+</body>
+</html>
 
 
+模板继承
+1、如果有很多页面希望使用相同的设计风格，可以先制作基础模板页面。其他页面就
+可以基于基础页面，进行继承。
+2、把各个页面共性的内容放到基础页面中，不同的内容，先使用{% block %}进行占位
+3、在其他页面中，继承可以把共性内容获得，个性内容单独设置
+4、将index.html复制一份，起名为base.html
+5、在base.html中，把个性内容删除，并用block占位
+个性内容是title标签和div.main中的部分
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+<div class="container h4">
+    <div id="linux-carousel" class="carousel slide">
+        <ol class="carousel-indicators">
+            <li class="active" data-target="#linux-carousel" data-slide-to="0"></li>
+            <li data-target="#linux-carousel" data-slide-to="1"></li>
+            <li data-target="#linux-carousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <a href="http://www.sogou.com" target="_blank">
+                    <img src="{% static 'imgs/first.jpg' %}">
+                </a>
+            </div>
+            <div class="item">
+                <img src="{% static 'imgs/second.jpg' %}">
+            </div>
+            <div class="item">
+                <img src="{% static 'imgs/third.jpg' %}">
+            </div>
+        </div>
+        <a href="#linux-carousel" data-slide="prev" class="carousel-control left">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a href="#linux-carousel" data-slide="next" class="carousel-control right">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+    <div class="main">{% block content %}{% endblock %}</div>
+    <div class="footer text-center" style="margin-top: 50px">
+        <a href="#">达内云计算学院</a> NSD1809
+    </div>
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script type="text/javascript">
+    $('#linux-carousel').carousel({
+        interval : 3000
+    });
+</script>
+</body>
+</html>
 
 
 
