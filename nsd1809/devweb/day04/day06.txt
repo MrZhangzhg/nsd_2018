@@ -1,9 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>投票详情</title>
-</head>
+修改投票详情的模板，加入form表单，实现投票功能
+# detail.html
 <body>
 <h1>{{ question.id }}号问题投票详情</h1>
 <h2>{{ question.question_text }}</h2>
@@ -19,13 +15,9 @@
         {% endfor %}
         <input type="submit" value="投 票">
     </form>
-    {% comment %}<ol>
-        {% for choice in question.choice_set.all %}
-            <li>{{ choice.choice_text }}</li>
-        {% endfor %}
-    </ol>{% endcomment %}
 {% else %}
     <h3>尚无选项</h3>
 {% endif %}
 </body>
-</html>
+
+
