@@ -47,7 +47,27 @@ POST过来的数据)也再发给result.html，redirect重定向相当于是浏�
     <form action="{% url 'vote' question_id=question.id %}" method="post">
 
 
-
+结果页面
+1、修改视图，将具体的问题传给模板
+# views.py
+def result(request, question_id):
+    question = Question.objects.get(id=question_id)
+    return render(request, 'result.html', {'question': question})
+2、修改模板，显示问题选项的得票
+# result.html
+<body>
+<h1>{{ question.id }}号问题的投票结果</h1>
+<table border="1px">
+    <tr>
+        <td colspan="2">{{ question.question_text }}</td>
+    </tr>
+    {% for choice in question.choice_set.all %}
+        <tr>
+            <td>{{ choice.choice_text }}</td>
+            <td>{{ choice.votes }}</td>
+        </tr>
+    {% endfor %}
+</table>
 
 
 
