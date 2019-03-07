@@ -282,6 +282,27 @@ def result(request, question_id):
 
 
 
+创建博客应用
+一、创建应用
+1、生成应用目录
+(djenv) [root@room8pc16 mysite]# python3 manage.py startapp blog
+2、将应用绑定到项目
+# mysite/settings.py
+INSTALLED_APPS = [
+    ... ...
+    'polls',
+    'blog',
+]
+3、授权，以http://x.x.x.x/blog/开头的网址，交给blog应用处理
+# mysite/urls.py
+    url(r'^blog/', include('blog.urls')),
+# vim blog/urls.py
+from django.conf.urls import url
+urlpatterns = [
+]
+
+
+
 
 
 
