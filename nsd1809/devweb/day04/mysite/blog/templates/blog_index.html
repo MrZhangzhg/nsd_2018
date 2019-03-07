@@ -6,7 +6,11 @@
 </head>
 <body>
 {% for blog in blogs %}
-    <h4>{{ blog.title }}</h4>
+    <h4>
+        <a href="{% url 'article' article_id=blog.id %}" target="_blank">
+            {{ blog.title }}
+        </a>
+    </h4>
     <p>{{ blog.pub_date }}</p>
     <p>{{ blog.text | truncatewords:20 }}</p>
 {% endfor %}

@@ -349,8 +349,32 @@ def index(request):
 修改博客正文这一行为如下格式：只显示20个单词
     <p>{{ blog.text | truncatewords:20 }}</p>
 
-
-
+6、文章详情页
+(1) urls.py
+    url(r'^(?P<article_id>\d+)/$', views.article, name='article'),
+(2) views.py
+def article(request, article_id):
+    art = Blog.objects.get(id=article_id)
+    return render(request, 'article.html', {'art': art})
+(3) blog/templates/article.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章详情</title>
+</head>
+<body>
+<h3>{{ art.title }}</h3>
+<p>{{ art.pub_date }}</p>
+<p>{{ art.text | linebreaks }}</p>
+</body>
+</html>
+(4) 修改首页链接
+    <h4>
+        <a href="{% url 'article' article_id=blog.id %}" target="_blank">
+            {{ blog.title }}
+        </a>
+    </h4>
 
 
 
