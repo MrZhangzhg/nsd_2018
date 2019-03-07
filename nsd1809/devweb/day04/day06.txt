@@ -215,6 +215,25 @@ def result(request, question_id):
 </script>
 </body>
 </html>
+6、修改index.html首页模板：继承于base.html，共性内容删除，因为已经在base.html
+中了，个性内容写到block。
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}投票首页{% endblock %}
+{% block content %}
+<h1 class="text-center text-warning" style="margin-bottom: 30px">投票首页</h1>
+<ol>
+    {% for question in questions %}
+        <li>
+            <a href="{% url 'detail' question_id=question.id %}" target="_blank">
+                {{ question.question_text }}
+            </a>
+            {{ question.pub_date }}
+        </li>
+    {% endfor %}
+</ol>
+{% endblock %}
+
 
 
 
