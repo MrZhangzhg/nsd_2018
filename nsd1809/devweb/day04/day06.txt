@@ -84,6 +84,10 @@ def result(request, question_id):
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 </head>
 
+设计首页
+1、分成上中下三个部分
+上面采用轮播图，中间是问题信息，底部是友情链接等
+# index.html
 
 
 
