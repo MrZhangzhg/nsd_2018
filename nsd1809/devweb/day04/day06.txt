@@ -70,6 +70,22 @@ def result(request, question_id):
 </table>
 
 
+引入bootstrap
+1、django为静态文件(图片、JS、CSS)设置了专门的工作目录：应用目录下的static
+(djenv) [root@room8pc16 mysite]# cp -r ../../day03/static/ polls/
+2、修改index.html，引入bootstrap
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+
+
+
 
 
 
