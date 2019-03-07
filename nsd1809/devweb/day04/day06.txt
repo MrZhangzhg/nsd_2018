@@ -338,7 +338,13 @@ def index(request):
     return render(request, 'blog_index.html', {'blogs': blogs})
 (3) # mkdir blog/templates/
 # blog/templates/blog_index.html
-
+<body>
+{% for blog in blogs %}
+    <h4>{{ blog.title }}</h4>
+    <p>{{ blog.pub_date }}</p>
+    <p>{{ blog.text }}</p>
+{% endfor %}
+</body>
 
 
 
