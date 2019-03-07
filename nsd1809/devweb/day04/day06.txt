@@ -326,6 +326,18 @@ from .models import Blog
 
 admin.site.register(Blog)
 访问后台http://127.0.0.1/admin，添加一些博客文章
+5、编写博客首页
+(1) blog/urls.py
+    url(r'^$', views.index, name='blog_index'),
+(2) blog/views.py
+from django.shortcuts import render
+from .models import Blog
+
+def index(request):
+    blogs = Blog.objects.order_by('-pub_date')
+    return render(request, 'blog_index.html', {'blogs': blogs})
+(3) # mkdir blogs/templats/
+# blogs/templates/blog_index.html
 
 
 
