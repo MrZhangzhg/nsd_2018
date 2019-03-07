@@ -300,6 +300,26 @@ INSTALLED_APPS = [
 from django.conf.urls import url
 urlpatterns = [
 ]
+二、编写应用
+1、页面规划
+http://x.x.x.x/blog/   -> 博客首页，只列出每篇文章的摘要信息
+http://x.x.x.x/blog/1/  -> 1号文章的详情页面
+2、规划数据库
+一张表，存储博客文章，需要的字段：标题、发布时间、正文
+3、编写模型
+# blog/models.py
+from django.db import models
+
+class Blog(models.Model):
+    title = models.CharField(max_length=100)
+    pub_date = models.DateTimeField(auto_now_add=True)
+    text = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+
+
 
 
 
