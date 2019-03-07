@@ -317,6 +317,15 @@ class Blog(models.Model):
 
     def __str__(self):
         return self.title
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+4、把博客模型注册到后台
+# blog/admin.py
+from django.contrib import admin
+from .models import Blog
+
+admin.site.register(Blog)
+访问后台http://127.0.0.1/admin，添加一些博客文章
 
 
 
