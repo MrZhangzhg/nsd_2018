@@ -186,6 +186,19 @@ if __name__ == '__main__':
 
 
 
+实现项目首页http://127.0.0.1/
+1、配置url
+因为这是整个项目的首页，不是应用的，所以需要在项目的urls.py中配置
+# myansible/urls.py
+from django.conf.urls import url, include
+from django.contrib import admin
+from webansi import views
+
+urlpatterns = [
+    url(r'^$', views.mainpage, name='mainpage'),
+    url(r'^admin/', admin.site.urls),
+    url(r'^webansi/', include('webansi.urls')),
+]
 
 
 
