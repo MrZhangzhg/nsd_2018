@@ -383,7 +383,20 @@ def mainpage(request):
 # cd ansi_cfg/
 # ansible all -m setup --tree out
 # ansible-cmdb out/ > ../webansi/templates/index.html
+2、url
+# webansi/urls.py
+from django.conf.urls import url
+from . import views
 
+urlpatterns = [
+    url(r'^$', views.index, name='index'),
+]
+3、views
+# webansi/views.py
+def index(request):
+    return render(request, 'index.html')
+4、修改mainpage.html中超链接
+            <a href="{% url 'index' %}" target="_blank">
 
 
 
