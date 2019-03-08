@@ -378,6 +378,22 @@ def mainpage(request):
 {% endblock %}
 
 
+制作主机信息页
+1、通过ansible-cmdb生成主机信息
+# cd ansi_cfg/
+# ansible all -m setup --tree out
+# ansible-cmdb out/ > ../webansi/templates/index.html
+
+
+
+
+
+
+
+
+
+
+
 
 
 
