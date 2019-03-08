@@ -1,0 +1,37 @@
+一、创建项目
+1、创建新的pycharm项目，解释器使用/opt/djenv/bin/python
+2、创建django项目
+# django-admin startproject myansible
+# cd myansible/
+3、配置pycharm，参见mysite项目
+4、创建一个名为webansi的应用
+# python manage.py startapp webansi
+5、配置项目
+# myansible/settings.py
+ALLOWED_HOSTS = '*'
+INSTALLED_APPS = [
+    ... ...
+    'webansi',
+]
+LANGUAGE_CODE = 'zh-hans'
+TIME_ZONE = 'Asia/Shanghai'
+USE_TZ = False
+6、安装必须的软件包
+(djenv) [root@room8pc16 zzg_pypkgs]# cd ansible_pkg/
+(djenv) [root@room8pc16 ansible_pkg]# pip install *
+# cd ansible-cmdb_pkgs/
+# pip install *
+# cd sqlalchemy_pkgs/
+# pip install *
+
+
+
+
+
+
+
+
+
+
+
+
