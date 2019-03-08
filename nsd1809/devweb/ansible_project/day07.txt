@@ -24,8 +24,18 @@ USE_TZ = False
 # cd sqlalchemy_pkgs/
 # pip install *
 
-
-
+二、项目规划
+1、URL
+http://x.x.x.x/   => 列出所有的功能
+http://127.0.0.1/webansi/   => 列出所有主机的信息
+http://127.0.0.1/webansi/addhosts/   => 添加/显示主机(组)
+http://127.0.0.1/webansi/addmodules/  => 添加/显示模块和参数
+http://127.0.0.1/webansi/tasks/   => 在远程主机上执行任务
+2、规划Models模型
+HostGroup: group_name
+Host: hostname, ipaddr, group
+Module: module_name
+Argument: arg_text, module
 
 
 
