@@ -31,7 +31,23 @@ http://127.0.0.1/webansi/   => 列出所有主机的信息
 http://127.0.0.1/webansi/addhosts/   => 添加/显示主机(组)
 http://127.0.0.1/webansi/addmodules/  => 添加/显示模块和参数
 http://127.0.0.1/webansi/tasks/   => 在远程主机上执行任务
-2、规划Models模型
+2、授权
+把http://127.0.0.1/webansi/开头的URL授权给webansi应用
+# myansible/urls.py
+from django.conf.urls import url, include
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^webansi/', include('webansi.urls')),
+]
+# vim webansi/urls.py
+from django.conf.urls import url
+
+urlpatterns = [
+]
+
+3、规划Models模型
 HostGroup: group_name
 Host: hostname, ipaddr, group
 Module: module_name
