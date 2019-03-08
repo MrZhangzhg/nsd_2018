@@ -199,7 +199,13 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^webansi/', include('webansi.urls')),
 ]
+2、配置视图函数
+from django.shortcuts import render
 
+def mainpage(request):
+    return render(request, 'mainpage.html')
+3、创建模板文件
+# webansi/templates/mainpage.html
 
 
 
