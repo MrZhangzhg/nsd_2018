@@ -1,42 +1,8 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>项目首页</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-</head>
-<body>
-<div class="container h4">
-    <div id="linux-carousel" class="carousel slide">
-        <ol class="carousel-indicators">
-        <li class="active" data-target="#linux-carousel" data-slide-to="0"></li>
-        <li data-target="#linux-carousel" data-slide-to="1"></li>
-        <li data-target="#linux-carousel" data-slide-to="2"></li>
-    </ol>
-        <div class="carousel-inner">
-        <div class="item active">
-            <a href="http://www.sogou.com" target="_blank">
-                <img src="{% static 'imgs/first.jpg' %}">
-            </a>
-        </div>
-        <div class="item">
-            <img src="{% static 'imgs/second.jpg' %}">
-        </div>
-        <div class="item">
-            <img src="{% static 'imgs/third.jpg' %}">
-        </div>
-        <a href="#linux-carousel" data-slide="prev" class="carousel-control left">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-        </a>
-        <a href="#linux-carousel" data-slide="next" class="carousel-control right">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-        </a>
-    </div>
-    </div>
-    <div class="main" style="margin-top: 10px; margin-bottom: 50px">
-        <div class="row">
+{% block title %}项目首页{% endblock %}
+{% block content %}
+    <div class="row">
             <div class="col-sm-3 text-center">
                 <a href="#">
                     <img width="150px" src="{% static 'imgs/linux.jpg' %}"><br>
@@ -62,17 +28,4 @@
                 </a>
             </div>
         </div>
-    </div>
-    <div class="footer text-center">
-        <a href="#">达内云计算学院</a> 客服电话：400-111-8989 邮箱：admin@tedu.cn
-    </div>
-</div>
-<script src="{% static 'js/jquery.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script type="text/javascript">
-    $('#linux-carousel').carousel({
-        interval : 3000
-    });
-</script>
-</body>
-</html>
+{% endblock %}
