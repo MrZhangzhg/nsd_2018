@@ -92,7 +92,24 @@ sqlite> .tables   # 查看所有的表
 sqlite> .schema webansi_hostgroup   # 表结构
 sqlite> .schema webansi_host
 
+6、将模型注册到后台
+# webansi/admin.py
+from django.contrib import admin
+from .models import HostGroup, Host, Module, Argument
 
+for item in [HostGroup, Host, Module, Argument]:
+    admin.site.register(item)
+7、创建管理员用户
+# python manage.py createsuperuser
+8、启动开发服务器
+# python manage.py runserver 0:80
+http://127.0.0.1/admin/
+9、进入后台，创建主机组和主机
+dbservers
+node4.tedu.cn  192.168.4.4
+webservers
+node5.teud.cn  192.168.4.5
+node6.teud.cn  192.168.4.6
 
 
 
