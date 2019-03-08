@@ -113,6 +113,21 @@ node6.teud.cn  192.168.4.6
 
 
 
+三、配置ansible
+1、在manage.py所在的目录下，创建ansible的工作目录
+# mkdir ansi_cfg
+2、创建ansible的配置文件
+# cd ansi_cfg
+# vim ansible.cfg
+[defaults]
+inventory = dhosts.py    # 主机清单文件是python脚本
+remote_user = root
+
+
+
+
+
+
 
 
 
