@@ -123,6 +123,8 @@ node6.teud.cn  192.168.4.6
 inventory = dhosts.py    # 主机清单文件是python脚本
 remote_user = root
 
+3、编写dhosts.py文件
+
 
 
 
