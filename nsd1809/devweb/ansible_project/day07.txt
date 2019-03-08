@@ -126,9 +126,13 @@ remote_user = root
 3、编写dhosts.py文件: 必须是可以直接运行的
 该文件运行后，输出的数据是JSON格式，要求如下：
 {'dbservers': {'hosts': ['192.168.4.4']},
- 'lvs': {'hosts': ['192.168.4.1']},
- 'scm': {'hosts': ['192.168.4.2']},
- 'webservers': {'hosts': ['192.168.4.5', '192.168.4.6']}}
+ 'lvs': {'hosts': ['192.168.4.1']}}
+分析：
+整体上输出一个字典：{}
+外层字典的key是组名，value是字典。{'组': {}}
+内层字典的key是固定的字符串hosts，value是列表。{'组': {'hosts': []}}
+列表中的元素是主机的IP地址
+
 
 
 # touch ansi_cfg/dhosts.py
@@ -139,9 +143,10 @@ remote_user = root
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import json
 
 engine = create_engine(
-    'sqlite3:////var/ftp/nsd_2018/nsd1809/devweb/ansible_project/myansible/db.sqlite3'
+    'sqlite:////var/ftp/nsd_2018/nsd1809/devweb/ansible_project/myansible/db.sqlite3'
 )
 Session = sessionmaker(bind=engine)
 Base = declarative_base()
@@ -164,6 +169,20 @@ class Host(Base):
     def __str__(self):
         return "%s: %s" % (self.hostname, self.ipaddr)
 
+if __name__ == '__main__':
+    session = Session()
+    qset = session.query(HostGroup.group_name, Host.ipaddr).join(Host)
+    # print(qset.all())
+    result = {}
+    for group, ip in qset:
+        if group not in result:  # group=dbservers
+            result[group] = {}   # {'dbservers': {}}
+            result[group]['hosts'] = []   # {'dbservers': {'hosts': []}}
+        result[group]['hosts'].append(ip)
+    print(json.dumps(result))
+(djenv) [root@room8pc16 ansi_cfg]# ./dhosts.py
+{"dbservers": {"hosts": ["192.168.4.4"]}, "webservers": {"hosts": ["192.168.4.5", "192.168.4.6"]}}
+(djenv) [root@room8pc16 ansi_cfg]# ansible all -m ping
 
 
 
