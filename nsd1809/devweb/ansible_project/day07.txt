@@ -206,7 +206,9 @@ def mainpage(request):
     return render(request, 'mainpage.html')
 3、创建模板文件
 # webansi/templates/mainpage.html
-
+4、引入bootstrap
+(1) 拷贝static目录到webansi目录下
+(2) 修改mainpage.html
 
 
 
