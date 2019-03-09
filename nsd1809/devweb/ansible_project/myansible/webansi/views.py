@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import HostGroup, Module
+from .models import HostGroup, Module, Host
 
 def mainpage(request):
     return render(request, 'mainpage.html')
@@ -32,3 +32,10 @@ def addmodules(request):
 
     modules = Module.objects.all()
     return render(request, 'addmodules.html', {'modules': modules})
+
+def tasks(request):
+    groups = HostGroup.objects.all()
+    hosts = Host.objects.all()
+    modules = Module.objects.all()
+    context = {'groups': groups, 'hosts': hosts, 'modules': modules}
+    return render(request, 'tasks.html', context)

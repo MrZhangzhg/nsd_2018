@@ -133,6 +133,24 @@ def addmodules(request):
     modules = Module.objects.all()
     return render(request, 'addmodules.html', {'modules': modules})
 
+编写执行页面
+1、url
+# webansi/urls.py
+    url(r'^tasks/$', views.tasks, name='tasks'),
+2、视图函数
+# webansi/views.py
+def tasks(request):
+    groups = HostGroup.objects.all()
+    hosts = Host.objects.all()
+    modules = Module.objects.all()
+    context = {'groups': groups, 'hosts': hosts, 'modules': modules}
+    return render(request, 'tasks.html', context)
+3、模板
+# webansi/templates/addhosts.html
+
+4、修改主页超链接
+            <a href="{% url 'tasks' %}" target="_blank">
+
 
 
 
