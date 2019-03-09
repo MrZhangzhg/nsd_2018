@@ -2,6 +2,7 @@
 {% block title %}执行任务{% endblock %}
 {% block content %}
     <form action="" method="post">
+    {% csrf_token %}
         <div class="form-group">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#server" data-toggle="tab">主机</a></li>
@@ -26,6 +27,40 @@
                 </div>
             </div>
         </div>
-
+        <table class="table table-striped table-bordered table-hover">
+        <tr class="info">
+            <td>模块</td>
+            <td>参数</td>
+        </tr>
+        {% for module in modules %}
+            <tr>
+                <td>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="module_name" value="{{ module.modlue_name }}">
+                            {{ module.modlue_name }}
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <ul class="list-unstyled">
+                        {% for args in module.argument_set.all %}
+                            <li>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="args" value="{{ args.arg_text }}">
+                                        {{ args.arg_text }}
+                                    </label>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class="form-group text-center">
+        <input class="btn btn-primary" type="submit" value="执 行">
+    </div>
     </form>
 {% endblock %}
