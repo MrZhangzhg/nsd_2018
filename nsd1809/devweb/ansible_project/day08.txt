@@ -217,6 +217,8 @@ def tasks(request):
 4、修改主页超链接
             <a href="{% url 'tasks' %}" target="_blank">
 
+5、完成执行任务的函数
+通过表单接收主机(组)、模块、参数。再把接收到的数据作为ansible的参数，进行调用
 
 
 
