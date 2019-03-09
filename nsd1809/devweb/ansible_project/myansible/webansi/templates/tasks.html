@@ -1,2 +1,31 @@
 {% extends 'base.html' %}
 {% block title %}执行任务{% endblock %}
+{% block content %}
+    <form action="" method="post">
+        <div class="form-group">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#server" data-toggle="tab">主机</a></li>
+                <li><a href="#hostgroup" data-toggle="tab">主机组</a></li>
+            </ul>
+            <div class="tab-content" style="padding-top: 10px">
+                <div class="tab-pane active fade in" id="server">
+                    <select class="form-control" name="ip">
+                            <option value="">无</option>
+                        {% for host in hosts %}
+                            <option value="{{ host.ipaddr }}">{{ host.hostname }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="tab-pane fade" id="hostgroup">
+                    <select class="form-control" name="group_name">
+                            <option value="">无</option>
+                        {% for group in groups %}
+                            <option value="{{ group.group_name }}">{{ group.group_name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    </form>
+{% endblock %}
