@@ -72,6 +72,69 @@ def addhosts(request):
     {% csrf_token %}
 
 
+编写添加模块页面
+1、url
+    url(r'^addmodules/$', views.addmodules, name='addmodules'),
+2、视图函数
+def addmodules(request):
+    modules = Module.objects.all()
+    return render(request, 'addmodules.html', {'modules': modules})
+3、模板
+# webansi/templates/addmodules.html
+{% extends 'base.html' %}
+{% block title %}添加模块{% endblock %}
+{% block content %}
+    <form action="" class="form-inline" method="post">
+    {% csrf_token %}
+        <div class="form-group">
+                <label>模块：</label>
+                <input class="form-control" type="text" name="module">
+        </div>
+        <div class="form-group">
+            <label>参数：</label>
+            <input class="form-control" type="text" name="args">
+        </div>
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="添 加">
+        </div>
+    </form>
+    <hr>
+    <table class="table table-striped table-bordered table-hover">
+        <tr class="info">
+            <td>模块</td>
+            <td>参数</td>
+        </tr>
+        {% for module in modules %}
+            <tr>
+                <td>{{ module.modlue_name }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        {% for args in module.argument_set.all %}
+                            <li>{{ args.arg_text }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+4、修改首页超链接
+            <a href="{% url 'addmodules' %}" target="_blank">
+5、完善视图函数
+def addmodules(request):
+    if request.method == 'POST':
+        module_name = request.POST.get('module').strip()
+        args = request.POST.get('args').strip()
+        if module_name:
+            module = Module.objects.get_or_create(module_name=module_name)[0]
+            if args:
+                module.argument_set.get_or_create(arg_text=args)
+
+    modules = Module.objects.all()
+    return render(request, 'addmodules.html', {'modules': modules})
+
+
+
 
 
 
