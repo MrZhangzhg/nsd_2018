@@ -53,7 +53,23 @@ def addhosts(request):
 
 4、修改首页超链接
             <a href="{% url 'addhosts' %}" target="_blank">
+5、完善视图函数
+def addhosts(request):
+    if request.method == 'POST':
+        hostname = request.POST.get('hostname').strip()
+        ip = request.POST.get('ip').strip()
+        group_name = request.POST.get('group').strip()
+        if group_name:
+            # get_or_create返回元组(组实例, True|False)
+            group = HostGroup.objects.get_or_create(group_name=group_name)[0]
+            if hostname and ip:
+                group.host_set.get_or_create(hostname=hostname, ipaddr=ip)
 
+    groups = HostGroup.objects.all()
+    return render(request, 'addhosts.html', {'groups': groups})
+6、修改模板的form表单，以满足安全要求。在form下加入一行，如下：
+    <form action="" class="form-inline" method="post">
+    {% csrf_token %}
 
 
 
