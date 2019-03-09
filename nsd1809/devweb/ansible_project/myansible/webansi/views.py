@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import HostGroup, Module, Host
+from django.shortcuts import render, redirect
+from .models import HostGroup, Module, Host, Argument
 import shutil
 from collections import namedtuple
 from ansible.parsing.dataloader import DataLoader
@@ -95,3 +95,9 @@ def tasks(request):
     modules = Module.objects.all()
     context = {'groups': groups, 'hosts': hosts, 'modules': modules}
     return render(request, 'tasks.html', context)
+
+def del_args(request, args_id):
+    args = Argument.objects.get(id=args_id)
+    args.delete()
+
+    return redirect('addmodules')
