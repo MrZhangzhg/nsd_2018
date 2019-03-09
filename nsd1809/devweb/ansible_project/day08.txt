@@ -1,0 +1,21 @@
+编写添加主机页面
+1、url
+# webansi/urls.py
+    url(r'^addhosts/$', views.addhosts, name='addhosts'),
+2、视图函数
+# webansi/views.py
+from .models import HostGroup
+def addhosts(request):
+    groups = HostGroup.objects.all()
+    return render(request, 'addhosts.html', {'groups': groups})
+3、模板
+# webansi/templates/addhosts.html
+
+4、修改首页超链接
+            <a href="{% url 'addhosts' %}" target="_blank">
+
+
+
+
+
+
