@@ -1,0 +1,41 @@
+git: 版本控制软件
+一、基础配置
+1、安装
+[root@node6 ~]# yum install -y git
+2、配置用户信息
+配置用户联系方式：名字、email
+[root@node6 ~]# git config --global user.name "Mr.Zhang"
+[root@node6 ~]# git config --global user.email "zzg@tedu.cn"
+配置写日志使用的文本编辑器
+[root@node6 ~]# git config --global core.editor vim
+查看配置信息
+[root@node6 ~]# git config --list
+[root@node6 ~]# cat ~/.gitconfig
+二、应用
+1、git的三个工作区域
+工作区：编写程序的目录
+暂存区：保存工作区文件到版本库之间的缓冲地带
+版本库：保存每次提交的代码。在工作区中有一个.git的目录，它就是版本库
+2、创建git工作区
+(1) 全新创建
+[root@node6 ~]# git init gittest   # 将会出现gittest目录
+(2) 已存在目录
+[root@node6 ~]# mkdir devops
+[root@node6 ~]# cd devops/
+[root@node6 devops]# echo 'hello world' > a.txt
+[root@node6 devops]# git init .
+[root@node6 devops]# ls -A   # 可以查看到版本库.git
+
+
+
+
+
+
+
+
+
+
+
+
+
+
