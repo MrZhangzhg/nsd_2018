@@ -119,6 +119,31 @@ Port 2222
 (1) 群组group: 可以给每个组织、团队创建一个group
 (2) 成员member：每个用户对应一个用户，用户加到group中。
 (3) 项目project: 一个团队可以开发很多软件项目，每个软件项目对应gitlab上的项目
+8、创建名为devops的组、名为devops的项目和一个用户
+再将用户添加到devops项目中，成为“主程序员”角色
+9、切换成新用户，上传代码
+(1) 方法一：上传代码可以采用http的方式，但是每次上传代码都需填写用户名和密码
+(2) 方法二：通过ssh密钥，实现免密登陆、上传
+在客户端生成密钥
+[root@node6 ~]# ssh-keygen -t rsa -C "zzg@tedu.cn" -b 4096
+[root@node6 ~]# vim ~/.ssh/id_rsa.pub  复制公钥
+根据gitlab项目中的提示，上传代码
+[root@node6 ~]# cd devops/    # 切到项目目录
+将远程仓库改名，原名为origin，新名为old-origin
+[root@node6 devops]# git remote rename origin old-origin
+如果出现以下错误，可以忽略
+error: 不能重命名配置小节 'remote.origin' 到 'remote.old-origin'
+将本地仓库添加到远程服务器
+[root@node6 devops]# git remote add origin git@192.168.4.1:devops/devops.git
+推送代码到服务器
+[root@node6 devops]# git push -u origin --all    # 推代码
+[root@node6 devops]# git push -u origin --tags   # 推送标签tag
+后续操作：本地编写代码，提交到git版本库，推送到服务器
+[root@node6 devops]# cp /etc/issue .
+[root@node6 devops]# git add .
+[root@node6 devops]# git commit -m "add issue"
+[root@node6 devops]# git push
+
 
 
 
