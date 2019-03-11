@@ -83,7 +83,36 @@ project(master分支） --> C1  --> C2 --> C3 --------------> master
 [root@node6 devops]# git branch -d b1
 [root@node6 devops]# git branch   # 只有master分支
 
+！！！！注意：切换checkout执行前务必保证status关态是干净的！！！！
 
+切换到以前版本
+1、查看提交
+[root@node6 devops]# git log   # 每个commit后有一个ID号
+2、通过ID号切换到历史某一次提交
+[root@node6 devops]# git checkout 938eabb249956517d14b83829bd716d42b8f934c
+注意：在历史提交中不要直接修改内容，如果需要修改，可以创建分支进行修改
+3、回到最新状态
+[root@node6 devops]# git checkout master
+
+
+
+gitlab服务器
+1、创建一台虚拟机，内存至少给4G
+node1: 192.168.4.1  安装上docker并启动服务
+2、导入docker镜像
+[root@node1 images]# docker load < gitlab_zh.tar
+3、因为启动的容器需要用到22端口，所以将虚拟机的ssh服务绑定到其他端口
+[root@node1 ~]# vim /etc/ssh/sshd_config
+Port 2222
+[root@node1 ~]# systemctl restart sshd
+[root@room8pc16 phase5]# ssh -p2222 node1
+4、启动一个gitlab容器
+[root@node1 ~]# docker run -d -h gitlab --name gitlab -p 443:443 \
+-p 80:80 -p 22:22 --restart always -v /srv/gitlab/config:/etc/gitlab \
+-v /srv/gitlab/logs:/var/log/gitlab \
+-v /srv/gitlab/data:/var/opt/gitlab gitlab_zh:latest
+5、查看状态
+[root@node1 ~]# docker ps   # 直到状态显示healthy，容器才能正常使用
 
 
 
