@@ -67,6 +67,24 @@ project(master分支） --> C1  --> C2 --> C3 --------------> master
 [root@node6 devops]# git commit -m "add motd"
 (3) 修复bug的程序员切换到分支b1上修复问题
 
+(4) 切换到b1分支
+[root@node6 devops]# git checkout b1
+[root@node6 devops]# ls    # 当前目录没有motd文件
+(5) 修复bug
+[root@node6 devops]# echo '3rd line' >> a.txt
+[root@node6 devops]# git add .
+[root@node6 devops]# git commit -m "insert to a.txt"
+(6) 合并b1分支到主干
+[root@node6 devops]# git checkout master
+[root@node6 devops]# cat a.txt    # 文件中有两行
+[root@node6 devops]# git merge b1   # 合并b1分支到master
+[root@node6 devops]# cat a.txt    # 文件中有三行
+(7) 如果b1分支确定不再使用，可以将其删除
+[root@node6 devops]# git branch -d b1
+[root@node6 devops]# git branch   # 只有master分支
+
+
+
 
 
 
