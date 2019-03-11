@@ -143,6 +143,8 @@ error: 不能重命名配置小节 'remote.origin' 到 'remote.old-origin'
 [root@node6 devops]# git add .
 [root@node6 devops]# git commit -m "add issue"
 [root@node6 devops]# git push
+如果推送的时候报错：permission error，解决方案如下：
+[root@node6 devops]# eval $(ssh-agent)
 
 
 
