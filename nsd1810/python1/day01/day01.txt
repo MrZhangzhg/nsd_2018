@@ -40,6 +40,33 @@ git: 版本控制软件
 [root@node6 devops]# git commit    # 在跳出的vim中写入日志
 [root@node6 devops]# git status   # 干净的工作区
 
+6、继续编写程序
+[root@node6 devops]# cp /root/anaconda-ks.cfg .
+[root@node6 devops]# git add .
+[root@node6 devops]# git commit -m "add new file /root/anaconda-ks.cfg"
+[root@node6 devops]# git status
+7、查看版本库历史
+[root@node6 devops]# git log
+
+分支管理
+1、git仓库中包含了一个默认的分支叫master
+2、假如你正在编写代码，突然收到一个通知，代码有bug。我们的项目有很多人一起在开发，
+可以指定某个人修改bug，其他人继续编写程序
+3、正常编写程序的人员，仍然在master分支上工作，修改Bug的程序员新建一个分支，当bug
+修复完成，再把他的分支合并到master上即可
+                                   新分支b1-->修复bug，C4
+                                  /                    \
+                                 /                      \
+project(master分支） --> C1  --> C2 --> C3 --------------> master
+(1) 生成新的分支，注意生成新分支的时候，master一定要是干净的
+[root@node6 devops]# git branch b1    # 分支名为b1
+[root@node6 devops]# git branch   # 查看所有分支，当前所在分支前面有*
+(2) 原有程序员继续在master分支上工作
+[root@node6 devops]# cp /etc/motd .
+[root@node6 devops]# git add .
+[root@node6 devops]# git commit -m "add motd"
+(3) 修复bug的程序员切换到分支b1上修复问题
+
 
 
 
