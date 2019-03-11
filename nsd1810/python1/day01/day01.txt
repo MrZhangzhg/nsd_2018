@@ -113,6 +113,12 @@ Port 2222
 -v /srv/gitlab/data:/var/opt/gitlab gitlab_zh:latest
 5、查看状态
 [root@node1 ~]# docker ps   # 直到状态显示healthy，容器才能正常使用
+6、浏览器访问http://x.x.x.x/ （虚拟机地址）
+第一次登陆需要设置密码，用户名是root
+7、重要概念
+(1) 群组group: 可以给每个组织、团队创建一个group
+(2) 成员member：每个用户对应一个用户，用户加到group中。
+(3) 项目project: 一个团队可以开发很多软件项目，每个软件项目对应gitlab上的项目
 
 
 
