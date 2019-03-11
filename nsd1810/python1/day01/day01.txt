@@ -25,6 +25,24 @@ git: 版本控制软件
 [root@node6 devops]# echo 'hello world' > a.txt
 [root@node6 devops]# git init .
 [root@node6 devops]# ls -A   # 可以查看到版本库.git
+2、在工作目录中加入新文件、修改a.txt
+[root@node6 devops]# cp /etc/hosts .
+[root@node6 devops]# echo '2nd line' >> a.txt
+[root@node6 devops]# git status   # 查看状态
+3、发现工作区中有未跟踪的文件，添加它们到暂存区
+[root@node6 devops]# git add hosts    # 加入指定文件
+[root@node6 devops]# git add .        # 把当前目录中所有文件加入跟踪
+[root@node6 devops]# git status
+4、如果hosts是错误加入到暂存区的，可以根据git status提示，删除暂存区文件
+[root@node6 devops]# git rm --cached hosts
+5、提交暂存区的文件到版本库
+[root@node6 devops]# git add .    # 将工作区所有文件加入到暂存区
+[root@node6 devops]# git commit    # 在跳出的vim中写入日志
+[root@node6 devops]# git status   # 干净的工作区
+
+
+
+
 
 
 
