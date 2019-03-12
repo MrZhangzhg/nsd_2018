@@ -93,6 +93,22 @@ False: 0
 >>> py_str[1::2]
 >>> py_str[::-1]   # 步长值为负，表示自右向左取，取出nohtyp
 
+>>> 't' in py_str
+True
+>>> 'th' in py_str
+True
+>>> 'to' in py_str
+False
+>>> 'to' not in py_str   # 'to'不在py_str中吗？
+True
+>>> py_str + 100   # 报错，不同类型的数据不能操作
+>>> py_str + str(100)   # str函数将数字100转成字符100
+>>> '*' * 50     # 将*号重复50遍
+>>> py_str * 5   # 将py_str变量表示的字符串重复5遍
+
+
+
+
 
 
 
