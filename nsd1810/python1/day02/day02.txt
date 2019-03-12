@@ -160,6 +160,25 @@ key-value对格式的数据类型
 
 
 
+判断：
+1、if后面的判断条件可以是数据类型，任何值为0的数字都是False，非0为True;
+任何非空对象都是True，空对象是False
+>>> if -0.0: print('yes')    # 不打印
+>>> if 100: print('yes')     # 打印
+>>> if ' ': print('yes')     # 空格也是个字符，True，打印
+>>> if '': print('yes')      # 不打印
+>>> if [False]: print('yes')   # 非空列表，True，打印
+>>> if 'b' in 'abc': print('yes')
+>>> if 3 > 0: print('yes')
+>>> if 3 > 10:
+...     print('yes')
+... else:
+...     print('no')
+
+
+
+
+
 
 
 
