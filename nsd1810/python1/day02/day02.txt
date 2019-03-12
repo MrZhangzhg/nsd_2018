@@ -55,6 +55,27 @@ False: 0
 >>> 0b11
 3
 
+二、字符串
+1、字符串是引号中间的字符，单双引号没有区别
+>>> 'tom\'s pet is a cat'
+>>> "tom's pet is a cat"
+2、如果字符串中有可变对象，可以使用%s占位
+>>> 'hello %s' % 'bob'
+'hello bob'
+>>> 'hello %s' % 'tom'
+'hello tom'
+>>> '%s is %s years old' % ('tom', 22)
+'tom is 22 years old'
+3、python支持三引号（三个连续的单引号或双引号），可以保存用户的输入格式
+>>> words = "hello\ngreet\nwelcome"
+>>> print(words)    # print将\n翻译为回车
+>>> danci = '''hello
+... greet
+... welcome'''
+>>> print(danci)
+>>> danci    # 内部存储仍然在单词间加入了\n
+
+
 
 
 
