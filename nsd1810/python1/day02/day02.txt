@@ -107,6 +107,25 @@ True
 >>> py_str * 5   # 将py_str变量表示的字符串重复5遍
 
 
+列表：
+相当于是一个数组，可以将各种对象存入到其中
+>>> alist = ['tom', 'jerry', 10, 20, [1, 2, 3]]
+>>> len(alist)   # 5
+>>> alist[2:4]   # [10, 20]
+>>> 10 in alist   # 10是列表的一项吗？True
+>>> 1 in alist    # 1是列表的一项吗？False
+>>> alist[-1] = 100   # 修改最后一项的值
+>>> alist.append(200)   # 向列表尾部追加数字200
+>>> help(alist.insert)   # 查看insert帮助
+>>> alist + [5]
+>>> alist * 3
+
+
+https://yiyibooks.cn/  -> Python 352 文档 -> 库参考 -> 搜索"list"
+
+
+
+
 
 
 
