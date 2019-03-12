@@ -120,8 +120,35 @@ True
 >>> alist + [5]
 >>> alist * 3
 
-
 https://yiyibooks.cn/  -> Python 352 文档 -> 库参考 -> 搜索"list"
+
+元组：
+元组可以当作是不可改变的列表
+>>> atuple = (1, 2, 3, 4)
+>>> len(atuple)
+4
+>>> atuple[0]
+1
+>>> atuple[1:3]
+(2, 3)
+>>> atuple[-1] = 10   # 元组不可变，报错
+>>> 2 in atuple
+
+字典：
+key-value对格式的数据类型
+>>> adict = {'name': 'tom', 'age': 20}
+>>> len(adict)   # 2
+>>> 20 in adict   # 20是字典的key吗？ False
+>>> 'age' in adict   # True
+>>> adict['age']   # 字典没有顺序，通过key找到value
+>>> adict['age'] = 22   # age是字典的key，更新value
+>>> adict['email'] = 'tom@tedu.cn'   # email不是字典的key，则添加新值
+
+
+
+
+
+
 
 
 
