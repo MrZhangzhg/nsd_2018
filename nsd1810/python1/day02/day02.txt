@@ -187,6 +187,10 @@ key-value对格式的数据类型
 >>> s = a if a <= b else b
 
 
+随机选择
+>>> import random
+>>> random.choice('abcd')   # choice从序列对象中选择一项
+>>> random.choice(['石头', '剪刀', '布'])
 
 
 
