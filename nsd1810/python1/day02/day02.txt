@@ -176,6 +176,15 @@ key-value对格式的数据类型
 ...     print('no')
 
 
+三元运算符
+>>> a = 10
+>>> b = 20
+>>> if a <= b:
+...     smaller = a
+... else:
+...     smaller = b
+上面的写法可以简化为
+>>> s = a if a <= b else b
 
 
 
