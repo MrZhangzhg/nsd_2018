@@ -57,10 +57,27 @@ range如果只给了一个参数，这个数字是结束数字，默认从0开�
 注意：3rd line.后面没有\n，所以new line.\n将会与3rd line.在同一行
 >>> f.close()  # 关闭文件也会将缓存写入磁盘
 
-
-
-
-
+4、以2进制(bytes)形式写入
+>>> f = open('/tmp/mytest', 'wb')
+>>> f.write(b'hello world!\n')
+# 1个英文字符可以对应一个字节，所以可以将英文字符直接以bytes形式写入
+>>> f.write(b'人')  # 一个中文字符对应3个字节，所以不能直接加b，报错
+>>> data = '人'
+>>> data.encode()   # 默认转成UTF8编码代表的字节
+>>> data.encode('utf8')    # 将'人'转成UTF8编码对应的2进制数
+b'\xe4\xba\xba'   # \x表示16进制
+>>> data.encode('gb2312')    # 将'人'转成GB2312编码对应的2进制数
+b'\xc8\xcb'
+每个16进制数一定对应4个2进制数
+\xe4\xba\xba  => 11100100 10111010 10111010  => '人'
+>>> f.write(data.encode())
+>>> f.close()
+>>> f = open('/tmp/mytest', 'wb')
+>>> line = '大家好\n'
+>>> f.write(line.encode())
+>>> f.close()
+(1)如果是英文字符，可以在字符串前加b直接写入
+(2)如果是中文字符，需要先encode成utf8编码代表的bytes类型，再写入
 
 
 
