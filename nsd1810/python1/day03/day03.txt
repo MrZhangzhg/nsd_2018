@@ -117,6 +117,23 @@ with: 通过with打开文件，with语句结束后，文件自动关闭
 函数返回值：函数必须使用明确的return进行值的返回，没有return，默认返回None
 函数参数：函数需要处理的数据，一般都是通过参数传递进去的
 
+###########################
+模块：一个python文件就是一个模块，模块名就是文件名去除扩展名
+我们自己编写的文件也是模块，模块名也是一个名字，所以模块命名也要符合相应的约定：
+(1) 首字符只能是字母或下划线
+(2) 其他字符可以是字母或下划线或数字
+(3) 区分大小写
+模块导入采用import语句，导入模块时，模块中的代码将会被执行一遍，这叫load加载
+
+模块都有一个特殊的变量__name__，模块直接运行，其值为__main__，被导入时值为模块名
+[root@room8pc16 day03]# cat foo.py
+print(__name__)
+[root@room8pc16 day03]# python3 foo.py
+__main__
+[root@room8pc16 day03]# cat bar.py
+import foo
+[root@room8pc16 day03]# python3 bar.py
+foo
 
 
 
