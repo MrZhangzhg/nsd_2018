@@ -1,4 +1,4 @@
-def gen_fib(num):
+def gen_fib(num=10):
     fib = [0, 1]
 
     # num = int(input('数列长度: '))
@@ -17,3 +17,5 @@ for n in nlist:
 
 l = int(input('数列长度: '))
 print(gen_fib(l))
+
+print(gen_fib())
