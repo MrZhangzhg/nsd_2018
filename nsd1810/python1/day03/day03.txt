@@ -34,7 +34,28 @@ range如果只给了一个参数，这个数字是结束数字，默认从0开�
 >>> f.readline()
 >>> f.readlines()   # 读取所有行，每行成为一个字符串，放到列表中
 >>> f.close()
+###########################
+>>> f = open('/tmp/passwd')   # 常用的读文本文件的方法
+>>> for line in f:
+...     print(line, end='')
+>>> f.close()   # 使用完文件关闭是一个良好的习惯，忘记关闭，也不一定会产生严重后果
 
+2、读取非文本文件
+# cp /bin/ls /tmp/list
+>>> f = open('/tmp/list', 'rb')  # b表示bytes
+>>> f.read(4)  # 读取4字节
+>>> f.close()
+
+3、写文本文件
+>>> f = open('/tmp/passwd', 'w')
+>>> f.write('hello world!\n')
+[root@room8pc16 day03]# cat /tmp/passwd   # 没有内容
+因为数据太少，写到缓存了，当缓存内容大到一定程度，如4K，将会写入硬盘
+>>> f.flush()  # 立即将缓存数据同步到磁盘，一般不用单独执行
+[root@room8pc16 day03]# cat /tmp/passwd  # 有内容
+>>> f.writelines(['2nd line.\n', '3rd line.', 'new line.\n'])
+注意：3rd line.后面没有\n，所以new line.\n将会与3rd line.在同一行
+>>> f.close()  # 关闭文件也会将缓存写入磁盘
 
 
 
