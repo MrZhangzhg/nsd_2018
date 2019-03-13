@@ -80,6 +80,36 @@ b'\xc8\xcb'
 (2)如果是中文字符，需要先encode成utf8编码代表的bytes类型，再写入
 
 
+###########################
+with: 通过with打开文件，with语句结束后，文件自动关闭
+>>> with open('/tmp/passwd') as f:   # 等价于f = open()
+...     f.readline()
+>>> f.readline()   # 报错，因为文件已经关闭了
+
+
+###########################
+移动文件指针
+[root@room8pc16 day03]# cp /etc/passwd /tmp/
+>>> f = open('/tmp/passwd', 'rb')
+>>> f.tell()   # 返回文件指针的位置
+>>> f.readline()  # 读取第一行
+>>> f.tell()
+# 移动到文件开头
+>>> f.seek(0, 0)   # 第2个数字0表示开头，2表示结尾，1表示当前位置；第1个数字是偏移量
+>>> f.readline()   # 仍然是第一行
+>>> f.seek(7, 0)   # 指针从开头向后偏移7个字节
+>>> f.read(3)
+>>> f.seek(-6, 2)  # 指针从结尾向前偏移6个字节
+>>> f.read()
+
+
+
+
+
+
+
+
+
 
 
 
