@@ -8,6 +8,15 @@ shutil模块
 #####################################
 >>> shutil.copy('/etc/hosts', '/tmp/zj')   # cp
 >>> shutil.copy2('/etc/hosts', '/tmp/zj.txt')  # cp -p
+>>> shutil.copytree('/etc/security', '/tmp/anquan')  # cp -r
+>>> shutil.move('/tmp/anquan', '/var/tmp/')  # mv
+>>> shutil.rmtree('/var/tmp/anquan')   # rm -rf
+>>> import os
+>>> os.remove('/tmp/zhuji')   # 删单个文件
+
+
+
+
 
 
 
