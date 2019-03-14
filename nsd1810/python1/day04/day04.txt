@@ -173,11 +173,23 @@ c:\temp\newdir
 >>> alist.count(100)   # 统计100出现的次数
 >>> alist.index(100)   # 第一个100的下标
 >>> alist.remove(100)   # 删除第1个100
->>> alist.pop()   # 默认弹出最后一个元素
+>>> alist.pop()   # 默认弹出最后一个元素，常用
 >>> alist.pop(1)   # 将下标为1的元素弹出
->>> alist.sort()   # 升序排列
->>> alist.reverse()   # 翻转
+>>> alist.sort()   # 升序排列，常用
+>>> alist.reverse()   # 翻转，常用
 >>> blist = alist.copy()   # 拷贝alist的值给blist
+>>> alist.extend(['abc', 123])   # 将'abc'和123作为两项加入alist
+
+#####################################
+元组：属于容器、不可变、顺序 类型
+>>> atuple = (10, 20, 50, 30)
+>>> a = (10)   # 这时的a是数字，不是元组
+>>> type(a)
+<class 'int'>
+>>> a = (10,)   # 单元素元组也必须有个逗号
+>>> type(a)
+<class 'tuple'>
+>>> len(a)     # 1
 
 
 
