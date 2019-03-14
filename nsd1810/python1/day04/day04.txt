@@ -138,7 +138,7 @@ c:\temp\newdir
 
 #####################################
 >>> hi = '  hao\t123     \n'
->>> hi.strip()   # 删除两端空白字符
+>>> hi.strip()   # 删除两端空白字符，常用
 >>> hi.lstrip()
 'hao\t123     \n'
 >>> hi.rstrip()
@@ -149,6 +149,23 @@ c:\temp\newdir
 '##############hello world###############'
 >>> hello.ljust(40)
 >>> hello.rjust(40)
+
+>>> hello.upper()
+'HELLO WORLD'
+>>> 'HELLO'.lower()
+'hello'
+>>> hello.split()   # 使用空格作为分隔符切割，常用
+['hello', 'world']
+>>> 'hello.world.abc.ni hao'.split('.')   # 使用.作为分隔符切割
+['hello', 'world', 'abc', 'ni hao']
+>>> '---'.join(alist)    # 使用---列表中的字符串拼接，常用
+'hello---world---abc---ni hao'
+>>> hello.startswith('hello')   # 以hello开头吗，常用
+>>> hello.endswith('abc')   # 以abc结尾吗，常用
+>>> hello.replace('world', 'china')   # 替换
+>>> hello.islower()   # 字母是不是全是小写的
+
+
 
 
 
