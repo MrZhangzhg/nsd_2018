@@ -3,6 +3,7 @@ from string import ascii_letters, digits
 
 all_chs = ascii_letters + digits
 
+
 def randpass(n=8):
     result = ''
 
@@ -11,6 +12,7 @@ def randpass(n=8):
         result += ch
 
     return result
+
 
 if __name__ == '__main__':
     print(randpass())

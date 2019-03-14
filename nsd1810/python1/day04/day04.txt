@@ -14,6 +14,49 @@ shutil模块
 >>> import os
 >>> os.remove('/tmp/zhuji')   # 删单个文件
 
+#####################################
+>>> x = y = 10   # 链式多重赋值
+>>> a, b = 10, 20   # a = 10; b = 20
+>>> a, b = (100, 200)   # a = 100; b = 200
+>>> a, b = [1000, 2000]   # a = 1000; b = 2000
+>>> a, b = b, a    # a和b的值互换
+
+#####################################
+关键字：
+>>> import keyword
+>>> keyword.kwlist   # 关键字列表
+>>> 'pass' in keyword.kwlist
+>>> keyword.iskeyword('pass')
+内建：虽然不是关键字，但是也不应该使用，如len
+>>> len('abcd')
+4
+>>> len = 10
+>>> len('abcd')   # 报错，相当于是10('abcd')
+
+##############程序文件布局#######################
+#!/usr/local/bin/python3
+'文档字符串'
+
+import random    # 模块导入
+import string
+
+digits = '0123456789'   # 全局变量的定义
+
+class MyClass:     # 类定义
+    pass
+
+
+def myfunc():      # 函数定义
+    pass
+
+if __name__ == '__main__':
+    myfunc()
+#####################################
+pycharm重新格式化代码布局的方法：Code菜单 => Reformat code
+
+
+
+
 
 
 
