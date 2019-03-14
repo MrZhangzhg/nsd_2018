@@ -166,6 +166,30 @@ c:\temp\newdir
 >>> hello.islower()   # 字母是不是全是小写的
 
 
+#####################################
+列表：属于容器、可变、顺序 类型
+>>> alist = [10, 30, 25, 80, 100, 60]
+>>> alist.insert(2, 100)  # 在下标为2的位置加入100
+>>> alist.count(100)   # 统计100出现的次数
+>>> alist.index(100)   # 第一个100的下标
+>>> alist.remove(100)   # 删除第1个100
+>>> alist.pop()   # 默认弹出最后一个元素
+>>> alist.pop(1)   # 将下标为1的元素弹出
+>>> alist.sort()   # 升序排列
+>>> alist.reverse()   # 翻转
+>>> blist = alist.copy()   # 拷贝alist的值给blist
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
