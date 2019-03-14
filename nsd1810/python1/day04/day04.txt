@@ -55,6 +55,18 @@ if __name__ == '__main__':
 pycharm重新格式化代码布局的方法：Code菜单 => Reformat code
 
 
+#####################################
+>>> alist = [10, 30, 20]
+>>> for ind in range(len(alist)):
+...     print('%s: %s' % (ind, alist[ind]))
+>>> enumerate(alist)
+>>> list(enumerate(alist))
+[(0, 10), (1, 30), (2, 20)]
+
+
+
+
+
 
 
 
