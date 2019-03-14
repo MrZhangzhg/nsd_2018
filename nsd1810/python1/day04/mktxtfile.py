@@ -28,9 +28,11 @@ def get_content():
     return content
 
 def wfile(fname, content):
-    print('wfile')
+    with open(fname, 'w') as fobj:
+        fobj.writelines(content)
 
 if __name__ == '__main__':
     fname = get_fname()     # 获取文件名
     content = get_content()   # 获取文件内容
+    content = [line + '\n' for line in content]   # 将列表中字符串加上\n
     wfile(fname, content)    # 将内容写到文件
