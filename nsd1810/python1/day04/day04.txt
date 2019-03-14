@@ -119,6 +119,37 @@ python可以通过subprocess模块调用系统命令
 >>> result = subprocess.run('ls -l /abc', shell=True)
 >>> result.returncode   # 相当于shell的$?，执行失败为非0值
 
+#####################################
+原始字符串
+>>> win_path = 'c:\temp\newdir'
+>>> print(win_path)
+c:	emp
+ewdir
+>>> win_path = 'c:\\temp\\newdir'
+>>> print(win_path)
+c:\temp\newdir
+# 字符串前加上r，字符串中所有字符表示本身意义，不会和其他字符组合成别的含义
+>>> wpath = r'c:\temp\newdir'
+>>> print(wpath)
+c:\temp\newdir
+>>> wpath
+'c:\\temp\\newdir'
+
+
+#####################################
+>>> hi = '  hao\t123     \n'
+>>> hi.strip()   # 删除两端空白字符
+>>> hi.lstrip()
+'hao\t123     \n'
+>>> hi.rstrip()
+'  hao\t123'
+>>> hello.center(40)
+'              hello world               '
+>>> hello.center(40, '#')
+'##############hello world###############'
+>>> hello.ljust(40)
+>>> hello.rjust(40)
+
 
 
 
