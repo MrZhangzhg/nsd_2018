@@ -99,6 +99,29 @@ pycharm重新格式化代码布局的方法：Code菜单 => Reformat code
 >>> '%010d' % 25    # 25总10个宽度，不足部分用0补齐
 '0000000025'
 
+#####################################
+format方法与%s具有一样的功能，了解
+>>> '{} is {} years old'.format('bob', 20)
+'bob is 20 years old'
+>>> '{1} is {0} years old'.format(20, 'bob')
+'bob is 20 years old'
+>>> '{0[0]} is {0[1]} years old'.format(['bob', 20])
+'bob is 20 years old'
+>>> '{0[0]:10} is {0[1]:>8} years old'.format(['bob', 20])
+'bob        is       20 years old'
+
+
+#####################################
+python可以通过subprocess模块调用系统命令
+>>> subprocess.run(['ls', '-l', '/root'])
+>>> subprocess.run(['ls', '-l', '~'])   # 非shell环境，~被认为是文件名
+>>> subprocess.run('ls -l ~', shell=True)  # 在shell环境中执行
+>>> result = subprocess.run('ls -l /abc', shell=True)
+>>> result.returncode   # 相当于shell的$?，执行失败为非0值
+
+
+
+
 
 
 
