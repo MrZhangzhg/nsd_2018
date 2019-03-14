@@ -16,7 +16,16 @@ def get_fname():
     return fname
 
 def get_content():
-    print('get content')
+    content = []
+
+    print('请输入内容，输入quit结束')
+    while True:
+        data = input('> ')
+        if data == 'quit':
+            break
+        content.append(data)
+
+    return content
 
 def wfile(fname, content):
     print('wfile')
