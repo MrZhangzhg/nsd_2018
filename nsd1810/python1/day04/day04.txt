@@ -63,7 +63,16 @@ pycharm重新格式化代码布局的方法：Code菜单 => Reformat code
 >>> list(enumerate(alist))
 [(0, 10), (1, 30), (2, 20)]
 
+#####################################
+>>> list(reversed(alist))   # 翻转
+>>> for i in reversed(alist):
+...     print(i)
+>>> sorted(alist)    # 排序
+>>> sorted('sdflkj')   # 排序
 
+
+#####################################
+字符串属于：标量、不可变、顺序  类型
 
 
 
