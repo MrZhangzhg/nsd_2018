@@ -1,0 +1,13 @@
+shutil模块
+>>> import shutil
+>>> fobj1 = open('/etc/hosts', 'rb')
+>>> fobj2 = open('/tmp/zhuji', 'wb')
+>>> shutil.copyfileobj(fobj1, fobj2)
+>>> fobj1.close()
+>>> fobj2.close()
+#####################################
+>>> shutil.copy('/etc/hosts', '/tmp/zj')   # cp
+>>> shutil.copy2('/etc/hosts', '/tmp/zj.txt')  # cp -p
+
+
+
