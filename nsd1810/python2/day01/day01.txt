@@ -103,6 +103,41 @@ None
 >>> t.tm_yday
 75
 
+[root@room8pc16 day01]# date +'%Y-%m-%d %H:%M:%S'
+>>> time.strftime('%Y-%m-%d %H:%M:%S')
+>>> time.sleep(3)
+>>> time.strftime('%a')   # 'Sat'
+>>> time.strftime('%A')   # 'Saturday'
+
+
+datetime模块
+>>> import datetime
+>>> datetime.datetime.now()   # 这种方法太罗嗦，可以采用下面的导入方式
+>>> from datetime import datetime
+>>> t1 = datetime(2020, 5, 1)   # 2020-5-1
+>>> t2 = datetime.now()   # 当前时间：年月日时分秒毫秒
+>>> t2.year
+2019
+>>> t2.month
+3
+>>> t2.day
+16
+>>> t2.hour
+15
+>>> t2.minute
+28
+>>> t2.second
+15
+>>> t2.microsecond
+929933
+>>> t1 > t2
+
+
+
+
+
+
+
 
 
 
