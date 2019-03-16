@@ -62,6 +62,7 @@ None
 >>> list(set(alist))
 
 
+取出在/tmp/passwd中有，而/etc/passwd中没有的行：
 [root@room8pc16 day01]# cp /etc/passwd /tmp/
 [root@room8pc16 day01]# vim /tmp/passwd  # 修改文件，和/etc/passwd有区别
 >>> with open('/etc/passwd') as fobj:
@@ -71,6 +72,23 @@ None
 >>> bset - aset    # 取差补，bset包含，aset不包含
 >>> with open('/tmp/result.txt', 'w') as fobj:
 ...     fobj.writelines(bset - aset)
+
+
+集合的方法：
+>>> aset = set('abcd')
+>>> bset = set('bcd')
+>>> aset.union(bset)   # aset | bset
+>>> aset.intersection(bset)  # aset & bset
+>>> aset.difference(bset)   # aset - bset
+>>> aset.issuperset(bset)   # aset是bset的超集吗
+>>> bset.issubset(aset)     # bset是aset的子集吗
+>>> aset.add(10)
+>>> aset.update([10, 20, 30])
+>>> aset.remove(10)
+>>> aset.pop()
+
+
+
 
 
 
