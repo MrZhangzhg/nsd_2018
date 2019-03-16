@@ -161,6 +161,22 @@ os模块：是python访问文件系统的主要方法
 >>> os.path.join('/tmp/demo', 'mytest')   # 路径拼接
 
 
+pickle模块：可以将任意的数据类型写到文件中，还能取出
+>>> import pickle
+>>> f = open('/tmp/abc.data', 'wb')
+>>> shop_list = ['apple', 'banana', 'peach', 'water']
+>>> pickle.dump(shop_list, f)
+>>> f.close()
+--------------------------
+>>> import pickle
+>>> f = open('/tmp/abc.data', 'rb')
+>>> mylist = pickle.load(f)
+>>> f.close()
+>>> type(mylist)
+>>> len(mylist)
+>>> mylist[1]
+
+
 
 
 
