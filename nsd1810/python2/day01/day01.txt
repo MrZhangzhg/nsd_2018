@@ -132,6 +132,13 @@ datetime模块
 929933
 >>> t1 > t2
 
+>>> from datetime import datetime, timedelta
+>>> t1 = datetime.now()   # 取出当前时间
+>>> days = timedelta(days=100, hours=3)
+>>> t1 - days   # 100天3小时之前的时间
+datetime.datetime(2018, 12, 6, 12, 36, 12, 622345)
+>>> t1 + days   # 100天3小时之后的时间
+datetime.datetime(2019, 6, 24, 18, 36, 12, 622345)
 
 
 
