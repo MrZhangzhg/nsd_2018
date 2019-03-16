@@ -62,6 +62,18 @@ None
 >>> list(set(alist))
 
 
+[root@room8pc16 day01]# cp /etc/passwd /tmp/
+[root@room8pc16 day01]# vim /tmp/passwd  # 修改文件，和/etc/passwd有区别
+>>> with open('/etc/passwd') as fobj:
+...     aset = set(fobj)   # 文件的每一行，成为了集合的元素
+>>> with open('/tmp/passwd') as fobj:
+...     bset = set(fobj)
+>>> bset - aset    # 取差补，bset包含，aset不包含
+>>> with open('/tmp/result.txt', 'w') as fobj:
+...     fobj.writelines(bset - aset)
+
+
+
 
 
 
