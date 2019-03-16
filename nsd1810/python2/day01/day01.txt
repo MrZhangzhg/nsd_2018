@@ -45,5 +45,31 @@ None
 
 
 
+集合：由不同不可变元素构成，相当于是无值的字典。
+>>> aset = set('abc')
+>>> cset = set(['hello', 'world'])
+>>> bset = set('bcd')
+>>> len(aset)
+>>> for ch in aset:
+...     print(ch)
+>>> aset | bset   # 并集 {'c', 'd', 'a', 'b'}
+>>> aset & bset   # 交集 {'c', 'b'}
+>>> aset - bset   # 差补 {'a'}   aset中有，bset没有
+
+# 将列表中重复的数字去除
+>>> from random import randint
+>>> alist = [randint(1,50) for i in range(20)]
+>>> list(set(alist))
+
+
+
+
+
+
+
+
+
+
+
 
 
