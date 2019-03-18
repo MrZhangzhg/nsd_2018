@@ -25,7 +25,11 @@ def cost(fname):
         pickle.dump(records, fobj)
 
 def query(fname):
-    print('query')
+    with open(fname, 'rb') as fobj:
+        records = pickle.load(fobj)
+    print('%-12s%-8s%-8s%-12s%-15s' % ('date', 'save', 'cost', 'balance', 'comment'))
+    for record in records:
+        print('%-12s%-8s%-8s%-12s%-15s' % tuple(record))  # 将列表转成元组
 
 def show_menu():
     fname = 'account.data'
