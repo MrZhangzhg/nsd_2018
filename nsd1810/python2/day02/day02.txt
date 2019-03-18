@@ -58,6 +58,17 @@ hello world
 
 
 
+偏函数：通过functools.partial进行其他函数的改造，把一个函数的某些参数赋值，生成
+新的函数
+>>> def add(a,b,c,d,e,f):
+...     return a+b+c+d+e+f
+>>> add(10,20,30,40,50,5)
+>>> add(10,20,30,40,50,10)
+>>> add(10,20,30,40,50,15)
+# 改造add，将前5个数固定下来，生成新函数myadd
+>>> myadd = partial(add, 10, 20, 30, 40, 50)
+>>> myadd(5)
+>>> myadd(10)
 
 
 
