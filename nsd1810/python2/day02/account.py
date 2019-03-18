@@ -3,10 +3,26 @@ import pickle
 import time
 
 def save(fname):
-    print('save')
+    amount = int(input('金额: '))
+    comment = input('备注: ')
+    date = time.strftime('%Y-%m-%d')
+    with open(fname, 'rb') as fobj:   # 取出所有记录的列表
+        records = pickle.load(fobj)
+    balance = records[-1][-2] + amount  # 计算最新余额
+    records.append([date, amount, 0, balance, comment])  # 追加新记录
+    with open(fname, 'wb') as fobj:
+        pickle.dump(records, fobj)
 
 def cost(fname):
-    print('cost')
+    amount = int(input('金额: '))
+    comment = input('备注: ')
+    date = time.strftime('%Y-%m-%d')
+    with open(fname, 'rb') as fobj:  # 取出所有记录的列表
+        records = pickle.load(fobj)
+    balance = records[-1][-2] - amount  # 计算最新余额
+    records.append([date, 0, amount, balance, comment])  # 追加新记录
+    with open(fname, 'wb') as fobj:
+        pickle.dump(records, fobj)
 
 def query(fname):
     print('query')
