@@ -1,0 +1,18 @@
+>>> def get_age(name, age):
+...     print('%s is %s years old' % (name, age))
+
+>>> get_age('bob', 20)   # ok
+>>> get_age(20, 'bob')   # 没有语法错误，但是语义不对
+>>> get_age(age=20, name='bob')   # ok
+>>> get_age(age=20, 'bob')   # 语法错误，key=val的形式，必须在后面
+>>> get_age(20, name='bob')
+# 20按函数定义的顺序传给了name，后面又指定name='bob'，所以name得到多个值，报错
+>>> get_age('bob', age=20)   # OK
+
+
+
+
+
+
+
+
