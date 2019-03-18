@@ -75,6 +75,23 @@ hello world
 5! = 5x4x3x2x1 = 5x4! = 5x4x3! = 5x4x3x2! = 5x4x3x2x1!
 
 
+生成器：本质上仍然是函数，函数一般只会返回一个最终值，但是生成器可以通过yield返回
+很多个中间结果
+>>> def mygen():
+...     yield 'hello world'
+...     a = 10 + 20
+...     yield a
+...     yield [10, 20, 30]
+...
+>>> mg = mygen()
+>>> mg.__next__()
+>>> mg.__next__()
+>>> mg.__next__()
+>>> mg.__next__()   # 无值可取的时候，将会发生StopIteration异常
+>>> mg = mygen()
+>>> for i in mg:
+...     print(i)
+
 
 
 
