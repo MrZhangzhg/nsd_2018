@@ -58,7 +58,38 @@ tarfile模块：
 
 
 
-
+>>> import os
+>>> import pprint
+>>> result = list(os.walk('security'))
+>>> len(result)
+5
+>>> item1 = result[0]
+>>> len(item1)
+3
+>>> pprint.pprint(result)
+[('security',
+  ['console.apps', 'console.perms.d', 'limits.d', 'namespace.d'],
+  ['access.conf',
+   'chroot.conf',
+   'console.handlers',
+   'console.perms',
+   'group.conf',
+   'limits.conf',
+   'namespace.conf',
+   'namespace.init',
+   'opasswd',
+   'pam_env.conf',
+   'sepermit.conf',
+   'time.conf',
+   'pwquality.conf']),
+ ('security/console.apps', [], ['config-util', 'xserver', 'liveinst', 'setup']),
+ ('security/console.perms.d', [], []),
+ ('security/limits.d', [], ['20-nproc.conf']),
+ ('security/namespace.d', [], [])]
+列出所有的文件路径
+>>> for path, folders, files in os.walk('security'):
+...     for file in files:
+...         os.path.join(path, file)
 
 
 
