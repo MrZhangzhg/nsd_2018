@@ -93,6 +93,27 @@ tarfile模块：
 
 
 
+OOP: 面向对象的编程
+实现数据和行为的统一、融合
+
+player1 = {'name': xxx, 'gender': xxx, 'zhiye': xxx}
+
+dev move():
+
+def attack():
+
+def fly():
+
+
+class Bird:
+    def fly():
+
+pigion = Bird()
+pigion.fly()
+
+
+
+
 
 
 
