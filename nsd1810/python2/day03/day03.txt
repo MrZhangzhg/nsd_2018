@@ -4,7 +4,20 @@
 以设置PYTHONPATH环境变量指定搜索路径
 export PYTHONPATH=你的模块目录
 这样就可以在任何位置import自己的模块
-
+3、模块不管import导入多少回，只会load加载一次，即以第一次为准
+4、目录可以看作是特殊的模块
+[root@room8pc16 day03]# mkdir mypkg
+[root@room8pc16 day03]# echo 'hi="hello world"' > mypkg/hello.py
+>>> import mypkg.hello
+>>> mypkg.hello.hi
+'hello world'
+>>> from mypkg import hello
+>>> hello.hi
+'hello world'
+####以下报错，不会到mypkg目录查找模块文件####
+>>> import mypkg
+>>> mypkg.hello.hi
+#################
 
 
 
