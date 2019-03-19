@@ -112,6 +112,7 @@ pigion = Bird()
 pigion.fly()
 
 
+OOP中以双下划线开头结尾的方法叫作magic方法(魔法方法)
 
 
 
