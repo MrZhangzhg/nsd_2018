@@ -38,6 +38,23 @@ http://www.cmd5.com
 'e10adc3949ba59abbe56e057f20f883e'
 
 
+tarfile模块：
+>>> import os
+>>> import shutil
+>>> import tarfile
+>>> os.mkdir('/tmp/mydemo')
+>>> shutil.copytree('/etc/security', '/tmp/mydemo/security')
+>>> os.chdir('/tmp/mydemo')
+>>> tar = tarfile.open('security.tar.gz', 'w:gz')   # 写入, gzip压缩
+>>> tar.add('security')
+>>> tar.add('/etc/hosts')
+>>> tar.close()
+##############################
+>>> shutil.rmtree('security')
+>>> tar = tarfile.open('security.tar.gz', 'r:gz')
+>>> tar.extractall()
+>>> tar.close()
+
 
 
 
