@@ -18,6 +18,35 @@ export PYTHONPATH=你的模块目录
 >>> import mypkg
 >>> mypkg.hello.hi
 #################
+5、在python2中，目录不能直接成为包，需要在这个目录下创建一个__init__.py
+[root@room8pc16 day03]# touch mypkg/__init__.py
+
+
+hashlib模块
+>>> import hashlib
+>>> m = hashlib.md5(b'123456')
+>>> m.hexdigest()
+'e10adc3949ba59abbe56e057f20f883e'
+哈希：hash，单向加密，相同的原始数据，总是得到相同的乱码，乱码长度固定。不能通
+过乱码反推出原始数据
+http://www.cmd5.com
+
+>>> m = hashlib.md5()
+>>> m.update(b'123')
+>>> m.update(b'456')
+>>> m.hexdigest()
+'e10adc3949ba59abbe56e057f20f883e'
+
+
+
+
+
+
+
+
+
+
+
 
 
 
