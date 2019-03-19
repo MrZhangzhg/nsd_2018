@@ -1,0 +1,11 @@
+模块导入的搜索路径：
+1、当import模块时，python到sys.path定义的路径下寻找模块
+2、如果希望自己写的模块，也可以在任何位置导入，可以把模块拷贝到site-packages目录，还可
+以设置PYTHONPATH环境变量指定搜索路径
+export PYTHONPATH=你的模块目录
+这样就可以在任何位置import自己的模块
+
+
+
+
+
