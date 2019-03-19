@@ -15,3 +15,6 @@ if __name__ == '__main__':
     m1 = Mage('奇异博士', '时间宝石', 1000)
     m1.speak('大家好，我是%s' % m1.name)
     print(m1.weapon.name, m1.weapon.strength)
+    m2 = Mage('哈利波特', '法杖', 200)
+    print(m2.weapon.name, m2.weapon.strength)
+    m2.speak('又要上学了')
