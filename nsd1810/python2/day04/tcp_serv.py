@@ -4,6 +4,9 @@ host = ''    # 监听在0.0.0.0
 port = 12345
 addr = (host, port)
 s = socket.socket()  # 默认创建TCP协议的套接字
+# 默认情况下，程序结束后，系统会保留这个套接字1分钟，1分钟内不能使用相同的
+# 端口号再次启动，加上以下一行选项设置，允许服务仍然使用这个端口
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 s.bind(addr)
 s.listen(1)  # 允许多少个客户端排队等候，数字是多少都没用
 # accept接受客户机的连接，返回客户机的套接字和地址
