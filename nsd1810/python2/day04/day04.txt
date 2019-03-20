@@ -28,6 +28,22 @@ None
 foo
 foo
 
+>>> re.split('-|\.', 'hello-world-abc.123.txt')
+['hello', 'world', 'abc', '123', 'txt']
+>>> re.sub('X', 'tom', 'Hi X, ni hao X')
+'Hi tom, ni hao tom'
+>>> re.sub('X|Y', 'tom', 'Hi X, ni hao Y')
+'Hi tom, ni hao tom'
+
+在匹配量非常大的时候，先把正则表达式的模式编译compile，会有更好的效率
+>>> cpatt = re.compile('f..')
+>>> m = cpatt.search('seafood')
+>>> m.group()
+'foo'
+>>> cpatt.findall('seafood is food')
+['foo', 'foo']
+
+
 
 
 
