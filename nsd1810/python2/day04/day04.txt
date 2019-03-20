@@ -1,0 +1,7 @@
+>>> import os
+>>> src_dir = '/tmp/mydemo/security/'
+>>> os.path.basename(src_dir)
+''
+>>> os.path.basename(src_dir.rstrip('/'))  # 先去除结尾的/
+'security'
+
