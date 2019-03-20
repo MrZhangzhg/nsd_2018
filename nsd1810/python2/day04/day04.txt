@@ -5,3 +5,38 @@
 >>> os.path.basename(src_dir.rstrip('/'))  # 先去除结尾的/
 'security'
 
+
+192.168.1.1     525400A3B4C5
+192.168.1.2     000C29123456
+
+:%s/\(..\)\(..\)\(..\)\(..\)\(..\)\(..\)$/\1:\2:\3:\4:\5:\6/
+
+
+>>> import re
+>>> import re
+>>> re.match('f..', 'food') # 在food中匹配f..，匹配到返回匹配对象，否则是None
+<_sre.SRE_Match object; span=(0, 3), match='foo'>
+>>> print(re.match('f..', 'seafood'))
+None
+>>> m = re.search('f..', 'seafood')
+>>> m.group()  # 匹配对象的group方法返回匹配到的内容
+'foo'
+>>> re.findall('f..', 'seafood is food')
+['foo', 'foo']
+>>> for m in re.finditer('f..', 'seafood is food'):
+...     print(m.group())
+foo
+foo
+
+
+
+
+
+
+
+
+
+
+
+
+
