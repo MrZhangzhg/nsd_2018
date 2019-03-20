@@ -44,7 +44,17 @@ foo
 ['foo', 'foo']
 
 
+荷尔曼 标准库
+http://down.51cto.com/data/1018986
 
+>>> from collections import Counter
+>>> c1 = Counter()
+>>> c1.update('hello')
+>>> c1
+>>> c1.update(['hello'])
+>>> c1.update(['hello'])
+>>> c1.update(['hello'])
+>>> c1.most_common(2)   # 前2名
 
 
 

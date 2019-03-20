@@ -21,4 +21,3 @@ if __name__ == '__main__':
     print(ip_count)
     print('*' * 30)
     print(ip_count.most_common(5))  # 前5名
-
