@@ -1,5 +1,6 @@
 import time
 import os
+import threading
 
 def add(n=20000000):
     result = 0
@@ -26,5 +27,16 @@ if __name__ == '__main__':
     # os.waitpid(-1, 0)
     # os.waitpid(-1, 0)
     # os.waitpid(-1, 0)
+    # end = time.time()
+    # print(end - start)
+##########################
+    # start = time.time()
+    # tlist = []  # 创建列表，存储创建的线程
+    # for i in range(4):
+    #     t = threading.Thread(target=add)
+    #     tlist.append(t)
+    #     t.start()
+    # for t in tlist:  # 从列表中取出线程
+    #     t.join()   # 挂起主线程，等工作线程结束后继续
     # end = time.time()
     # print(end - start)
