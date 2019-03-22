@@ -12,5 +12,5 @@ else:
     time.sleep(20)
     print('子进程，结束')
     exit()
-# watch -n1 ps a   # 每隔1秒运行ps a
+# watch -n1 ps a   # 每隔1秒运行ps a，20秒后可以看到子进程成为了僵尸进程
 
