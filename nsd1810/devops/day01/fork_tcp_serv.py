@@ -36,6 +36,11 @@ class TcpTimeServer:
 
             cli_sock.close()  # 父进程不与客户机通信，所以把客户机套接字关闭
 
+            while True:
+                result = os.waitpid(-1, 1)[0]  # (0/子进程pid, 0)
+                if result == 0:   # 如果不是僵尸进程，则中断循环
+                    break
+
         self.serv.close()
 
 if __name__ == '__main__':
