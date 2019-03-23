@@ -1,0 +1,22 @@
+安装模块
+1、python模块的官方站点：https://pypi.org/
+2、安装模块：pip3 install 模块名  (在线安装)
+3、使用国内开源镜像站点
+# mkdir ~/.pip/
+# vim ~/.pip/pip.conf
+[global]
+index-url = http://pypi.douban.com/simple/
+[install]
+trusted-host=pypi.douban.com
+#########或############
+# vim ~/.pip/pip.conf
+[global]
+index-url = http://mirrors.163.com/pypi/simple/
+[install]
+trusted-host=mirrors.163.com
+4、本地安装
+# cd pymysql_pkgs/
+# pip3 install *
+
+
+
