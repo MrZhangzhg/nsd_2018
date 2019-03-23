@@ -57,6 +57,12 @@ MariaDB [(none)]> CREATE DATABASE nsd1810 DEFAULT CHARSET utf8;
 auto_id、工号、工资日、基本工资、奖金
 
 
+sqlalchemy
+1、安装
+# pip3 install sqlalchemy   (在线)
+或
+# cd sqlalchemy_pkgs/
+[root@room8pc16 sqlalchemy_pkgs]# pip3 install *
 
 
 
