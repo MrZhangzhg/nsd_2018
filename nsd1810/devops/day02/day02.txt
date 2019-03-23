@@ -19,4 +19,27 @@ trusted-host=mirrors.163.com
 # pip3 install *
 
 
+数据库：
+1、安装
+# yum install -y mariadb-server
+# systemctl start mariadb; systemctl enable mariadb
+2、创建数据库
+# mysqladmin password tedu.cn
+# mysql -uroot -ptedu.cn
+MariaDB [(none)]> CREATE DATABASE nsd1810 DEFAULT CHARSET utf8;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
