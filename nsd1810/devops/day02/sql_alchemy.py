@@ -46,13 +46,23 @@ session = Session()  # 创建会话类的实例
 # )
 # session.add_all([dzh, zc, fxq, mca, rwj])
 #############################################
-qset1 = session.query(Departments)
-print(qset1) # 此时qset1只是一条sql语句，向qset1取值时，才真正的查询数据库
-print(qset1.all())  # 返回departments表中所有记录组成的对象集合
-for dep in qset1:
-    print('%s: %s' % (dep.dep_id, dep.dep_name))
-
-
+# qset1 = session.query(Departments)
+# print(qset1) # 此时qset1只是一条sql语句，向qset1取值时，才真正的查询数据库
+# print(qset1.all())  # 返回departments表中所有记录组成的对象集合
+# for dep in qset1:
+#     print('%s: %s' % (dep.dep_id, dep.dep_name))
+#############################################
+# qset2 = session.query(Departments).order_by(Departments.dep_id)
+# print(qset2)
+# for dep in qset2:
+#     print('%s: %s' % (dep.dep_id, dep.dep_name))
+#############################################
+qset3 = session.query(Employees.emp_name, Employees.email)
+print(qset3)
+for item in qset3:
+    print(item)  # 查询指定字段，返回的是元组
+for name, email in qset3:
+    print('%s: %s' % (name, email))
 
 
 
