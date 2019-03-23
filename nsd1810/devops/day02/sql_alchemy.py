@@ -73,10 +73,26 @@ session = Session()  # 创建会话类的实例
 # for dep in qset5:
 #     print('%s: %s' % (dep.dep_id, dep.dep_name))
 #############################################
-qset6 = session.query(Departments).filter(Departments.dep_id==1)
-print(qset6)
-for dep in qset6:
+# qset6 = session.query(Departments).filter(Departments.dep_id==1)
+# print(qset6)
+# for dep in qset6:
+#     print('%s: %s' % (dep.dep_id, dep.dep_name))
+#############################################
+# qset7 = session.query(Departments).filter(Departments.dep_name.in_(['人事部', '开发部']))
+# for dep in qset7:
+#     print('%s: %s' % (dep.dep_id, dep.dep_name))
+# qset8 = session.query(Departments).filter(~Departments.dep_name.in_(['人事部', '开发部']))
+# print('*' * 30)
+# for dep in qset8:
+#     print('%s: %s' % (dep.dep_id, dep.dep_name))
+#############################################
+from sqlalchemy import and_
+qset9 = session.query(Departments).filter(and_(Departments.dep_id>=2, Departments.dep_id<=4))
+for dep in qset9:
     print('%s: %s' % (dep.dep_id, dep.dep_name))
+
+
+
 
 session.commit()
 session.close()
