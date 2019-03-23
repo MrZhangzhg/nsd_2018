@@ -86,13 +86,40 @@ session = Session()  # 创建会话类的实例
 # for dep in qset8:
 #     print('%s: %s' % (dep.dep_id, dep.dep_name))
 #############################################
-from sqlalchemy import and_
-qset9 = session.query(Departments).filter(and_(Departments.dep_id>=2, Departments.dep_id<=4))
-for dep in qset9:
-    print('%s: %s' % (dep.dep_id, dep.dep_name))
-
-
-
+# from sqlalchemy import and_
+# qset9 = session.query(Departments).filter(and_(Departments.dep_id>=2, Departments.dep_id<=4))
+# for dep in qset9:
+#     print('%s: %s' % (dep.dep_id, dep.dep_name))
+#############################################
+# qset10 = session.query(Departments)
+# print(qset10.all())
+# print('*' * 30)
+# print(qset10.first())  # 返回all()中的第一个对象
+#############################################
+# qset11 = session.query(Departments).filter(Departments.dep_id==1)
+# print(qset11.all())
+# print(qset11.first())
+# print(qset11.one())  # 要求查询到的结果只有一个记录，否则报错
+#############################################
+# qset12 = session.query(Departments.dep_name, Departments.dep_id).filter(Departments.dep_id==1)
+# print(qset12.one())
+# print(qset12.scalar())  # 返回one的第一个字段
+#############################################
+# qset13 = session.query(Departments).count()
+# print(qset13)
+#############################################
+# 注意Employees.emp_name先写的，join时就要写Departments
+# qset14 = session.query(Employees.emp_name, Departments.dep_name).join(Departments)
+# for emp_name, dep_name in qset14:
+#     print('%s: %s' % (emp_name, dep_name))
+#############################################
+# qset15 = session.query(Departments).filter(Departments.dep_id==1)
+# hr = qset15.one()
+# hr.dep_name = '人力资源部'
+#############################################
+qset16 = session.query(Departments).filter(Departments.dep_name=='财务部')
+finance = qset16.one()
+session.delete(finance)
 
 session.commit()
 session.close()
