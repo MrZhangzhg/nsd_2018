@@ -26,16 +26,21 @@ cursor = conn.cursor()
 # result3 = cursor.fetchall()
 # print(result3)
 ############################################
-select2 = 'SELECT * FROM department order by dep_id'
-cursor.execute(select2)
-cursor.scroll(4)   # 默认以相对方式，从当前位置向下移动
-result = cursor.fetchone()
-print(result)
-print('*' * 30)
-cursor.scroll(0, mode='absolute')  # absolute一定是从开头移动
-result2 = cursor.fetchone()
-print(result2)
-
+# select2 = 'SELECT * FROM department order by dep_id'
+# cursor.execute(select2)
+# cursor.scroll(4)   # 默认以相对方式，从当前位置向下移动
+# result = cursor.fetchone()
+# print(result)
+# print('*' * 30)
+# cursor.scroll(0, mode='absolute')  # absolute一定是从开头移动
+# result2 = cursor.fetchone()
+# print(result2)
+############################################
+# update1 = 'UPDATE department SET dep_name=%s WHERE dep_name=%s'
+# cursor.execute(update1, ('人力资源部', '人事部'))
+############################################
+delete1 = 'DELETE FROM department WHERE dep_id=%s'
+cursor.execute(delete1, (6,))
 
 
 conn.commit()
