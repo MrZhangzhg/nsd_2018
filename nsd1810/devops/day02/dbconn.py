@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine, Column, Integer, String, Date, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 
 engine = create_engine(
     # 用户名:密码@服务器/数据库?参数
@@ -8,6 +9,7 @@ engine = create_engine(
     # echo=True  # 在屏幕终端输出详细日志，生产环境不要设置
 )
 Base = declarative_base()
+Session = sessionmaker(bind=engine)
 
 
 class Departments(Base):
