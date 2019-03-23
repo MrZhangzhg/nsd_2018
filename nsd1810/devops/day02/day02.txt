@@ -64,8 +64,16 @@ sqlalchemy
 # cd sqlalchemy_pkgs/
 [root@room8pc16 sqlalchemy_pkgs]# pip3 install *
 
+2、ORM: 对象关系映射。
+O：Object对象
+R: Relationship
+M: Map
+可以把数据库的表和python中的class映射，class中的每个类属性对应成表中的字段
 
-
+3、创建数据库
+# mysql -uroot -ptedu.cn
+MariaDB [(none)]> CREATE DATABASE tedu1810 DEFAULT CHARSET utf8;
+4、编写SQLALCHEMY
 
 
 
