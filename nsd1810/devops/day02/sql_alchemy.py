@@ -57,15 +57,26 @@ session = Session()  # 创建会话类的实例
 # for dep in qset2:
 #     print('%s: %s' % (dep.dep_id, dep.dep_name))
 #############################################
-qset3 = session.query(Employees.emp_name, Employees.email)
-print(qset3)
-for item in qset3:
-    print(item)  # 查询指定字段，返回的是元组
-for name, email in qset3:
-    print('%s: %s' % (name, email))
-
-
-
+# qset3 = session.query(Employees.emp_name, Employees.email)
+# print(qset3)
+# for item in qset3:
+#     print(item)  # 查询指定字段，返回的是元组
+# for name, email in qset3:
+#     print('%s: %s' % (name, email))
+#############################################
+# qset4 = session.query(Departments.dep_name.label('部门'))
+# for dep in qset4:
+#     print(dep.部门)
+#############################################
+# qset5 = session.query(Departments).order_by(Departments.dep_id)[2:4]
+# print(qset5)
+# for dep in qset5:
+#     print('%s: %s' % (dep.dep_id, dep.dep_name))
+#############################################
+qset6 = session.query(Departments).filter(Departments.dep_id==1)
+print(qset6)
+for dep in qset6:
+    print('%s: %s' % (dep.dep_id, dep.dep_name))
 
 session.commit()
 session.close()
