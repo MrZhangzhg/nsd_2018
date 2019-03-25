@@ -73,6 +73,16 @@ wget模块：
 
 
 
+paramiko:ssh客户端
+1、安装
+# cd paramiko_pkgs/
+[root@room8pc16 paramiko_pkgs]# pip3 install *
+或
+[root@room8pc16 paramiko_pkgs]# pip3 install paramiko (在线)
+
+
+
+
 
 
 
