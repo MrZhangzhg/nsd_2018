@@ -80,6 +80,20 @@ paramiko:ssh客户端
 或
 [root@room8pc16 paramiko_pkgs]# pip3 install paramiko (在线)
 
+2、应用
+>>> import paramiko
+>>> ssh = paramiko.SSHClient()
+>>> ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())  # 相当于回答yes
+>>> ssh.connect('192.168.4.6', username='root', password='123456')
+>>> ssh.exec_command('mkdir /tmp/demo')
+>>> ssh.close()
+
+# exec_command()返回值有三项，分别是输入、输出、错误。都是类文件对象
+>>> stdin, stdout, stderr = ssh.exec_command('id root; id wangwu')
+>>> out = stdout.read()
+>>> err = stderr.read()
+>>> out.decode()
+>>> err.decode()
 
 
 
