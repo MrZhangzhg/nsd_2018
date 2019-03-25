@@ -23,6 +23,13 @@ HTTP状态码：
 # firefox /tmp/sogou.html
 
 
+模拟客户端访问服务器
+当采用urllib访问服务器时，服务器记录的是火狐访问：
+>>> from urllib import request
+>>> headers = {'User-agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'}
+>>> r = request.Request('http://127.0.0.1', headers=headers)
+>>> html = request.urlopen(r)
+# tail -f /var/log/httpd/access_log将会看到日志记录是火狐访问
 
 
 
