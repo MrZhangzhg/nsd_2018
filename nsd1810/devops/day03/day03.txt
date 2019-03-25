@@ -60,6 +60,17 @@ wget模块：
 >>> wget.download('http://yt-adp.nosdn.127.net/channel12/600300_akru_20171108.jpg', '/tmp')
 
 
+进度条：
+1、安装
+[root@room8pc16 day03]# pip3 install tqdm
+2、拷贝文件，附加进度条
+确定文件大小：
+>>> os.stat('/etc/passwd')
+>>> info = os.stat('/etc/passwd')
+>>> info.st_size
+>>> os.stat('/etc/passwd').st_size
+
+
 
 
 
