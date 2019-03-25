@@ -50,6 +50,17 @@ http://127.0.0.1/ban/    # 没权限
 
 
 
+wget模块：
+1、安装
+[root@room8pc16 day03]# pip3 install wget
+2、使用
+>>> import wget
+>>> wget.download('http://yt-adp.nosdn.127.net/channel12/600300_akru_20171108.jpg')
+>>> wget.download('http://yt-adp.nosdn.127.net/channel12/600300_akru_20171108.jpg')
+>>> wget.download('http://yt-adp.nosdn.127.net/channel12/600300_akru_20171108.jpg', '/tmp')
+
+
+
 
 
 
