@@ -1,0 +1,40 @@
+HTTP方法：
+GET：在浏览器的地址栏中输入网址访问网站，在网页中点击超链接，有些表单也采用get方法，
+比如搜索引擎
+POST：主要用在通过表单提交数据，比如用户登陆、注册
+
+HTTP状态码：
+200：OK
+301：永久重定向
+302：临时重定向
+304：如果网页自请求者上次请求后没有更新，则用代码告诉搜索引擎机器人，可节省带宽和开销。
+404：服务器找不到请求的网页
+403：禁止访问
+500：内部错误
+503：服务器过载
+
+
+>>> from urllib import request
+>>> r = request.urlopen('http://www.sogou.com/')
+>>> data = r.read()   # 注意，读进来的数据是bytes类型
+
+>>> with open('/tmp/sogou.html', 'wb') as fobj:
+>>>     fobj.write(data)
+# firefox /tmp/sogou.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
