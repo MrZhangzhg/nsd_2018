@@ -41,6 +41,11 @@ HTTP状态码：
 'https://www.sogou.com/web?query=%E6%98%A5%E5%A4%A9'
 将url粘贴到浏览器地址栏中搜索，查看效果
 
+异常处理
+1、设计两个URL
+http://127.0.0.1/abc/    # 不存在
+http://127.0.0.1/ban/    # 没权限
+2、异常捕获
 
 
 
