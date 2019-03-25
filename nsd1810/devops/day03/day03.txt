@@ -30,8 +30,16 @@ HTTP状态码：
 >>> r = request.Request('http://127.0.0.1', headers=headers)
 >>> html = request.urlopen(r)
 # tail -f /var/log/httpd/access_log将会看到日志记录是火狐访问
+>>> html.read()
 
 
+编码：URL地址只支持一部分字符，主要都是英文字符，如果使用其他字符，如中文，就需要
+单独的进行编码
+>>> url = 'https://www.sogou.com/web?query='
+>>> url = url + request.quote('春天')
+>>> url
+'https://www.sogou.com/web?query=%E6%98%A5%E5%A4%A9'
+将url粘贴到浏览器地址栏中搜索，查看效果
 
 
 
