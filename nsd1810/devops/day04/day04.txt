@@ -85,8 +85,8 @@ requests:更高层次的http客户端库
 https://open-doc.dingtalk.com/docs/doc.htm?spm=a219a.7629140.0.0.karFPe&treeId=257&articleId=105735&docType=1
 
 
-
-
+itchat模块，可以实现接入微信
+https://www.jianshu.com/p/5d4de51f5375
 
 
 
