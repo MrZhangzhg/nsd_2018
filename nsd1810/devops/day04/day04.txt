@@ -90,6 +90,17 @@ https://www.jianshu.com/p/5d4de51f5375
 
 
 
+zabbix:
+中文手册页：https://www.zabbix.com/documentation/4.0/zh/manual
+API：Application Program Interface应用程序接口
+
+我的zabbix实例网站目录是http://192.168.4.2/zabbix，那么它的api地址是：
+http://192.168.4.2/zabbix/api_jsonrpc.php
+
+
+
+
+
 
 
 
