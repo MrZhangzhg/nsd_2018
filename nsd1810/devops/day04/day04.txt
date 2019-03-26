@@ -54,6 +54,32 @@ type后面填写的是快递公司，postid是快递单号
 ...     print('%(time)s: %(context)s' % info_dict)
 
 
+requests:更高层次的http客户端库
+1、安装
+# cd requests_pkgs/
+[root@room8pc16 requests_pkgs]# pip3 install *
+2、应用
+>>> import requests
+(1) 获取文本内容
+>>> r = requests.get('http://www.163.com/')
+>>> r.text
+(2) 获取非文本内容(如图片、mp3等)
+>>> r = requests.get('https://www.cnblogs.com/images/cnblogs_com/jxxclj/1245877/o_pri1%20(1).png')
+>>> with open('/tmp/kd.png', 'wb') as fobj:
+...     fobj.write(r.content)
+(3) 获取json格式文本
+>>> r = requests.get('http://www.weather.com.cn/data/cityinfo/101010100.html')
+>>> r.json()    # 出现乱码
+>>> r.encoding  # 查看当前的字符编码
+'ISO-8859-1'
+>>> r.encoding = 'utf8'   # 修改字符编码
+>>> r.json()    # 可以正常显示汉字
+
+
+
+
+
+
 
 
 
