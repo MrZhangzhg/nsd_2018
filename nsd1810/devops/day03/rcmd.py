@@ -25,7 +25,7 @@ if __name__ == '__main__':
     if not os.path.isfile(sys.argv[1]):
         print('No such file:', sys.argv[1])
         exit(2)
-        
+
     ipfile = sys.argv[1]
     command = sys.argv[2]
     password = getpass.getpass()
