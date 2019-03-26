@@ -74,8 +74,11 @@ requests:更高层次的http客户端库
 'ISO-8859-1'
 >>> r.encoding = 'utf8'   # 修改字符编码
 >>> r.json()    # 可以正常显示汉字
-
-
+(4)传参
+>>> kd_url = 'http://www.kuaidi100.com/query'
+>>> kd_params = {'type': 'youzhengguonei', 'postid': '9893442769997'}
+>>> r = requests.get(kd_url, params=kd_params)
+>>> r.json()
 
 
 
