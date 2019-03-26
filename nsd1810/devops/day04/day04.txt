@@ -40,6 +40,20 @@ http://www.weather.com.cn/data/zs/101010100.html
 >>> info['WD']
 
 
+查快递：
+url = "http://www.kuaidi100.com/query?type=%s&postid=%s"
+type后面填写的是快递公司，postid是快递单号
+
+>>> url = 'http://www.kuaidi100.com/query?type=youzhengguonei&postid=9893442769997'
+>>> r = request.urlopen(url)
+>>> kd = r.read()
+>>> kd = json.loads(kd)   # kd是一个字典
+>>> info = kd['data']  # 字典中的data是一个列表，记录快递信息
+>>> info.reverse()  # 最早的信息是最后一项，反转一下
+>>> for info_dict in info:   # 列表中的每一项是字典，逐一取出每个字典
+...     print('%(time)s: %(context)s' % info_dict)
+
+
 
 
 
