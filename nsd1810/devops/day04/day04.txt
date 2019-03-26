@@ -98,6 +98,10 @@ API：Application Program Interface应用程序接口
 http://192.168.4.2/zabbix/api_jsonrpc.php
 
 
+为了安全，zabbix很多操作是需要权限的。权限的获得可以通过用户名和密码得到令牌
+以后其他涉及到权限的操作，都需要使用令牌才能完成
+
+
 
 
 
