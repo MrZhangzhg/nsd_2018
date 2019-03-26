@@ -5,5 +5,48 @@ SMTP：
 
 
 
+JSON：可以在网络应用程序间传输各种各样的数据类型
+>>> import json
+>>> src = {'name': 'bob', 'age': 20}
+>>> json.dumps(src)
+'{"name": "bob", "age": 20}'
+>>> data = json.dumps(src)
+>>> type(data)
+>>> dst = json.loads(data)
+>>> type(dst)
+<class 'dict'>
+>>> dst
+{'name': 'bob', 'age': 20}
+
+
+中国天气网查询：
+实况天气:http://www.weather.com.cn/data/sk/城市代码.html
+城市信息获取:http://www.weather.com.cn/data/cityinfo/城市代码.html
+详细指数获取:http://www.weather.com.cn/data/zs/城市代码.html
+网上查询 中国天气网 城市代码
+
+http://www.weather.com.cn/data/sk/101010100.html
+http://www.weather.com.cn/data/cityinfo/101010100.html
+http://www.weather.com.cn/data/zs/101010100.html
+
+>>> from urllib import request
+>>> skurl = 'http://www.weather.com.cn/data/sk/101010100.html'
+>>> r = request.urlopen(skurl)
+>>> data = r.read()
+>>> bjsk = json.loads(data)
+>>> bjsk['weatherinfo']
+>>> bjsk['weatherinfo']['WD']
+>>> info = bjsk['weatherinfo']
+>>> info['WD']
+
+
+
+
+
+
+
+
+
+
 
 
