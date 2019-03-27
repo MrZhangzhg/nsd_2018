@@ -112,6 +112,15 @@ echo ${myweb} > livever  # 更新当前版本文件的版本号
 [root@node4 ~]# rm -rf /var/lib/jenkins/workspace/*
 重新构建工程。构建完毕后，查看/var/www/html/deploy
 
+七、应用服务器下载代码并完成部署
+1、创建目录
+/var/www/download  用于存储下载的软件包
+/var/www/deploy    用于存储解压的软件包和软件版本信息
+2、部署思路
+将jenkins上的压缩软件包下载到/var/www/download目录，解压时，解压到/var/www/deploy
+目录，部署时在/var/www/html/创建nsd1810的链接，指向要发布的版本目录
+
+
 
 
 
