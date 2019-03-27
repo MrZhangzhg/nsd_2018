@@ -58,6 +58,15 @@ https://blog.csdn.net/you227/article/details/81076032
 [root@room8pc16 myweb]# git tag
 1.0
 2.0
+二、在gitlab上创建项目
+1、在devops组下，创建一个名为myweb的共开项目
+2、为用户授权，使用户成为myweb项目的主程序员
+三、上传第一步的代码到gitlab
+[root@room8pc16 myweb]# cd /tmp/myweb/
+[root@room8pc16 myweb]# git remote rename origin old-origin
+[root@room8pc16 myweb]# git remote add origin http://192.168.4.1/devops/myeb.git
+[root@room8pc16 myweb]# git push -u origin --all
+[root@room8pc16 myweb]# git push -u origin --tags
 
 
 
