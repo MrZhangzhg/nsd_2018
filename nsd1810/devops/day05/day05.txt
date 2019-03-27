@@ -1,0 +1,29 @@
+语言分为：
+解释执行：shell/python/php
+编译执行：c/c++/go/java
+
+java => maven/ant编译 => war包
+
+CI/CD:持续集成/持续交付
+
+配置虚拟机以安装jenkins
+node4.tedu.cn  eth0: 192.168.4.4  eth1:选择nat模式，自动获取，可上网
+node1.tedu.cn  eth0: 192.168.4.1
+
+虚拟机上网配置：
+virt-manager -> 编辑 -> 连接详情 -> 虚拟网络 -> 激活default网络
+虚拟机eth1网卡，连接到default上之后，自动获取IP地址即可。改变网络连接需要重启
+虚拟机删除virbr0:
+# ifconfig virbr0 down
+# brctl delbr virbr0
+# nmtui添加eth1网卡，自动启动
+# ifup eth1
+
+
+
+
+
+
+
+
+
