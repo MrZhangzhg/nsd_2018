@@ -78,7 +78,39 @@ https://blog.csdn.net/you227/article/details/81076032
 2、运行工程，将会把代码从gitlab上下载到jenkins的/var/lib/jenkins/workspace目录
 点击工程 -> build with parameters -> 点击1.0版本 -> 开始构建
 
+五、在jenkins上部署web服务器
+jenkins下载的程序，最终是要部署到真正的应用服务器上。为了方便应用服务器下载，在
+jenkins上安装httpd
+1、安装
+[root@node4 ~]# yum install -y httpd
+[root@node4 ~]# systemctl start httpd
+[root@node4 ~]# systemctl enable httpd
+2、创建目录
+/var/www/html/deploy/packages  用于存储在gitlab上下载的软件包和md5值文件
+/var/www/html/deploy/  用于存储软件版本
+[root@node4 ~]# mkdir -pv /var/www/html/deploy/packages
+[root@node4 ~]# chown -R jenkins:jenkins /var/www/html/deploy/
 
+六、修改jenkins任务，将下载的代码放到httpd家目录下，打包
+1、修改
+点击工程 -> 配置 -> Additional Behavious 选checkout to a subdirectory
+(把下载的代码放到子目录中)，填写myweb-${myweb} -> 构建 -> 增加额外的构建步骤，
+选执行shell，填写以下内容：
+实现的功能是把下载的软件包拷贝到/var/www/html/deploy/packages中，并计算md5值，
+然后在/var/www/html/deploy记录软件的当前版本和上一版本
+deploy_dir=/var/www/html/deploy
+cp -r myweb-${myweb} $deploy_dir/packages
+cd $deploy_dir/packages
+rm -rf myweb-${myweb}/.git
+tar czf myweb-${myweb}.tar.gz myweb-${myweb}
+md5sum myweb-${myweb}.tar.gz | awk '{print $1}' > myweb-${myweb}.tar.gz.md5
+rm -rf myweb-${myweb}
+cd $deploy_dir
+[ -f livever ] && cat livever > lastver  # 把当前版本内容写到上一版本内容文件中
+echo ${myweb} > livever  # 更新当前版本文件的版本号
+2、验证
+[root@node4 ~]# rm -rf /var/lib/jenkins/workspace/*
+重新构建工程。构建完毕后，查看/var/www/html/deploy
 
 
 
