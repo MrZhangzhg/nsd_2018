@@ -68,6 +68,20 @@ https://blog.csdn.net/you227/article/details/81076032
 [root@room8pc16 myweb]# git push -u origin --all
 [root@room8pc16 myweb]# git push -u origin --tags
 
+四、在jenkins上将web1.0下载下来
+1、基本下载
+首页 -> 新建任务 -> 任务名myweb(自由风格) -> 勾选参数化构建过程
+添加参数 选择git parameter(用于指定下载gitlab上软件的哪个版本) name填写myweb
+(就是自定义一个变量，将来软件版本号赋值给该变量); parameter tag选branch or tag;
+-> 源码管理选git; Repository url填写你的git路径 http://192.168.4.1/devops/myeb.git
+-> Branch specifier 填写$myweb(通过git parameter定义的) -> 保存
+2、运行工程，将会把代码从gitlab上下载到jenkins的/var/lib/jenkins/workspace目录
+点击工程 -> build with parameters -> 点击1.0版本 -> 开始构建
+
+
+
+
+
 
 
 
