@@ -15,6 +15,32 @@ node5.tedu.cn  192.168.4.5
 node6.tedu.cn  192.168.4.6
 三台虚拟机只需要配置IP地址和主机名即可
 
+3、创建ansible工作目录
+[root@room8pc16 day06]# mkdir myansible
+[root@room8pc16 day06]# cd myansible
+[root@room8pc16 myansible]# vim ansible.cfg
+[defaults]
+inventory = hosts
+remote_user = root
+[root@room8pc16 myansible]# vim hosts
+[dbservers]
+node4.tedu.cn
+
+[webservers]
+node5.tedu.cn
+node6.tedu.cn
+
+4、配置名称解析
+[root@room8pc16 myansible]# for i in {1..254}
+> do
+> echo -e "192.168.4.$i\tnode$i.tedu.cn\tnode$i" >> /etc/hosts
+> done
+
+
+
+
+
+
 
 
 
