@@ -1,0 +1,8 @@
+---
+- name: upload yum repo file
+  hosts: all
+  tasks:
+    - name: upload centos.repo
+      copy:
+        src: files/centos.repo
+        dest: /etc/yum.repos.d/centos.repo

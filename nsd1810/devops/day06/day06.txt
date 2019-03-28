@@ -66,6 +66,25 @@ autocmd FileType yaml setlocal sw=2 ts=2 et ai
 # 测试，执行ansible任务，不再需要输入密码
 [root@room8pc16 myansible]# ansible all -m ping
 
+9、集中部署yum
+[root@room8pc16 myansible]# mkdir files
+[root@room8pc16 myansible]# vim files/centos.repo
+[centos]
+name=centos
+baseurl=ftp://192.168.4.254/centos7.4
+gpgcheck=0
+[root@room8pc16 myansible]# vim yum.yml
+---
+- name: upload yum repo file
+  hosts: all
+  tasks:
+    - name: upload centos.repo
+      copy:
+        src: files/centos.repo
+        dest: /etc/yum.repos.d/centos.repo
+[root@room8pc16 myansible]# ansible-playbook --syntax-check yum.yml
+[root@room8pc16 myansible]# ansible-playbook yum.yml
+[root@room8pc16 myansible]# ansible all -m shell -a "yum repolist"
 
 
 
