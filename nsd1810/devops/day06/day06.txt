@@ -36,8 +36,14 @@ node6.tedu.cn
 > echo -e "192.168.4.$i\tnode$i.tedu.cn\tnode$i" >> /etc/hosts
 > done
 
+5、收集远程主机密钥
+[root@room8pc16 ~]# ssh-keyscan node{4..6} node{4..6}.tedu.cn 192.168.4.{4..6} >> .ssh/known_hosts
 
+6、执行ad-hoc临时命令
+[root@room8pc16 myansible]# ansible all -m ping -k
+[root@room8pc16 myansible]# ansible all -m shell -a "id root; id zhangsan" -k
 
+7、
 
 
 
