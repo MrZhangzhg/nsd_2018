@@ -1,0 +1,21 @@
+ansible:
+运行模式：
+ad-hoc：临时命令，适用于简单的、一次性的命令
+playbook：适用于复杂的、经常执行的命令
+
+准备环境：
+1、在物理主机上安装ansible
+[root@room8pc16 zzg_pypkgs]# cd ansible_pkg/
+# pip3 install *
+或
+# pip3 install ansible
+2、准备三台虚拟机
+node4.tedu.cn  192.168.4.4
+node5.tedu.cn  192.168.4.5
+node6.tedu.cn  192.168.4.6
+三台虚拟机只需要配置IP地址和主机名即可
+
+
+
+
+
