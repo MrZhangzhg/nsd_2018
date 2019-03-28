@@ -142,6 +142,19 @@ https://docs.ansible.com/  -> Developer guide -> Python API
 100
 
 
+开发ansible模块
+实现远程服务器的cp功能
+1、创建模块路径
+[root@room8pc16 day06]# mkdir library
+# 自定义模块路径
+[root@room8pc16 library]# export ANSIBLE_LIBRARY=/var/ftp/nsd_2018/nsd1810/devops/day06/library
+2、编写
+模块编写参见remote_cp.py
+3、应用
+[root@room8pc16 myansible]# ansible dbservers -m remote_cp -a "yuan=/etc/hosts mubiao=/tmp/zhuji"
+
+
+
 
 
 
