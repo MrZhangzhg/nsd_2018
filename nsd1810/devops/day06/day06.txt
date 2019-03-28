@@ -123,6 +123,25 @@ ansible编程：
 https://docs.ansible.com/  -> Developer guide -> Python API
 复制example的代码，然后运行
 
+命名元组：以元组为基础，为元组的每一项起个名称
+>>> import collections
+创建一个名为Point的命名元组，它有三项，每一项的名字分别是x/y/z
+>>> Point = collections.namedtuple('Point', ['x', 'y', 'z'])
+>>> a = Point(10, 35, 100)
+>>> a[0]
+10
+>>> len(a)
+3
+>>> a[1:]
+(35, 100)
+>>> a.x
+10
+>>> a.y
+35
+>>> a.z
+100
+
+
 
 
 
