@@ -47,9 +47,24 @@ node6.tedu.cn
 [root@room8pc16 ~]# vim ~/.vimrc
 autocmd FileType yaml setlocal sw=2 ts=2 et ai
 
-
-
-
+8、通过playbook完成密钥分发
+[root@room8pc16 ~]# ansible-doc authorized_key
+[root@room8pc16 myansible]# vim auth.yml
+---
+- name: auth key
+  hosts: all
+  tasks:
+    - name: upload pub key
+      authorized_key:
+        user: root
+        state: present
+        key: "{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"
+# 检查语法
+[root@room8pc16 myansible]# ansible-playbook --syntax-check auth.yml
+# 执行
+[root@room8pc16 myansible]# ansible-playbook auth.yml -k
+# 测试，执行ansible任务，不再需要输入密码
+[root@room8pc16 myansible]# ansible all -m ping
 
 
 
