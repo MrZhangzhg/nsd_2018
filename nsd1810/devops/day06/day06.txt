@@ -43,7 +43,14 @@ node6.tedu.cn
 [root@room8pc16 myansible]# ansible all -m ping -k
 [root@room8pc16 myansible]# ansible all -m shell -a "id root; id zhangsan" -k
 
-7、
+7、修改vim的配置：如果是yaml文件，按tab键是两个空格、支持自动缩进、将tab转换为空格
+[root@room8pc16 ~]# vim ~/.vimrc
+autocmd FileType yaml setlocal sw=2 ts=2 et ai
+
+
+
+
+
 
 
 
