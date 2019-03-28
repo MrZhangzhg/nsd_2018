@@ -155,6 +155,12 @@ https://docs.ansible.com/  -> Developer guide -> Python API
 
 
 
+安装python模块
+1、https://pypi.org/  -> 搜索wget -> download files -> 点击下载
+2、安装
+[root@node4 ~]# unzip wget-3.2.zip
+[root@node4 ~]# cd wget-3.2/
+[root@node4 wget-3.2]# python setup.py install  # 所有软件包，没有pip都可以这样安装
 
 
 
