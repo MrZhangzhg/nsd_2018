@@ -3,8 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>my form</title>
+    <script>
+        function clickme() {
+            alert('Hello World!')
+        }
+    </script>
 </head>
 <body>
+<button onclick="clickme()">点我</button>
+
+<form action="">
+    <label>
+        <input type="checkbox" name="lessons">network
+    </label>
+    <label>
+        <input type="checkbox" name="lessons">linux
+    </label>
+    <label>
+        <input type="checkbox" name="lessons" disabled>database
+    </label>
+    <label>
+        <input type="checkbox" name="lessons">python
+    </label>
+</form>
+<hr>
 <form action="http://www.kuaidi100.com/query" target="_blank">
     <label>单号：</label><input type="text" name="postid"><br>
     <label><input type="radio" name="type" value="youzhengguonei">邮政EMS</label>
