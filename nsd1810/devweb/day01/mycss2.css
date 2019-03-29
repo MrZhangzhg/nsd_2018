@@ -11,6 +11,10 @@ body {
     background: blue;
 }
 
+#i1 {
+    text-align: center;
+}
+
 .warning {
     background: green;
     color: yellow;
