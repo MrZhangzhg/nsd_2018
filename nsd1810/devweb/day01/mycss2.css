@@ -6,6 +6,13 @@ body {
     background: silver;
 }
 
+h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+
+
 .important {
     font-weight: bold;
     background: blue;
@@ -34,3 +41,13 @@ h3 {
     text-align: right;
     background: orange;
 }
+
+
+
+
+
+
+
+
+
+
