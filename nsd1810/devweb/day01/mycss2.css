@@ -1,3 +1,21 @@
+* {
+    font-size: 15pt;
+}
+
+body {
+    background: silver;
+}
+
+.important {
+    font-weight: bold;
+    background: blue;
+}
+
+.warning {
+    background: green;
+    color: yellow;
+}
+
 .web {
     color: green;
     font-weight: bold;
