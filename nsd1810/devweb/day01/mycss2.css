@@ -11,6 +11,21 @@ h4, h5, h6, p {
     padding: 0;
 }
 
+a:link {   /*访部前的样式*/
+    text-decoration: none;
+}
+a:hover {   /*鼠标悬停的样式*/
+    font-size: 2em;
+}
+a:visited {   /*访问后的样式*/
+    color: dimgray;
+}
+
+
+
+h4.c3 {
+    color: purple;
+}
 
 
 .important {
