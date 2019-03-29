@@ -3,3 +3,12 @@
     font-weight: bold;
 }
 
+.c1 {
+    text-align: center;
+    color: blue;
+}
+
+h3 {
+    text-align: right;
+    background: orange;
+}
