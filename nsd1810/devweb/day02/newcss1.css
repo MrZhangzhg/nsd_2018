@@ -1,0 +1,18 @@
+html {
+    font-size: 20pt;
+}
+
+.c1 {
+    font-size: 20px;
+}
+
+.c4 {
+    font-size: 10pt;
+}
+
+.c5 {
+    font-size: 2em;   /*是所在元素字号的2倍大*/
+}
+.c6 {
+    font-size: 2rem;   /*是根元素字号的2倍大*/
+}
