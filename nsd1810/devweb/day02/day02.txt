@@ -7,5 +7,18 @@ Blue
 某一种颜色数值越小，表示该颜色越暗；值越大，表示越亮。
 
 
+boostrap: twitter公司推出的开源前端框架
+简单来说，就是twitter公司做了一个大样式表文件，我们只要应用样式就可以了
+1、将1809班ansible项目的static目录拷贝过来
+nsd1809/devweb/ansible_project/myansible/webansi/static/
+2、bootstrap中文网: http://www.bootcss.com/
+
+
+
+
+
+
+
+
 
 
