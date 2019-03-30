@@ -1,0 +1,22 @@
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.banner, .footer {
+    height: 100px;
+    background: silver;
+}
+
+.left {
+    height: 300px;
+    width: 300px;
+    background: burlywood;
+}
+
+.right {
+    height: 310px;
+    width: 700px;
+    background: darkseagreen;
+}
+
