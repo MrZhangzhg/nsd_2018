@@ -1,5 +1,7 @@
 .box {
     height: 100px;
     width: 200px;
-    border: 1px black solid;
+    border: 1px black solid;  /*边框厚1px、黑色、实线*/
+    padding: 10px 20px 30px 40px;  /*上右下左*/
+    margin: 20px 40px;    /*上下、左右*/
 }
