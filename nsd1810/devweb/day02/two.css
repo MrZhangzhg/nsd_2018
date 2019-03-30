@@ -9,13 +9,15 @@
 }
 
 .left {
+    float: left;
     height: 300px;
     width: 300px;
     background: burlywood;
 }
 
 .right {
-    height: 310px;
+    margin-left: 300px;
+    height: 300px;
     width: 700px;
     background: darkseagreen;
 }
