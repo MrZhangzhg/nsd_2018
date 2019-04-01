@@ -128,6 +128,15 @@ urlpatterns = [
 ]
 
 
+编写投票首页：
+1、编写URL匹配的函数
+# polls/urls.py
+urlpatterns = [
+    # url(URL的正则, 对应的函数, url的名称)
+    url(r'^$', views.index, name='index'),
+]
+
+
 
 
 
