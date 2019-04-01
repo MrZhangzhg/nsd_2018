@@ -86,6 +86,54 @@ django内建的模块需要数据库的支持，生成默认的数据表
 http://127.0.0.1:8000/admin/
 
 
+将本机的http服务停掉，让我们自己的项目运行在80端口
+(djenv) [root@room8pc16 mysite]# python manage.py runserver 0:80
+
+
+项目可以分成很多功能模块，每个功能模块编写成一个应用
+编写投票应用
+1、创建名为polls的应用
+(djenv) [root@room8pc16 mysite]# python manage.py startapp polls
+2、将应用加入到项目
+# mysite/settings.py
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'polls',   # 将应用加入到项目
+]
+3、规划URL
+http://127.0.0.1/polls/    # 投票首页，列出所有投票项
+http://127.0.0.1/polls/1/   # 1号投票详情，用于投票
+http://127.0.0.1/polls/1/result/   # 1号投票的结果
+
+4、授权应用的url由应用的urls.py处理
+如果用户访问的网址以http://x.x.x.x/polls/开头，交给polls应用处理
+# mysite/urls.py
+from django.conf.urls import url, include
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^polls/', include('polls.urls')),
+]
+
+# polls/urls.py
+from django.conf.urls import url
+
+urlpatterns = [
+]
+
+
+
+
+
+
+
+
 
 
 
