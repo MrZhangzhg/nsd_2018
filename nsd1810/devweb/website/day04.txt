@@ -135,6 +135,12 @@ urlpatterns = [
     # url(URL的正则, 对应的函数, url的名称)
     url(r'^$', views.index, name='index'),
 ]
+2、编写函数
+# polls/views.py
+from django.shortcuts import render
+
+def index(request):  # 用户的请求会作为第一个参数传递给index函数
+    return render(request, 'index.html')  # render加载模板文件返回给用户
 
 
 
