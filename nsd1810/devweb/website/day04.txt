@@ -256,6 +256,16 @@ class Choice(models.Model):
 查看数据库的表，q_id改成了question_id
 MariaDB [dj1810]> desc polls_choice;
 
+6、将模型注册到后台管理页面
+# polls/admin.py
+from django.contrib import admin
+from .models import Question, Choice
+
+admin.site.register(Question)
+admin.site.register(Choice)
+访问http://127.0.0.1/admin/可以看到问题和选项已经注册进来了
+在问题和选项页面填上相应的内容，以便将来做数据库的增删改查
+
 
 
 
