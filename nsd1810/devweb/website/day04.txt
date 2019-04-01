@@ -1,0 +1,21 @@
+虚拟环境：
+1、创建虚拟环境
+[root@room8pc16 website]# python3 -m venv /opt/djenv/
+2、激活虚拟环境
+[root@room8pc16 website]# source /opt/djenv/bin/activate
+3、在虚拟环境中安装软件包
+(djenv) [root@room8pc16 zzg_pypkgs]# cd dj_pkgs
+(djenv) [root@room8pc16 dj_pkgs]# pip install *
+(djenv) [root@room8pc16 zzg_pypkgs]# cd sqlalchemy_pkgs/
+(djenv) [root@room8pc16 sqlalchemy_pkgs]# pip install *
+(djenv) [root@room8pc16 zzg_pypkgs]# cd ansible_pkg/
+(djenv) [root@room8pc16 ansible_pkg]# pip install *
+(djenv) [root@room8pc16 zzg_pypkgs]# cd ansible-cmdb_pkgs/
+(djenv) [root@room8pc16 ansible-cmdb_pkgs]# pip install *
+(djenv) [root@room8pc16 zzg_pypkgs]# cd requests_pkgs/
+(djenv) [root@room8pc16 requests_pkgs]# pip install *
+
+
+
+
+
