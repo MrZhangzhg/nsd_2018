@@ -196,6 +196,50 @@ def result(request, question_id):
     return render(request, 'result.html', {'question_id': question_id})
 3、模板
 # polls/templates/result.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票结果</title>
+</head>
+<body>
+<h1>{{ question_id }}号问题投票结果</h1>
+</body>
+</html>
+
+
+Model模型：数据库
+1、规划表
+问题表：问题ID、问题内容、发布时间
+选项表：选项ID、选项内容、票数、问题ID
+2、编写模型
+# polls/models.py
+from django.db import models
+
+class Question(models.Model):
+    question_text = models.CharField(max_length=100, null=False)
+    pub_date = models.DateTimeField()
+
+    def __str__(self):
+        return "Q: %s" % self.question_text
+
+class Choice(models.Model):
+    choice_text = models.CharField(max_length=200, null=False)
+    votes = models.IntegerField(default=0)
+    q = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "%s=> %s" % (self.q, self.choice_text)
+3、生成表
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+# 查看表，并分析结构
+MariaDB [dj1810]> show tables;
+MariaDB [dj1810]> desc polls_question;
+
+
+
+
 
 
 
