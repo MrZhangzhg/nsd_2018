@@ -141,7 +141,19 @@ from django.shortcuts import render
 
 def index(request):  # 用户的请求会作为第一个参数传递给index函数
     return render(request, 'index.html')  # render加载模板文件返回给用户
-
+3、创建模板文件，模板有固定位置，不能创建错
+# mkdir polls/templates
+# polls/templates/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票首页</title>
+</head>
+<body>
+<h1>投票首页</h1>
+</body>
+</html>
 
 
 
