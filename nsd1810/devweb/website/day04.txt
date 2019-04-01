@@ -15,6 +15,20 @@
 (djenv) [root@room8pc16 zzg_pypkgs]# cd requests_pkgs/
 (djenv) [root@room8pc16 requests_pkgs]# pip install *
 
+修改pycharm配置
+File -> settings -> Project -> project interpreter
+
+
+创建项目：
+(djenv) [root@room8pc16 website]# django-admin startproject mysite
+修改pycharm的django配置，指定django项目的位置
+File -> settings -> Language & Frameworks -> Django
+
+
+
+
+
+
 
 
 
