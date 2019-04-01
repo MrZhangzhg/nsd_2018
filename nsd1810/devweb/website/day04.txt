@@ -156,9 +156,33 @@ def index(request):  # 用户的请求会作为第一个参数传递给index函�
 </html>
 
 
-
-
-
+编写投票详情页
+1、URL
+# polls/urls.py
+urlpatterns = [
+    # url(URL的正则, 对应的函数, url的名称)
+    url(r'^$', views.index, name='index'),
+    # url(r'\d+/$', views.detail, name='detail'),
+    # url(r'(\d+)/$', views.detail, name='detail'),
+    url(r'(?P<question_id>\d+)/$', views.detail, name='detail'),
+]
+2、视图函数
+# polls/views.py
+def detail(request, question_id):
+    return render(request, 'detail.html', {'question_id': question_id})
+说明：字典将会成为detail.html网页的变量和值 question_id=xx
+3、模板
+# polls/templates/detail.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票详情</title>
+</head>
+<body>
+<h1>{{ question_id }}号问题投票详情</h1>
+</body>
+</html>
 
 
 
