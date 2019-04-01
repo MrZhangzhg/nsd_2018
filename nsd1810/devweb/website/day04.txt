@@ -72,11 +72,18 @@ MariaDB [(none)]> create database dj1810 default charset utf8;
 django如果提示没有MySQLdb，则：
 # mysite/__init__.py
 import pymysql
-
 pymysql.install_as_MySQLdb()
 
 
 
+django内建的模块需要数据库的支持，生成默认的数据表
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+
+创建管理员用户
+(djenv) [root@room8pc16 mysite]# python manage.py createsuperuser
+访问后台管理页面
+http://127.0.0.1:8000/admin/
 
 
 
