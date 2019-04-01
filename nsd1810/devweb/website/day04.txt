@@ -24,6 +24,57 @@ File -> settings -> Project -> project interpreter
 修改pycharm的django配置，指定django项目的位置
 File -> settings -> Language & Frameworks -> Django
 
+项目文件
+[root@room8pc16 website]# tree mysite/
+mysite/
+├── manage.py           # 项目管理文件
+└── mysite
+    ├── __init__.py
+    ├── settings.py     # 项目配置文件
+    ├── urls.py         # urlconf路由文件
+    └── wsgi.py         # 部署到apache上的时候需要的部署文件
+
+启动开发服务器：django自带了一个用于测试、能够看到网站效果的服务器
+(djenv) [root@room8pc16 mysite]# python manage.py runserver
+访问http://127.0.0.1:8000/
+
+
+修改配置
+# mysite/settings.py
+ALLOWED_HOSTS = '*'
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'dj1810',
+        'USER': 'root',
+        'PASSWORD': 'tedu.cn',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    }
+}
+LANGUAGE_CODE = 'zh-hans'
+TIME_ZONE = 'Asia/Shanghai'
+USE_TZ = False
+
+创建数据库：
+(djenv) [root@room8pc16 ~]# mysql -uroot -ptedu.cn
+MariaDB [(none)]> create database dj1810 default charset utf8;
+
+django如果提示没有MySQLdb，则：
+# mysite/__init__.py
+import pymysql
+
+pymysql.install_as_MySQLdb()
+
 
 
 
