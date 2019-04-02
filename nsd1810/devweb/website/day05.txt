@@ -30,6 +30,20 @@ get_or_create的返回值是元组，第一项是Choice的实例，第2项是真
 5、删除，只要调用实例的delete方法即可
 >>> c3.delete()
 
+6、查询
+（1）查询所有的问题
+>>> Question.objects.all()  # 返回由所有的实例构成的查询集合
+>>> qset1 = Question.objects.all()
+>>> len(qset1)
+5
+>>> qset1[0]  # 取出第一个问题
+<Question: Q: 从达内结业后，第一份工作，你期待的工资是多少？>
+>>> qset1[len(qset1) - 1]   # 取出最后一个问题
+（2）查询所有的问题，按发布时间进行排序
+>>> Question.objects.order_by('pub_date')   # 默认升序排列
+>>> Question.objects.order_by('-pub_date')  # 降序排列
+
+
 
 
 
