@@ -192,6 +192,25 @@ def result(request, question_id):
 
 
 
+引入bootstrap
+1、把day02的static目录拷贝到polls/目录下
+(djenv) [root@room8pc16 mysite]# cp -r ../../day02/static/ polls/
+2、修改index.html，头部改为以下样式
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+
+
+
+
+
+
 
 
 
