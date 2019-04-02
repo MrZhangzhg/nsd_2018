@@ -326,8 +326,47 @@ def result(request, question_id):
 </script>
 </body>
 </html>
+4、修改index.html/detail.html/result.html
+把共性内容去除，个性内容写到相应的block中
+# index.html
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}投票首页{% endblock %}
+{% block content %}
+    <h1 class="text-center text-warning">投票首页</h1>
+    <div class="h4" style="margin-top: 20px">
+            {% comment %}questions是views.index传过来的参数，question自定义的{% endcomment %}
+            {% for question in questions %}
+                <div>  {% comment %}forloop.counter是模板语言中循环的计数器{% endcomment %}
+                    {{ forloop.counter }}.
+            {#        <a href="/polls/{{ question.id }}" target="_blank">#}
+                    <a href="{% url 'detail' question_id=question.id %}" target="_blank">
+                        {{ question.question_text }}
+                    </a>
+                    {{ question.pub_date }}
+                </div>
+            {% endfor %}
+        </div>
+{% endblock %}
 
-
+# detail.html
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}投票详情{% endblock %}
+{% block content %}
+    <h1 class="text-warning text-center">{{ question.id }}号问题投票详情</h1>
+    <h3>{{ question.question_text }}</h3>
+    <form action="{% url 'vote' question_id=question.id %}" method="post">
+        {% for choice in question.choice_set.all %}
+            <div class="checkbox">
+                <label>
+                    <input type="radio" name="choice_id" value="{{ choice.id }}"> {{ choice.choice_text }}
+                </label>
+            </div>
+        {% endfor %}
+        <input class="btn btn-primary" type="submit" value="提交">
+    </form>
+{% endblock %}
 
 
 
