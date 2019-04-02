@@ -369,6 +369,30 @@ def result(request, question_id):
 {% endblock %}
 
 
+# result.html
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}投票结果{% endblock %}
+{% block content %}
+    <h1>{{ question.id }}号问题投票结果</h1>
+    <table class="table table-hover table-striped">
+        <tr class="h4 info">
+            <td colspan="2">{{ question.question_text }}</td>
+        </tr>
+        {% for choice in question.choice_set.all %}
+            <tr>
+                <td>{{ choice.choice_text }}</td>
+                <td>{{ choice.votes }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+
+
+
+
+
 
 
 
