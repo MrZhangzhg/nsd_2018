@@ -86,7 +86,17 @@ def index(request):
 {{ questions }}
 </body>
 
-
+3、继续完善模板
+<body>
+<h1>投票首页</h1>
+{% comment %}questions是views.index传过来的参数，question自定义的{% endcomment %}
+{% for question in questions %}
+    <div>  {% comment %}forloop.counter是模板语言中循环的计数器{% endcomment %}
+        {{ forloop.counter }}. {{ question.question_text }} {{ question.pub_date }}
+    </div>
+{% endfor %}
+</body>
+说明：{{ }}表示变量，{% %}是模板语法，在花括号外面的都是html语法
 
 
 
