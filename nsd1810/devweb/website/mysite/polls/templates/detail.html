@@ -7,7 +7,7 @@
 <body>
 <h1>{{ question.id }}号问题投票详情</h1>
 <h3>{{ question.question_text }}</h3>
-<form action="{% url 'vote' %}" method="post">
+<form action="{% url 'vote' question_id=question.id %}" method="post">
     {% for choice in question.choice_set.all %}
         <div>
             <label>

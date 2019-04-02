@@ -145,6 +145,33 @@ def detail(request, question_id):
 </body>
 
 
+实现投票功能
+1、投票时，就是提交detail的表单，提交使用action指定把数据提交给哪个网址。
+网址url又对应视图函数，通过视图函数实现投票的功能
+2、创建url
+# polls/urls.py
+    url(r'(?P<question_id>\d+)/vote/$', views.vote, name='vote'),
+3、创建视图
+from django.shortcuts import render, redirect
+def vote(request, question_id):
+    choice_id = request.POST.get('choice_id')
+    question = Question.objects.get(id=question_id)
+    choice = question.choice_set.get(id=choice_id)
+    choice.votes += 1
+    choice.save()
+    return redirect('result', question_id=question.id)
+说明：request.POST.get('choice_id')就是在前台表单post方法中取得choice_id
+再通过url的question_id取得具体的问题。
+然后通过问题反向取出选项choice = question.choice_set.get(id=choice_id)
+接着把选项对象的votes值加1。
+最后，使用redirect方法，重定向到result页。这里不采用render。因为render会将
+前台post的数据继续提交给result，但是result不需要post数据。redirect相当于是
+在浏览器中新打开一个窗口，访问结果
+
+
+
+
+
 
 
 
