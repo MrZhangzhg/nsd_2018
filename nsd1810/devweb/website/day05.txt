@@ -1,0 +1,16 @@
+python api:
+1、进入python shell
+(djenv) [root@room8pc16 mysite]# python manage.py shell
+>>> from polls.models import Question
+2、创建问题
+（1）创建实例
+>>> q1 = Question(question_text="散伙饭去哪吃？", pub_date="2018-03-01 17:00:00")
+>>> q1.save()
+（2）使用管理器
+每个class都有一个名为objects的管理器，我们更多的是采用管理器实现增删改查
+get_or_create意思是在数据库里取出符合条件的记录，没有找到则创建
+>>> q2 = Question.objects.get_or_create(question_text="Are you ok?", pub_date="2018-04-02 10:00:00")
+
+
+
+
