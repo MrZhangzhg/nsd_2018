@@ -81,7 +81,10 @@ def index(request):
     return render(request, 'index.html', {'questions': questions})
 2、修改模板
 # polls/templates/index.html
-
+<body>
+<h1>投票首页</h1>
+{{ questions }}
+</body>
 
 
 
