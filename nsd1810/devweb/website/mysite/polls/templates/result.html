@@ -5,6 +5,17 @@
     <title>投票结果</title>
 </head>
 <body>
-<h1>{{ question_id }}号问题投票结果</h1>
+<h1>{{ question.id }}号问题投票结果</h1>
+<table>
+    <tr>
+        <td colspan="2">{{ question.question_text }}</td>
+    </tr>
+    {% for choice in question.choice_set.all %}
+        <tr>
+            <td>{{ choice.choice_text }}</td>
+            <td>{{ choice.votes }}</td>
+        </tr>
+    {% endfor %}
+</table>
 </body>
 </html>

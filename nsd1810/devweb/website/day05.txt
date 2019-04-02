@@ -169,6 +169,26 @@ def vote(request, question_id):
 在浏览器中新打开一个窗口，访问结果
 
 
+编写投票结果页
+1、修改视图函数
+def result(request, question_id):
+    question = Question.objects.get(id=question_id)
+    return render(request, 'result.html', {'question': question})
+2、修改模板
+<body>
+<h1>{{ question.id }}号问题投票结果</h1>
+<table>
+    <tr>
+        <td colspan="2">{{ question.question_text }}</td>
+    </tr>
+    {% for choice in question.choice_set.all %}
+        <tr>
+            <td>{{ choice.choice_text }}</td>
+            <td>{{ choice.votes }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
 
 
 
