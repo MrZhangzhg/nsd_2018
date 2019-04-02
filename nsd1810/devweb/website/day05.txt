@@ -115,6 +115,21 @@ def index(request):
 
 
 
+制作问题详情页
+1、修改视图函数
+def detail(request, question_id):
+    question = Question.objects.get(id=question_id)
+    return render(request, 'detail.html', {'question': question})
+
+2、修改模板detail.html
+<body>
+<h1>{{ question.id }}号问题投票详情</h1>
+{{ question.question_text }}
+{{ question.choice_set.all }}
+</body>
+
+
+
 
 
 
