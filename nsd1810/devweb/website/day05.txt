@@ -70,6 +70,19 @@ get_or_create的返回值是元组，第一项是Choice的实例，第2项是真
 
 
 
+修改投票首页
+1、修改index函数
+# polls/views.py
+from django.shortcuts import render
+from .models import Question
+
+def index(request):
+    questions = Question.objects.order_by('-pub_date')
+    return render(request, 'index.html', {'questions': questions})
+2、修改模板
+# polls/templates/index.html
+
+
 
 
 
