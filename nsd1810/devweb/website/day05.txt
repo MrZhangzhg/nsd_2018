@@ -43,6 +43,15 @@ get_or_create的返回值是元组，第一项是Choice的实例，第2项是真
 >>> Question.objects.order_by('pub_date')   # 默认升序排列
 >>> Question.objects.order_by('-pub_date')  # 降序排列
 
+（3）用get方法返回一个实例，如果查不到或是得到多项则触发异常
+>>> q3 = Question.objects.get(id=1)
+（4）用filter方法返回满足条件的查询集合
+>>> Question.objects.filter(id=10)   # 返回空
+>>> Question.objects.filter(id__lt=10)   # 返回id小于10的全部问题的集合
+>>> Question.objects.filter(id__lt=10).order_by('-pub_date')
+
+
+
 
 
 
