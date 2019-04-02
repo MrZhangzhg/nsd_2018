@@ -11,6 +11,24 @@ python api:
 get_or_create意思是在数据库里取出符合条件的记录，没有找到则创建
 >>> q2 = Question.objects.get_or_create(question_text="Are you ok?", pub_date="2018-04-02 10:00:00")
 
+3、创建选项
+>>> from polls.models import Choice
+（1）创建实例
+>>> c1 = Choice(choice_text="大排档", question=q1)
+>>> c1.save()
+（2）使用管理器
+>>> c2 = Choice.objects.get_or_create(choice_text="扶墙进，扶墙出", question=q1)
+（3）通过问题创建选项
+问题的选项是Choice类，django就设置了choice_set，如果选项的class名为XuanXiang，
+那么django就会设置xuangxiang_set。
+>>> c3 = q1.choice_set.get_or_create(choice_text="KFC")
+
+
+
+
+
+
+
 
 
 
