@@ -6,7 +6,16 @@
 </head>
 <body>
 <h1>{{ question.id }}号问题投票详情</h1>
-{{ question.question_text }}
-{{ question.choice_set.all }}
+<h3>{{ question.question_text }}</h3>
+<form action="{% url 'vote' %}" method="post">
+    {% for choice in question.choice_set.all %}
+        <div>
+            <label>
+                <input type="radio" name="choice_id" value="{{ choice.id }}"> {{ choice.choice_text }}
+            </label>
+        </div>
+    {% endfor %}
+    <input type="submit" value="提交">
+</form>
 </body>
 </html>
