@@ -88,6 +88,7 @@ for item in [HostGroup, Host, Module, Argument]:
 
 11、访问后台管理界面
 (djenv) [root@room8pc16 myansible]# python manage.py runserver 0:80
+http://127.0.0.1/admin/
 添加主机组和主机
 
 
