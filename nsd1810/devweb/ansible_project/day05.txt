@@ -395,6 +395,28 @@ def mainpage(request):
 </a>
 
 
+添加主机
+1、url
+    url(r'^addhosts/$', views.addhosts, name='addhosts'),
+2、修改index.html中的超链接
+<a href="{% url 'addhosts' %}" target="_blank">
+    <img width="150px" src="{% static 'imgs/linux.jpg' %}"><br>
+    添加主机
+</a>
+3、视图函数
+from .models import HostGroup
+
+def addhosts(request):
+    groups = HostGroup.objects.all()
+    return render(request, 'addhosts.html', {'groups': groups})
+4、模板文件addhosts.html
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}添加主机{% endblock %}
+{% block content %}
+{{ groups }}
+{% endblock %}
+
 
 
 
