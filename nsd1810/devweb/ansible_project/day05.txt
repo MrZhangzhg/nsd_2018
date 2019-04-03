@@ -246,7 +246,7 @@ def index(request):
             <span class="glyphicon glyphicon-chevron-right"></span>
         </a>
     </div>
-    <div class="row h4">{% block content %}{% endblock %}</div>
+    <div class="main h4">{% block content %}{% endblock %}</div>
     <div class="footer h4 text-center" style="padding-top: 50px;">
         <a href="">达内云计算学院</a> NSD1810
     </div>
