@@ -4,6 +4,7 @@
 {% block content %}
 {#    表单action是空的，表示提交数据时，提交到当前网址#}
     <form action="" method="post" class="form-inline">
+    {% csrf_token %}   {% comment %}加上安全选项，因为settings.py中没有关闭安全功能{% endcomment %}
         <div class="form-group">
             <label>主机组：</label>
             <input type="text" class="form-control" name="group">
@@ -17,7 +18,7 @@
             <input type="text" class="form-control" name="ip">
         </div>
         <div class="form-group">
-            <input class="btn btn-primary" type="submit" value="添加">
+            <input class="btn btn-primary" type="submit" value="添 加">
         </div>
     </form>
     <hr>

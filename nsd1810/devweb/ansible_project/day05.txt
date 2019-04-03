@@ -414,10 +414,59 @@ def addhosts(request):
 {% load static %}
 {% block title %}添加主机{% endblock %}
 {% block content %}
-{{ groups }}
+{#    表单action是空的，表示提交数据时，提交到当前网址#}
+    <form action="" method="post" class="form-inline">
+    {% csrf_token %}   {% comment %}加上安全选项，因为settings.py中没有关闭安全功能{% endcomment %}
+        <div class="form-group">
+            <label>主机组：</label>
+            <input type="text" class="form-control" name="group">
+        </div>
+        <div class="form-group">
+            <label>主机：</label>
+            <input type="text" class="form-control" name="host">
+        </div>
+        <div class="form-group">
+            <label>IP地址：</label>
+            <input type="text" class="form-control" name="ip">
+        </div>
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="添加">
+        </div>
+    </form>
+    <hr>
+    <table class="table table-bordered table-hover table-striped">
+        <tr class="info">
+            <td>主机组</td>
+            <td>主机</td>
+        </tr>
+        {% for group in groups %}
+            <tr>
+                <td>{{ group.group_name }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        {% for host in group.host_set.all %}
+                            <li>{{ host.hostname }}: {{ host.ipaddr }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
 
+5、修改addhosts函数，将表单提交来的数据写入数据库
+def addhosts(request):
+    if request.method == 'POST':
+        group_name = request.POST.get('group').strip()
+        host = request.POST.get('host').strip()
+        ip = request.POST.get('ip').strip()
+        if group_name:  # 如果group不是空串
+            group = HostGroup.objects.get_or_create(group_name=group_name)[0]
+            if host and ip:  # 如果host和ip也都不是空串
+                group.host_set.get_or_create(hostname=host, ipaddr=ip)
 
+    groups = HostGroup.objects.all()
+    return render(request, 'addhosts.html', {'groups': groups})
 
 
 
