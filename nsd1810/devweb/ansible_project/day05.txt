@@ -1,0 +1,42 @@
+1、创建django项目
+(djenv) [root@room8pc16 ansible_project]# django-admin startproject myansible
+2、创建应用
+(djenv) [root@room8pc16 ansible_project]# cd myansible/
+(djenv) [root@room8pc16 myansible]# python manage.py startapp web_ansi
+3、修改项目设置
+# myansible/settings.py
+ALLOWED_HOSTS = '*'
+INSTALLED_APPS = [
+    ... ...
+    'web_ansi',
+]
+LANGUAGE_CODE = 'zh-hans'
+TIME_ZONE = 'Asia/Shanghai'
+USE_TZ = False
+4、规划网址
+http://x.x.x.x/   ->显示程序的所有功能
+http://127.0.0.1/webansi/   -> 显示所有主机信息
+http://127.0.0.1/webansi/addhosts/  -> 添加/显示主机(组)
+http://127.0.0.1/webansi/addmodules/  -> 添加/显示模块和参数
+http://127.0.0.1/webansi/tasks/  -> 在指定的主机上执行任务
+5、授权应用的网址由应用进行管理
+# myansible/urls.py
+from django.conf.urls import url, include
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^webansi/', include('web_ansi.urls')),
+]
+6、在web_ansi目录下创建urls.py
+from django.conf.urls import url
+
+urlpatterns = [
+]
+
+
+
+
+
+
+
