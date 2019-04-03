@@ -372,6 +372,30 @@ if __name__ == '__main__':
 
 
 
+制作主机信息页面：
+1、url
+# web_ansi/polls.py
+from django.conf.urls import url
+from . import views
+
+urlpatterns = [
+    url(r'^$', views.mainpage, name='mainpage'),
+]
+2、视图函数
+# web_ansi/views.py
+def mainpage(request):
+    return render(request, 'mainpage.html')
+3、生成主页文件
+(djenv) [root@room8pc16 ansi_cfg]# ansible all -m setup --tree /tmp/out
+(djenv) [root@room8pc16 ansi_cfg]# ansible-cmdb /tmp/out > ../web_ansi/templates/mainpage.html
+4、修改index.html中的超链接
+<a href="{% url 'mainpage' %}" target="_blank">
+    <img width="150px" src="{% static 'imgs/linux.jpg' %}"><br>
+    主机信息
+</a>
+
+
+
 
 
 
