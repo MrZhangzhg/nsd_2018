@@ -123,6 +123,9 @@ def index(request):
 </body>
 </html>
 
+（4）引入bootstrap
+# cp -r ../../website/mysite/polls/static/ web_ansi/
+# index.html
 
 
 
