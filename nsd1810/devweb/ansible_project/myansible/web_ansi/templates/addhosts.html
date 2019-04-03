@@ -2,6 +2,25 @@
 {% load static %}
 {% block title %}添加主机{% endblock %}
 {% block content %}
+{#    表单action是空的，表示提交数据时，提交到当前网址#}
+    <form action="" method="post" class="form-inline">
+        <div class="form-group">
+            <label>主机组：</label>
+            <input type="text" class="form-control" name="group">
+        </div>
+        <div class="form-group">
+            <label>主机：</label>
+            <input type="text" class="form-control" name="host">
+        </div>
+        <div class="form-group">
+            <label>IP地址：</label>
+            <input type="text" class="form-control" name="ip">
+        </div>
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="添加">
+        </div>
+    </form>
+    <hr>
     <table class="table table-bordered table-hover table-striped">
         <tr class="info">
             <td>主机组</td>
