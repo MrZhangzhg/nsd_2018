@@ -78,6 +78,18 @@ class Argument(models.Model):
 9、创建管理员用户
 # python manage.py createsuperuser
 
+10、将模型注册到后台管理页面
+# web_ansi/admin.py
+from django.contrib import admin
+from .models import HostGroup, Host, Module, Argument
+
+for item in [HostGroup, Host, Module, Argument]:
+    admin.site.register(item)
+
+11、访问后台管理界面
+(djenv) [root@room8pc16 myansible]# python manage.py runserver 0:80
+添加主机组和主机
+
 
 
 
