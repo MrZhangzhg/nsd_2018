@@ -312,6 +312,16 @@ remote_user = root
     'dbservers': {'hosts': [192.168.4.4]},
     'webservers': {'hosts': [192.168.4.5, 192.168.4.6]}
 }
+构建思路：
+>>> result = {}
+>>> result['dbservers'] = {}  # result字典加入一项，key=dbservers，val是字典
+>>> result
+{'dbservers': {}}
+>>> result['dbservers']['hosts'] = []  # 内层字典，key=hosts，val是列表
+>>> result
+{'dbservers': {'hosts': []}}
+>>> result['dbservers']['hosts'].append('192.168.4.4')  # 向列表中追回地址
+
 (4) 本例中采用的是sqlite数据库，一个sqlite文件就是一个库，可以这样访问它：
 (djenv) [root@room8pc16 myansible]# sqlite3 db.sqlite3
 sqlite> .tables   # 列出所有的表
@@ -346,9 +356,19 @@ class Host(Base):
 if __name__ == '__main__':
     session = Session()
     qset = session.query(HostGroup.group_name, Host.ipaddr).join(Host)
-    print(qset.all())
+    # print(qset.all())
+    result = {}
+    for group, ip in qset:
+        if group not in result:
+            result[group] = {}
+            result[group]['hosts'] = []
+        result[group]['hosts'].append(ip)
+
+    print(json.dumps(result))
 (djenv) [root@room8pc16 ansi_cfg]# chmod +x dhosts.py
 
+3、测试ansible运行
+(djenv) [root@room8pc16 ansi_cfg]# ansible all -m ping
 
 
 

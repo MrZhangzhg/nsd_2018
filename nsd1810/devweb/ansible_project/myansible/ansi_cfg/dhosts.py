@@ -3,6 +3,7 @@
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import json
 
 engine = create_engine(
     'sqlite:////var/ftp/nsd_2018/nsd1810/devweb/ansible_project/myansible/db.sqlite3',
@@ -26,4 +27,12 @@ class Host(Base):
 if __name__ == '__main__':
     session = Session()
     qset = session.query(HostGroup.group_name, Host.ipaddr).join(Host)
-    print(qset.all())
+    # print(qset.all())
+    result = {}
+    for group, ip in qset:
+        if group not in result:
+            result[group] = {}
+            result[group]['hosts'] = []
+        result[group]['hosts'].append(ip)
+
+    print(json.dumps(result))
