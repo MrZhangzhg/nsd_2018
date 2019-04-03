@@ -294,6 +294,21 @@ def index(request):
 {% endblock %}
 
 
+ansible动态主机清单
+1、在manage.py目录下创建ansible的工作目录
+(djenv) [root@room8pc16 myansible]# mkdir ansi_cfg
+(djenv) [root@room8pc16 ansi_cfg]# vim ansible.cfg
+[defaults]
+inventory = dhosts.py
+remote_user = root
+说明：主机清单使用的是python脚本文件，运行dhosts.py时，需要从数据库中取出主机信息
+
+
+
+
+
+
+
 
 
 
