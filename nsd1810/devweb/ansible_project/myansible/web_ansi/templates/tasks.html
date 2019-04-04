@@ -7,6 +7,7 @@
         <li><a href="#servergroup" data-toggle="tab">主机组</a></li>
     </ul>
     <form action="" method="post">
+    {% csrf_token %}
         <div class="tab-content form-group" style="margin-top: 10px">
             <div class="tab-pane active in fade" id="server">
                 <select name="host" class="form-control">
