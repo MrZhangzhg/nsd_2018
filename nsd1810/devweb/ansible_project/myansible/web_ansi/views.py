@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from .models import HostGroup, Module, Host
+from django.shortcuts import render, redirect
+from .models import HostGroup, Module, Host, Argument
 import shutil
 from collections import namedtuple
 from ansible.parsing.dataloader import DataLoader
@@ -42,8 +42,6 @@ def ad_hoc(inventory_fname, hosts, module, args):
             tqm.cleanup()
 
         shutil.rmtree(C.DEFAULT_LOCAL_TMP, True)
-
-
 
 def index(request):
     return render(request, 'index.html')
@@ -95,3 +93,8 @@ def tasks(request):
     hosts = Host.objects.all()
     context = {'groups': groups, 'modules': modules, 'hosts': hosts}
     return render(request, 'tasks.html', context)
+
+def delargs(request, args_id):
+    argument = Argument.objects.get(id=args_id)
+    argument.delete()
+    return redirect('addmodules')

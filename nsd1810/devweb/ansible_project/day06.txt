@@ -79,12 +79,94 @@ def tasks(request):
 
     return render(request, 'tasks.html', context)
 4、创建模板文件tasks.html
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}执行任务{% endblock %}
+{% block content %}
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#server" data-toggle="tab">主机</a></li>
+        <li><a href="#servergroup" data-toggle="tab">主机组</a></li>
+    </ul>
+    <form action="" method="post">
+    {% csrf_token %}
+        <div class="tab-content form-group" style="margin-top: 10px">
+            <div class="tab-pane active in fade" id="server">
+                <select name="host" class="form-control">
+                    <option value="">无</option>
+                    {% for host in hosts %}
+                        <option value="{{ host.ipaddr }}">{{ host.hostname }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="tab-pane fade" id="servergroup">
+                <select name="group" class="form-control">
+                    <option value="">无</option>
+                    {% for group in groups %}
+                        <option value="{{ group.group_name }}">{{ group.group_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <table class="table table-hover table-striped">
+                <tr class="info">
+                    <td>模块</td>
+                    <td>参数</td>
+                </tr>
+                {% for module in modules %}
+                    <tr>
+                        <td>
+                            <label>
+                                <input type="radio" name="module" value="{{ module.module_name }}">
+                                {{ module.module_name }}
+                            </label>
+                        </td>
+                        <td>
+                            {% for args in module.argument_set.all %}
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="params" value="{{ args.args_text }}">
+                                        {{ args.args_text }}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="form-group text-center">
+            <input class="btn btn-primary" type="submit" value="执 行">
+        </div>
+    </form>
+{% endblock %}
 
 
 
 
-
-
+为参数添加删除功能
+1、url
+    url(r'^delargs/(?P<args_id>\d+)/$', views.delargs, name='delargs'),
+2、在tasks.html中添加删除超链接
+<ul class="list-unstyled">
+    {% for args in module.argument_set.all %}
+        <li>
+            <div class="col-md-9">
+                {{ args.args_text }}
+            </div>
+            <div class="col-md-3 text-right">
+                <a href="{% url 'delargs' args_id=args.id %}">删除</a>
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+3、创建视图函数
+from django.shortcuts import render, redirect
+from .models import HostGroup, Module, Host, Argument
+def delargs(request, args_id):
+    argument = Argument.objects.get(id=args_id)
+    argument.delete()
+    return redirect('addmodules')
 
 
 
