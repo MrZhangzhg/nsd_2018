@@ -33,11 +33,19 @@ def addmodules(request):
     return render(request, 'addmodules.html', {'modules': modules})
 
 def tasks(request):
+    if request.method == 'POST':
+        ip = request.POST.get('host')
+        group_name = request.POST.get('group')
+        module_name = request.POST.get('module')
+        args_text = request.POST.get('params')
+        # 如果组名不是空的就在组上执行任务，否则在主机上执行任务
+        if group_name:
+            dest = group_name
+        else:
+            dest = ip
+
     groups = HostGroup.objects.all()
     modules = Module.objects.all()
     hosts = Host.objects.all()
     context = {'groups': groups, 'modules': modules, 'hosts': hosts}
-
     return render(request, 'tasks.html', context)
-
-
