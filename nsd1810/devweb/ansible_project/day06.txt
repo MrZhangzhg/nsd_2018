@@ -62,3 +62,34 @@ def addmodules(request):
 
 
 
+编写执行任务
+1、URL
+    url(r'^tasks/$', views.tasks, name='tasks'),
+2、修改index.html的超链接
+<a href="{% url 'tasks' %}" target="_blank">
+    <img width="150px" src="{% static 'imgs/linux.jpg' %}"><br>
+    执行任务
+</a>
+3、编写视图函数
+def tasks(request):
+    groups = HostGroup.objects.all()
+    modules = Module.objects.all()
+    hosts = Host.objects.all()
+    context = {'groups': groups, 'modules': modules, 'hosts': hosts}
+
+    return render(request, 'tasks.html', context)
+4、创建模板文件tasks.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
