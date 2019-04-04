@@ -1,0 +1,54 @@
+编写添加模块页面
+1、URL
+    url(r'^addmodules/$', views.addmodules, name='addmodules'),
+2、修改index.html，添加超链接
+<a href="{% url 'addmodules' %}" target="_blank">
+    <img width="150px" src="{% static 'imgs/linux.jpg' %}"><br>
+    添加模块
+</a>
+3、创建视图函数
+def addmodules(request):
+    modules = Module.objects.all()
+    return render(request, 'addmodules.html', {'modules': modules})
+4、创建模板addmodules.html
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}添加模板{% endblock %}
+{% block content %}
+    <form action="" method="post" class="form-inline">
+    {% csrf_token %}
+        <div class="form-group">
+            <label>模块：</label>
+            <input type="text" class="form-control" name="module">
+        </div>
+        <div class="form-group">
+            <label>参数：</label>
+            <input type="text" class="form-control" name="params">
+        </div>
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="添 加">
+        </div>
+    </form>
+    <hr>
+    <table class="table table-bordered table-hover table-striped">
+        <tr class="info">
+            <td>模块</td>
+            <td>参数</td>
+        </tr>
+        {% for module in modules %}
+            <tr>
+                <td>{{ module.module_name }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        {% for args in module.argument_set.all %}
+                            <li>{{ args.args_text }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+
+
