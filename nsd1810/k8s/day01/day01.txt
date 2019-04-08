@@ -3,6 +3,9 @@ Ansible / Git / Jenkins / Docker
 
 平台化、自动化、分类（配置类、搭建类）、容器化
 
+在物理机上安装docker并启动
+# yum install -y docker
+
 
 传统虚拟机技术是虚拟出一套硬件后,在其上运行一个完整操作系统,在该系统上再运行所
 需应用进程;而容器内的应用进程直接运行于宿主的内核,容器内没有自己的内核,而且也没有
@@ -33,9 +36,39 @@ Docker重要概念：镜像(Image)、容器(Container)、仓库(Repository)
 如果执行exit退出，容器又停止运行了，如果希望退回到宿主机的shell但不要停掉容器，
 可以按ctrl+p/ctrl+q
 
+进入容器的方法：
+（1）不启动新进程
+[root@room8pc16 day01]# docker attach 831b
+（2）启用新进程
+[root@room8pc16 day01]# docker exec -it 831b bash
 
-在物理机上安装docker并启动
-# yum install -y docker
+
+创建镜像的方法：
+1、基于原始镜像启动容器，修改容器，完毕后commit成新镜像。不推荐 ！！！
+2、使用dockerfile
+(1) 每个dockerfile的指令都会增加一层，所以要注意书写，不要出现太多层次
+[root@room8pc16 day01]# mkdir cent1
+[root@room8pc16 day01]# cd cent1/
+[root@room8pc16 cent1]# vim dockerfile
+FROM centos
+RUN echo 'hello' > /tmp/hi.txt
+RUN echo 'workd' > /tmp/abc.txt
+[root@room8pc16 cent1]# docker build -t centos:v1 .
+[root@room8pc16 cent1]# docker history centos:v1   # 新镜像增加了两层
+上面dockerfile应该改为以下样式：
+FROM centos
+RUN echo 'hello' > /tmp/hi.txt \
+    && echo 'workd' > /tmp/abc.txt
+[root@room8pc16 cent1]# docker build -t centos:v2 .
+
+
+
+
+
+
+
+指定容器的name和主机名
+[root@room8pc16 day01]# docker run -it --name centos1 -h mycent centos bash
 
 
 
