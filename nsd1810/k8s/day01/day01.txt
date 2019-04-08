@@ -153,7 +153,28 @@ KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=192.168.4.254:5000/pod-
 [root@node11 k8s_pkgs]# systemctl restart kubelet
 
 
+8、应用测试
+[root@node11 ~]# cd mykube/tomcat_mysql/
+[root@node11 tomcat_mysql]# kubectl create -f mysql-rc.yaml
+[root@node11 tomcat_mysql]# kubectl get rc
+[root@node11 tomcat_mysql]# kubectl get pods
+[root@node11 tomcat_mysql]# docker ps   # 查看到启动的容器
+[root@node11 tomcat_mysql]# kubectl create -f mysql-svc.yaml
+[root@node11 tomcat_mysql]# kubectl get service
 
+[root@node11 tomcat_mysql]# kubectl create -f myweb-rc.yaml
+[root@node11 tomcat_mysql]# kubectl create -f myweb-svc.yaml
+
+访问：http://192.168.4.11:30001/
+# 删除一个容器后，k8s会发现容器数目已经少于rc声明了，它会自动创建新容器
+[root@node11 tomcat_mysql]# docker rm -f c03b1d754203
+[root@node11 tomcat_mysql]# kubectl get pods
+
+删除服务、rc
+[root@node11 tomcat_mysql]# kubectl delete service mysql
+[root@node11 tomcat_mysql]# kubectl delete service myweb
+[root@node11 tomcat_mysql]# kubectl delete rc myweb
+[root@node11 tomcat_mysql]# kubectl delete rc mysql
 
 
 
