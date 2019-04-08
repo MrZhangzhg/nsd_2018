@@ -112,12 +112,29 @@ OPTIONS='--selinux-enabled=false...'
 [root@node11 k8s_pkgs]# systemctl start docker
 [root@node11 k8s_pkgs]# systemctl enable docker
 
+6、启动相关服务
+master:
+etcd: 是一个数据库，各组件信息将会写到etcd中
+kube-apiserver: 负责执行指令
+kube-controller-manager: 控制管理器
+kube-scheduler: 调度
+node:
+kubelet: node节点接收指令，k8s客户端
+kube-proxy: 代理节点
+docker: 真正的容器服务
 
-
-
-
-
-
+[root@node11 k8s_pkgs]# systemctl start etcd
+[root@node11 k8s_pkgs]# systemctl enable etcd
+[root@node11 k8s_pkgs]# systemctl start kube-apiserver.service
+[root@node11 k8s_pkgs]# systemctl enable kube-apiserver.service
+[root@node11 k8s_pkgs]# systemctl start kube-controller-manager.service
+[root@node11 k8s_pkgs]# systemctl enable kube-controller-manager.service
+[root@node11 k8s_pkgs]# systemctl start kube-scheduler.service
+[root@node11 k8s_pkgs]# systemctl enable kube-scheduler.service
+[root@node11 k8s_pkgs]# systemctl start kubelet.service
+[root@node11 k8s_pkgs]# systemctl enable kubelet.service
+[root@node11 k8s_pkgs]# systemctl start kube-proxy.service
+[root@node11 k8s_pkgs]# systemctl enable kube-proxy.service
 
 
 
