@@ -90,6 +90,13 @@ dockerfile中的当前目录(.)实际上指的是context中的当前目录。
 [root@room8pc16 day01]# curl http://192.168.4.254:5000/v2/_catalog
 
 
+准备一台虚拟机用作k8s服务器，内存4G以上
+1、node11：
+node11.tedu.cn   192.168.4.11/24  192.168.4.254 (必须配置网关，否则服务无法启动)
+2、把k8s的软件压缩包和mykube目录拷贝到node11
+
+
+
 
 
 
