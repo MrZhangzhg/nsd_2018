@@ -94,7 +94,23 @@ dockerfile中的当前目录(.)实际上指的是context中的当前目录。
 1、node11：
 node11.tedu.cn   192.168.4.11/24  192.168.4.254 (必须配置网关，否则服务无法启动)
 2、把k8s的软件压缩包和mykube目录拷贝到node11
+3、安装
+[root@node11 k8s_pkgs]# cp /etc/rhsm/ca/redhat-uep.pem ~
+[root@node11 k8s_pkgs]# yum remove python-rhsm
 
+[root@node11 ~]# cd k8s_pkgs/
+[root@node11 k8s_pkgs]# yum install -y *rpm
+
+4、k8s的组成
+master：一般是物理服务器，用于对容器进行控制、调度
+node：可以是物理服务器，也可以是云主机
+
+5、修改docker配置文件，使之可以使用私有仓库
+[root@node11 k8s_pkgs]# vim /etc/sysconfig/docker
+OPTIONS='--selinux-enabled=false...'
+[root@node11 k8s_pkgs]# scp 192.168.4.254:/etc/docker/daemon.json /etc/docker/
+[root@node11 k8s_pkgs]# systemctl start docker
+[root@node11 k8s_pkgs]# systemctl enable docker
 
 
 
