@@ -79,6 +79,7 @@ dockerfile中的当前目录(.)实际上指的是context中的当前目录。
   "insecure-registries" : ["192.168.4.254:5000"]
 }
 [root@room8pc16 day01]# systemctl restart docker
+[root@room8pc16 day01]# docker run -d -p 5000:5000 registry
 2、
 [root@room8pc16 kubernetes]# tar xvzf images.tar.gz
 [root@room8pc16 kubernetes]# docker load < images/mysql.tar
