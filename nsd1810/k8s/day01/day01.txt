@@ -60,17 +60,33 @@ FROM centos
 RUN echo 'hello' > /tmp/hi.txt \
     && echo 'workd' > /tmp/abc.txt
 [root@room8pc16 cent1]# docker build -t centos:v2 .
-
-
-
-
-
+(2) 构建上下文
+默认情况下，构建镜像时，docker会将当前目录所有内容拷贝到context上下文环境中，在
+dockerfile中的当前目录(.)实际上指的是context中的当前目录。
+(3) 构建时，应该创建一个空目录，将所需文件拷贝到空目录中，然后构建。
+(4) 常用指令FROM / COPY / CMD / ENTRYPOINT / RUN / EXPOSE
 
 
 指定容器的name和主机名
 [root@room8pc16 day01]# docker run -it --name centos1 -h mycent centos bash
 
 
+在物理机上搭建私有仓库
+根据CLOUD最后一天的案例搭建私有仓库，再将kubernetes目录中的images导入到私有仓库
+1、
+[root@room8pc16 day01]# vim /etc/docker/daemon.json
+{
+  "insecure-registries" : ["192.168.4.254:5000"]
+}
+[root@room8pc16 day01]# systemctl restart docker
+2、
+[root@room8pc16 kubernetes]# tar xvzf images.tar.gz
+[root@room8pc16 kubernetes]# docker load < images/mysql.tar
+3、
+[root@room8pc16 day01]# docker tag mysql 192.168.4.254:5000/mysql
+[root@room8pc16 day01]# docker push 192.168.4.254:5000/mysql
+4、查看
+[root@room8pc16 day01]# curl http://192.168.4.254:5000/v2/_catalog
 
 
 
