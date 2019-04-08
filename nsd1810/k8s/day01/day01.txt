@@ -144,11 +144,11 @@ KUBE_API_ADDRESS="--insecure-bind-address=0.0.0.0"
 [root@node11 k8s_pkgs]# systemctl restart kube-apiserver
 (2)
 [root@node11 k8s_pkgs]# vim /etc/kubernetes/config
-KUBE_MASTER="--master=http://192.168.4.254:8080"
+KUBE_MASTER="--master=http://192.168.4.11:8080"
 (3) kubelet
 [root@node11 k8s_pkgs]# vim /etc/kubernetes/kubelet
-KUBELET_ADDRESS="--address="
-KUBELET_API_SERVER="--api-servers=http://192.168.4.254:8080"
+KUBELET_ADDRESS="--address=0.0.0.0"
+KUBELET_API_SERVER="--api-servers=http://192.168.4.11:8080"
 KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=192.168.4.254:5000/pod-infrastructure"
 [root@node11 k8s_pkgs]# systemctl restart kubelet
 
