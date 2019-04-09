@@ -57,3 +57,28 @@ Session Affinity:	None
 No events.
 [root@node11 tomcat_mysql]#
 
+
+扩容RC：
+# kubectl scale replicationcontroller --replicas=4 mysql
+[root@node11 tomcat_mysql]# kubectl get rc
+[root@node11 tomcat_mysql]# kubectl get pods
+[root@node11 tomcat_mysql]# docker ps
+# kubectl scale replicationcontroller --replicas=2 mysql
+[root@node11 tomcat_mysql]# kubectl get rc
+[root@node11 tomcat_mysql]# kubectl get pods
+[root@node11 tomcat_mysql]# docker ps
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
