@@ -1,4 +1,59 @@
+# kubectl create -f mysql-rc.yaml
+# kubectl get pod
 
+[root@node11 tomcat_mysql]# kubectl describe pod mysql-7m9rw
+Name:		mysql-7m9rw
+Namespace:	default
+Node:		127.0.0.1/127.0.0.1
+Start Time:	Tue, 09 Apr 2019 11:45:18 +0800
+Labels:		app=mysql
+Status:		Running
+IP:		172.17.0.2
+Controllers:	ReplicationController/mysql
+Containers:
+  mysql:
+    Container ID:	docker://7e23ce7d3b40ac77ba5e1d1e35eef42b66f3a4518a76037389dea6e7aaaf015b
+    Image:		192.168.4.254:5000/mysql
+    Image ID:		docker-pullable://192.168.4.254:5000/mysql@sha256:ba77d87bc75b6f478c21951b14ede2d2c489b7fc871024d03c8514e4b11e54be
+    Port:		3306/TCP
+    State:		Running
+      Started:		Tue, 09 Apr 2019 11:45:20 +0800
+    Ready:		True
+    Restart Count:	0
+    Volume Mounts:	<none>
+    Environment Variables:
+      MYSQL_ROOT_PASSWORD:	123456
+Conditions:
+  Type		Status
+  Initialized 	True
+  Ready 	True
+  PodScheduled 	True
+No volumes.
+QoS Class:	BestEffort
+Tolerations:	<none>
+Events:
+  FirstSeen	LastSeen	Count	From			SubObjectPath		Type		Reason			Message
+  ---------	--------	-----	----			-------------		--------	------			-------
+  2m		2m		1	{default-scheduler }				Normal		Scheduled		Successfully assigned mysql-7m9rw to 127.0.0.1
+  2m		2m		2	{kubelet 127.0.0.1}				Warning		MissingClusterDNS	kubelet does not have ClusterDNS IP configured and cannot create Pod using "ClusterFirst" policy. Falling back to DNSDefault policy.
+  2m		2m		1	{kubelet 127.0.0.1}	spec.containers{mysql}	Normal		Pulling			pulling image "192.168.4.254:5000/mysql"
+  2m		2m		1	{kubelet 127.0.0.1}	spec.containers{mysql}	Normal		Pulled			Successfully pulled image "192.168.4.254:5000/mysql"
+  2m		2m		1	{kubelet 127.0.0.1}	spec.containers{mysql}	Normal		Created			Created container with docker id 7e23ce7d3b40; Security:[seccomp=unconfined]
+  2m		2m		1	{kubelet 127.0.0.1}	spec.containers{mysql}	Normal		Started			Started container with docker id 7e23ce7d3b40
 
+[root@node11 tomcat_mysql]# kubectl create -f mysql-svc.yaml
+[root@node11 tomcat_mysql]# kubectl get service
 
+[root@node11 tomcat_mysql]# kubectl describe service mysql
+Name:			mysql
+Namespace:		default
+Labels:			<none>
+Selector:		app=mysql
+Type:			ClusterIP
+IP:			10.254.123.67
+Port:			<unset>	3306/TCP
+Endpoints:		172.17.0.2:3306
+Session Affinity:	None
+No events.
+[root@node11 tomcat_mysql]#
 
