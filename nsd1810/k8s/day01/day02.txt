@@ -68,11 +68,38 @@ No events.
 [root@node11 tomcat_mysql]# kubectl get pods
 [root@node11 tomcat_mysql]# docker ps
 
+[root@node11 php_redis]# kubectl delete service mysql
+[root@node11 php_redis]# kubectl delete rc mysql
 
 
+php-redis:
+redis-master-controller.yaml: redis主
+redis-slave-controller.yaml: redis从
+frontend-controller.yaml: php前端
 
+创建redis主
+[root@node11 php_redis]# kubectl create -f redis-master-controller.yaml
+[root@node11 php_redis]# kubectl create -f redis-master-service.yaml
+[root@node11 php_redis]# kubectl get service
+[root@node11 php_redis]# kubectl describe service redis-master
+[root@node11 php_redis]# kubectl describe pod redis-master-qdxwm
 
+创建redis从
+[root@node11 php_redis]# kubectl create -f redis-slave-controller.yaml
+[root@node11 php_redis]# kubectl get rc
+[root@node11 php_redis]# kubectl get pods
+[root@node11 php_redis]# kubectl create -f redis-slave-service.yaml
+[root@node11 php_redis]# kubectl get service
 
+创建php前端
+[root@node11 php_redis]# kubectl create -f frontend-controller.yaml
+[root@node11 php_redis]# kubectl get rc
+[root@node11 php_redis]# kubectl get pods
+[root@node11 php_redis]# kubectl create -f frontend-service.yaml
+[root@node11 php_redis]# kubectl get service
+
+测试：访问宿主机的30001端口
+http://192.168.4.11:30001/
 
 
 
