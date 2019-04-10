@@ -132,8 +132,8 @@ Port 2222
 (1) 退出root用户
 (2) 使用新建帐号登陆，用户第一次登陆，需要修改密码
 (3) 点击右上角用户图标 -> 设置 -> 点击左下角ssh密钥
-[root@node1 ~]# ssh-keygen -t rsa -C "zzg@163.com" -b 4096
-[root@node1 ~]# cat .ssh/id_rsa.pub
+[root@node3 ~]# ssh-keygen -t rsa -C "zzg@163.com" -b 4096
+[root@node3 ~]# cat .ssh/id_rsa.pub
 # 把公钥内容复制web页面中的ssh密钥文本框中
 到此为止，gitlab服务器配置完成
 
@@ -150,6 +150,11 @@ error: 不能重命名配置小节 'remote.origin' 到 'remote.old-origin'
 [root@node3 myproject]# git push -u origin --all   # 再次推送
 
 
+代码有更新，推送新代码到服务器
+[root@node3 myproject]# echo 'how are you?' > welcome.txt
+[root@node3 myproject]# git add .
+[root@node3 myproject]# git commit -m "add welcome.txt"
+[root@node3 myproject]# git push
 
 
 
