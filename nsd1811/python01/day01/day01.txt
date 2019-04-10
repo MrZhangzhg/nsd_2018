@@ -1,0 +1,16 @@
+git配置
+1、安装
+# yum install -y git
+2、填写个人信息
+[root@node3 ~]# git config --list
+[root@node3 ~]# git config --global user.name "Mr.Zhang"
+[root@node3 ~]# git config --global user.email "zzg@163.com"
+3、提交代码的时候，将会跳出文本编辑器，需要用户写入日志，指定默认的文本编辑器
+[root@node3 ~]# git config --global core.editor vim
+4、查看配置
+[root@node3 ~]# git config --list
+[root@node3 ~]# cat ~/.gitconfig
+
+
+
+
