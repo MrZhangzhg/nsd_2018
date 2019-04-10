@@ -40,6 +40,20 @@ git应用
 [root@node3 myproject]# git commit   # 将会跳出vim，要求用户写入日志
 [root@node3 myproject]# git status   # 干净的工作区
 
+7、将新文件提交到版本库
+[root@node3 myproject]# cp /etc/hosts .
+[root@node3 myproject]# git status
+[root@node3 myproject]# git add .
+[root@node3 myproject]# git commit -m "add hosts"  # 在命令行提供日志信息
+[root@node3 myproject]# git status
+8、将误删除的工作区文件从版本库中检出
+[root@node3 myproject]# rm -rf *   # 不会将隐藏的.git删掉
+[root@node3 myproject]# git status
+[root@node3 myproject]# git checkout -- *
+[root@node3 myproject]# ls
+hi.txt  hosts
+
+
 
 
 
