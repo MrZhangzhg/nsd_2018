@@ -92,7 +92,18 @@ node1.tedu.cn  192.168.4.1/24
 [root@node1 docker_pkgs]# systemctl enable docker
 3、导入gitlab镜像
 # docker load < gitlab_zh.tar
-4、启动容器
+4、修改宿主机ssh端口，因为容器也要用到22端口
+[root@node1 images]# vim /etc/ssh/sshd_config
+Port 2222
+[root@node1 images]# systemctl restart sshd
+5、启动容器
+[root@node1 ~]# docker run -d -h gitlab --name gitlab \
+ -p 443:443 -p 22:22 -p 80:80 --restart always \
+ -v /srv/gitlab/config:/etc/gitlab -v \
+ /srv/gitlab/logs:/var/log/gitlab \
+ -v /srv/gitlab/data:/var/opt/gitlab gitlab_zh
+6、因为gitlab容器比较消耗资源，所以启动需要花一定的时间
+[root@node1 ~]# docker ps   # 直到显示(health: OK)才能正常访问
 
 
 
