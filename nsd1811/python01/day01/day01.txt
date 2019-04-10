@@ -159,6 +159,35 @@ error: 不能重命名配置小节 'remote.origin' 到 'remote.old-origin'
 
 
 
+python语法：
+1、完全靠缩进，表达代码逻辑。需要缩进时，输入4个空格
+[root@room8pc16 day01]# python3
+>>> print('Hello World!')
+>>>  print('Hello World!')   # 开头多了一个空格，将会报错
+>>> if 3 > 0:
+...     print('yes')
+>>> if 3 > 0:
+... print('yes')    # 没有空格，也会报错，因为if 3 > 0:需要子代码，但是这里的print与if平级
+
+2、注释：在pycharm中，选中要注释的行，按ctrl + /
+
+3、input注意事项：input读入的内容一定是字符类型
+>>> num = input('number: ')
+number: 100
+>>> num + 5   # 报错，不能把字符串和数字直接相加，需要相同类型做运算
+>>> num + str(5)  # str(5)把数字5转换成字符5，字符串相加就是简单的拼接
+'1005'
+>>> num + '5'
+'1005'
+>>> int(num) + 5   # int(num)把字符串转换成整数100
+105
+
+
+
+
+
+
+
 
 
 
