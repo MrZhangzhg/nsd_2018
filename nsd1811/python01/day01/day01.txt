@@ -53,6 +53,37 @@ git应用
 [root@node3 myproject]# ls
 hi.txt  hosts
 
+分支管理
+1、每个git项目默认的分支叫作master
+[root@node3 myproject]# git branch
+* master
+2、如果你负责项目的一个功能，可以在某一个提交节点创建分支。注意，在创建分支的时候，
+master分支应该是干净。
+[root@node3 myproject]# git branch mybr1
+[root@node3 myproject]# git branch
+* master    # 有星号，表示当前处于master分支
+  mybr1
+3、在master分支提交代码
+[root@node3 myproject]# cp /etc/passwd .
+[root@node3 myproject]# git add .
+[root@node3 myproject]# git commit -m "master-c1"
+[root@node3 myproject]# git status
+4、切换分支到mybr1
+[root@node3 myproject]# git checkout mybr1
+[root@node3 myproject]# ls   # 没有passwd文件
+5、在mybr1分支编写程序
+[root@node3 myproject]# echo '123456' > mytest
+[root@node3 myproject]# git add .
+[root@node3 myproject]# git commit -m "add mytest"
+6、将mybr1分支汇入到主干
+[root@node3 myproject]# git checkout master
+[root@node3 myproject]# ls   # 有passwd，没有mytest
+[root@node3 myproject]# git merge mybr1  # 将mybr1合并到master，将会跳出vim，要求写日志
+[root@node3 myproject]# ls  # 可以查看到两个分支中全部的文件
+hi.txt  hosts  mytest  passwd
+
+
+
 
 
 
