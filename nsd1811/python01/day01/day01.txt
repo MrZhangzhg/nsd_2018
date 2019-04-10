@@ -87,7 +87,11 @@ gitlab服务器
 1、新建一台虚拟机，内存4GB
 node1.tedu.cn  192.168.4.1/24
 2、安装docker
+# yum install -y *.rpm
+[root@node1 docker_pkgs]# systemctl start docker
+[root@node1 docker_pkgs]# systemctl enable docker
 3、导入gitlab镜像
+# docker load < gitlab_zh.tar
 4、启动容器
 
 
