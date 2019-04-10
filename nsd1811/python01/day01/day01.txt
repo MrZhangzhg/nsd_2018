@@ -27,8 +27,18 @@ git应用
 # cd 项目目录
 # git init .
 
-
-
+3、在工作区编写程序文件
+[root@node3 myproject]# echo 'Hello World' > hi.txt
+4、将文件加入到暂存区
+[root@node3 myproject]# git status   # 查看状态
+[root@node3 myproject]# git add .    # 把当前目录所有文件加入到暂存区
+5、如果有些文件是错误添加到暂存区的，可以将其撤出
+[root@node3 myproject]# git rm --cache hi.txt
+[root@node3 myproject]# git status
+6、提交暂存区的文件到版本库
+[root@node3 myproject]# git add .
+[root@node3 myproject]# git commit   # 将会跳出vim，要求用户写入日志
+[root@node3 myproject]# git status   # 干净的工作区
 
 
 
