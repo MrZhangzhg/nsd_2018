@@ -103,7 +103,27 @@ Port 2222
  /srv/gitlab/logs:/var/log/gitlab \
  -v /srv/gitlab/data:/var/opt/gitlab gitlab_zh
 6、因为gitlab容器比较消耗资源，所以启动需要花一定的时间
-[root@node1 ~]# docker ps   # 直到显示(health: OK)才能正常访问
+[root@node1 ~]# docker ps   # 直到显示(healthy)才能正常访问
+
+
+配置gitlab
+1、访问http://192.168.4.1/，第一次访问需要设置root的密码
+2、关键概念
+(1) 群组group，可以为一个团队创建一个group
+(2) 成员member，为每一个用户创建一个帐号，成为group中的一个成员
+(3) 项目project，一个团队可以开发很多项目
+3、创建名为devops的group
+群组路径: http://192.168.4.1/devops
+群组名称: devops
+可见等级：公开
+4、创建用户
+添写姓名、用户名、电子邮箱，其他保持默认
+创建用户的时候，不能设置密码。用户创建完毕后，编辑用户，可以修改密码。
+5、创建名为myproject的项目
+项目路径：http://192.168.4.1/devops/myproject
+可见等级：公开
+
+
 
 
 
