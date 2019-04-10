@@ -138,6 +138,17 @@ Port 2222
 到此为止，gitlab服务器配置完成
 
 
+程序员推送代码到服务器
+[root@node3 ~]# cd myproject/
+[root@node3 myproject]# git remote rename origin old-origin
+以下错误可忽略：
+error: 不能重命名配置小节 'remote.origin' 到 'remote.old-origin'
+# git remote add origin git@192.168.4.1:devops/myproject.git
+# git push -u origin --all
+如果推送失败，错误中有一项显示Permission denied，解决办法是：
+[root@node3 myproject]# eval $(ssh-agent)
+[root@node3 myproject]# git push -u origin --all   # 再次推送
+
 
 
 
