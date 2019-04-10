@@ -11,6 +11,31 @@ git配置
 [root@node3 ~]# git config --list
 [root@node3 ~]# cat ~/.gitconfig
 
+git的工作区域
+工作区：程序文件所在的目录
+暂存区：工作区和版本库之间的缓冲地带
+版本库：将工作区的内容保存到的目录，是工作区的.git
+
+
+git应用
+1、创建版本库: 从0开始
+# git init 项目目录
+[root@node3 ~]# git init myproject
+[root@node3 ~]# cd myproject/
+[root@node3 myproject]# ls -a   # 有一个隐藏的.git目录
+2、创建版本库：在已有目录中创建
+# cd 项目目录
+# git init .
+
+
+
+
+
+
+
+
+
+
 
 
 
