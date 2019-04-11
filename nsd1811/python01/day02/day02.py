@@ -34,3 +34,5 @@ print('*' * 40)
 
 if []:   # 空列表为False
     print('ok')
+else:
+    print('空列表，False')
