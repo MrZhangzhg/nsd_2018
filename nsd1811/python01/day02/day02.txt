@@ -155,6 +155,18 @@ True
     –  映射访问:字典
 
 
+>>> a = 10
+>>> b = 20
+>>> if a < b:
+...     s = a
+... else:
+...     s = b
+以上的4行，可以简写为以下的一行
+>>> small = a if a < b else b
+
+>>> import random
+>>> random.choice(['aaa', 'bbb', 'ccc', 'ddd'])   # 随机从列表中选出一项
+
 
 
 
