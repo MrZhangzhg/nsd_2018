@@ -101,7 +101,24 @@ greet
 'yhn'
 >>> py_str[::-1]   # 步长值为负，表示自右向左取
 'nohtyp'
+(4) 拼接和重复
+>>> py_str + '123'
+'python123'
+>>> '#' * 50
+>>> 'ab' * 20
+(5) 成员关系判断
+>>> 't' in py_str
+>>> 'th' in py_str
+>>> 'to' not in py_str
 
+列表：
+>>> alist = [10, 20, 30, 'tom', 'jerry']
+>>> len(alist)
+>>> alist[0]
+>>> alist[3:]
+>>> 10 in alist
+>>> alist[0] = 100   # 将第一项重新赋值
+>>> alist
 
 
 
