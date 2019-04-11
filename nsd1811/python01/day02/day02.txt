@@ -119,6 +119,29 @@ greet
 >>> 10 in alist
 >>> alist[0] = 100   # 将第一项重新赋值
 >>> alist
+>>> alist.append('bob')   # 在列尾部追加新值
+>>> alist
+
+元组：可以认为是静态的列表
+>>> atuple = (100, 20, 30, 'tom', 'jerry', 'bob')
+>>> atuple[0] = 10  # 不支持将某一元素重新赋值
+>>> atuple[:3]
+>>> 20 in atuple
+
+字典
+>>> adict = {'name': 'bob', 'age': 22}
+>>> len(adict)
+2
+>>> 22 in adict   # 22是字典的key吗？
+False
+>>> 'age' in adict
+True
+>>> adict['name']  # 字典没有下标，通过key取出value
+'bob'
+>>> adict['age'] = 23   # 修改值，因为age已经在字典里了
+>>> adict['email'] = 'bob@tedu.cn'   # email不在字典中，则添加一个项目
+
+
 
 
 
