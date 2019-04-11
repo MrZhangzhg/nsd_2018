@@ -61,13 +61,23 @@ python默认采用10进制数表示数字，可以加上不同的前缀表示其
 >>> 0b11   # 3    2进制
 
 2、字符串
-在引号之间的字符都是字符串，使用单双引号无区别
+（1）在引号之间的字符都是字符串，使用单双引号无区别
 >>> 'tom\'s pet is a cat'
 >>> "tom's pet is a cat"
 >>> "I am %s" % 'jerry'
 'I am jerry'
 >>> "%s is %s years old" % ('tom', 20)
 'tom is 20 years old'
+（2）三引号，可以保留输入格式
+>>> words="""hello
+... hi
+... greet"""
+>>> print(words)
+hello
+hi
+greet
+>>> words
+'hello\nhi\ngreet'
 
 
 
