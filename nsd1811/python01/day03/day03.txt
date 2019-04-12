@@ -112,6 +112,15 @@ b'\xff\xd8\xff\xe0'
 >>> f.close()   # 关闭文件，数据也将写入磁盘
 [root@room8pc16 day03]# cat /tmp/passwd
 
+7、with子句：语句结束，文件自动关闭
+>>> with open('/tmp/passwd') as f:
+...     f.readline()
+...
+'hello world!\n'
+>>> f.readline()   # 报错，因为文件已经关闭，不能再读取了
+
+
+
 
 
 
