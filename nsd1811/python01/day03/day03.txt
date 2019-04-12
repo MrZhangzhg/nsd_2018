@@ -2,4 +2,14 @@ while-else语句：
 在python中，循环也有else，如果循环是被break中断的，else就不执行了，否则执行
 
 
+range函数
+>>> range(10)   # 只提供一个数字，生成的数字将从0开始，10不包含
+range(0, 10)
+>>> for i in range(10):
+...     print(i)
+>>> list(range(10))   # 生成列表
+>>> list(range(6, 10))     # [6, 7, 8, 9]
+>>> list(range(1, 10, 2))  # [1, 3, 5, 7, 9]
+>>> list(range(10, 0, -1))  # [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+
 
