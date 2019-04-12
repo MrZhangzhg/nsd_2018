@@ -1,0 +1,5 @@
+while-else语句：
+在python中，循环也有else，如果循环是被break中断的，else就不执行了，否则执行
+
+
+
