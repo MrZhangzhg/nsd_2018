@@ -1,6 +1,5 @@
-def gen_fib():
+def gen_fib(n):
     fib = [0, 1]
-    n = int(input('长度: '))
 
     for i in range(n - 2):
         fib.append(fib[-1] + fib[-2])
@@ -8,7 +7,11 @@ def gen_fib():
     # print(fib)
     return fib   # 函数运算的结果需要使用return返回值，否则返回None
 
-mylist = gen_fib()
+mylist = gen_fib(5)
 print(mylist)
 new_list = [10 + i for i in mylist]
 print(new_list)
+
+num = int(input('长度: '))
+result = gen_fib(num)
+print(result)
