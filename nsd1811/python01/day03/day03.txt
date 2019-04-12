@@ -68,6 +68,24 @@ b: 以bytes方式打开(直接显示为2进制的方式)
 ''
 >>> f.close()
 
+>>> f = open('/tmp/passwd')
+>>> f.read(4)   # 指定读取字节数
+'root'
+>>> f.read(4)   # 继续向后读
+':x:0'
+(2) readline   读一行
+>>> f.readline()
+':0:root:/root:/bin/bash\n'
+(3) readlines   读所有行，放到列表中
+>>> f.readlines()
+>>> f.close()
+
+(4) 通过for进行遍历，常用，需要背
+>>> f = open('/tmp/passwd')
+>>> for line in f:
+...     print(line, end='')
+>>> f.close()
+
 
 
 
