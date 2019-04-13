@@ -56,7 +56,7 @@ shutil: shell工具
 import sys   #导入模块
 import os
 
-debug = True 	#全局变量声明
+debug = True #全局变量声明
 
 class FooClass(object):	  	#类定义
 'Foo class'
