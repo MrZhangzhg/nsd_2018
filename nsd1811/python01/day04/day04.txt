@@ -134,7 +134,19 @@ True
 >>> '%+d' % -10  # 负数就是负号
 '-10'
 
+字符串格式化还可以用format方法
+>>> '{} is {} years old'.format('bob', 20)
+>>> '{1} is {0} years old'.format(20, 'bob')
+'bob is 20 years old'
+>>> '{1:<10}:{0:<8}'.format(20, 'bob')  # 位置1的bob左对齐点10个宽度
+'bob       :20      '
 
+
+
+python可以使用subprocess模块调用系统命令
+>>> import subprocess
+>>> rc = subprocess.run('id root', shell=True)
+>>> rc.returncode  # retruncode就是shell中的$?
 
 
 
