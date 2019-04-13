@@ -10,7 +10,15 @@ def get_fname():
     return fname
 
 def get_content():
+    content = []
+    print('请输入数据，在单独一行输入end结束。')
+    while True:
+        line = input('> ')
+        if line == 'end':
+            break
+        content.append(line)
 
+    return content
 
 def wfile(fname, content):
 
