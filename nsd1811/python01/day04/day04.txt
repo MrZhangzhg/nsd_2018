@@ -1,3 +1,6 @@
+python官方手册：https://docs.python.org/zh-cn/3/
+
+
 1、文件是python从物理上组织代码的形式， 如  mymodule.py
 2、模块：是python从逻辑上组织代码的形式，如 mymodule
 
