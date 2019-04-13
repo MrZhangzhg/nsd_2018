@@ -89,6 +89,13 @@ if __name__	== ‘__main__’:	 #程序主体
 5、最后编写每个功能函数
 
 
+>>> alist = ['tom', 'bob', 'jerry', 'alice']
+>>> list(reversed(alist))   # 翻转，但是列表本身不变
+>>> alist.reverse()   # 列表本身也有翻转方法，改变列表本身
+>>> sorted(alist)   # 排序，但是列表本身不变
+>>> alist.sort()    # 列表本身也有排序，改变列表本身
+
+
 
 
 
