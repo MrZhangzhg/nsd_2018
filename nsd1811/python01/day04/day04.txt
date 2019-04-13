@@ -151,6 +151,62 @@ python可以使用subprocess模块调用系统命令
 
 
 
+原始字符串
+>>> win_path = 'c:\temp'
+>>> print(win_path)
+c:	emp
+>>> win_path = 'c:\\temp'
+>>> print(win_path)
+c:\temp
+>>> wpath = r'c:\temp'  # 原始字符串，字符串中的字符是本身含义
+>>> print(wpath)
+c:\temp
+>>> wpath
+'c:\\temp'
+
+
+字符串常用方法：
+1、去除空白字符
+>>> s1 = '  hello world\n'   # 去除两端空白字符
+>>> s1.strip()
+'hello world'
+>>> s1.lstrip()   # 去除左边空白字符
+'hello world\n'
+>>> s1.rstrip()
+'  hello world'
+2、切割字符
+>>> s2 = 'hello world ni hao'
+>>> s2.split()
+['hello', 'world', 'ni', 'hao']
+>>> s3 = 'hello-world-ni-hao'
+>>> s3.split()
+['hello-world-ni-hao']
+>>> s3.split('-')
+['hello', 'world', 'ni', 'hao']
+3、拼接字符
+>>> slist = ['hello', 'world', 'ni', 'hao']
+>>> ' '.join(slist)
+'hello world ni hao'
+>>> '---'.join(slist)
+'hello---world---ni---hao'
+4、对齐
+>>> s2.center(50)
+'                hello world ni hao                '
+>>> s2.center(50, '-')
+'----------------hello world ni hao----------------'
+>>> s2.rjust(50, '-')
+'--------------------------------hello world ni hao'
+>>> s2.ljust(50, '-')
+'hello world ni hao--------------------------------'
+5、判断开头、结尾
+>>> s2.startswith('h')
+True
+>>> s2.startswith('he')
+True
+>>> s2.endswith('?')
+False
+
+
 
 
 
