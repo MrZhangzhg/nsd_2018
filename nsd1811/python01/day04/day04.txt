@@ -49,6 +49,44 @@ shutil: shell工具
 >>> keyword.kwlist
 >>> keyword.iskeyword('pass')
 
+模块布局
+#!/usr/bin/env python 	 #起始行
+“this is a test module”	  #模块文档字符串
+
+import sys   #导入模块
+import os
+
+debug = True 	#全局变量声明
+
+class FooClass(object):	  	#类定义
+'Foo class'
+	pass
+
+def	test():	 	 #函数定义
+    "test funcDon"
+	foo	= FooClass()
+
+if __name__	== ‘__main__’:	 #程序主体
+    test()
+
+
+
+编程思路：
+1、弄清要求
+2、发呆：思考程序是怎么运行的（交互的、非交互的？），如果是交互的脑补程序运行有什么
+提示，用户输入什么数据……
+   文件名：/etc/hosts
+   文件已存在，请重试
+   文件名：/tmp/myfile
+   请输入文件内容，在单独的一行输入end表示结束
+   > hello world!
+   > ni hao
+   > end
+3、思考程序有哪些功能，把这些功能写成函数
+    获取文件名、获取文件内容、写文件
+4、编写主程序，调用各个功能函数
+    先调用获取文件名的函数，再调用获取文件内容的函数，最后调用写文件的函数
+5、最后编写每个功能函数
 
 
 
