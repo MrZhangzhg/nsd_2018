@@ -1,0 +1,19 @@
+1、文件是python从物理上组织代码的形式， 如  mymodule.py
+2、模块：是python从逻辑上组织代码的形式，如 mymodule
+
+__name__: 在每个python文件中都有一个自带的变量叫__name__
+__name__的值：__main__或模块名
+当模块文件直接运行时，__name__的值是__main__
+当模块被其他文件import导入时__name__的值是它的模块名
+
+[root@room8pc16 day04]# cat foo.py
+print(__name__)
+[root@room8pc16 day04]# cat bar.py
+import foo
+[root@room8pc16 day04]# python3 foo.py
+__main__
+[root@room8pc16 day04]# python3 bar.py
+foo
+
+
+
