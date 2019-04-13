@@ -20,3 +20,33 @@ foo
 
 
 
+shutil: shell工具
+1、shutil.copyfileobj()：用于拷贝文件对象
+>>> import shutil
+>>> fobj1 = open('/etc/issue', 'rb')
+>>> fobj2 = open('/tmp/issue', 'wb')
+>>> shutil.copyfileobj(fobj1, fobj2)
+>>> fobj1.close()
+>>> fobj2.close()
+2、shutil.copy() 拷贝文件，背
+>>> shutil.copy('/etc/issue.net', '/tmp')
+3、shutil.copy2()   # 相当于是cp -p
+4、shutil.move()    # mv，背
+>>> shutil.move('/tmp/issue.net', '/var/tmp')
+5、shutil.rmtree()   # rm -rf，但是只能删目录，不能删文件，背
+>>> shutil.copytree('/etc/security', '/tmp/anquan')  # 拷贝目录
+>>> shutil.rmtree('/tmp/anquan')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
