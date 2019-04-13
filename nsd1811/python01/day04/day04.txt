@@ -39,6 +39,18 @@ shutil: shell工具
 
 
 
+常用语法：
+>>> x = y = 10
+>>> a, b = 10, 20
+>>> aa, bb = (10, 20)
+>>> aaa, bbb = [10, 20]
+>>> a, b = b, a  # 互换a和b的值
+>>> import keyword
+>>> keyword.kwlist
+>>> keyword.iskeyword('pass')
+
+
+
 
 
 
