@@ -27,5 +27,5 @@ def wfile(fname, content):
 if __name__ == '__main__':
     fname = get_fname()
     content = get_content()
-    content = [line + '\n' for line in content]
+    content = [line + '\n' for line in content]  # 将列表每一项加上\n，否则没有换行
     wfile(fname, content)
