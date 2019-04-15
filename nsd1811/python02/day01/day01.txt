@@ -158,6 +158,18 @@ adict['name'] = 'jerry'  # name在字典里将修改它的val，否则新增加�
 'Mon Monday'
 >>> time.sleep(3)
 
+>>> from datetime import datetime
+>>> t1 = datetime.now()  # 年月日时分秒毫秒
+>>> t2 = datetime(2019, 4, 10)
+>>> t1 > t2   # True
+
+>>> from datetime import timedelta
+>>> days = timedelta(days=100, hours=10)
+>>> t1 - days  # 100天零10小时以后的时间
+datetime.datetime(2019, 1, 5, 7, 4, 5, 614541)
+>>> t1 + days
+datetime.datetime(2019, 7, 25, 3, 4, 5, 614541)
+
 
 
 
