@@ -119,7 +119,19 @@ adict['name'] = 'jerry'  # name在字典里将修改它的val，否则新增加�
 >>> aset.remove('zzz')
 
 
+[root@room8pc16 day01]# cp /etc/passwd /tmp/
+[root@room8pc16 day01]# vim /tmp/passwd
+修改文件，使之与/etc/passwd不一样
+>>> with open('/etc/passwd') as f1:
+...     s1 = set(f1)   # 将文件的每一行作为集合的一项
 
+>>> with open('/tmp/passwd') as f2:
+...     s2 = set(f2)
+
+>>> s3 = s2 - s1
+>>> with open('/tmp/result.txt', 'w') as f3:
+...     f3.writelines(s3)
+[root@room8pc16 day01]# cat /tmp/result.txt
 
 
 
