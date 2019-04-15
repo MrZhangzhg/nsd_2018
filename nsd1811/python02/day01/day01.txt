@@ -103,6 +103,32 @@ adict['name'] = 'jerry'  # name在字典里将修改它的val，否则新增加�
 ###@################
 
 
+集合：由不同元素构成，元素必须是不可变对象
+>>> from random import randint
+>>> alist = [randint(1, 20) for i in range(20)]
+>>> aset = set(alist)
+集合也用{}表示，像是一个无值的字典，只有key，没有value
+>>> aset = set('abc')
+>>> bset = set('bcd')
+>>> aset | bset   # 并集
+>>> aset & bset   # 交集
+>>> aset - bset   # 差补，只在aset中存在的元素
+>>> aset.add('abc')   # 增加元素
+>>> aset.update('xyz')   # 批量添加元素
+>>> aset.update(['xxx', 'yyy', 'zzz'])
+>>> aset.remove('zzz')
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
