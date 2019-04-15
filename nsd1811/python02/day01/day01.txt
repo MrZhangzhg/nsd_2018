@@ -71,6 +71,33 @@
 
 
 
+字典：
+1、创建字典
+>>> adict = dict(['ab', ['name', 'tom'], ('age', 22)])
+dict的参数是个序列对象，序列中有三项，每一项又有两个项目，第一个项目是key，第二个是val
+>>> bdict = {}.fromkeys(['tom', 'jerry', 'bob'], 7)
+创建相同相同val的字典
+2、访问字典
+>>> for key in adict:
+...     print('%s: %s' % (key, adict[key]))
+3、字典赋值
+字典的key都是唯一的，不重复的。字典的key必须是不可变类型
+adict['name'] = 'jerry'  # name在字典里将修改它的val，否则新增加一项
+>>> adict['email'] = 'jerry@tedu.cn'
+4、字典方法
+>>> adict.get('name', 'not found') # 字典中有key, 返回jerry
+>>> qq = adict.get('qq')   # 字典中没有key为qq的项，默认返回None
+>>> print(qq)
+>>> adict.get('qq', 'not found')  # 字典中没有key为qq的项，返回not found
+>>> adict.keys()    # 所有的key
+>>> adict.values()    # 所有的val
+>>> adict.items()    # 所有的(key, val)组成的集合
+>>> adict.pop('a')   # 弹出key是a的项
+
+
+
+
+
 
 
 
