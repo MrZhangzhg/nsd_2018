@@ -133,6 +133,32 @@ adict['name'] = 'jerry'  # name在字典里将修改它的val，否则新增加�
 ...     f3.writelines(s3)
 [root@room8pc16 day01]# cat /tmp/result.txt
 
+时间表示方式：
+1、时间戳：距离1970-1-1 0:00:00之间的秒数
+>>> time.time()
+2、UTC时间：世界协调时
+>>> time.ctime()
+3、struct_time九元组
+>>> time.localtime()
+>>> t = time.localtime()
+>>> t.tm_year
+2019
+>>> t.tm_yday
+105
+
+需要掌握的时间方法
+>>> time.time()   # 时间戳
+>>> time.strftime('%Y-%m-%d %H:%M:%S')  # 显示特定样式
+# 将时间字符串转换成struct_time
+>>> time.strptime('2019-04-15 16:51:03', '%Y-%m-%d %H:%M:%S')
+>>> t1 = time.strptime('2019-04-15 16:51:03', '%Y-%m-%d %H:%M:%S')
+>>> t2 = time.localtime()
+>>> t1 > t2   # 时间比较
+>>> time.strftime('%a %A')
+'Mon Monday'
+>>> time.sleep(3)
+
+
 
 
 
