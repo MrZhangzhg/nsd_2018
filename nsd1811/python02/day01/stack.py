@@ -1,11 +1,18 @@
+stack = []   # 全局变量定义后，在后面任何位置都可见可用
+
 def push_it():
-    print('push')
+    item = input('内容: ').strip()
+    if item:  # 如果字符串非空
+        stack.append(item)
 
 def pop_it():
-    print('pop')
+    if stack:  # 如果列表非空
+        print('从栈中弹出: %s' % stack.pop())
+    else:
+        print('空栈')
 
 def view_it():
-    print('view')
+    print('\033[31;1m%s\033[0m' % stack)
 
 def show_menu():
     prompt = """(0) 压栈
