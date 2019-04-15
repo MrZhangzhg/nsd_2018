@@ -1,0 +1,30 @@
+列表：容器、顺序、可变
+>>> from random import randint
+>>> alist = [randint(1, 100) for i in range(10)]
+>>> alist.append(29)   # 追加
+>>> alist.index(38)    # 获取数字38的下标
+>>> alist.insert(5, 29)   # 在下标为5的位置插入29
+>>> alist.count(29)   # 统计29出现的次数
+>>> alist.reverse()   # 翻转列表
+>>> alist.sort()      # 排序
+>>> alist.remove(29)   # 删除第一个29
+>>> alist.pop()       # 弹出最后一项
+>>> alist.pop(4)      # 弹出下标是4的项
+>>> blist = alist.copy()   # 将alist的值赋值给blist
+>>> clist = alist      # alist和clist使用相同的地址空间
+>>> alist.extend(clist)   # 将clist的内容汇入到alist
+>>> alist.clear()     # 清空列表
+
+
+
+
+
+
+
+
+
+
+
+
+
+
