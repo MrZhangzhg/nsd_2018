@@ -17,6 +17,28 @@
 >>> os.path.getsize('/etc/passwd')   # 获取文件大小
 
 
+pickle模块：将任意的数据对象存到文件中
+>>> f = open('/tmp/abc', 'w')
+>>> f.write('hello world!\n')
+>>> f.write(100)   # 不能写入数字，只能是str
+>>> f.write({'name': 'bob', 'age': 20})   # 不能写入
+>>> f.close()
+
+
+>>> import pickle
+>>> f = open('/tmp/myfile', 'wb')
+>>> shop_list = ['apple', 'egg', 'pear']
+>>> pickle.dump(shop_list, f)
+>>> f.close()
+
+>>> with open('/tmp/myfile', 'rb') as fobj:
+...     mylist = pickle.load(fobj)
+...
+>>> type(mylist)
+<class 'list'>
+>>> mylist
+['apple', 'egg', 'pear']
+
 
 
 
