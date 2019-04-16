@@ -17,7 +17,7 @@
 >>> os.path.getsize('/etc/passwd')   # 获取文件大小
 
 
-pickle模块：将任意的数据对象存到文件中
+pickle模块：
 >>> f = open('/tmp/abc', 'w')
 >>> f.write('hello world!\n')
 >>> f.write(100)   # 不能写入数字，只能是str
@@ -40,8 +40,11 @@ pickle模块：将任意的数据对象存到文件中
 ['apple', 'egg', 'pear']
 
 
-
-
+记账：
+[
+    ['2019-04-16', 0, 0, 10000, 'init'],
+    ['2019-04-16', 0, 300, 9700, 'buy shoes']
+]
 
 
 
