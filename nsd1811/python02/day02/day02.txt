@@ -47,6 +47,39 @@ pickle模块：
 ]
 
 
+>>> def myfunc(name, age=23):
+...     pass
+函数中的name就被称作位置参数，age被称作关键字参数
+
+>>> def get_info(name, age):
+...     print('%s is %s years old' % (name, age))
+>>> get_info()   # error，参数个数不足
+>>> get_info('tom', 20, 30)   # error, 参数个数太多
+>>> get_info('tom', 20)   # OK
+>>> get_info(20, 'tom')   # OK，但是语义不对
+>>> get_info(age=20, name='tom')   # OK
+>>> get_info(age=20, 'tom')  # error, 位置参数必须在关键字参数前
+>>> get_info(20, name='tom')  # error, name得到了多个值
+>>> get_info('tom', age=20)  # OK
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
