@@ -63,7 +63,22 @@ pickle模块：
 >>> get_info('tom', age=20)  # OK
 
 
+在序列对象前面加*，将会把它拆开
+>>> print(*'abc')
+a b c
+>>> print(*[10, 20, 30])
+10 20 30
+>>> print(*(10, 20, 30))
+10 20 30
 
+在字典前加两个星号，表示把字典拆成关键字参数
+>>> def info(name, age):
+...     print('%s: %s' % (name, age))
+...
+>>> info(**{'name': 'tom', 'age': 20})
+tom: 20
+>>> info(name='tom', age=20)
+tom: 20
 
 
 
