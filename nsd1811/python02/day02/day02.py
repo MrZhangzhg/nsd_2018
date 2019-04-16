@@ -21,18 +21,35 @@
 #     myadd = lambda x, y: x + y
 #     print(myadd(10, 20))
 ##########################################
+# from random import randint
+#
+# def func1(x):
+#     # x % 2的值只有1或0，1为True，0为False
+#     return x % 2
+#
+# if __name__ == '__main__':
+#     nums = [randint(1, 100) for i in range(10)]
+#     print(nums)
+#     # 把nums中的每个数作为func1的参数进行运算，结果为真的保留
+#     result = filter(func1, nums)
+#     print(list(result))
+#     # func1可以用匿名函数替代
+#     result2 = filter(lambda x: x % 2, nums)
+#     print(list(result2))
+##########################################
 from random import randint
 
 def func1(x):
-    # x % 2的值只有1或0，1为True，0为False
-    return x % 2
+    return x + 2
 
 if __name__ == '__main__':
     nums = [randint(1, 100) for i in range(10)]
     print(nums)
-    result = filter(func1, nums)
+    # 将nums中的每个数字交给func1进行加工，返回结果
+    result = map(func1, nums)
     print(list(result))
-    result2 = filter(lambda x: x % 2, nums)
+    # func1函数也可以用匿名函数取代
+    result2 = map(lambda x: x + 2, nums)
     print(list(result2))
 
 
