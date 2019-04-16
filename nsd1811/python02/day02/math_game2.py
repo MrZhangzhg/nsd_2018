@@ -12,13 +12,19 @@ def exam():
     nums.sort(reverse=True)  # 降序排列，默认升序
     op = choice('+-')
     result = cmds[op](*nums)   # 将列表拆开
-
     prompt = '%s %s %s = ' % (nums[0], op, nums[1])  # 算式
-    answer = int(input(prompt))
-    if answer == result:
-        print('Very good!!!')
-    else:
+    counter = 0
+
+    while counter < 3:
+        answer = int(input(prompt))
+        if answer == result:
+            print('Very good!!!')
+            break
+
         print('不对哦')
+        counter += 1
+    else:
+        print('%s%s' % (prompt, result))
 
 def main():
     while True:
