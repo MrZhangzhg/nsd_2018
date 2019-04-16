@@ -1,0 +1,18 @@
+>>> os.getcwd()   # pwd
+>>> os.mkdir('/tmp/demo')   # mkdir
+>>> os.makedirs('/tmp/aaa/bbb/ccc')   # mkdir -p
+>>> os.chdir('/tmp/demo')   # cd
+>>> os.listdir()    # ls
+>>> os.mknod('mytest')   # touch mytest
+>>> os.symlink('/etc/hosts', 'zhuji')   # ln -s
+>>> os.unlink('zhuji')   # 删除软链接
+>>> os.remove('mytest')  # rm -f
+
+
+
+
+
+
+
+
+
