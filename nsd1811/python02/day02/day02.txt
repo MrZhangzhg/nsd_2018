@@ -8,6 +8,15 @@
 >>> os.unlink('zhuji')   # 删除软链接
 >>> os.remove('mytest')  # rm -f
 
+>>> os.path.isfile('/etc/hosts')  # [ -f /etc/hosts ]
+>>> os.path.isdir('/etc/ho')    # [ -d /etc/ho ]
+>>> os.path.islink('/etc/hosts')   # 是软链接吗
+>>> os.path.exists('/etc')   # [ -e /etc ]
+>>> os.path.split('/etc/sysconfig/network')
+>>> os.path.join('/etc/sysconfig', 'network')
+>>> os.path.getsize('/etc/passwd')   # 获取文件大小
+
+
 
 
 
