@@ -13,14 +13,27 @@
 #     func2()
 #     func2(name='tom', age=20)
 ##########################################
-def add(x, y):
-    return x + y
+# def add(x, y):
+#     return x + y
+#
+# if __name__ == '__main__':
+#     print(add(10, 5))
+#     myadd = lambda x, y: x + y
+#     print(myadd(10, 20))
+##########################################
+from random import randint
+
+def func1(x):
+    # x % 2的值只有1或0，1为True，0为False
+    return x % 2
 
 if __name__ == '__main__':
-    print(add(10, 5))
-    myadd = lambda x, y: x + y
-    print(myadd(10, 20))
-
+    nums = [randint(1, 100) for i in range(10)]
+    print(nums)
+    result = filter(func1, nums)
+    print(list(result))
+    result2 = filter(lambda x: x % 2, nums)
+    print(list(result2))
 
 
 
