@@ -37,20 +37,22 @@
 #     result2 = filter(lambda x: x % 2, nums)
 #     print(list(result2))
 ##########################################
-from random import randint
+# from random import randint
+#
+# def func1(x):
+#     return x + 2
+#
+# if __name__ == '__main__':
+#     nums = [randint(1, 100) for i in range(10)]
+#     print(nums)
+#     # 将nums中的每个数字交给func1进行加工，返回结果
+#     result = map(func1, nums)
+#     print(list(result))
+#     # func1函数也可以用匿名函数取代
+#     result2 = map(lambda x: x + 2, nums)
+#     print(list(result2))
+##########################################
 
-def func1(x):
-    return x + 2
-
-if __name__ == '__main__':
-    nums = [randint(1, 100) for i in range(10)]
-    print(nums)
-    # 将nums中的每个数字交给func1进行加工，返回结果
-    result = map(func1, nums)
-    print(list(result))
-    # func1函数也可以用匿名函数取代
-    result2 = map(lambda x: x + 2, nums)
-    print(list(result2))
 
 
 
