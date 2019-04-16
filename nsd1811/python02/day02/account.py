@@ -3,13 +3,41 @@ import pickle
 from time import strftime
 
 def save(fname):
+    amount = int(input('金额: '))
+    comment = input('说明: ')
+    date = strftime('%Y-%m-%d')   # 获取当前日期
+    with open(fname, 'rb') as fobj:
+        data = pickle.load(fobj)      # 从文件中取出全部记录
+        balance = data[-1][-2] + amount   # 文件最后一行的倒数第2项是余额
 
+    line = [date, amount, 0, balance, comment]
+    data.append(line)  # 把最新记录加入到大列表
+
+    with open(fname, 'wb') as fobj:
+        pickle.dump(data, fobj)  # 把大列表写到文件
 
 def cost(fname):
+    amount = int(input('金额: '))
+    comment = input('说明: ')
+    date = strftime('%Y-%m-%d')  # 获取当前日期
+    with open(fname, 'rb') as fobj:
+        data = pickle.load(fobj)  # 从文件中取出全部记录
+        balance = data[-1][-2] - amount  # 文件最后一行的倒数第2项是余额
 
+    line = [date, 0, amount, balance, comment]
+    data.append(line)  # 把最新记录加入到大列表
+
+    with open(fname, 'wb') as fobj:
+        pickle.dump(data, fobj)  # 把大列表写到文件
 
 def query(fname):
+    with open(fname, 'rb') as fobj:
+        data = pickle.load(fobj)
 
+    # 打印表头
+    print('%-15s%-8s%-8s%-12s%-20s' % ('date', 'save', 'cost', 'balance', 'comment'))
+    for line in data:
+        print('%-15s%-8s%-8s%-12s%-20s' % tuple(line))  # 将列表转成元组
 
 def show_menu():
     cmds = {'0': save, '1': cost, '2': query}
