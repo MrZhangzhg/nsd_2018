@@ -110,7 +110,7 @@ tarfile: tar包、压缩、解压缩
 
 >>> os.mkdir('/tmp/mydemo')
 >>> tar = tarfile.open('/tmp/mytest.tar.gz', 'r:gz')
->>> tar.extractall('/tmp/mydemo')
+>>> tar.extractall('/tmp/mydemo')  # 解压文件到指定目录
 >>> tar.close()
 
 
