@@ -51,6 +51,35 @@ StopIteration
 (2) 使用PYTHONPATH环境变量定义
 [root@room8pc16 tmp]# export PYTHONPATH=/var/ftp/nsd_2018/nsd1811/python02/day03
 
+3、模块导入方法
+>>> import time
+>>> from random import randint, choice
+>>> import pickle as p   # 导入模块时，起别名
+>>> import os, sys, random   # 不推荐
+
+4、目录可以当作特殊的模块，称为包
+[root@room8pc16 day03]# mkdir mypack
+[root@room8pc16 day03]# vim mypack/hi.py
+hello = 'hello world'
+
+def pstar():
+    print('*' * 30)
+>>> import mypack.hi
+>>> mypack.hi.hello
+'hello world'
+>>> mypack.hi.pstar()
+******************************
+
+
+
+
+
+
+
+
+
+
+
 
 
 
