@@ -124,10 +124,38 @@ tarfile: tar包、压缩、解压缩
 更新md5值
 
 递归列出目录下每个文件：
->>> os.chdir('/tmp/mydemo')
->>> os.walk('security')
->>> list(os.walk('security'))
+>>> import os
+>>> result = list(os.walk('/tmp/mydemo/security'))
+>>> len(result)
+5
+>>> r1 = result[0]
+>>> len(r1)
+3
+>>> r2 = result[1]
+>>> len(r2)
+3
+>>> r1
+('/tmp/mydemo/security', ['console.apps', 'console.perms.d', 'limits.d', 'namespace.d'], ['access.conf', 'chroot.conf', 'console.handlers', 'console.perms', 'group.conf', 'limits.conf', 'namespace.conf', 'namespace.init', 'opasswd', 'pam_env.conf', 'sepermit.conf', 'time.conf', 'pwquality.conf'])
+>>> r2
+('/tmp/mydemo/security/console.apps', [], ['config-util', 'xserver', 'liveinst', 'setup'])
+>>> r1[0]
+'/tmp/mydemo/security'
+>>> r2[0]
+'/tmp/mydemo/security/console.apps'
+>>> r1[1]
+['console.apps', 'console.perms.d', 'limits.d', 'namespace.d']
+>>> r2[1]
+[]
+>>> r1[2]
+['access.conf', 'chroot.conf', 'console.handlers', 'console.perms', 'group.conf', 'limits.conf', 'namespace.conf', 'namespace.init', 'opasswd', 'pam_env.conf', 'sepermit.conf', 'time.conf', 'pwquality.conf']
+>>> r2[2]
+['config-util', 'xserver', 'liveinst', 'setup']
 
+os.walk()得到的每一项都是元组，每个元组由三项构成，这三项分别是：路径字符串、
+该路径下的目录列表、该目录下文件的列表
+>>> for path, folders, files in os.walk('/tmp/mydemo/security'):
+...     for file in files:
+...         os.path.join(path, file)
 
 
 
