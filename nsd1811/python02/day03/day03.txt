@@ -159,6 +159,24 @@ os.walk()得到的每一项都是元组，每个元组由三项构成，这三�
 
 
 
+生成器
+>>> def ipaddrs():
+...     for i in range(1, 6):
+...         yield '192.168.1.%s' % i
+>>> ips = ipaddrs()
+>>> ips
+<generator object ipaddrs at 0x7ff131aeaf68>
+>>> for ip in ips:
+...     print(ip)
+# 以上生成器函数，可以简化为以下一行
+>>> ipaddr2 = ('192.168.1.%s' % i for i in range(1, 6))
+>>> ipaddr2
+<generator object <genexpr> at 0x7ff131aeafc0>
+
+
+
+
+
 
 
 
