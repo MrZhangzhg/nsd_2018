@@ -19,6 +19,35 @@ nums = [32, 19, 68, 69, 10, 46, 21, 71, 88, 76]
 
 
 
+生成器：生成器本质上是一个函数。常规函数就算存在多个return，也只能return一次；但
+是生成器，可以用yield生成并返回很多中间结果。
+>>> def my_gen():
+...     yield 'hello world'
+...     num = 10 + 5
+...     yield num
+...     yield 100
+>>> a = my_gen()
+>>> a.__next__()
+'hello world'
+>>> a.__next__()
+15
+>>> a.__next__()
+100
+>>> a.__next__()   # 生成器取值完成后，再取值将会发生异常
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+StopIteration
+>>> mg = my_gen()
+>>> for item in mg:
+...     print(item)
+
+
+
+
+
+
+
+
 
 
 
