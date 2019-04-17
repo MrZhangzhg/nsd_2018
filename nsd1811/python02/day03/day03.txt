@@ -69,9 +69,32 @@ def pstar():
 'hello world'
 >>> mypack.hi.pstar()
 ******************************
+5、如果使用的是python2，需要在目录下创建__init__.py，否则不能成为包
 
 
+哈希：hash。是一种单向加密的算法。可以理解为将原始数据生成一串固定长度的乱码，
+只要原始数据相同，生成的乱码一定是相同的；即使原始数据有微小的变化，生成的乱码
+也会完全不一样。不能通过乱码反向推出原始数据。
+用途：
+(1) 存储加密的密码  # grep root /etc/shadow
+(2) 校验文件的完整性
+[root@room8pc16 day03]# cp /etc/passwd /tmp/mima
+[root@room8pc16 day03]# md5sum /etc/passwd /tmp/mima
+574e11b1a648bc9669b07015ead96f47  /etc/passwd
+574e11b1a648bc9669b07015ead96f47  /tmp/mima
+包括的算法有：md5/sha
 
+>>> import hashlib
+>>> m = hashlib.md5(b'123456')
+>>> m.hexdigest()
+'e10adc3949ba59abbe56e057f20f883e'
+
+>>> m1 = hashlib.md5()
+>>> m1.update(b'12')
+>>> m1.update(b'34')
+>>> m1.update(b'56')
+>>> m1.hexdigest()
+'e10adc3949ba59abbe56e057f20f883e'
 
 
 
