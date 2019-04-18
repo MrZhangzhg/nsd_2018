@@ -12,7 +12,7 @@ if __name__ == '__main__':
     print('我是%s，我用的武器是%s' % (lb.name, lb.weapon))
     print('我是%s，我用的武器是%s' % (gy.name, gy.weapon))
     lb.speak('人在塔在！')
-    gy.speak('aaaaaaaaaaaaaa')
+    gy.speak('过五关，斩六将！')
 
 # __init__是构造方法，当实例化时自动调用
 # 方法只不过就是类中的函数而已
