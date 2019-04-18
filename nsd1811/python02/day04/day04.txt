@@ -1,0 +1,22 @@
+OOP:面向对象的编程
+
+鸟：name, 颜色，飞，进食
+
+bird = {'name': '神雕', 'color': '棕'}
+
+def fly():
+
+def eat():
+
+Class Bird:
+    name =
+    color =
+
+    def fly():
+
+    def eat():
+
+b1 = Bird(name=, color=)
+b1.fly()
+b2.eat()
+
