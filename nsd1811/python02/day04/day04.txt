@@ -45,6 +45,33 @@ https://jex.im/regulex
 
 
 
+re模块：
+>>> import re
+>>> re.match('f..', 'food')  # 匹配到，返回匹配对象
+<_sre.SRE_Match object; span=(0, 3), match='foo'>
+>>> result = re.match('f..', 'seafood')
+>>> print(result)  # 没匹配到，返回None
+None
+>>> m = re.search('f..', 'seafood')   # 常用
+>>> m.group()   # 匹配对象的group方法获取匹配内容
+'foo'
+
+>>> re.findall('f..', 'seafood is food')
+['foo', 'foo']  # 返回所有匹配内容的列表
+>>> list(re.finditer('f..', 'seafood is food'))
+[<_sre.SRE_Match object; span=(3, 6), match='foo'>, <_sre.SRE_Match object; span=(11, 14), match='foo'>]
+finditer返回的是由匹配对象构成的生成器
+>>> result = re.finditer('f..', 'seafood is food')
+>>> for m in result:
+...     print(m.group())
+foo
+foo
+
+
+
+
+
+
 
 
 
