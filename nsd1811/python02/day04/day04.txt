@@ -67,7 +67,16 @@ finditer返回的是由匹配对象构成的生成器
 foo
 foo
 
+>>> re.split('-|\.', 'hello-world.tar.gz')
+['hello', 'world', 'tar', 'gz']
+>>> re.sub('X', 'Tom', 'Hi X. How are you X')
+'Hi Tom. How are you Tom'
 
+>>> m = re.search('f..', 'seafood')
+>>> patt = re.compile('f..')  # 把模式先编译，可提升效率，建议做法
+>>> m = patt.search('seafood')  # 编译后的对象也有search/findall等方法
+>>> m.group()
+'foo'
 
 
 
