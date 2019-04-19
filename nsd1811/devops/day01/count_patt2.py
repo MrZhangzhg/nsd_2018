@@ -1,10 +1,13 @@
 import re
 
 class CountPatt:
-    def count_patt(self, fname, patt):
+    def __init__(self, fname):
+        self.fname = fname
+
+    def count_patt(self, patt):
         patt_dict = {}
         cpatt = re.compile(patt)
-        with open(fname) as fobj:
+        with open(self.fname) as fobj:
             for line in fobj:
                 m = cpatt.search(line)
                 if m:
@@ -15,5 +18,7 @@ class CountPatt:
 if __name__ == '__main__':
     fname = 'access_log'
     ip = '^(\d+\.){3}\d+'
-    cp = CountPatt()
-    print(cp.count_patt(fname, ip))
+    br = 'Chrome|Firefox|MSIE'
+    cp = CountPatt(fname)
+    print(cp.count_patt(ip))
+    print(cp.count_patt(br))
