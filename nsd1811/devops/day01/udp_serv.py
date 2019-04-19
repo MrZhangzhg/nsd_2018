@@ -21,5 +21,3 @@ while True:
     s.sendto(rdata.encode(), cli_addr)  # 向客户机地址发送数据
 
 s.close()
-
-
