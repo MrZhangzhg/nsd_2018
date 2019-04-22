@@ -17,9 +17,29 @@ windows系统只有多线程的工作方式。
 2、工作线程做具体的工作，工作做完，自动退出，也不会有僵尸进程问题
 
 
+GIL: 全局解释器锁。python是一个解释器，它负责把程序代码发送到CPU。由于GIL的限制，
+python解释器某一个时刻只允许运行一个线程。
 
 
+IO密集型应用：mtping.py属于这类，瓶颈来自于IO。多进程、多线程都适用
+CPU(计算)密集型应用：测试加法时间的例子属于这类，瓶颈来自于CPU。多进程适用
 
+
+python下载额外包的URL:  https://pypi.org/
+pymysql
+1、安装
+(1) pip install pymysql   # 在线安装
+(2) 如果在线安装比较慢，可以使用国内开源镜像端点，不是连接到国外服务器
+[root@room8pc16 day02]# cat ~/.pip/pip.conf
+[global]
+index-url = http://mirrors.163.com/pypi/simple/
+[install]
+trusted-host=mirrors.163.com
+然后再运行第(1)步命令安装
+(3) 本地安装
+# cd pymysql_pkgs/
+# pip3 install *
+2、安装mariadb-server或mysql-server并启动，配置root密码
 
 
 
