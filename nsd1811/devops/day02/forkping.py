@@ -1,4 +1,5 @@
 import subprocess
+import os
 
 def ping(host):
     rc = subprocess.run(
@@ -13,4 +14,7 @@ def ping(host):
 if __name__ == '__main__':
     iplist = ['172.40.63.%s' % i for i in range(1, 255)]
     for ip in iplist:
-        ping(ip)
+        retval = os.fork()
+        if not retval:
+            ping(ip)
+            exit()
