@@ -60,8 +60,19 @@ query1 = session.query(Departments)  # 将class作为参数，返回实例
 # print(query1)  # query1只是个sql语句
 # deps = query1.all()  # 取出查询的全部结果
 # print(deps)   # deps是由 数据库表每行记录生成的实例 构成的列表
-for dep in query1:
-    print(dep.dep_id, dep.dep_name)
+# for dep in query1:
+#     print(dep.dep_id, dep.dep_name)
+#############################
+query2 = session.query(Employees)
+# for emp in query2:
+#     print(emp.emp_id, emp.emp_name, emp.email)
+#############################
+# 将类变量作为参数，返回值是元组
+query3 = session.query(Employees.emp_name, Employees.email)
+# print(query3)
+# print(query3.all())
+for name, email in query3:
+    print(name, email)
 #############################
 session.commit()
 session.close()
