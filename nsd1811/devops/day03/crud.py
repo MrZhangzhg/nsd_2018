@@ -113,8 +113,21 @@ query10 = session.query(Departments)\
 #     print(dep.dep_id, dep.dep_name)
 query11 = session.query(Departments)\
     .filter(or_(Departments.dep_id<=2, Departments.dep_id>=5))
-for dep in query11:
-    print(dep.dep_id, dep.dep_name)
+# for dep in query11:
+#     print(dep.dep_id, dep.dep_name)
+#############################
+query12 = session.query(Departments).count()
+# print(query12)  # 统计departments表的行数
+#############################
+query13 = session.query(Employees.emp_name, Departments.dep_name)\
+    .join(Departments)  # 员工表和部门表有主外键约束，join后，可以得到正确结果
+# for emp_name, dep_name in query13:
+#     print(emp_name, dep_name)
+#############################
+query14 = session.query(Departments.dep_name, Employees.emp_name)\
+    .join(Employees)
+for dep_name, emp_name in query14:
+    print(emp_name, dep_name)
 #############################
 session.commit()
 session.close()
