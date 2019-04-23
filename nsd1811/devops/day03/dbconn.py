@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey, Date
 
 # 创建引擎，根据数据库类型，选择适当的连接方式
 # 用户名:密码@服务器/数据库?参数
@@ -23,6 +23,14 @@ class Employees(Base):
     emp_name = Column(String(20))
     email = Column(String(50))
     dep_id = Column(Integer, ForeignKey('departments.dep_id'))
+
+class Salary(Base):
+    __tablename__ = 'salary'
+    auto_id = Column(Integer, primary_key=True)
+    date = Column(Date)
+    emp_id = Column(Integer, ForeignKey('employees.emp_id'))
+    baisc = Column(Integer)
+    awards = Column(Integer)
 
 if __name__ == '__main__':
     Base.metadata.create_all(engine)  # 没有表创建，有表不再创建
