@@ -22,7 +22,11 @@ deps3 = [(6, '财务部'), (7, '运营部')]
 ##############################
 update_hr = 'UPDATE departments SET dep_name=%s WHERE dep_name=%s'
 data = ('人力资源部', '人事部')
-cursor.execute(update_hr, data)
+# cursor.execute(update_hr, data)
+##############################
+del_yy = 'DELETE FROM departments WHERE dep_name=%s'
+yy_dep = ('运营部',)
+cursor.execute(del_yy, yy_dep)
 ##############################
 conn.commit()    # 提交改动
 cursor.close()   # 关闭游标
