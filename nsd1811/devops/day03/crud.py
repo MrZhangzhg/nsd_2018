@@ -82,7 +82,12 @@ query4 = session.query(Employees).order_by(Employees.emp_id)
 # 取切片时，涉及到了取值，所以query5不再是sql语句，而是实例构成的列表
 query5 = session.query(Departments).order_by(Departments.dep_id)[2:5]
 # print(query5)
-for dep in query5:
+# for dep in query5:
+#     print(dep.dep_id, dep.dep_name)
+#############################
+query6 = session.query(Departments).filter(Departments.dep_id<=3)
+# print(query6)
+for dep in query6:
     print(dep.dep_id, dep.dep_name)
 #############################
 session.commit()
