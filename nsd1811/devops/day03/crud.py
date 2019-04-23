@@ -71,8 +71,13 @@ query2 = session.query(Employees)
 query3 = session.query(Employees.emp_name, Employees.email)
 # print(query3)
 # print(query3.all())
-for name, email in query3:
-    print(name, email)
+# for name, email in query3:
+#     print(name, email)
+#############################
+query4 = session.query(Employees).order_by(Employees.emp_id)
+# print(query4)
+for emp in query4:
+    print(emp.emp_id, emp.emp_name, emp.email)
 #############################
 session.commit()
 session.close()
