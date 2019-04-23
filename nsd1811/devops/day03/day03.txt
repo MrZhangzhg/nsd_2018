@@ -17,6 +17,23 @@ Map：映射
 MariaDB [nsd1811]> CREATE DATABASE tedu1811 DEFAULT CHARSET utf8;
 
 
+HTTP重要方法：
+get: 一般来说是，浏览器输入网址访问网站、点击页面中的超链接、搜索表单
+post: 一般来说是，表单提交数据，如登陆、注册
+
+>>> from urllib import request
+>>> req = request.urlopen('http://www.163.com')
+>>> req.readline()   # 不常用
+>>> req.readlines()   # 不常用
+
+
+
+
+
+
+
+
+
 
 
 
