@@ -126,8 +126,20 @@ query13 = session.query(Employees.emp_name, Departments.dep_name)\
 #############################
 query14 = session.query(Departments.dep_name, Employees.emp_name)\
     .join(Employees)
-for dep_name, emp_name in query14:
-    print(emp_name, dep_name)
+# for dep_name, emp_name in query14:
+#     print(emp_name, dep_name)
+#############################
+# 找到实例，重新赋值，即可实现更新操作
+query15 = session.query(Departments)\
+    .filter(Departments.dep_name=='人事部')
+# print(query15.all())  # 返回的是长度为1的列表
+# print(query15.one())  # 返回的是实例
+# hr = query15.one()
+# hr.dep_name = '人力资源部'
+#############################
+query16 = session.query(Departments).filter(Departments.dep_id==6)
+ui = query16.one()
+session.delete(ui)
 #############################
 session.commit()
 session.close()
