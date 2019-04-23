@@ -26,7 +26,18 @@ data = ('人力资源部', '人事部')
 ##############################
 del_yy = 'DELETE FROM departments WHERE dep_name=%s'
 yy_dep = ('运营部',)
-cursor.execute(del_yy, yy_dep)
+# cursor.execute(del_yy, yy_dep)
+##############################
+select1 = 'SELECT * from departments ORDER BY dep_id'
+cursor.execute(select1)
+result1 = cursor.fetchone()  # 取一行记录
+result2 = cursor.fetchmany(2)   # 取2行记录
+result3 = cursor.fetchall()   # 取全部数据
+print(result1)
+print('#' * 30)
+print(result2)
+print('#' * 30)
+print(result3)
 ##############################
 conn.commit()    # 提交改动
 cursor.close()   # 关闭游标
