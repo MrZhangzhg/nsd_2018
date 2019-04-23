@@ -102,8 +102,19 @@ query8 = session.query(Employees).filter(Employees.dep_id.in_([1, 3]))
 #############################
 query9 = session.query(Employees).filter(~Employees.dep_id.in_([1, 3]))
 # print(query9)
-for emp in query9:
-    print(emp.emp_name, emp.dep_id)
+# for emp in query9:
+#     print(emp.emp_name, emp.dep_id)
+#############################
+from sqlalchemy import and_, or_
+query10 = session.query(Departments)\
+    .filter(and_(Departments.dep_id>=2, Departments.dep_id<6))
+# print(query10)
+# for dep in query10:
+#     print(dep.dep_id, dep.dep_name)
+query11 = session.query(Departments)\
+    .filter(or_(Departments.dep_id<=2, Departments.dep_id>=5))
+for dep in query11:
+    print(dep.dep_id, dep.dep_name)
 #############################
 session.commit()
 session.close()
