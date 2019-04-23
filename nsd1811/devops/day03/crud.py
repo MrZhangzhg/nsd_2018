@@ -87,8 +87,13 @@ query5 = session.query(Departments).order_by(Departments.dep_id)[2:5]
 #############################
 query6 = session.query(Departments).filter(Departments.dep_id<=3)
 # print(query6)
-for dep in query6:
-    print(dep.dep_id, dep.dep_name)
+# for dep in query6:
+#     print(dep.dep_id, dep.dep_name)
+#############################
+query7 = session.query(Employees).filter(Employees.email.like('%.cn'))
+# print(query7)
+for emp in query7:
+    print(emp.emp_name, emp.email)
 #############################
 session.commit()
 session.close()
