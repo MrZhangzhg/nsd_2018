@@ -10,7 +10,8 @@ sqlalchemy
 Object：对象，对应python的class
 Relationship：关系，对应关系型数据库
 Map：映射
-将数据库的表映射成一个class，表中的每个字段就是class中的类属性
+将数据库的表映射成一个class，表中的每个字段就是class中的类属性(变量)
+创建class的实例，与表中的一行记录映射
 
 3、创建数据库
 MariaDB [nsd1811]> CREATE DATABASE tedu1811 DEFAULT CHARSET utf8;

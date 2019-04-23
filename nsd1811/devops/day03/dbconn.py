@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, ForeignKey, Date
+from sqlalchemy.orm import sessionmaker
 
 # 创建引擎，根据数据库类型，选择适当的连接方式
 # 用户名:密码@服务器/数据库?参数
@@ -11,6 +12,7 @@ engine = create_engine(
     # echo=True
 )
 Base = declarative_base()  # 创建ORM映射类的基类
+Session = sessionmaker(bind=engine)   # 创建会话类，绑定引擎
 
 class Departments(Base):
     __tablename__ = 'departments'  # 指定该类与哪个表对应
