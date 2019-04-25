@@ -47,6 +47,18 @@ paramiko
 (2)离线
 # cd paramiko_pkgs/
 # pip3 install *
+2、准备用于远程管理的虚拟机
+node4.tedu.cn  192.168.4.4
+node5.tedu.cn  192.168.4.5
+node6.tedu.cn  192.168.4.6
+
+3、应用
+>>> import paramiko
+>>> ssh = paramiko.SSHClient()   # 创建客户端实例
+>>> ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())  # 相当于回答yes
+>>> ssh.connect('192.168.4.4', username='root', password='123456')
+>>> ssh.exec_command('mkdir /tmp/demo')
+>>> ssh.close()
 
 
 
