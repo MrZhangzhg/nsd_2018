@@ -1,4 +1,7 @@
 import paramiko
+import sys
+import getpass
+import os
 
 def rcmd(host, user='root', passwd=None, port=22, cmd=None):
     ssh = paramiko.SSHClient()
@@ -14,4 +17,16 @@ def rcmd(host, user='root', passwd=None, port=22, cmd=None):
     ssh.close()
 
 if __name__ == '__main__':
-    rcmd('192.168.4.4', passwd='123456', cmd='id root; id wangwu')
+    if len(sys.argv) != 3:
+        print("Usage: %s ipfile 'command'" % sys.argv[0])
+        exit(1)
+    ipfile = sys.argv[1]
+    if not os.path.isfile(ipfile):
+        print('No such file:', ipfile)
+        exit(2)
+    passwd = getpass.getpass()
+    command = sys.argv[2]
+    with open(ipfile) as fobj:
+        for line in fobj:
+            ip = line.strip()
+            rcmd(ip, passwd=passwd, cmd=command)
