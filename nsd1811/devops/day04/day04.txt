@@ -22,8 +22,19 @@ http://127.0.0.1/abcd   不存在
 http://127.0.0.1/ban    没有权限
 
 
+URL编码
+在搜狗中搜索汉字 海军节，可以看到url中有汉字，把这部分内容复制到pycharm如下：
+https://www.sogou.com/web?query=\u6d77\u519b\u8282
+URL只允许一部分字符，汉字是不允许的字符。浏览器看到汉字，实际上是经过编码的，
+编程时，需要把这些字符先编码成允许的字符
 
-
+>>> from urllib import request
+>>> url = 'http://www.sogou.com/web?query=复联4'
+>>> request.urlopen(url)  # 报错，汉字不是URL允许的字符
+>>> request.quote('复联4')
+'%E5%A4%8D%E8%81%944'
+url = 'http://www.sogou.com/web?query=' + request.quote('复联4')
+>>> r = request.urlopen(url)
 
 
 
