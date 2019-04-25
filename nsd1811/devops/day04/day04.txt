@@ -144,6 +144,29 @@ requests模块：底层采用了urllib3，它将http的各种方法都定义成�
 >>> r.json()
 
 
+查快递
+1、网址：http://www.kuaidi100.com/query?type=%s&postid=%s
+(1) type指定快递公司，如
+'shentong', 'youzhengguonei', 'yuantong', 'shunfeng', 'yunda',
+'zhongtong', "tiantian", "debang"}
+(2) postid指定单号
+2、服务器要求使用get的方式提交参数
+params = {'type': 'youzhengguonei', 'postid': '9893442769997'}
+3、查询
+>>> r = requests.get(url, params=params)
+>>> result = r.json()
+>>> result
+>>> result['data']
+>>> info = result['data']
+>>> info.reverse()
+>>> info
+>>> for line in info:
+...     print(line['time'], line['context'])
+
+
+
+
+
 
 
 
