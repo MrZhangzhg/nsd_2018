@@ -1,0 +1,22 @@
+>>> data = '中国'
+>>> type(data)
+<class 'str'>
+>>> help(data.encode)   # 发现默认的编码方式是utf8
+>>> data.encode()
+b'\xe4\xb8\xad\xe5\x9b\xbd'  # 转成utf8的二进制形式
+>>> data.encode('gbk')
+b'\xd6\xd0\xb9\xfa'    # 转成gbk的二进制形式
+>>> bdata = data.encode('gbk')
+>>> type(bdata)
+<class 'bytes'>
+>>> bdata.decode()   # bdata是gbk编码，默认decode用的是utf8，所以报错
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xd6 in position 0: invalid continuation byte
+>>> bdata.decode('gbk')   # 指定采用gbk的方式解码
+'中国'
+
+
+
+
+
