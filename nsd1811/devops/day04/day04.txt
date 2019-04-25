@@ -59,7 +59,8 @@ node6.tedu.cn  192.168.4.6
 >>> ssh.connect('192.168.4.4', username='root', password='123456')
 >>> ssh.exec_command('mkdir /tmp/demo')
 >>> ssh.close()
-
+说明：exec_command()执行命令的返回值是个三元组，分别代表了输入、输出和错误
+每一个部分都是类文件对象，它们都有read()方法。
 
 
 
