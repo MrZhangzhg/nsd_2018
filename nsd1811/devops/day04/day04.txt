@@ -39,3 +39,22 @@ url = 'http://www.sogou.com/web?query=' + request.quote('复联4')
 
 
 
+
+paramiko
+1、安装
+(1)在线
+# pip3 install paramiko
+(2)离线
+# cd paramiko_pkgs/
+# pip3 install *
+
+
+
+
+
+
+
+
+
+
+
