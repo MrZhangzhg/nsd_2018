@@ -1,4 +1,4 @@
-from urllib import request
+from urllib import request, error
 import re
 import os
 
@@ -33,4 +33,7 @@ if __name__ == '__main__':
     for url in img_urls:
         img_fname = url.split('/')[-1]   # 取出网址中的文件名
         img_fname = os.path.join(img_dir, img_fname)
-        download(url, img_fname)
+        try:
+            download(url, img_fname)
+        except error.HTTPError:
+            pass  # 需到异常，不采取任何操作
