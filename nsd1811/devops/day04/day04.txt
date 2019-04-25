@@ -112,8 +112,36 @@ http://www.weather.com.cn/data/sk/101010100.html
 >>> wdict['weatherinfo']['city']
 
 
+[root@room8pc16 day04]# pip3 install wget
+>>> import wget
+>>> wget.download('https://upload-images.jianshu.io/upload_images/14715425-24448b60df04d2eb.png')
 
 
+requests模块：底层采用了urllib3，它将http的各种方法都定义成了函数。通过调用函数
+就可以简单的去采用相关的方法访问服务器
+1、安装
+(1) 在线
+# pip3 install requests
+(2) 离线
+# cd requests_pkgs/
+# pip3 install *
+2、使用
+(1) 访问文本页面
+>>> r = requests.get('http://www.sogou.com')
+>>> r.text
+(2) 访问非文内容(图片、视频)
+>>> r = requests.get('https://upload-images.jianshu.io/upload_images/14715425-24448b60df04d2eb.png')
+>>> with open('/tmp/jianshu.png', 'wb') as fobj:
+...     fobj.write(r.content)
+# eog /tmp/jianshu.png
+(3) 访问json格式数据
+>>> r = requests.get('http://www.weather.com.cn/data/zs/101010100.html')
+>>> r.json()
+(4) 字符编码
+>>> r.encoding
+'ISO-8859-1'   # 默认的字符编码无法准确地显示汉字
+>>> r.encoding = 'utf8'
+>>> r.json()
 
 
 
