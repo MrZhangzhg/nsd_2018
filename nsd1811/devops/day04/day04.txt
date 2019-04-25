@@ -63,6 +63,26 @@ node6.tedu.cn  192.168.4.6
 每一个部分都是类文件对象，它们都有read()方法。
 
 
+邮件编程：
+1、准备邮件
+>>> from email.mime.text import MIMEText
+# 书写正文，邮件是纯文本
+>>> message = MIMEText('My email test.\r\n', 'plain', 'utf8')
+# 编写头部信息
+>>> from email.header import Header
+>>> message['From'] = Header('root', 'utf8')
+>>> message['To'] = Header('zhangsan', 'utf8')
+>>> message['Subject'] = Header('py mail test', 'utf8')
+2、发送邮件
+>>> import smtplib
+>>> smtp = smtplib.SMTP()
+>>> smtp.connect('127.0.0.1')
+>>> smtp.sendmail('root', ['root', 'zhangsan'], message.as_string())
+>>> smtp.close()
+# mail
+# su - zhangsan
+$ mail
+
 
 
 
