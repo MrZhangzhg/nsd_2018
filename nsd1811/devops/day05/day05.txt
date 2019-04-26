@@ -64,4 +64,14 @@ cpu_temp(core: 0, temp: 42)
 
 
 
+zabbix api：
+示例zabbix地址是http://192.168.4.2/zabbix
+所以api地址是：http://192.168.4.2/zabbix/api_jsonrpc.php
+
+
+
+
+
+
+
 
