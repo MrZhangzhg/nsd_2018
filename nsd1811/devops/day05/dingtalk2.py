@@ -14,7 +14,7 @@ def dingtalk(url):
     }
 }
     r = requests.post(url, data=json.dumps(data), headers=headers)
-    return r.text
+    return r.json()
 
 if __name__ == '__main__':
     # url = '此处填写webhook的内容'

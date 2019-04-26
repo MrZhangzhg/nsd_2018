@@ -16,7 +16,7 @@ def dingtalk(url, reminders, msg):
         }
     }
     r = requests.post(url, data=json.dumps(data), headers=headers)
-    return r.text
+    return r.json()
 
 if __name__ == '__main__':
     msg = sys.argv[1]
