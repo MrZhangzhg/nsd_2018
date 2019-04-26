@@ -69,6 +69,28 @@ zabbix api：
 所以api地址是：http://192.168.4.2/zabbix/api_jsonrpc.php
 
 
+CI/CD: 持续集成/持续交付
+
+编译执行：C / go
+解释执行：python / php / shell
+
+jenkins: 实现CI
+下载、编译程序
+
+配置node4成为jenkins服务器
+1、node4.tedu.cn  eth0: 192.168.4.4   eth1:自动获得，连接default网络
+(1) node4的第二块网卡采连接到default网络
+(2) 删除virbr0网桥
+[root@node4 ~]# ifconfig virbr0 down
+[root@node4 ~]# brctl delbr virbr0
+(3) 配置IP
+[root@node4 ~]# LANG=C nmtui
+Edit a connection -> Add -> Ethernet -> Profile name: eth1; Device: eth1
+-> OK
+[root@node4 ~]# ifup eth1
+2、安装
+拷贝jenkins rpm包到node4
+[root@node4 ~]# rpm -ihv jenkins-2.138.2-1.1.noarch.rpm
 
 
 
