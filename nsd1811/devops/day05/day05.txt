@@ -109,6 +109,35 @@ https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json
 -> 提交
 (2) 安装插件
 可选插件 -> git parameter -> 直接安装 -> 安装完成后重启Jenkins(空闲时)
+(3) 在jenkins服务器上安装git
+[root@node4 ~]# yum install -y git
+
+(4)如果在线安装不上，可以先下载，下载网址是：
+http://updates.jenkins-ci.org/download/plugins/git-parameter/
+下载后，在首页 -> 系统管理 -> 插件管理 -> 高级 -> 上传插件
+
+
+上线流程：
+1、程序员编写代码
+[root@room8pc16 day05]# git init /tmp/myweb
+[root@room8pc16 day05]# cd /tmp/myweb
+[root@room8pc16 myweb]# echo '<h1>Hello World</h1>' > index.html
+[root@room8pc16 myweb]# git add .
+[root@room8pc16 myweb]# git commit -m "myweb version 1.0"
+[root@room8pc16 myweb]# git tag 1.0  # 标记此时的版本号为1.0版本
+[root@room8pc16 myweb]# git tag  # 查看版本
+1.0
+1.0开发完毕后，继续开发新版本
+[root@room8pc16 myweb]# echo '<h2>my web 2.0</h2>' >> index.html
+[root@room8pc16 myweb]# git add .
+[root@room8pc16 myweb]# git commit -m "my web 2.0"
+[root@room8pc16 myweb]# git tag 2.0  # 标记此时的版本号为2.0版本
+2、代码推送到gitlab服务器
+
+
+
+
+
 
 
 
