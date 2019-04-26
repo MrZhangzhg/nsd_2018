@@ -92,6 +92,19 @@ Edit a connection -> Add -> Ethernet -> Profile name: eth1; Device: eth1
 拷贝jenkins rpm包到node4
 [root@node4 ~]# rpm -ihv jenkins-2.138.2-1.1.noarch.rpm
 
+3、配置jenkins
+jenkins是java程序，需要安装java
+# yum install -y java
+[root@node4 ~]# systemctl start jenkins
+[root@node4 ~]# systemctl enable jenkins
+访问 http://192.168.4.4:8080
+按向导初始化。其中安装插件时，什么也不要选择。“选择插件来安装” -> “无”
+“创建第一个管理员”界面，选择右下角“使用admin账号登陆” -> 保存并完成
+进入管理页面后，点击右上角的admin -> 左侧的设置 -> 修改密码
+
+
+
+
 
 
 
