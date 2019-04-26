@@ -36,15 +36,31 @@ zabbix编程
 
 2、zabbix官方手册
 https://www.zabbix.com/documentation/3.4/zh/manual
-找到19.API 
+找到19.API
 
 
+>>> class CPU:
+...     def __init__(self, core, temp):
+...         self.core = core
+...         self.temp = temp
+...     def __str__(self):
+...         return 'cpu_temp(core: %s, temp: %s)' % (self.core, self.temp)
+>>> c1 = CPU(0, 42)
+>>> print(c1)
+cpu_temp(core: 0, temp: 42)
+>>> c1.core
+0
+>>> c1.temp
+42
 
 
-
-
-
-
+adict = {'key1': [c1]}
+>>> print(adict['key1'][0])
+cpu_temp(core: 0, temp: 42)
+>>> mylist = adict['key1']
+>>> mylist[0]
+>>> print(mylist[0])
+cpu_temp(core: 0, temp: 42)
 
 
 
