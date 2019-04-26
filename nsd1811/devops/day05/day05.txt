@@ -34,7 +34,9 @@ zabbix编程
 
 >>> psutil.sensors_fans()  # 风扇信息
 
-
+2、zabbix官方手册
+https://www.zabbix.com/documentation/3.4/zh/manual
+找到19.API 
 
 
 
