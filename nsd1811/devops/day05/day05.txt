@@ -1,0 +1,30 @@
+requests模块
+1、常用方法
+requests.get()
+requests.post()
+2、传递参数
+http://www.kuaidi100.com/query?type=shentong&postid=12345678
+url = 'http://www.kuaidi100.com/query'
+params = {'type': 'shengtong', 'postid': '12345678'}
+r = requests.get(url, params=params)
+3、传递post提交的数据，不会出现在url地址栏上
+url = 'http:/xxxx.xxxx.com'
+data = {'username': 'xxx', 'password': 'xxxxx'}
+r = requests.post(url, data=data)
+
+钉钉机器人：
+1、搜索 钉钉开放平台，找到开发者手册地址：
+https://open-doc.dingtalk.com/
+点击“移动应用接入”，再从右上角搜索“自定义机器人”
+2、在钉钉中创建一个群，添加群聊机器人，类型是webhook，
+将群聊机器人的webhook网址复制下来，这个是机器人聊天的授权地址
+
+
+
+
+
+
+
+
+
+
