@@ -102,7 +102,13 @@ jenkins是java程序，需要安装java
 “创建第一个管理员”界面，选择右下角“使用admin账号登陆” -> 保存并完成
 进入管理页面后，点击右上角的admin -> 左侧的设置 -> 修改密码
 
-
+4、安装插件
+(1) 使用国内镜像
+首页 -> 系统管理 -> 插件管理 -> 高级 -> 升级站点:
+https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json
+-> 提交
+(2) 安装插件
+可选插件 -> git parameter -> 直接安装 -> 安装完成后重启Jenkins(空闲时)
 
 
 
