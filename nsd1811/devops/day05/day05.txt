@@ -21,6 +21,25 @@ https://open-doc.dingtalk.com/
 
 
 
+zabbix编程
+1、编写监控插件
+# pip3 install psutil
+>>> import psutil
+>>> psutil.sensors_temperatures()
+>>> temps = psutil.sensors_temperatures()  # 返回字典
+# key是coretemp的val是列表，取出列表第一项是第一颗CPU的温度
+>>> cpu0_temp = temps['coretemp'][0]
+第一颗CPU的信息是个object，它有很多属性
+>>> print('%s: %s' % (cpu0_temp.label, cpu0_temp.current))
+
+>>> psutil.sensors_fans()  # 风扇信息
+
+
+
+
+
+
+
 
 
 
