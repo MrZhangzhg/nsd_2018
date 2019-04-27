@@ -168,8 +168,23 @@ error: 不能重命名配置小节 'remote.origin' 到 'remote.old-origin'
 [root@node4 ~]# mkdir -p /var/www/html/deploy/packages/
 [root@node4 ~]# chown -R jenkins:jenkins /var/www/html/deploy/
 
-
-
+7、修改jenkins工程
+(1) 将check out的版本放到子目录中
+在源码管理下面，Additional Behaviours -> check out to a sub-directory
+-> Local subdirectory for repo: myweb-$webver
+# ls /var/lib/jenkins/workspace/myweb/
+(2) 将软件打包放到apache相关目录下
+构建 -> 增加构建步骤 -> 执行shell
+deploy_dir=/var/www/html/deploy
+cp -r myweb-$webver $deploy_dir/packages/
+cd $deploy_dir/packages
+rm -fr myweb-$webver/.git
+tar czf myweb-$webver.tar.gz myweb-$webver
+rm -rf myweb-$webver
+md5sum myweb-$webver.tar.gz | awk '{print $1}' > myweb-$webver.tar.gz.md5
+cd $deploy_dir
+[ -f live_ver ] && cat live_ver > last_ver
+echo $webver > live_ver
 
 
 
