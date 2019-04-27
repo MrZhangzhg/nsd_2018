@@ -133,6 +133,18 @@ http://updates.jenkins-ci.org/download/plugins/git-parameter/
 [root@room8pc16 myweb]# git commit -m "my web 2.0"
 [root@room8pc16 myweb]# git tag 2.0  # 标记此时的版本号为2.0版本
 2、代码推送到gitlab服务器
+(1) 启动gitlab服务器
+(2) 在名为devops的group下创建项目myweb，可见等级为公开
+(3) 在myweb项目中授权用户是主程序员角色
+(4) 上传代码到gitlab服务器
+[root@room8pc16 myweb]# cd /tmp/myweb/
+# git remote rename origin old-origin
+如果出现以下报错，可以忽略
+error: 不能重命名配置小节 'remote.origin' 到 'remote.old-origin'
+# git remote add origin http://192.168.4.1/devops/myweb.git
+# git push -u origin --all   # 推送所有的确认
+# git push -u origin --tags  # 推送所有的tag
+
 
 
 
