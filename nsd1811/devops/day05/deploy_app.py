@@ -3,7 +3,24 @@ import wget
 import os
 
 def has_new_ver(ver_fname, ver_url):
+    # 如果本地没有版本文件，表示有新版本
+    if not os.path.isfile(ver_fname):
+        return True
 
+    # 读取本地版本文件内容
+    with open(ver_fname) as fobj:
+        local_ver = fobj.read()
+
+    # 获取远程版本
+    r = requests.get(ver_url)
+    remote_ver = r.text
+
+    # 如果本地和远程版本不一样，表示有新版本
+    if local_ver != remote_ver:
+        return True
+
+    # 如果本地和远程版本一样，则没有新版本
+    return False
 
 def has_error(fname, md5_url):
 
