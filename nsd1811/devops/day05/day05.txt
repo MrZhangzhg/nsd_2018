@@ -155,6 +155,18 @@ error: 不能重命名配置小节 'remote.origin' 到 'remote.old-origin'
 4、查看拉取下来的代码：
 [root@node4 ~]# ls /var/lib/jenkins/workspace/
 
+5、为了方便应用服务器从jenkins上把代码下载过去，在jenkins上安装apache，把
+从gitlab上拉取的代码放到apache中用于下载
+[root@node4 ~]# yum install -y httpd
+[root@node4 ~]# systemctl start httpd
+[root@node4 ~]# systemctl enable httpd
+6、创建apache目录
+/var/www/html/deploy: 存储版本文件
+/var/www/html/deploy/live_ver：最新版本文件
+/var/www/html/deploy/last_ver：前一个版本文件
+/var/www/html/deploy/packages/: 存储压缩后的软件包和它的md5值
+[root@node4 ~]# mkdir -p /var/www/html/deploy/packages/
+[root@node4 ~]# chown -R jenkins:jenkins /var/www/html/deploy/
 
 
 
