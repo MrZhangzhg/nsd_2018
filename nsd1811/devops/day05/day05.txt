@@ -145,6 +145,15 @@ error: 不能重命名配置小节 'remote.origin' 到 'remote.old-origin'
 # git push -u origin --all   # 推送所有的确认
 # git push -u origin --tags  # 推送所有的tag
 
+3、jenkins拉取gitlab上的代码
+创建自由风格的软件项目 -> 参数化构建过程 -> 添加参数选git parameter
+-> name: webver, parameter type: tag, Default Value: origin/master
+-> 源码管理 -> Repository URL: http://192.168.4.1/devops/myweb.git
+-> Branches to build: $webver ->保存
+执行工程，拉取代码：Build with Parameters -> 选择1.0后构建
+-> 左下角的Build History，成功显示蓝球，失败是红球
+4、查看拉取下来的代码：
+[root@node4 ~]# ls /var/lib/jenkins/workspace/
 
 
 
