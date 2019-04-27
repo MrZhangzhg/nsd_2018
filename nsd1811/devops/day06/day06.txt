@@ -1,0 +1,23 @@
+ansible
+1、安装
+(1) 在线
+# pip3 install ansible
+(2) 离线
+# cd ansible_pkg/
+# pip3 install *
+2、准备三台虚拟机，用于远程管理测试
+node4.tedu.cn  192.168.4.4
+node5.tedu.cn  192.168.4.5
+node6.tedu.cn  192.168.4.6
+(1) 在物理机上配置名称解析
+[root@room8pc16 ~]# for i in {1..254}
+> do
+> echo -e "192.168.4.$i\tnode$i.tedu.cn\tnode$i" >> /etc/hosts
+> done
+(2) 收集所有服务器的密钥
+[root@room8pc16 ~]# ssh-keyscan 192.168.4.{4..6} node{4..6} node{4..6}.tedu.cn >> ~/.ssh/known_hosts
+
+
+
+
+
