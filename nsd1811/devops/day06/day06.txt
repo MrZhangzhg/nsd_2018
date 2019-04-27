@@ -56,6 +56,21 @@ autocmd FileType yaml setlocal sw=2 ts=2 et ai   # 只有yaml文件生效的配�
 (4) 执行
 [root@room8pc16 myansible]# ansible-playbook authkey.yml -k
 
+(5) yum的playbook
+[root@room8pc16 myansible]# mkdir files
+[root@room8pc16 myansible]# vim files/server.repo
+[root@room8pc16 myansible]# vim yum.yml
+---
+- name: configure yum
+  hosts: all
+  tasks:
+    - name: upload yum repo file
+      copy:
+        src: files/server.repo
+        dest: /etc/yum.repos.d/server.repo
+[root@room8pc16 myansible]# ansible-playbook --syntax-check yum.yml
+[root@room8pc16 myansible]# ansible-playbook yum.yml
+
 
 
 
