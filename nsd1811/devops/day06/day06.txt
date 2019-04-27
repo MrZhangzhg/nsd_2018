@@ -33,6 +33,38 @@ node6.tedu.cn
 测试
 [root@room8pc16 myansible]# ansible all -m ping -k
 
+4、通过playbook实现免密登陆、配置yum
+(1) 配置vim
+set ai   # 自动缩进
+set ts=4   # tab键是4空格
+set et   # 将tab转换成空格
+set encoding=utf8   # 字符编码
+autocmd FileType yaml setlocal sw=2 ts=2 et ai   # 只有yaml文件生效的配置
+(2) 编写playbook
+[root@room8pc16 myansible]# vim authkey.yml
+---
+- name: configure auth key
+  hosts: all
+  tasks:
+    - name: upload public key
+      authorized_key:
+        user: root
+        state: present
+        key: "{{ lookup('file', '/root/.ssh/id_rsa.pub') }}"
+(3) 检查语法
+[root@room8pc16 myansible]# ansible-playbook --syntax-check authkey.yml
+(4) 执行
+[root@room8pc16 myansible]# ansible-playbook authkey.yml -k
+
+
+
+
+
+
+
+
+
+
 
 
 
