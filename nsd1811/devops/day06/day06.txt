@@ -71,6 +71,37 @@ autocmd FileType yaml setlocal sw=2 ts=2 et ai   # 只有yaml文件生效的配�
 [root@room8pc16 myansible]# ansible-playbook --syntax-check yum.yml
 [root@room8pc16 myansible]# ansible-playbook yum.yml
 
+配置lamp
+[root@room8pc16 myansible]# vim lamp.yml
+---
+- name: configure dbservers
+  hosts: dbservers
+  tasks:
+    - name: install mariadb
+      yum:
+        name: mariadb-server
+        state: latest
+    - name: start mariadb service
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+
+- name: configure webservers
+  hosts: webservers
+  tasks:
+    - name: install apache
+      yum:
+        name: [httpd, php, php-mysql]
+        state: present
+    - name: start httpd service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+[root@room8pc16 myansible]# ansible-playbook --syntax-check lamp.yml
+[root@room8pc16 myansible]# ansible-playbook lamp.yml
+
 
 
 

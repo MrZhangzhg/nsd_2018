@@ -1,0 +1,26 @@
+---
+- name: configure dbservers
+  hosts: dbservers
+  tasks:
+    - name: install mariadb
+      yum:
+        name: mariadb-server
+        state: latest
+    - name: start mariadb service
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+
+- name: configure webservers
+  hosts: webservers
+  tasks:
+    - name: install apache
+      yum:
+        name: [httpd, php, php-mysql]
+        state: present
+    - name: start httpd service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
