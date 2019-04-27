@@ -16,7 +16,22 @@ node6.tedu.cn  192.168.4.6
 > done
 (2) 收集所有服务器的密钥
 [root@room8pc16 ~]# ssh-keyscan 192.168.4.{4..6} node{4..6} node{4..6}.tedu.cn >> ~/.ssh/known_hosts
+3、配置ansible工作环境
+[root@room8pc16 day06]# mkdir myansible
+[root@room8pc16 day06]# cd myansible
+[root@room8pc16 myansible]# vim ansible.cfg
+[defaults]
+inventory = hosts
+remote_user = root
+[root@room8pc16 myansible]# vim hosts
+[dbservers]
+node4.tedu.cn
 
+[webservers]
+node5.tedu.cn
+node6.tedu.cn
+测试
+[root@room8pc16 myansible]# ansible all -m ping -k
 
 
 
