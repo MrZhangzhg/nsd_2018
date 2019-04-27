@@ -2,6 +2,7 @@ import requests
 import wget
 import os
 import hashlib
+import tarfile
 
 def has_new_ver(ver_fname, ver_url):
     # 如果本地没有版本文件，表示有新版本
@@ -38,8 +39,22 @@ def has_error(fname, md5_url):
 
     return True
 
-def deploy():
-
+def deploy(app_fname):
+    # app_fname: /var/www/download/myweb-1.0.tar.gz
+    # 解压缩
+    deploy_dir = '/var/www/deploy/'
+    tar = tarfile.open(app_fname, 'r:gz')
+    tar.extractall(path=deploy_dir)
+    tar.close()
+    # 拼出解压目录的绝对路径
+    app_path = os.path.basename(app_fname)   # myweb-1.0.tar.gz
+    app_path = app_path.replace('.tar.gz', '')  # myweb-1.0
+    app_path = os.path.join(deploy_dir, app_path)
+    # 创建链接，如果链接已存在，先删除它
+    link = '/var/www/html/nsd1811'
+    if os.path.exists(link):
+        os.remove(link)
+    os.symlink(app_path, link)
 
 if __name__ == '__main__':
     # 检查是否有新版本
@@ -63,4 +78,7 @@ if __name__ == '__main__':
         os.remove(app_fname)  # 如果文件已扣坏，则删除它
         exit(2)
     # 如果下载的文件是完好的，则部署
-    deploy()
+    deploy(app_fname)
+    # 更新本地版本文件
+    with open(ver_fname, 'w') as fobj:
+        fobj.write(r.text)

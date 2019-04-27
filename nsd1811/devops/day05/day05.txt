@@ -193,6 +193,7 @@ echo $webver > live_ver
 2、有新版本则下载相应的压缩包
 3、校验压缩包，检查下载的压缩包是否损坏
 4、如果压缩包没有损坏，则部署
+将压缩包解压到deploy目录下，创建到解压目录的链接
 5、路径规划
 /var/www/download/: 存储下载的压缩包和md5文件
 /var/www/deploy/: 存储live_ver和解压后的软件目录
