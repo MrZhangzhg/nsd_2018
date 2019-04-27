@@ -1,6 +1,7 @@
 import requests
 import wget
 import os
+import hashlib
 
 def has_new_ver(ver_fname, ver_url):
     # 如果本地没有版本文件，表示有新版本
@@ -23,7 +24,19 @@ def has_new_ver(ver_fname, ver_url):
     return False
 
 def has_error(fname, md5_url):
+    # 计算本地文件的md5
+    m = hashlib.md5()
+    with open(fname, 'rb') as fobj:
+        while True:
+            data = fobj.read(4096)
+            if not data:
+                break
+            m.update(data)
+    r = requests.get(md5_url)  # 取出服务器公布的md5值
+    if m.hexdigest() == r.text.strip():
+        return False  # 如果两个md5值相等，表示文件未损坏
 
+    return True
 
 def deploy():
 
@@ -47,6 +60,7 @@ if __name__ == '__main__':
     md5_url = app_url + '.md5'  # 拼出md5值的网址
     if has_error(app_fname, md5_url):
         print('文件已损坏')
+        os.remove(app_fname)  # 如果文件已扣坏，则删除它
         exit(2)
     # 如果下载的文件是完好的，则部署
     deploy()
