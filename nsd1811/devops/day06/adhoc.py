@@ -25,15 +25,18 @@ loader = DataLoader() # Takes care of finding and reading yaml, json and ini fil
 passwords = dict()
 
 # create inventory, use path to host config file as source or hosts in a comma separated string
-inventory = InventoryManager(loader=loader, sources='localhost,')
+# 定义主机清单，可以将各主机用逗号隔开的字符串，也可以指定文件路径列表
+# inventory = InventoryManager(loader=loader, sources='localhost,')
+inventory = InventoryManager(loader=loader, sources=['myansible/hosts'])
 
 # variable manager takes care of merging all the different sources to give you a unifed view of variables available in each context
+# 变量管理器
 variable_manager = VariableManager(loader=loader, inventory=inventory)
 
 # create datastructure that represents our play, including tasks, this is basically what our YAML loader does internally.
 play_source =  dict(
-        name = "Ansible Play",
-        hosts = 'localhost',
+        name = "Ansible Play",  # play的名字
+        hosts = 'webservers',    # 指定在哪些主机上执行命令
         gather_facts = 'no',
         tasks = [
             dict(action=dict(module='shell', args='ls'), register='shell_out'),
@@ -43,9 +46,11 @@ play_source =  dict(
 
 # Create play object, playbook objects use .load instead of init or new methods,
 # this will also automatically create the task objects from the info provided in play_source
+# 通过上面的配置，创建一个play
 play = Play().load(play_source, variable_manager=variable_manager, loader=loader)
 
 # Run it - instantiate task queue manager, which takes care of forking and setting up all objects to iterate over host list and tasks
+# 创建任管理器，执行play
 tqm = None
 try:
     tqm = TaskQueueManager(
