@@ -107,6 +107,25 @@ ansible编程
 https://docs.ansible.com/  -> Ansible Documentation搜索python api
 将example代码拷贝
 
+命名的元组：
+1、还是元组，具有元组的特性，执行元组相关的操作
+2、为元组的下标命名
+>>> from collections import namedtuple
+>>> Point = namedtuple('Point', ['x', 'y', 'z'])
+>>> a = Point(10, 15, 8)
+>>> len(a)
+3
+>>> a[0]
+10
+>>> a[1:]
+(15, 8)
+>>> a.x
+10
+>>> a.y
+15
+>>> a.z
+8
+
 
 
 
