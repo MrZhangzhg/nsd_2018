@@ -6,6 +6,15 @@
 </head>
 <body>
 <form action="http://www.kuaidi100.com/query" target="_blank">
+    <input type="radio" name="type" value="youzhengguonei"> <label>邮政</label>
+    <label><input type="radio" name="type" value="zhongtong">中通</label>
+    <input type="radio" name="type" value="shentong" id="st"><label for="st">申通</label>
+    <input type="text" name="postid" placeholder="单号">
+    <input type="submit" value="查询">
+</form>
+
+<hr>
+<form action="http://www.kuaidi100.com/query" target="_blank">
     <input type="text" name="type" placeholder="快递公司">
     <input type="text" name="postid" placeholder="单号">
     <input type="submit" value="查询">
