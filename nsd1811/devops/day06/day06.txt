@@ -103,6 +103,12 @@ autocmd FileType yaml setlocal sw=2 ts=2 et ai   # 只有yaml文件生效的配�
 [root@room8pc16 myansible]# ansible-playbook lamp.yml
 
 
+ansible编程
+https://docs.ansible.com/  -> Ansible Documentation搜索python api
+将example代码拷贝
+
+
+
 
 
 
