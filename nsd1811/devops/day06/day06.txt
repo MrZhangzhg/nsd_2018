@@ -186,6 +186,23 @@ if __name__ == '__main__':
 [root@node5 wget-3.2]# python setup.py install
 
 
+ansible-cmdb: 将收集下来的主机信息以web形式展现
+1、收集主机信息
+[root@room8pc16 myansible]# # ansible all -m setup --tree /tmp/out/
+[root@room8pc16 myansible]# # ls /tmp/out/
+2、安装ansible-cmdb
+# cd ansible-cmdb_pkgs/
+[root@room8pc16 ansible-cmdb_pkgs]# pip3 install *
+[root@room8pc16 ~]# vim $(which ansible-cmdb)
+PY_BIN=$(which python3)   # 修改第8行
+[root@room8pc16 myansible]# # ansible-cmdb /tmp/out/ > /tmp/hosts.html
+[root@room8pc16 myansible]# firefox /tmp/hosts.html
+
+
+
+
+
+
 
 
 
