@@ -43,6 +43,6 @@ def adhoc(sources, hosts, module, args):
 if __name__ == '__main__':
     sources = ['myansible/hosts']
     hosts = 'webservers'
-    module = 'shell'
-    args = 'mkdir -p /tmp/aaa/bbb'
+    module = 'ping'
+    args = ''
     adhoc(sources, hosts, module, args)
