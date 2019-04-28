@@ -1,0 +1,11 @@
+web开发：
+前端：html / div / css / javascript
+后端：python / php / java / asp
+
+
+标记、标签、元素都是一样的概念
+块级元素：不管写多少内容，都必须独占一行。
+div / p / hn(h1...h6)
+
+
+
