@@ -151,6 +151,39 @@ yaml文件格式能够解释成python的数据类型，如把lamp.yml改为pytho
 
 
 
+编写ansible模块
+1、创建自定义模块路径
+[root@room8pc16 day06]# mkdir mylibraby
+# export ANSIBLE_LIBRARY=/var/ftp/nsd_2018/nsd1811/devops/day06/mylibraby
+# mylibraby/mycopy.py
+from ansible.module_utils.basic import AnsibleModule
+import shutil
+
+def main():
+    module = AnsibleModule(
+        argument_spec=dict(
+            yuan=dict(required=True, type='str'),
+            mudi=dict(required=True, type='str')
+        )
+    )
+    shutil.copy(module.params['yuan'], module.params['mudi'])
+    module.exit_json(changed=True)
+
+if __name__ == '__main__':
+    main()
+2、测试
+# ansible webservers -m mycopy -a "yuan=/etc/hosts mudi=/tmp/zhuji.txt"
+
+
+手工安装python模块
+1、在物理机上下载wget模块
+# pip download wget --trusted-host mirrors.163.com
+2、拷贝到远程
+# ansible webservers -m copy -a "src=files/wget-3.2.zip dest=/root"
+3、在远程主机上执行安装
+[root@node5 ~]# unzip wget-3.2.zip
+[root@node5 ~]# cd wget-3.2/
+[root@node5 wget-3.2]# python setup.py install
 
 
 
