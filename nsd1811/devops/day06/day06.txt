@@ -127,6 +127,27 @@ https://docs.ansible.com/  -> Ansible Documentation搜索python api
 8
 
 
+yaml文件格式能够解释成python的数据类型，如把lamp.yml改为python数据类型如下：
+[
+    'name': 'configure dbservers',
+    'hosts': 'dbservers',
+    'tasks:
+        [
+            'name': 'install mariadb',
+            'yum': {
+                'name': 'mariadb-server',
+                'state': 'latest'
+            }
+        ],
+        [
+            'name': 'start mariadb'
+            'service': {
+                'name': 'mariadb',
+                'state': 'started',
+                'enabled': 'yes'
+            }
+        ]
+]
 
 
 

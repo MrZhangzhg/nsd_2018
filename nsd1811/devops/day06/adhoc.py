@@ -8,12 +8,21 @@ from ansible.executor.task_queue_manager import TaskQueueManager
 import ansible.constants as C
 
 # since API is constructed for CLI it expects certain options to always be set, named tuple 'fakes' the args parsing options object
+# 此处定义了执行ansible命令时的选项
+# connection定义连接方式，local表示本机，ssh表示ssh，smart表示自动选择
+# module_path指定自定义的模块位置
+# forks指定启动的进程数目
+# become：如果使用普通用户远程登陆服务器，那么切换成其他用户该怎么切换
+# check: 不真正执行操作，而是预言操作的结果
+# diff 显示修改小文件前后的变化
 Options = namedtuple('Options', ['connection', 'module_path', 'forks', 'become', 'become_method', 'become_user', 'check', 'diff'])
-options = Options(connection='local', module_path=['/to/mymodules'], forks=10, become=None, become_method=None, become_user=None, check=False, diff=False)
+options = Options(connection='ssh', module_path=['/to/mymodules'], forks=10, become=None, become_method=None, become_user=None, check=False, diff=False)
 
 # initialize needed objects
+# DataLoader用于查找并解析yaml、json、ini文件，把它们转换成python的数据类型
 loader = DataLoader() # Takes care of finding and reading yaml, json and ini files
-passwords = dict(vault_pass='secret')
+# 设置密码
+passwords = dict()
 
 # create inventory, use path to host config file as source or hosts in a comma separated string
 inventory = InventoryManager(loader=loader, sources='localhost,')
