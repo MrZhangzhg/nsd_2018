@@ -7,9 +7,12 @@
     float: left;
     width: 200px;
     height: 300px;
-    background: mediumpurple;
+    background: #bacedb;
 }
 .center {
+    font-size: 15pt;
+    font-weight: bold;
+    font-style: italic;
     margin-left: 200px;
     width: 600px;
     height: 300px;
@@ -21,6 +24,9 @@
     width: 200px;
     height: 300px;
     background: mediumpurple;
+    font-size: 15pt;
+    text-decoration: underline;
+    text-align: right;
 }
 
 .footer {
