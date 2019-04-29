@@ -13,3 +13,25 @@ hr{
 .g1{
     color: green;
 }
+
+#div3 {
+    text-align: center;
+}
+
+h1, h2{
+    background: orange;
+}
+
+div.c1 {
+    color: purple;
+}
+
+a:link {   /*未访问的状态*/
+    text-decoration: none;   /*去除下划线*/
+}
+a:hover {   /*鼠标悬停*/
+    font-size: 18pt;
+}
+a:visited {   /*访问后的状态*/
+    color: darkgrey;
+}
