@@ -1,7 +1,15 @@
+* {
+    font-size: 12pt;
+}
+
 body{
     background: silver;
     color: blue;
 }
 hr{
     color: red;
+}
+
+.g1{
+    color: green;
 }
