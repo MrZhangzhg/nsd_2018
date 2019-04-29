@@ -56,6 +56,11 @@ rgb: red / green / blue
 https://www.runoob.com/   菜鸟教程
 
 
+typora => markdown编辑器
+https://typora.io/linux/Typora-linux-x64.tar.gz
+
+
+
 
 
 
