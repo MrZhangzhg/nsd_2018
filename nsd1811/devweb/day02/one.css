@@ -1,0 +1,21 @@
+.container {
+    width: 1000px;
+    margin: 0 auto;   /*0 auto 0 auto*/
+}
+.header {
+    height: 50px;
+    background: lightgreen;
+}
+.main {
+    height: 300px;
+    background: oldlace;
+}
+.footer {
+    height: 50px;
+    background: lightgreen;
+    text-align: center;
+    line-height: 50px;
+}
+.footer a:link{    /*footer类中的a设置*/
+    text-decoration: none;
+}
