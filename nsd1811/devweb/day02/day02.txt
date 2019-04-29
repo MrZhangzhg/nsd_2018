@@ -1,0 +1,33 @@
+CSS:层叠样式表
+1、实现了内容和形式的分离
+2、使用方式
+(1) 内联样式
+<body style="background: silver; color: blue;">
+<h1>Hello World!</h1>
+<hr style="color: red">
+<h2>Hello World!</h2>
+</body>
+(2) 内部样式
+<head>
+    <meta charset="UTF-8">
+    <title>my css1</title>
+    <style>
+        body{
+            background: silver;
+            color: blue;
+        }
+        hr{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<h1>Hello World!</h1>
+<hr>
+<h2>Hello World!</h2>
+</body>
+(3) 外部样式:将样式表单独写到样式表文件中
+
+
+
+
