@@ -23,7 +23,12 @@
     background: mediumpurple;
 }
 
-.header, .footer {
-    height: 50px;
+.footer {
+    height: 150px;
     background: lightgreen;
+}
+
+.header {
+    height: 150px;
+    background-image: url("http://i657.photobucket.com/albums/uu294/mavromatidis/skyblue1024x150.jpg");
 }
