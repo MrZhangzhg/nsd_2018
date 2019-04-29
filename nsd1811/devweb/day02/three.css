@@ -16,6 +16,11 @@
     margin: 0;
 }
 
+a.active {
+    color: white;
+    background: #555555;
+}
+
 .left ul a {
     width: 68px;
     display: block;
@@ -27,6 +32,30 @@
 .left ul a:hover {
     color: #ffffff;
     background: #555555;
+}
+
+.header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.header ul li {
+    float: left;
+}
+
+.header ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.header ul li a:hover {
+    background-color: #111;
 }
 
 .center {
