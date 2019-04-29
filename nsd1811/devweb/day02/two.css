@@ -1,0 +1,25 @@
+.container {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.left {
+    height: 300px;
+    background: mediumpurple;
+}
+
+.right {
+    height: 310px;
+    background: lightgrey;
+}
+
+.header {
+    height: 50px;
+    background: lightgreen;
+}
+
+.footer {
+    height: 50px;
+    background: lightgreen;
+}
+

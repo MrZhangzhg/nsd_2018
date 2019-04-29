@@ -14,7 +14,7 @@
     height: 50px;
     background: lightgreen;
     text-align: center;
-    line-height: 50px;
+    line-height: 50px;   /*文字行高是50px*/
 }
 .footer a:link{    /*footer类中的a设置*/
     text-decoration: none;
