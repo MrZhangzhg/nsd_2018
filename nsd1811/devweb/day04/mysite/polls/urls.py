@@ -6,4 +6,5 @@ urlpatterns = [
     # 首页用veiws.index函数响应，为这个URL起名为index
     url(r'^$', views.index, name='index'),
     url(r'^(?P<question_id>\d+)/$', views.detail, name='detail'),
+    url(r'^(?P<question_id>\d+)/result/$', views.result, name='result'),
 ]
