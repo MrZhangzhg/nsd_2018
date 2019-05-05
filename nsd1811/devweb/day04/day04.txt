@@ -1,0 +1,31 @@
+python开源web框架：
+1、django : openstack->horizon
+2、tornado
+3、flask
+
+
+python虚拟环境
+可以理解为把python环境安装到一个文件夹中，以后安装python软件包就是把软件安装到这个
+文件了。可以为每个项目都创建一个虚拟环境，在虚拟环境中部署软件。当项目完成后，这些
+软件不再需要了，可以简单的把虚拟环境文件夹删除
+1、创建虚拟环境
+[root@room8pc16 day03]# python3 -m venv /opt/djenv/
+2、激活虚拟环境
+[root@room8pc16 day03]# source /opt/djenv/bin/activate
+(djenv) [root@room8pc16 day03]#
+3、在虚拟环境中安装软件包
+(1) 在线安装
+(djenv) [root@room8pc16 day03]# pip install django==1.11.6
+(2) 离线安装
+# cd dj_pkgs/
+(djenv) [root@room8pc16 dj_pkgs]# pip install *
+
+
+
+
+
+
+
+
+
+
