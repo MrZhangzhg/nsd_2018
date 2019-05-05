@@ -144,6 +144,25 @@ urlpatterns = [
 ]
 
 
+创建首页
+1、配置路由
+# polls/urls.py
+from django.conf.urls import url
+from . import views   # 在当前目录(包)中导入views模块
+
+# polls应用的正则表达式，从http://x.x.x.x/polls/后面开始匹配
+urlpatterns = [
+    # 首页用veiws.index函数响应，为这个URL起名为index
+    url('^$', views.index, name='index'),
+]
+2、为首页创建index函数
+
+
+
+
+
+
+
 
 
 
