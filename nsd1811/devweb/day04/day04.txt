@@ -177,6 +177,33 @@ def index(request):
 </html>
 4、重启开发服务器，访问投票首页http://127.0.0.1/polls/
 
+创建投票详情页
+1、创建路由映射
+# polls/urls.py
+    # 将问题编号保存到question_id变量中，传递给veiws.detail函数
+    url(r'^(?P<question_id>\d+)/$', views.detail, name='detail'),
+2、创建视图函数
+# polls/views.py
+def detail(request, question_id):
+    # 字典的key将成为变量名，字典的val成为变量值，发送到detail.html
+    return render(request, 'detail.html', {'question_id': question_id})
+3、创建模板文件
+# polls/templates/detail.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票详请</title>
+</head>
+<body>
+<h1>{{ question_id }}号问题投票详情</h1>
+</body>
+</html>
+4、访问http://127.0.0.1/polls/3/
+
+
+
+
 
 
 
