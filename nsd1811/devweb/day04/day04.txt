@@ -227,7 +227,7 @@ def result(request, question_id):
 
 创建模型
 1、规划表
-问题表：问题ID、问题内容
+问题表：问题ID、问题内容、发布时间
 选项表：选项ID、选项内容、选项票数、问题ID
 2、创建模型:仍然采用ORM的方式
 MariaDB [dj1811]> show tables;
@@ -255,10 +255,26 @@ MariaDB [dj1811]> show tables;
 MariaDB [dj1811]> desc polls_question;
 MariaDB [dj1811]> desc polls_choice;
 
+4、分析
+(1) 表名：应用名_类名，小写字母
+(2) 字段名：如果用户没有指定主键，django自动为表创建了一个名为id的主键
+其他字段名来自于class的类变量
+(3) 外键字段名，来自于类变量加_id，比如外键类变量名为q，外键字段名就是q_id
+如果外键类变量名为qestion，外键字段名就是question_id
 
+修改models.py的外键名称，q => qestion
+class Choice(models.Model):
+    choice_text = models.CharField(max_length=200, null=False)
+    votes = models.IntegerField(default=0)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
 
-
-
+    def __str__(self):
+        return "%s=> %s" % (self.question, self.choice_text)
+把改变内容反馈到数据库
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+MariaDB [dj1811]> desc polls_choice;
+发现原来的q_id已经成为了question_id
 
 
 
