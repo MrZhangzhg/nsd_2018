@@ -43,6 +43,58 @@ django是用python语言做网站的。最终需要把做好的网站放到apach
 访问http://127.0.0.1:8000
 
 
+pycharm设置
+1、修改python的解释器，使之使用虚拟环境
+File->settings->Project xxx->Project Interpreter
+2、修改python，使之与django配合使用
+File->settings->Language & Frameworks -> Django -> django root选择
+外层mysite目录，settings找到mysite/settings.py
+
+
+修改django配置
+1、为项目创建数据库
+[root@room8pc16 ~]# mysql -uroot -ptedu.cn
+MariaDB [(none)]> CREATE DATABASE dj1811 DEFAULT CHARSET utf8;
+2、修改配置
+# mysite/settings.py
+ALLOWED_HOSTS = '*'    # 允许所有的主机访问
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',   # 注释
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'dj1811',
+        'USER': 'root',
+        'PASSWORD': 'tedu.cn',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    }
+}
+LANGUAGE_CODE = 'zh-hans'
+TIME_ZONE = 'Asia/Shanghai'
+USE_TZ = False
+3、引入对mysql的支持
+# mysite/__init__.py
+import pymysql
+pymysql.install_as_MySQLdb()
+
+4、测试修改后的站点
+(1) 关掉本机的http服务
+[root@room8pc16 ~]# systemctl stop httpd
+(2) 如果之前的django网站仍然在运行，按ctrl+c关闭
+(3) 启动服务，使之运行在0.0.0.0的80端口
+(djenv) [root@room8pc16 mysite]# python manage.py runserver 0:80
+访问http://127.0.0.1
+
+
+
 
 
 
