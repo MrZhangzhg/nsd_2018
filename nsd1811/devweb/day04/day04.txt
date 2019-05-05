@@ -21,6 +21,28 @@ python虚拟环境
 (djenv) [root@room8pc16 dj_pkgs]# pip install *
 
 
+创建项目
+1、创建
+(djenv) [root@room8pc16 day04]# django-admin startproject mysite
+(djenv) [root@room8pc16 day04]# cd mysite/
+(djenv) [root@room8pc16 mysite]# tree .
+.
+├── manage.py   # 用于项目管理
+└── mysite
+    ├── __init__.py   # python2需要该文件，使mysite成为包
+    ├── settings.py   # 配置
+    ├── urls.py       # 程序的入口文件
+    └── wsgi.py       # 部署django到apache时使用的部署文件
+
+1 directory, 5 files
+2、测试
+django是用python语言做网站的。最终需要把做好的网站放到apache或nginx上对外提供
+服务。为了方便看到网站的效果，django提供了一个测试web服务器，用于在开发过程中查
+看制作的效果，这个开发服务器不应该应用在生产环境下。起动开发服务器的方法如下：
+(djenv) [root@room8pc16 mysite]# python manage.py runserver
+访问http://127.0.0.1:8000
+
+
 
 
 
