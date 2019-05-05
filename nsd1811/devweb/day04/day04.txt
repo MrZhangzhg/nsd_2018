@@ -94,6 +94,15 @@ pymysql.install_as_MySQLdb()
 访问http://127.0.0.1
 
 
+访问后台
+１、生成后台数据库
+(djenv) [root@room8pc16 mysite]# python manage.py makemigrations
+(djenv) [root@room8pc16 mysite]# python manage.py migrate
+2、创建管理员帐号
+(djenv) [root@room8pc16 mysite]# python manage.py createsuperuser
+3、访问后台
+(djenv) [root@room8pc16 mysite]# python manage.py runserver 0:80
+4、访问http://127.0.0.1/admin/
 
 
 
