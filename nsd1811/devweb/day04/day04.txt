@@ -124,8 +124,24 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'polls',
 ]
+3、规划网址
+http://127.0.0.1/polls/   # 投票首页
+http://127.0.0.1/polls/1/　　　# 1号问题投票详情
+http://127.0.0.1/polls/1/result/　 #1号问题投票结果页
+4、授权，以http://127.0.0.1/polls/开头的URL都由polls应用处理
+# mysite/urls.py
+from django.conf.urls import url, include
+from django.contrib import admin
 
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^polls/', include('polls.urls')),
+]
+# vim polls/urls.py
+from django.conf.urls import url
 
+urlpatterns = [
+]
 
 
 
