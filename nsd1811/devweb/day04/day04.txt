@@ -105,6 +105,28 @@ pymysql.install_as_MySQLdb()
 4、访问http://127.0.0.1/admin/
 
 
+创建应用
+1、可以将项目拆分成多个应用
+2、多个应用可以组合到一起形成项目
+3、应用一旦编写完成后，可以作为独立的功能，集成到不同的项目中
+
+创建投票应用
+1、创建名为polls的应用
+(djenv) [root@room8pc16 mysite]# python manage.py startapp polls
+2、集成应用到项目
+# mysite/settings.py
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'polls',
+]
+
+
+
 
 
 
