@@ -277,6 +277,23 @@ MariaDB [dj1811]> desc polls_choice;
 发现原来的q_id已经成为了question_id
 
 
+注册模型到后台管理页面
+1、注册
+# polls/admin.py
+from django.contrib import admin
+from .models import Question, Choice
+
+admin.site.register(Question)
+admin.site.register(Choice)
+2、访问
+http://127.0.0.1/admin/
+在后面添加几个问题和选项
+
+
+
+
+
+
 
 
 
