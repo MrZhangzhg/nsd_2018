@@ -64,6 +64,18 @@ Choice，django自动为问题创建了一个choice_set管理器，通过这个�
 >>> Question.objects.filter(id__gt=1)# 返回集合，集合有多项
 >>> Question.objects.filter(id__gt=1).filter(id__lt=6).order_by('-pub_date')
 
+8、过滤条件
+在django中，过滤条件格式为：属性__操作符=值
+
+id=1实际上是id__exact=1的简写
+>>> Question.objects.get(id__exact=1)
+<Question: 问题：从达内结业后，第一份工作，你期待的工资是多少？>
+
+字符串有endswith方法，表示以什么作为结尾，但是django不用句点，而是用双下划线
+>>> Choice.objects.filter(choice_text__endswith='看人')
+
+pub_date有月份属性，也是用双下划线表示的
+>>> Question.objects.filter(pub_date__month=4)
 
 
 
