@@ -1,0 +1,20 @@
+python api
+1、进入django python shell
+(djenv) [root@room8pc16 mysite]# python manage.py shell
+2、导入模型
+>>> from polls.models import Question, Choice
+
+
+创建问题
+1、创建实例的方式
+>>> q1 = Question(
+    question_text='放假去哪玩？',
+    pub_date='2019-05-06 09:00:00'
+)
+>>> q1.save()
+
+
+
+
+
+
