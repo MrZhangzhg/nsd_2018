@@ -9,7 +9,11 @@
 {% for question in questions %}
     <div>
         {{ forloop.counter }}.
-        {{ question.question_text }} {{ question.pub_date }}
+{#        <a href="/polls/{{ question.id }}/" target="_blank">#}
+        <a href="{% url 'detail' question_id=question.id %}" target="_blank">
+            {{ question.question_text }}
+        </a>
+        {{ question.pub_date }}
     </div>
 {% endfor %}
 </body>

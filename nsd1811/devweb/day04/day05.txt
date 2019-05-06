@@ -117,6 +117,20 @@ def index(request):
 {% endfor %}
 </body>
 
+(3)继续修改index.html，为它加上超链接
+<body>
+<h1>投票首页</h1>
+{% for question in questions %}
+    <div>
+        {{ forloop.counter }}.
+{#        <a href="/polls/{{ question.id }}/" target="_blank">#}
+        <a href="{% url 'detail' question_id=question.id %}" target="_blank">
+            {{ question.question_text }}
+        </a>
+        {{ question.pub_date }}
+    </div>
+{% endfor %}
+</body>
 
 
 
