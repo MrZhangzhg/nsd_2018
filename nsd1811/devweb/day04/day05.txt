@@ -215,6 +215,20 @@ def index(request):
 
 
 
+编写detail页面
+1、修改detail函数
+def detail(request, question_id):
+    question = Question.objects.get(id=question_id)
+    return render(request, 'detail.html', {'question': question})
+
+2、修改前台detail.html
+
+
+
+
+
+
+
 
 
 
