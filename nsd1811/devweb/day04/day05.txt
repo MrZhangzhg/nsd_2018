@@ -132,6 +132,13 @@ def index(request):
 {% endfor %}
 </body>
 
+3、引入bootstrap
+(1) 将前面课程中的static目录拷贝到polls目录下
+(djenv) [root@room8pc16 mysite]# cp -r ../../day03/static/ polls/
+(2) 修改index.html，说见index.html
+
+
+
 
 
 
