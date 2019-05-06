@@ -12,6 +12,13 @@ python api
     pub_date='2019-05-06 09:00:00'
 )
 >>> q1.save()
+2、使用objects管理器
+django为每个模型都自动创建了一个名为objects的管理器，它有很多方法，可以实现对模型
+的各种操作。
+>>> q2 = Question.objects.create(
+    question_text='Are you ok?',
+    pub_date='2019-04-25 12:00:00'
+)
 
 
 
