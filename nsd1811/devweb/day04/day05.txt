@@ -222,7 +222,52 @@ def detail(request, question_id):
     return render(request, 'detail.html', {'question': question})
 
 2、修改前台detail.html
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}投票详情{% endblock %}
+{% block content %}
+    <h1 class="text-center text-warning">
+    {{ question.id }}号问题投票详情
+    </h1>
+    <div class="h4">
+        <h3>{{ question.question_text }}</h3>
+        <form action="" method="post">
+            {% for choice in question.choice_set.all %}
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="choice_id" value="{{ choice.id }}">
+                        {{ choice.choice_text }}
+                    </label>
+                </div>
+            {% endfor %}
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="投 票">
+            </div>
+        </form>
+    </div>
+{% endblock %}
 
+
+实现投票功能
+1、投票时，需要执行函数，函数实现数据库中votes字段的修改
+2、在django中，访问一个url，就可以实现调用某个函数
+3、设计url
+# polls/urls.py
+    url(r'^(?P<question_id>\d+)/vote/$', views.vote, name='vote'),
+4、在detail.html的form表单中加入action
+action="{% url 'vote' question_id＝question.id %}"
+5、创建视图函数
+# polls/views.py
+from django.shortcuts import render, redirect
+
+def vote(request, question_id):
+    question = Question.objects.get(id=question_id)  # 取出问题实例
+    choice_id = request.POST.get('choice_id')  # 在表单提交的数据中取出选项id
+    choice = question.choice_set.get(id=choice_id)  # 获取选项实例
+    choice.votes += 1  # 选票值加1
+    choice.save()  # 保存修改
+
+    return redirect('result', question_id=question.id)
 
 
 
