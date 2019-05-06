@@ -276,7 +276,26 @@ def result(request, question_id):
     return render(request, 'result.html', {'question': question})
 
 2、修改result.html
-
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}投票结果{% endblock %}
+{% block content %}
+    <h1 class="text-warning text-center">
+        {{ question.id }}号问题投票结果
+    </h1>
+    <table class="table table-bordered table-striped table-hover h4">
+        <tr class="text-center info">
+            <td>选项</td>
+            <td>票数</td>
+        </tr>
+        {% for choice in question.choice_set.all %}
+            <tr>
+                <td>{{ choice.choice_text }}</td>
+                <td>{{ choice.votes }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
 
 
 
