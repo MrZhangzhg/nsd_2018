@@ -79,6 +79,28 @@ pub_date有月份属性，也是用双下划线表示的
 
 
 
+修改投票首页
+1、修改index函数
+from .models import Question
+
+def index(request):
+    questions = Question.objects.order_by('-pub_date')
+    return render(request, 'index.html', {'questions': questions})
+
+2、修改模板文件，显示所有问题
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投票首页</title>
+</head>
+<body>
+<h1>投票首页</h1>
+{{ questions }}
+</body>
+</html>
+
+
 
 
 
