@@ -54,6 +54,17 @@ Choice，django自动为问题创建了一个choice_set管理器，通过这个�
 >>> Question.objects.order_by('pub_date')
 5、查询全部问题，按pub_date降序排列
 >>> Question.objects.order_by('-pub_date')
+6、get查询时，要求只能得到一个结果，返回的是满足条件的实例，多于少于1个结果都报错
+>>> Question.objects.get(id=1)  # 返回一个实例
+>>> Question.objects.get(id__lt=1)  # 报错，没有查询到结果
+>>> Question.objects.get(id__gt=1)  # 报错，结果多于1个
+7、filter查询时，得到的是0到多个结果的集合
+>>> Question.objects.filter(id=1)   # 返回集合，集合中只有一项
+>>> Question.objects.filter(id__lt=1)  # 返回集合，集合是空的
+>>> Question.objects.filter(id__gt=1)# 返回集合，集合有多项
+>>> Question.objects.filter(id__gt=1).filter(id__lt=6).order_by('-pub_date')
+
+
 
 
 
