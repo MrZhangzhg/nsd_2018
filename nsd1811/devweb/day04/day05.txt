@@ -269,8 +269,13 @@ def vote(request, question_id):
 
     return redirect('result', question_id=question.id)
 
+完成投票结果页
+1、修改视图函数
+def result(request, question_id):
+    question = Question.objects.get(id=question_id)
+    return render(request, 'result.html', {'question': question})
 
-
+2、修改result.html
 
 
 
