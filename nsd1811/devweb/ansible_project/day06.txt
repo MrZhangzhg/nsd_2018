@@ -104,6 +104,7 @@ def index(request):
 4、启动开发服务器测试
 (djenv) [root@room8pc16 myansible]# python manage.py runserver 0:80
 5、引入boostrap
+把static目录拷贝到webansi目录下
 6、实现模板继承
 
 
