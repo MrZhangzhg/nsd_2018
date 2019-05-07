@@ -66,6 +66,21 @@ urlpatterns = [
 
 ]
 
+制作首页
+因为该项目只有一个应用，这里采用了不正规的做法，将首页交给应用处理
+1、 url
+# myansible/urls.py
+from django.conf.urls import url, include
+from django.contrib import admin
+from webansi import views
+
+urlpatterns = [
+    url(r'^$', views.index, name='index'),
+    url(r'^admin/', admin.site.urls),
+    url(r'^webansi/', include('webansi.urls')),
+]
+注意：需要在pycharm中，右击外层的myansible目录，把它标记为source root
+
 
 
 
