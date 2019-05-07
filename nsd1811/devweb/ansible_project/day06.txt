@@ -148,6 +148,15 @@ class Argument(models.Model):
 sqlite> .tables
 sqlite> .schema webansi_hostgroup
 
+4、注册模型到后台
+# webansi/admin.py
+from django.contrib import admin
+from webansi.models import HostGroup, Host, Module, Argument
+
+for item in [HostGroup, Host, Module, Argument]:
+    admin.site.register(item)
+
+
 
 配置ansible
 1、创建配置文件
