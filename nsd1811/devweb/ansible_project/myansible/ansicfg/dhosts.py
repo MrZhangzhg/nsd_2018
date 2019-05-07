@@ -4,6 +4,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, ForeignKey, Date
 from sqlalchemy.orm import sessionmaker
+import json
 
 engine = create_engine(
     'sqlite:////var/ftp/nsd_2018/nsd1811/devweb/ansible_project/myansible/db.sqlite3',
@@ -27,4 +28,11 @@ class Host(Base):
 if __name__ == '__main__':
     session = Session()
     qset = session.query(HostGroup.groupname, Host.ipaddr).join(Host)
-    print(qset.all())
+    # print(qset.all())
+    result = {}
+    for group, ip in qset:
+        if group not in result:  # 组不是字典的key，创建一个项目
+            result[group] = {}   # result['dbservers'] = {}
+            result[group]['hosts'] = [] # result['dbservers']['hosts'] = []
+        result[group]['hosts'].append(ip)
+    print(json.dumps(result))
