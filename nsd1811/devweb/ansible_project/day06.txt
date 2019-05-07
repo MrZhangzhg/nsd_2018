@@ -149,7 +149,27 @@ sqlite> .tables
 sqlite> .schema webansi_hostgroup
 
 
-
+配置ansible
+1、创建配置文件
+(djenv) [root@room8pc16 myansible]# mkdir ansicfg
+(djenv) [root@room8pc16 myansible]# vim ansicfg/ansible.cfg
+[defaults]
+inventory = dhosts.py
+remote_user = root
+2、编写动态主机清单文件
+(djenv) [root@room8pc16 myansible]# touch ansicfg/dhosts.py
+(djenv) [root@room8pc16 myansible]# chmod +x ansicfg/dhosts.py
+动态主机清单文件的输出，要求是以下样式：
+{'dbservers': {'hosts': ['192.168.4.4']},
+ 'lvs': {'hosts': ['192.168.4.1', '192.168.4.2']},
+ 'storage': {'hosts': ['192.168.4.7']},
+ 'webservers': {'hosts': ['192.168.4.5', '192.168.4.6']}}
+分析样式：
+{
+    '组1': {'hosts': [ip1, ip2, ip3]},
+    '组2': {'hosts': [ip4, ip5, ]},
+}
+# vim ansicfg/dhosts.py
 
 
 
