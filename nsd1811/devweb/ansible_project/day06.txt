@@ -9,6 +9,23 @@ ansible_django项目
 (djenv) [root@room8pc16 ansible_project]# django-admin startproject myansible
 (djenv) [root@room8pc16 ansible_project]# cd myansible/
 3、修改pycharm:解释器、django支持
+4、创建应用
+(djenv) [root@room8pc16 myansible]# python manage.py startapp webansi
+5、修改配置
+# myansible/settings.py
+ALLOWED_HOSTS = '*'
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'webansi',
+]
+LANGUAGE_CODE = 'zh-hans'
+TIME_ZONE = 'Asia/Shanghai'
+USE_TZ = False
 
 
 
