@@ -227,6 +227,29 @@ if __name__ == '__main__':
 (djenv) [root@room8pc16 ansicfg]# ansible all -m ping
 
 
+制作主机信息页面
+1、url
+# webansi/urls.py
+from django.conf.urls import url
+from . import views
+
+urlpatterns = [
+    url(r'^$', views.mainpage, name='mainpage'),
+]
+2、视图函数
+def mainpage(request):
+    return render(request, 'mainpage.html')
+3、生成mainpage.html
+(djenv) [root@room8pc16 ansicfg]# ansible all -m setup --tree /tmp/out2/
+(djenv) [root@room8pc16 ansicfg]# ansible-cmdb /tmp/out2/ > ../webansi/templates/mainpage.html
+4、修改index.html的超链接
+        <a href="{% url 'mainpage' %}" target="_blank">
+
+
+
+
+
+
 
 
 
