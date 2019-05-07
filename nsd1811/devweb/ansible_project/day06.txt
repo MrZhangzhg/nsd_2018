@@ -26,6 +26,26 @@ INSTALLED_APPS = [
 LANGUAGE_CODE = 'zh-hans'
 TIME_ZONE = 'Asia/Shanghai'
 USE_TZ = False
+6、生成数据库
+(djenv) [root@room8pc16 myansible]# python manage.py makemigrations
+(djenv) [root@room8pc16 myansible]# python manage.py migrate
+(djenv) [root@room8pc16 myansible]# ls
+db.sqlite3  manage.py  myansible  webansi
+说明：sqlite是一个文件型数据库，一个文件就是一个库。
+(djenv) [root@room8pc16 myansible]# sqlite3 db.sqlite3
+sqlite> .help
+sqlite> .tables   # 相当于是show tables
+sqlite> .schema auth_user   # desc auth_user
+sqlite> SELECT * FROM auth_user;
+7、创建用户
+(djenv) [root@room8pc16 myansible]# python manage.py createsuperuser
+8、启动开发服务器测试
+(djenv) [root@room8pc16 myansible]# python manage.py runserver 0:80
+
+
+
+
+
 
 
 
