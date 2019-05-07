@@ -1,0 +1,14 @@
+ansible_django项目
+1、安装必须的软件包
+[root@room8pc16 ~]# source /opt/djenv/bin/activate
+(djenv) [root@room8pc16 zzg_pypkgs]# pip install ansible_pkg/*
+(djenv) [root@room8pc16 zzg_pypkgs]# pip install ansible-cmdb_pkgs/*
+(djenv) [root@room8pc16 zzg_pypkgs]# pip install requests_pkgs/*
+(djenv) [root@room8pc16 zzg_pypkgs]# pip install sqlalchemy_pkgs/*
+2、创建项目
+(djenv) [root@room8pc16 ansible_project]# django-admin startproject myansible
+(djenv) [root@room8pc16 ansible_project]# cd myansible/
+3、修改pycharm:解释器、django支持
+
+
+

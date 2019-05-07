@@ -7,7 +7,8 @@
     </h1>
     <div class="h4">
         <h3>{{ question.question_text }}</h3>
-        <form action="{% url 'vote' question_id=question.id %}" method="post">
+        {% if question.choice_set.all %}
+            <form action="{% url 'vote' question_id=question.id %}" method="post">
             {% for choice in question.choice_set.all %}
                 <div class="radio">
                     <label>
@@ -20,5 +21,8 @@
                 <input class="btn btn-primary" type="submit" value="投 票">
             </div>
         </form>
+        {% else %}
+            <h3 class="text-danger">尚未开始</h3>
+        {% endif %}
     </div>
 {% endblock %}

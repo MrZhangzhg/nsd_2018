@@ -298,6 +298,36 @@ def result(request, question_id):
 {% endblock %}
 
 
+修改投票详情
+如果某个问题还没有选项，则显示尚未开始。
+{% block content %}
+    <h1 class="text-center text-warning">
+    {{ question.id }}号问题投票详情
+    </h1>
+    <div class="h4">
+        <h3>{{ question.question_text }}</h3>
+        {% if question.choice_set.all %}
+            <form action="{% url 'vote' question_id=question.id %}" method="post">
+            {% for choice in question.choice_set.all %}
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="choice_id" value="{{ choice.id }}">
+                        {{ choice.choice_text }}
+                    </label>
+                </div>
+            {% endfor %}
+            <div class="form-group">
+                <input class="btn btn-primary" type="submit" value="投 票">
+            </div>
+        </form>
+        {% else %}
+            <h3 class="text-danger">尚未开始</h3>
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+
 
 
 
