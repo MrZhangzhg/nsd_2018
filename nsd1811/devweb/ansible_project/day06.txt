@@ -81,6 +81,31 @@ urlpatterns = [
 ]
 注意：需要在pycharm中，右击外层的myansible目录，把它标记为source root
 
+2、视图函数
+# webansi/views.py
+from django.shortcuts import render
+
+def index(request):
+    return render(request, 'index.html')
+
+3、模板文件
+# mkdir webansi/templates/
+# webansi/templates/index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Ansible Project</title>
+</head>
+<body>
+测试页面
+</body>
+</html>
+4、启动开发服务器测试
+(djenv) [root@room8pc16 myansible]# python manage.py runserver 0:80
+5、引入boostrap
+6、实现模板继承
+
 
 
 
