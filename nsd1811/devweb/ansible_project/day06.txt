@@ -43,6 +43,29 @@ sqlite> SELECT * FROM auth_user;
 (djenv) [root@room8pc16 myansible]# python manage.py runserver 0:80
 
 
+9、规划网址
+http://127.0.0.1/  显示所有的功能
+http://127.0.0.1/webansi/   应用首页，显示服务器的信息
+http://127.0.0.1/webansi/addhosts/  显示、添加主机、主机组
+http://127.0.0.1/webansi/addmodules/   显示、添加模块和参数
+http://127.0.0.1/webansi/tasks/   执行任务
+
+10、授权，把以webansi开头的URL，交给应用处理
+# myansible/urls.py
+from django.conf.urls import url, include
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^webansi/', include('webansi.urls')),
+]
+# webansi/urls.py    # 需要新建
+from django.conf.urls import url
+
+urlpatterns = [
+
+]
+
 
 
 
