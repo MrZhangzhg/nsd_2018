@@ -31,7 +31,13 @@
         {% for group in groups %}
             <tr>
                 <td>{{ group.groupname }}</td>
-                <td>{{ group.host_set.all }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        {% for host in group.host_set.all %}
+                            <li>{{ host.hostname }}: {{ host.ipaddr }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
             </tr>
         {% endfor %}
     </table>
