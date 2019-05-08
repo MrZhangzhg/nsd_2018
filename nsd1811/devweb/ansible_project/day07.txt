@@ -19,6 +19,7 @@ def addhosts(request):
 4、修改index.html的超链接
         <a href="{% url 'addhosts' %}" target="_blank">
 
+5、修改addhosts.html，实现表单
 
 
 
