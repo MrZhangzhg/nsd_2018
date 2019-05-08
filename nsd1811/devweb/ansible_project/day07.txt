@@ -144,7 +144,49 @@ def addmodules(request):
 </div>
 
 7、修改视图，实现添加模块的功能
+def addmodules(request):
+    if request.method == 'POST':
+        modulename = request.POST.get('module').strip()
+        argument = request.POST.get('args').strip()
+        if modulename:
+            module = Module.objects.get_or_create(modulename=modulename)[0]
+            if argument:
+                module.argument_set.get_or_create(arg_text=argument)
+
+    modules = Module.objects.all()
+    return render(request, 'addmodules.html', {'modules': modules})
 
 
+实现删除参数的功能
+1、删除参数，可以给参数后面添加一个删除链接，链接就是一个URL。
+访问这个URL，可以对应执行一个函数。通过函数删除相应的参数。
+2、url
+    url(r'^delarg/(?P<arg_id>\d+)/$', views.delarg, name='delarg'),
+3、创建视图函数
+from django.shortcuts import render, redirect
+from .models import HostGroup, Module, Argument
+
+def delarg(request, arg_id):
+    argument = Argument.objects.get(id=arg_id)  # 取出参数实例
+    argument.delete()  # 删除参数
+    return redirect('addmodules')   # 跳转到addmodules
+
+4、修改addmodules.html，添加删除按钮
+<td>
+    <ul class="list-unstyled">
+        {% for arg in module.argument_set.all %}
+            <li>
+                <div class="col-sm-10">
+                    {{ arg.arg_text }}
+                </div>
+                <div class="col-sm-2">
+                    <a href="{% url 'delarg' arg_id=arg.id %}">
+                        删除
+                    </a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</td>
 
 

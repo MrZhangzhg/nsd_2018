@@ -5,4 +5,5 @@ urlpatterns = [
     url(r'^$', views.mainpage, name='mainpage'),
     url(r'^addhosts/$', views.addhosts, name='addhosts'),
     url(r'^addmodules/$', views.addmodules, name='addmodules'),
+    url(r'^delarg/(?P<arg_id>\d+)/$', views.delarg, name='delarg'),
 ]
