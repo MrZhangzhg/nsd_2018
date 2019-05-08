@@ -11,11 +11,17 @@
             <div class="tab-pane active in fade" id="server">
                 <select name="host" class="form-control">
                     <option value="">无</option>
+                    {% for host in hosts %}
+                        <option value="{{ host.ipaddr }}">{{ host.hostname }}</option>
+                    {% endfor %}
                 </select>
             </div>
             <div class="tab-pane fade" id="servergroup">
                 <select name="group" class="form-control">
                     <option value="">无</option>
+                    {% for group in groups %}
+                        <option value="{{ group.groupname }}">{{ group.groupname }}</option>
+                    {% endfor %}
                 </select>
             </div>
         </div>
