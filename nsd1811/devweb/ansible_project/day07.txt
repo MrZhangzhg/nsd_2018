@@ -190,3 +190,30 @@ def delarg(request, arg_id):
 </td>
 
 
+
+完成执行任务
+1、url
+    url(r'^tasks/$', views.tasks, name='tasks'),
+2、视图函数
+def tasks(request):
+    groups = HostGroup.objects.all()
+    modules = Module.objects.all()
+    context = {'groups': groups, 'modules': modules}
+    return render(request, 'tasks.html', context)
+3、模板
+{% extends 'base.html' %}
+{% block title %}执行任务{% endblock %}
+{% block content %}
+执行任务
+{% endblock %}
+4、修改index.html的超链接
+        <a href="{% url 'tasks' %}" target="_blank">
+
+
+
+
+
+
+
+
+

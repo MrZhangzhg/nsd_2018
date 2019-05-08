@@ -37,3 +37,9 @@ def delarg(request, arg_id):
     argument = Argument.objects.get(id=arg_id)
     argument.delete()
     return redirect('addmodules')
+
+def tasks(request):
+    groups = HostGroup.objects.all()
+    modules = Module.objects.all()
+    context = {'groups': groups, 'modules': modules}
+    return render(request, 'tasks.html', context)
