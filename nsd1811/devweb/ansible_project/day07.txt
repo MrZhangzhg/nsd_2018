@@ -103,8 +103,45 @@ def addmodules(request):
 {% endblock %}
 4、修改index.html的超链接
         <a href="{% url 'addmodules' %}" target="_blank">
+5、addmodules.html，实现表单
+<div class="h4" style="margin-top: 20px">
+    <form action="" method="post" class="form-inline">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>模块：</label>
+            <input type="text" class="form-control" name="module">
+        </div>
+        <div class="form-group">
+            <label>参数：</label>
+            <input type="text" class="form-control" name="args">
+        </div>
+        <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="提 交">
+        </div>
+    </form>
+</div>
 
-
+6、addmodules.html，增加表格数据
+<div class="h4">
+    <table class="table table-striped table-hover">
+        <tr class="info">
+            <td>模块</td>
+            <td>参数</td>
+        </tr>
+        {% for module in modules %}
+            <tr>
+                <td>{{ module.modulename }}</td>
+                <td>
+                    <ul class="list-unstyled">
+                        {% for arg in module.argument_set.all %}
+                            <li>{{ arg.arg_text }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
 
 
 
