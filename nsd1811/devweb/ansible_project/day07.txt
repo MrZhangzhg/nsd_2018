@@ -209,6 +209,8 @@ def tasks(request):
 4、修改index.html的超链接
         <a href="{% url 'tasks' %}" target="_blank">
 
+5、修改模板文件
+
 
 
 
