@@ -5,3 +5,6 @@ def index(request):
 
 def mainpage(request):
     return render(request, 'mainpage.html')
+
+def addhosts(request):
+    return render(request, 'addhosts.html')
