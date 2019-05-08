@@ -2,6 +2,7 @@
 {% block title %}执行任务{% endblock %}
 {% block content %}
 <form action="" method="post" style="margin-top: 20px">
+{% csrf_token %}
     <div class="form-group h4">
         <ul class="nav nav-tabs">
             <li class="active"><a href="#server" data-toggle="tab">主机</a></li>
