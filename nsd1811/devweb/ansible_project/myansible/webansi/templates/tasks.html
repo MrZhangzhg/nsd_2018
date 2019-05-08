@@ -34,10 +34,22 @@
             </tr>
             {% for module in modules %}
                 <tr>
-                    <td>{{ module.modulename }}</td>
+                    <td>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="module" value="{{ module.modulename }}">
+                                {{ module.modulename }}
+                            </label>
+                        </div>
+                    </td>
                     <td>
                         {% for arg in module.argument_set.all %}
-                            {{ arg.arg_text }}
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="argument" value="{{ arg.arg_text }}">
+                                    {{ arg.arg_text }}
+                                </label>
+                            </div>
                         {% endfor %}
                     </td>
                 </tr>

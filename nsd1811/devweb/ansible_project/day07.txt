@@ -210,6 +210,7 @@ def tasks(request):
         <a href="{% url 'tasks' %}" target="_blank">
 
 5、修改模板文件
+详见addmodules.html
 
 
 
