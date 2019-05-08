@@ -26,5 +26,26 @@
             </div>
         </div>
     </div>
+    <div class="h4">
+        <table class="table table-bordered table-striped table-hover">
+            <tr class="info">
+                <td>模块</td>
+                <td>参数</td>
+            </tr>
+            {% for module in modules %}
+                <tr>
+                    <td>{{ module.modulename }}</td>
+                    <td>
+                        {% for arg in module.argument_set.all %}
+                            {{ arg.arg_text }}
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="form-group text-center">
+        <input class="btn btn-primary" type="submit" value="执 行">
+    </div>
 </form>
 {% endblock %}
