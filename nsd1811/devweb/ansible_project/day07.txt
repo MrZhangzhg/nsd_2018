@@ -86,5 +86,28 @@ def addhosts(request):
 
 
 
+实现添加模块页面
+1、url
+    url(r'^addmodules/$', views.addmodules, name='addmodules'),
+2、视图函数
+# webansi/views.py
+def addmodules(request):
+    modules = Module.objects.all()
+    return render(request, 'addmodules.html', {'modules': modules})
+3、模板
+# webansi/templates/addmodules.html
+{% extends 'base.html' %}
+{% block title %}添加模块{% endblock %}
+{% block content %}
+添加模块
+{% endblock %}
+4、修改index.html的超链接
+        <a href="{% url 'addmodules' %}" target="_blank">
+
+
+
+
+
+
 
 
