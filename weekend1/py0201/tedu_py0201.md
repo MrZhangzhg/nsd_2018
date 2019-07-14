@@ -478,14 +478,54 @@ None
 ...   s2 = set(f2)
 >>> s2 - s1
 {'ni hao\n', 'hello world\n'}
-
 ```
 
+## 时间模块
 
+时间表示方式：
 
+- 时间戳：1970-1-1 0:0:00 到某一时间之间的秒数
 
+```python
+>>> import time
+>>> time.time()
+1563091826.5869324
+```
 
+- UTC时间：世界协调时。
 
+```python
+>>> time.ctime()
+'Sun Jul 14 16:12:11 2019'
+```
+
+- strcut_time：由9项构成的元组
+
+```python
+>>> time.localtime()
+time.struct_time(tm_year=2019, tm_mon=7, tm_mday=14, tm_hour=16, tm_min=13, tm_sec=5, tm_wday=6, tm_yday=195, tm_isdst=0)
+>>> t = time.localtime()
+>>> t.tm_year
+2019
+>>> t.tm_hour
+16
+```
+
+time模块常用方法
+
+```python
+>>> import time
+>>> time.sleep(3)
+>>> time.time()
+1563092265.051062
+>>> time.strftime('%Y-%m-%d %H:%M:%S')
+'2019-07-14 16:18:31'
+>>> time.strftime('%a')
+'Sun'
+# 将字符串格式的时间转成struct_time格式
+>>> time.strptime('2019-07-14 16:18:31', '%Y-%m-%d %H:%M:%S')
+time.struct_time(tm_year=2019, tm_mon=7, tm_mday=14, tm_hour=16, tm_min=18, tm_sec=31, tm_wday=6, tm_yday=195, tm_isdst=-1)
+```
 
 
 
