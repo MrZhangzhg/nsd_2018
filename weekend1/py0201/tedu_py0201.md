@@ -201,6 +201,56 @@ b'uid=0(root) gid=0(root) \xe7\xbb\x84=0(root)\n'
 b'id: john: no such user\n'
 ```
 
+原始字符串、真实字符串
+
+```python
+>>> win_path = 'c:\temp\new'
+>>> print(win_path)
+c:	emp
+ew
+>>> wpath = r'c:\temp\new'
+>>> print(wpath)
+c:\temp\new
+>>> wpath
+'c:\\temp\\new'
+```
+
+字符串方法
+
+```python
+>>> '\thello world   '.strip()   # 去除两端空白字符
+'hello world'
+>>> '\thello world   '.lstrip()   # 去除左端空白字符
+'hello world   '
+>>> '\thello world   '.rstrip()   # 去除右端空白字符
+'\thello world'
+>>> hi = 'hao123'
+>>> hi.upper()
+'HAO123'
+>>> 'HAO123'.lower()
+'hao123'
+>>> 'hello greet welcome'.split()
+['hello', 'greet', 'welcome']
+>>> hi.center(30)
+'            hao123            '
+>>> hi.center(30, '#')
+'############hao123############'
+>>> hi.ljust(30, '*')
+'hao123************************'
+>>> hi.rjust(30, '*')
+'************************hao123'
+>>> hi.startswith('ha')   # 以ha开头吗？
+True
+>>> hi.endswith('abc')   # 以abc结尾吗？
+False
+>>> hi.islower()  # 字符串中的字母都是小写吗？
+True
+>>> hi.isdigit()   # 所有的字符都是数字吗？
+False
+>>> '123'.isdigit()
+True
+```
+
 
 
 
