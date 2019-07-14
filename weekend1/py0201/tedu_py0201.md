@@ -117,6 +117,34 @@ if __name__ == '__main__':
 
 4. 编写各个功能模块
 
+## 序列对象
+
+序列对象内建函数
+
+```python
+>>> str(100)
+'100'
+>>> list('abc')
+['a', 'b', 'c']
+>>> tuple('abc')
+('a', 'b', 'c')
+>>> max([10, 20, 5, 20, 30])
+30
+>>> min([10, 20, 5, 20, 30])
+5
+>>> alist = ['tom', 'jerry']
+>>> enumerate(alist)
+<enumerate object at 0x7f0f71a1aaf8>
+>>> list(enumerate(alist))   # 把enumerate的结构转成列表
+[(0, 'tom'), (1, 'jerry')]
+>>> for ind, name in enumerate(alist):
+...   print(ind, name)
+... 
+0 tom
+1 jerry
+
+```
+
 
 
 
