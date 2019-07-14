@@ -554,6 +554,82 @@ datetime.datetime(2019, 4, 5, 12, 52, 39, 20586)
 datetime.datetime(2019, 10, 22, 20, 52, 39, 20586)
 ```
 
+## 异常处理
+
+```python
+try:
+    有可能发生异常的语句
+except 异常名字:
+    处理异常的代码
+else:
+    不发生异常才执行的代码 
+finally:
+    不管异常是否发生，都要执行的代码
+```
+
+## os模块
+
+```python
+>>> os.listdir()   # ls
+>>> os.listdir('/tmp/')  # ls /tmp
+>>> os.mkdir('/tmp/weekend')   # mkdir /tmp/weekend
+>>> os.chdir('/tmp/weekend')   # cd /tmp/weekend
+>>> os.getcwd()  # pwd
+'/tmp/weekend'
+>>> os.symlink('/etc/hosts', 'zhuji')   # ln -s /etc/hosts zhuji
+>>> os.remove('zhuji')   # rm -f zhuji
+>>> os.path.abspath('.')   # 获取绝对路径
+>>> os.path.basename('/etc/weekend/hello.txt')
+'hello.txt'
+>>> os.path.dirname('/etc/weekend/hello.txt')
+'/etc/weekend'
+>>> os.path.split('/etc/weekend/hello.txt')
+('/etc/weekend', 'hello.txt')
+>>> os.path.join('/etc/weekend', 'hello.txt')
+'/etc/weekend/hello.txt'
+>>> os.path.isfile('/etc/hosts')   # /etc/hosts存在并且是文件吗？
+>>> os.path.isdir('/etc/hosts')   # /etc/hosts存在并且是目录吗？
+>>> os.path.exists('/etc/abc')   # 存在/etc/abc吗？
+```
+
+## pickle模块
+
+文件普通的读写行为只能操作字符串。如果希望把各种数据类型写到文件中，取出时还是这种类型，就需要用到pickle存储器了。pickle可以把任意的数据对象写入文件，并无损地取出来。
+
+```python
+>>> import pickle
+>>> shopping_list = ['apple', 'pear', 'banana']
+>>> with open('/tmp/shop.data', 'wb') as fobj:  # 将列表存入文件
+...   pickle.dump(shopping_list, fobj)
+
+>>> with open('/tmp/shop.data', 'rb') as fobj:
+...   mylist = pickle.load(fobj)  # 从文件中读出列表
+
+>>> type(mylist)
+<class 'list'>
+>>> mylist
+['apple', 'pear', 'banana']
+
+```
+
+## 记账练习
+
+| 日期      | 收入  | 支出 | 余额  | 说明   |
+| --------- | ----- | ---- | ----- | ------ |
+| 2019-7-1  | 0     | 0    | 10000 | init   |
+| 2019-7-10 | 10000 | 0    | 20000 | salary |
+| 2017-7-10 | 0     | 200  | 19800 | eat    |
+
+可以把整个文件对应成一个大列表，每行记录是一个小列表。把大列表通过pickle存到文件中。
+
+```python
+[
+    ['2019-7-1', 0, 0, 10000, 'init'],
+    ['2019-7-10', 10000, 0, 20000, 'salary'],
+    ['2019-7-10', 0, 200, 19800, 'eat'],
+]
+```
+
 
 
 
