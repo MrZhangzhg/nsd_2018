@@ -527,6 +527,41 @@ time模块常用方法
 time.struct_time(tm_year=2019, tm_mon=7, tm_mday=14, tm_hour=16, tm_min=18, tm_sec=31, tm_wday=6, tm_yday=195, tm_isdst=-1)
 ```
 
+## datetime模块
+
+```python
+>>> from datetime import datetime
+>>> datetime.now()
+datetime.datetime(2019, 7, 14, 16, 48, 24, 370629)
+>>> t = datetime.now()
+>>> t.year, t.month, t.day, t.hour, t.minute, t.second, t.microsecond
+(2019, 7, 14, 16, 48, 43, 586114)
+>>> t1 = datetime(2019, 7, 13)   # 2019年7月13日
+>>> t1
+datetime.datetime(2019, 7, 13, 0, 0)
+>>> t > t1
+True
+>>> t.strftime('%Y-%m-%d %H:%M:%S')
+'2019-07-14 16:48:43'
+
+# 100天4小时之前的时间、之后的时间
+>>> from datetime import datetime, timedelta
+>>> t = datetime.now()
+>>> days = timedelta(days=100, hours=4)
+>>> t - days
+datetime.datetime(2019, 4, 5, 12, 52, 39, 20586)
+>>> t + days
+datetime.datetime(2019, 10, 22, 20, 52, 39, 20586)
+```
+
+
+
+
+
+
+
+
+
 
 
 
