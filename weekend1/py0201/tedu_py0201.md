@@ -251,11 +251,132 @@ False
 True
 ```
 
+## 列表和元组
+
+```python
+>>> alist = [10, 30, 25, 15, 40, 22]
+>>> alist.append(35)   # 追加
+>>> alist.extend([20, 30, 10, 20])
+>>> alist
+[10, 30, 25, 15, 40, 22, 35, 20, 30, 10, 20]
+>>> alist.remove(10)   # 删除第一个10
+>>> alist.index(22)   # 取出22的下标
+4
+>>> alist.reverse()   # 翻转列表
+>>> alist
+[20, 10, 30, 20, 35, 22, 40, 15, 25, 30]
+>>> alist.insert(5, 20)  # 在下标为5的位置插入20
+>>> alist.sort()   # 排序
+>>> alist
+[10, 15, 20, 20, 20, 22, 25, 30, 30, 35, 40]
+>>> alist.count(20)   # 统计20有多少个
+3
+>>> alist.pop()   # 默认弹出列表中最后一项
+40
+>>> alist
+[10, 15, 20, 20, 20, 22, 25, 30, 30, 35]
+>>> alist.pop(6)   # 弹出下标为6的项目
+25
+>>> alist
+[10, 15, 20, 20, 20, 22, 30, 30, 35]
+```
+
+元组相当于是静态的列表，列表可变，元组不可变。
+
+```python
+>>> atuple = (10, 15, 30, 15)
+>>> atuple.count(15)
+2
+>>> atuple.index(15)
+1
+
+# 单元素元组必须有逗号，否则构不成元组
+>>> a = (10)
+>>> a
+10
+>>> type(a)   
+<class 'int'>
+>>> a = (10,)
+>>> type(a)
+<class 'tuple'>
+>>> a
+(10,)
+>>> len(a)
+1
+```
+
+列表练习：
+
+模拟栈结构，要求有压栈、出栈、查询功能
+
+1. 程序运行过程
+
+```shell
+(0) push
+(1) pop
+(2) view
+(3) quit
+Please input your choice(0/1/2/3): abc
+Invalid choice. Try again.
+(0) push
+(1) pop
+(2) view
+(3) quit
+Please input your choice(0/1/2/3): 2
+[]
+(0) push
+(1) pop
+(2) view
+(3) quit
+Please input your choice(0/1/2/3): 0
+item to push: hao
+(0) push
+(1) pop
+(2) view
+(3) quit
+Please input your choice(0/1/2/3): 2
+['hao']
+(0) push
+(1) pop
+(2) view
+(3) quit
+Please input your choice(0/1/2/3): 1
+From stack popped: hao
+(0) push
+(1) pop
+(2) view
+(3) quit
+Please input your choice(0/1/2/3): 1
+Empty stack
+(0) push
+(1) pop
+(2) view
+(3) quit
+Please input your choice(0/1/2/3): 3
+Bye-bye
+```
+
+2. 把功能编写成功能函数
+3. 主程序代码
+
+```python
+def push_it():
 
 
+def pop_if():
 
 
+def view_it():
 
+
+def show_menu():
+
+
+if __name__ == '__main__':
+    show_menu()
+```
+
+4. 编写每个函数功能
 
 
 
