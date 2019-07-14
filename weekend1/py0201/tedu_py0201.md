@@ -143,6 +143,62 @@ if __name__ == '__main__':
 0 tom
 1 jerry
 
+>>> from random import randint
+>>> nums = [randint(1, 100) for i in range(10)]
+>>> nums
+[68, 50, 31, 44, 96, 31, 43, 98, 12, 7]
+>>> list(reversed(nums))   # 翻转列表
+[7, 12, 98, 43, 31, 96, 44, 31, 50, 68]
+>>> sorted(nums)   # 排序
+[7, 12, 31, 31, 43, 44, 50, 68, 96, 98]
+```
+
+### 字符串格式化
+
+```python
+>>> '%s is %s years old' % ('bob', 20)
+'bob is 20 years old'
+>>> '%s is %d years old' % ('bob', 20)
+'bob is 20 years old'
+>>> '%s is %d years old' % ('bob', 20.5)
+'bob is 20 years old'
+>>> '%d is %d years old' % ('bob', 20)  # 报错，bob转不成整数
+>>> '%#o' % 10   # 转成8进制
+'0o12'
+>>> '%#x' % 10   # 转成16进制
+'0xa'
+>>> '%f' % (5 / 3)   # 浮点数
+'1.666667'
+>>> '%.2f' % (5 / 3)   # 小数位2位
+'1.67'
+>>> '%6.2f' % (5 / 3)   # 小数位2位，总宽度为6，不足部分用空格补
+'  1.67'
+>>> '%10s%8s' % ('alice', 20)   # alice占10个宽度，20占8个宽度
+'     alice      20'
+>>> '%10s%8s' % ('bob', 20)
+'       bob      20'
+>>> '%-10s%-8s' % ('alice', 20)   # 左对齐
+'alice     20      '
+>>> '%-10s%-8s' % ('bob', 20)
+'bob       20      '
+>>> '{} is {} years old.'.format('bob', 20)
+'bob is 20 years old.'
+```
+
+python调用系统命令的方法
+
+```python
+>>> import subprocess
+>>> subprocess.run('ls', shell=True)
+>>> result = subprocess.run('ls', shell=True)
+check_id.py  mktxtfile.py  tedu_py0201.md
+>>> result.returncode    # 相当于$?
+0
+>>> result = subprocess.run('id root; id john', stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+>>> result.stdout
+b'uid=0(root) gid=0(root) \xe7\xbb\x84=0(root)\n'
+>>> result.stderr
+b'id: john: no such user\n'
 ```
 
 
