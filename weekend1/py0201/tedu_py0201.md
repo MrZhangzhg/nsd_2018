@@ -378,6 +378,75 @@ if __name__ == '__main__':
 
 4. 编写每个函数功能
 
+## 字典
+
+字典是可变、容器、映射类型。它的值可以相同，但是key肯定不相同。字典的key必须是不可变对象。
+
+```python
+>>> adict = {}.fromkeys(['bob', 'tom', 'jerry'], 23)
+>>> adict
+{'bob': 23, 'tom': 23, 'jerry': 23}
+```
+
+访问字典：通过key找value
+
+```python
+>>> adict = {'name': 'tom', 'age': 23}
+>>> adict
+{'name': 'tom', 'age': 23}
+>>> 'tom' in adict    # tom是字典的key吗？
+False
+>>> 'name' in adict
+True
+>>> for key in adict:
+...   print(key, adict[key])
+... 
+name tom
+age 23
+>>> '%(name)s: %(age)s' % adict
+'tom: 23'
+```
+
+更新字典
+
+```python
+# 因为字典的key不能重复，所以直接对字典赋值时，如果key不在字典中是创建新项目，如果已经有key了，则更新它的值
+>>> adict['email'] = 'tom@tedu.cn'
+>>> adict
+{'name': 'tom', 'age': 23, 'email': 'tom@tedu.cn'}
+>>> adict['age'] = 25
+>>> adict
+{'name': 'tom', 'age': 25, 'email': 'tom@tedu.cn'}
+```
+
+字典的方法
+
+```python
+>>> adict.keys()   # 所有的key
+dict_keys(['name', 'age', 'email'])
+>>> adict.values()   # 所有的值
+dict_values(['tom', 25, 'tom@tedu.cn'])
+>>> adict.items()
+dict_items([('name', 'tom'), ('age', 25), ('email', 'tom@tedu.cn')])
+>>> adict.pop('email')   # 根据key弹出一项
+'tom@tedu.cn'
+>>> adict
+{'name': 'tom', 'age': 25}
+>>> print(adict.get('qq'))   # 取出key为qq的值，不存在返回None
+None
+>>> adict.get('qq', 'not found')  # 指定key为qq的项不存在，返回not found
+'not found'
+>>> adict.get('age')
+25
+
+```
+
+
+
+
+
+
+
 
 
 
