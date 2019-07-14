@@ -438,6 +438,46 @@ None
 'not found'
 >>> adict.get('age')
 25
+```
+
+## 集合
+
+集合用{}来表示。集合中的元素是不可变的、无序的、不能重复。所以集合就像是一个无值的字典。
+
+```python
+>>> aset = set('abc')
+>>> bset = set('bcd')
+>>> aset
+{'a', 'b', 'c'}
+>>> bset
+{'b', 'd', 'c'}
+>>> aset | bset   # 并集
+{'a', 'b', 'd', 'c'}
+>>> aset & bset   # 交集
+{'b', 'c'}
+>>> aset - bset   # 差补，aset中有但是bset中没有
+{'a'}
+
+# 去重
+>>> from random import randint
+>>> nums = [randint(1, 10) for i in range(20)]
+>>> nums
+[1, 9, 3, 8, 6, 6, 3, 6, 3, 7, 4, 4, 1, 7, 9, 1, 4, 3, 3, 7]
+>>> set(nums)
+{1, 3, 4, 6, 7, 8, 9}
+
+# 判断哪些行在b.txt中有，而a.txt中没有
+[root@room8pc16 py0201]# cp /etc/passwd /tmp/pwd
+[root@room8pc16 py0201]# cp /etc/passwd /tmp/pwd2
+[root@room8pc16 py0201]# vim /tmp/pwd2   # 修改pwd2文件
+# 找出pwd2中有，而pwd中没有的行
+>>> with open('/tmp/pwd') as f1:
+...   s1 = set(f1)   # 将文件中的每一行都存入集合
+... 
+>>> with open('/tmp/pwd2') as f2:
+...   s2 = set(f2)
+>>> s2 - s1
+{'ni hao\n', 'hello world\n'}
 
 ```
 
