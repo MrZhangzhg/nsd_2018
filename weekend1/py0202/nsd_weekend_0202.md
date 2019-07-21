@@ -182,6 +182,114 @@ NameError: name 'a' is not defined
 12
 ```
 
+## 递归函数
+
+一个函数的内部又对自身进行调用，就是递归函数。
+
+## 生成器
+
+生成器有两种形式，一种是生成器表达式，一种是函数。生成器的优势，是在数据量非常大的时候，节省内存空间。
+
+生成器只能用一次，再用必须重新赋值。
+
+生成器函数可以通过yield返回很多中间结果。创建生成器对象后，从生成器对象中取值，遇到yield就暂停执行，返回中间结果。
+
+```python
+>>> nums = (randint(1, 100) for i in range(10))
+>>> nums
+<generator object <genexpr> at 0x7f1b87fa9728>
+>>> for i in nums:
+...   print(i)
+
+>>> def mygen():
+...   yield 100
+...   n = 10 + 10
+...   yield n
+...   yield 200
+... 
+>>> mg = mygen()
+>>> for i in mg:
+...   print(i)
+... 
+100
+20
+200
+```
+
+## 模块
+
+文件是物理上组织代码的形式，模块是逻辑上组织代码的形式。
+
+### 导入模块
+
+python导入模块时，会到sys.path定义的路径下搜索模块。还可以定义一个环境变量PYTHONPATH，PYTHON也会到这个环境变量定义的路径去搜索模块。
+
+导入模块的方法
+
+```python
+# 常用的方法
+>>> import time
+>>> from random import randint, choice
+
+# 不常用的方法
+>>> import os, time, random
+>>> import pickle as p     # 导入模块时，为其起别名
+```
+
+可以把目录当成特殊的模块，叫作包。在python2版本中，一个目录如果想成为包，必须在目录中创建一个名为\_\_init\_\_.py的文件。
+
+```shell
+[root@room8pc16 py0202]# tree mypack/
+mypack/
+├── hello.py
+[root@room8pc16 py0202]# cat mypack/hello.py 
+hi = "hello world"
+
+>>> import mypack.hello
+>>> mypack.hello.hi
+'hello world'
+```
+
+## hashlib模块
+
+```python
+>>> import hashlib
+>>> with open('/etc/passwd', 'rb') as fobj:
+...   data = fobj.read()
+... 
+>>> m = hashlib.md5(data)
+>>> m.hexdigest()
+'decb544ed171583bb1d7722500910d9e'
+
+>>> m = hashlib.md5(b'123456')
+>>> m.hexdigest()
+'e10adc3949ba59abbe56e057f20f883e'
+>>> 
+>>> m1 = hashlib.md5()
+>>> m1.update(b'12')
+>>> m1.update(b'34')
+>>> m1.update(b'56')
+>>> m1.hexdigest()
+'e10adc3949ba59abbe56e057f20f883e'
+```
+
+### tarfile模块
+
+```python
+>>> import tarfile
+>>> tar = tarfile.open('/tmp/myfiles.tar.gz', 'w:gz')
+>>> tar.add('/etc/hosts')
+>>> tar.add('/etc/security')
+>>> tar.close()
+
+[root@room8pc16 py0202]# mkdir /tmp/abcd
+>>> tar = tarfile.open('/tmp/myfiles.tar.gz')
+>>> tar.extractall(path='/tmp/abcd')
+>>> tar.close()
+```
+
+
+
 
 
 

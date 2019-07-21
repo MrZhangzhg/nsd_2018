@@ -1,3 +1,4 @@
+#!/root/mypy/bin/python
 # def foo():
 #     print('in foo')
 #     bar()
