@@ -288,7 +288,43 @@ hi = "hello world"
 >>> tar.close()
 ```
 
+### os.walk
 
+```python
+>>> list(os.walk('/etc/security'))
+[('/etc/security', ['console.apps', 'console.perms.d', 'limits.d', 'namespace.d'], ['access.conf', 'chroot.conf', 'console.handlers', 'console.perms', 'group.conf', 'limits.conf', 'namespace.conf', 'namespace.init', 'opasswd', 'pam_env.conf', 'sepermit.conf', 'time.conf', 'pwquality.conf']), ('/etc/security/console.apps', [], ['config-util', 'xserver', 'liveinst', 'setup']), ('/etc/security/console.perms.d', [], []), ('/etc/security/limits.d', [], ['20-nproc.conf']), ('/etc/security/namespace.d', [], [])]
+# os.walk返回值由元组构成，元组有三项，第一项是路径，第二项是该路径下的目录列表，第三项是该路径下的文件列表
+# 想得到文件的具体路径，可以把路径和文件名进行拼接
+>>> for path, folders, files in os.walk('/etc/security'):
+...   for file in files:
+...     os.path.join(path, file)
+```
+
+## OOP面向对象编程
+
+OOP将现实世界中的事物进行抽象，找出他们的共同特点，编写成一个class类。这个class中有名词性质的属性，用变量表示；还有一些动作性质的属性，用函数表示。在class中的函数，叫作方法。
+
+oop实现了数据和行为的统一、融合。
+
+### 组合
+
+当两个类有明显的不同，但是一个类是另一个类的组件，用组合。
+
+### 继承
+
+当两个类非常相似的时候用。子类可以有多个父类，称作多重继承，子类拥有所有父类的方法。子类的实例在执行方法时，查找的顺序是自下向上，自左向右，先找到的执行。
+
+### 类的特殊方法
+
+也被称作magic魔法方法，方法以双下划线开头、结尾，往往有特殊的作用。
+
+```python
+
+```
+
+
+
+### 
 
 
 
