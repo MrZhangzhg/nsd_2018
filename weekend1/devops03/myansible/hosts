@@ -1,0 +1,5 @@
+[dbservers]
+192.168.4.5
+
+[webservers]
+192.168.4.7
